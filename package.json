@@ -1,0 +1,26 @@
+{
+  "name": "blog-site",
+  "version": "1.0.0",
+  "description": "Blog Site for Yash Singh",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "keywords": [
+    "blog",
+    "site"
+  ],
+  "author": "Yash Singh",
+  "license": "MIT",
+  "dependencies": {
+    "@github-docs/frontmatter": "^1.3.1",
+    "dompurify": "^2.2.7",
+    "express": "^4.17.1",
+    "github-markdown-css": "^4.0.0",
+    "handlebars": "^4.7.7",
+    "highlight.js": "^10.7.1",
+    "jsdom": "^16.5.1",
+    "markdownlint": "^0.23.1",
+    "marked": "^2.0.1"
+  }
+}

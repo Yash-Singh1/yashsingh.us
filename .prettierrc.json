@@ -1,0 +1,14 @@
+{
+  "printWidth": 150,
+  "trailingComma": "none",
+  "singleQuote": true,
+  "htmlWhitespaceSensitivity": "ignore",
+  "overrides": [
+    {
+      "files": "*.handlebars",
+      "options": {
+        "parser": "html"
+      }
+    }
+  ]
+}
