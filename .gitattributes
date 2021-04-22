@@ -1,3 +1,4 @@
+*.png binary
 template/* linguist-vendored
 *.handlebars linguist-vendored=false
 template/about.html linguist-vendored=false
