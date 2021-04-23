@@ -24,9 +24,9 @@ const renderer = {
 
   image(href, title, text) {
     return `<a href="#">
-  <img class="img-fluid" src="${href}" alt="${text}" title="${title}>
+  <img class="img-fluid" src="${href}" alt="${text}"${title ? ` title="${title}"` : ''}>
 </a>
-<span class="caption text-muted">${title}</span>`;
+${title ? `<span class="caption text-muted">${title}</span>` : ''}`;
   }
 };
 
@@ -52,8 +52,9 @@ app.get('/', (req, res) => {
     template(
       fs
         .readdirSync('content')
-        .slice(page * 5 - 5, page * 5 - 1)
         .map((file) => ({ ...getFrontmatter(file), fileName: file }))
+        .sort((postA, postB) => new Date(postB.date) - new Date(postA.date) )
+        .slice(page * 5 - 5, page * 5 - 1)
     )
   );
 });
@@ -64,14 +65,6 @@ app.get('/index.html', (req, res) => {
 
 app.get('/favicon.ico', (req, res) => {
   res.status(204);
-});
-
-app.get('/frontmatter/*', (req, res) => {
-  try {
-    res.json(getFrontmatter(req.path.slice('/frontmatter/'.length)));
-  } catch {
-    res.status(500);
-  }
 });
 
 app.get('/all-posts/', (req, res) => {
