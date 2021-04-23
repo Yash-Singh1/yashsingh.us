@@ -4,7 +4,9 @@
   "description": "Blog Site for Yash Singh",
   "main": "server.js",
   "scripts": {
-    "start": "node server.js"
+    "start": "node server.js",
+    "lint": "markdownlint **/*.md --ignore template/README.md",
+    "code-style": "markdownlint **/*.md --ignore template/README.md --fix"
   },
   "keywords": [
     "blog",
@@ -22,5 +24,8 @@
     "jsdom": "^16.5.1",
     "markdownlint": "^0.23.1",
     "marked": "^2.0.1"
+  },
+  "devDependencies": {
+    "markdownlint-cli": "^0.27.1"
   }
 }
