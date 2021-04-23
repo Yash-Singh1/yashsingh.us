@@ -8,33 +8,46 @@ date: April 22, 2021
 
 # Hacking Cookie Clicker
 
-In this article I will share a little piece of code that took over Cookie Clicker from sugar lumps, to cookies, to upgrades. It does everything.
+In this article I will share a little piece of code that took over Cookie Clicker
+from sugar lumps, to cookies, to upgrades. It does everything.
 
 ## What is Cookie Clicker?
 
-[Cookie Clicker](https://orteil.dashnet.org/cookieclicker/) is an idle game that allows you to buy buildings and upgrades that will make cookies for you. You can also click on the large displayed cookie to get more. The buildings increase your CPS (Cookies per second) to speed up cookie production. The game adds in much more, such as sugar lumps, milk, and dragons that is there to explore.
+[Cookie Clicker](https://orteil.dashnet.org/cookieclicker/) is an idle game that
+allows you to buy buildings and upgrades that will make cookies for you. You can
+also click on the large displayed cookie to get more. The buildings increase your
+CPS (Cookies per second) to speed up cookie production. The game adds in much
+more, such as sugar lumps, milk, and dragons that is there to explore.
 
 ## About Hacking Cookie Clicker
 
-There are multiple ways to hack cookie clicker that were made before. Most people, are unaware of `Infinity` being present in Javascript and run something like:
+There are multiple ways to hack cookie clicker that were made before.
+Most people, are unaware of `Infinity` being present in Javascript and run
+something like:
 
 ```js
 Game.earn(999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999)
 ```
 
-Cookie Clicker even offers its own DevTools with buttons to multiply and control the game. Another alternative to hacking would also be to do:
+Cookie Clicker even offers its own DevTools with buttons to multiply and control
+the game. Another alternative to hacking would also be to do:
 
 ```js
 Game.RuinTheFun()
 ```
 
-This is a function that just gives you lots and lots of cookies and CPS (Cookies Per Second). However, this spawns some Cookie Swallowers called wrinklers that have to be clicked to be removed. Of course it is possible to write a script that would remove them:
+This is a function that just gives you lots and lots of cookies and
+CPS (Cookies Per Second). However, this spawns some Cookie Swallowers called
+wrinklers that have to be clicked to be removed. Of course it is possible to
+write a script that would remove them:
 
 ```js
 delete Game.wrinklers
 ```
 
-Some things that the Ruin The Fun hack has that mine doesn't is dragons and some squid. However, it doesn't increase your milk, CPS, and cookies to max. All three of the pieces of code combined could make a winning game.
+Some things that the Ruin The Fun hack has that mine doesn't is dragons and some
+squid. However, it doesn't increase your milk, CPS, and cookies to max. All
+three of the pieces of code combined could make a winning game.
 
 ## Code
 
@@ -53,8 +66,11 @@ function doEverything() {
 doEverything()
 ```
 
-First of all, it will earn `Infinity` cookies and sugar lumps, followed with a recursive function that will buy every item 10000 times, reearn the money, and then buy all the upgrades. Lastly, the level is leveled up using the sugar lumps.
-Using this code, it didn't take long to reach the highest milk level and finish the game with the `Infinity` cookie.
+First of all, it will earn `Infinity` cookies and sugar lumps, followed with a
+recursive function that will buy every item 10000 times, reearn the money, and
+then buy all the upgrades. Lastly, the level is leveled up using the sugar lumps.
+Using this code, it didn't take long to reach the highest milk level and finish
+the game with the `Infinity` cookie.
 
 ## Save
 
