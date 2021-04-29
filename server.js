@@ -53,7 +53,7 @@ app.get('/', (req, res) => {
       fs
         .readdirSync('content')
         .map((file) => ({ ...getFrontmatter(file), fileName: file }))
-        .sort((postA, postB) => new Date(postB.date) - new Date(postA.date) )
+        .sort((postA, postB) => new Date(postB.date) - new Date(postA.date))
         .slice(page * 5 - 5, page * 5 - 1)
     )
   );
@@ -77,6 +77,10 @@ app.get('/older-posts.js', (req, res) => {
 
 app.get('/index.css', (req, res) => {
   res.sendFile('index.css', { root: '.' });
+});
+
+app.get('/post.css', (req, res) => {
+  res.sendFile('post.css', { root: '.' });
 });
 
 app.get('/post/*', (req, res) => {
