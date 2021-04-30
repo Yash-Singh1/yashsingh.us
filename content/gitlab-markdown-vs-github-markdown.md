@@ -1,7 +1,7 @@
 ---
 title: GitLab Flavored Markdown vs. GitHub Flavored Markdown
 subtitle: A complete comparision between the two markdown syntaxes
-image: /img/GitLab-markdown-vs-github-markdown.png
+image: /img/gitLab-markdown-vs-github-markdown.png
 author: Yash Singh
 date: April 29, 2021
 ---
