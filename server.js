@@ -64,7 +64,7 @@ app.get('/index.html', (req, res) => {
 });
 
 app.get('/favicon.ico', (req, res) => {
-  res.status(204);
+  res.sendStatus(204);
 });
 
 app.get('/all-posts/', (req, res) => {
@@ -94,7 +94,7 @@ app.get('/post/*', (req, res) => {
       })
     );
   } catch {
-    res.status(500);
+    res.sendStatus(500);
   }
 });
 
@@ -103,10 +103,10 @@ app.get('/node_modules/*', (req, res) => {
 });
 
 app.get('/*', (req, res) => {
-  try {
+  if (fs.existsSync('template/' + req.path.slice(1))) {
     res.sendFile('template/' + req.path.slice(1), { root: '.' });
-  } catch {
-    res.status(500);
+  } else {
+    res.sendStatus(204);
   }
 });
 
