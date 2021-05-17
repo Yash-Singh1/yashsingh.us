@@ -438,7 +438,7 @@ Here is an example of footnotes rendering: <https://docs.GitLab.com/ee/user/mark
 ## Media
 
 Github Flavored Markdown does provide a way to put in images, but it does not
-support footnote-like syntax for images nor does it support Video or Audio
+support footnote-like syntax for images nor does it support audio
 which GitLab Flavored Markdown does. The most common way to declare images in
 markdown is like this:
 
@@ -460,7 +460,8 @@ followed by a colon and a space. Then comes the link to the image followed by th
 optional title text in double quotes. The GitLab documentation does not mention
 any support for this syntax inside videos or audio. However, the first piece of
 code for images that I showed above is exactly how you reference videos/audio.
-The file though, will be a video or audio file.
+The file though, will be a video or audio file. In 2021, Github also, announced support
+for video, but didn't yet annouce so for audio.
 
 # Conclusion
 
