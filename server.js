@@ -79,15 +79,15 @@ app.get('/favicon.ico', (req, res) => {
 });
 
 app.get('/blog/older-posts.js', (req, res) => {
-  res.sendFile('older-posts.js', { root: './blog/' });
+  res.sendFile('older-posts.js', { root: 'blog' });
 });
 
 app.get('/blog/index.css', (req, res) => {
-  res.sendFile('index.css', { root: './blog/' });
+  res.sendFile('index.css', { root: 'blog' });
 });
 
 app.get('/blog/post.css', (req, res) => {
-  res.sendFile('post.css', { root: './blog/' });
+  res.sendFile('post.css', { root: 'blog' });
 });
 
 app.get('/blog/post/*', (req, res) => {
