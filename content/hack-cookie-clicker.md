@@ -1,7 +1,7 @@
 ---
 title: Hacking Cookie Clicker
 subtitle: Complete Cookie Clicker in seconds with this piece of code
-image: /img/cookie-clicker.png
+image: ../img/cookie-clicker.png
 author: Yash Singh
 date: April 22, 2021
 ---

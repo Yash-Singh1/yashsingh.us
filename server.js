@@ -43,6 +43,13 @@ function getFrontmatter(file) {
 }
 
 app.get('/', (req, res) => {
+  res.redirect('/blog/');
+});
+
+app.get('/blog/', (req, res) => {
+  if (req.path === '/blog') {
+    return res.redirect('/blog/?page=1');
+  }
   if (!req.query.page) {
     return res.redirect('?page=1');
   }
@@ -63,29 +70,29 @@ app.get('/index.html', (req, res) => {
   res.redirect('/');
 });
 
+app.get('/blog/index.html', (req, res) => {
+  res.redirect('/blog/');
+});
+
 app.get('/favicon.ico', (req, res) => {
   res.sendStatus(204);
 });
 
-app.get('/all-posts/', (req, res) => {
-  res.send(fs.readdirSync('content'));
+app.get('/blog/older-posts.js', (req, res) => {
+  res.sendFile('older-posts.js', { root: './blog/' });
 });
 
-app.get('/older-posts.js', (req, res) => {
-  res.sendFile('older-posts.js', { root: '.' });
+app.get('/blog/index.css', (req, res) => {
+  res.sendFile('index.css', { root: './blog/' });
 });
 
-app.get('/index.css', (req, res) => {
-  res.sendFile('index.css', { root: '.' });
+app.get('/blog/post.css', (req, res) => {
+  res.sendFile('post.css', { root: './blog/' });
 });
 
-app.get('/post.css', (req, res) => {
-  res.sendFile('post.css', { root: '.' });
-});
-
-app.get('/post/*', (req, res) => {
+app.get('/blog/post/*', (req, res) => {
   const template = handlebars.compile(fs.readFileSync('template/post.handlebars', 'utf8'));
-  const fileName = req.path.slice('/post/'.length);
+  const fileName = req.path.slice('/blog/post/'.length);
   try {
     res.header({ 'Content-Type': 'text/html' }).send(
       template({
@@ -102,11 +109,11 @@ app.get('/node_modules/*', (req, res) => {
   res.sendFile(req.path.slice(1), { root: '.' });
 });
 
-app.get('/*', (req, res) => {
-  if (fs.existsSync('template/' + req.path.slice(1))) {
-    res.sendFile('template/' + req.path.slice(1), { root: '.' });
+app.get('/blog/*', (req, res) => {
+  if (fs.existsSync('template/' + req.path.slice('/blog/'.length))) {
+    res.sendFile('template/' + req.path.slice('/blog/'.length), { root: '.' });
   } else {
-    res.sendStatus(204);
+    res.sendStatus(404);
   }
 });
 

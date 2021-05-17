@@ -1,7 +1,7 @@
 ---
 title: GitLab Flavored Markdown vs. GitHub Flavored Markdown
 subtitle: A complete comparision between the two markdown syntaxes
-image: /img/gitlab-markdown-vs-github-markdown.png
+image: ../img/gitlab-markdown-vs-github-markdown.png
 author: Yash Singh
 date: April 29, 2021
 ---
@@ -69,25 +69,16 @@ Then you can just add in `plantuml` syntax highlighting for the code wrapped
 inside a code block.
 
 ```text
-# PlantUML Editor
-
-1. select template
-2. write UML diagram
-
 @startuml
-
-left to the right direction
-
 actor User
 
 User --> (1. select template)
 User --> (2. write uml diagram)
-
 @enduml
 ```
 
 Here is how this would look in real life:
-![PlantUML](https://plantuml-server.kkeisuke.app/svg/JOox3OD044JphM924noIAG3H10MiO86JxeFs1hbzdpCdBvWtUakZEf-SH98T12iydXUnHxUDiHOHtLWTQpCN-H4Xp7YzHpHB_GDQlfFIXZyxZVXufA6dUqjFrpo8B5Rsldm1.svg)
+![PlantUML](http://www.plantuml.com/plantuml/png/SoWkIImgAStDuU9AJ2x9Br88BKujuk82aGgwkdOA6ePw2iMfEQd99GebgRa5EOabgPf8iaPw2kL5cIMf2a0J558o4zEB4dCrkHnIyrA00W00)
 
 ## Emoji
 
@@ -180,8 +171,9 @@ Only GitLab Flavored Markdown does. Here is how to represent it
 - `{- deletion 3 -}`
 - `[- deletion 4 -]`
 
-  They would be rendered as:
-  ![Diff Preview](https://docs.GitLab.com/ee/user/img/inline_diff_01_v13_3.png)
+This would be rendered as:
+
+![Diff Preview](https://docs.GitLab.com/ee/user/img/inline_diff_01_v13_3.png)
 
 ## Equations/Math
 

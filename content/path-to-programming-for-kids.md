@@ -1,7 +1,7 @@
 ---
 title: Path to Programming for Kids
 subtitle: Learn how to program as a kid!
-image: /img/kids-programming.png
+image: ../img/kids-programming.png
 author: Yash Singh
 date: May 6, 2021
 ---

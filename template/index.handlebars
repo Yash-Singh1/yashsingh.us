@@ -22,7 +22,7 @@
 
     <!-- Custom styles for this template -->
     <link href="css/clean-blog.min.css" rel="stylesheet" />
-    <link href="index.css" rel="stylesheet" />
+    <link href="/blog/index.css" rel="stylesheet" />
     
     <!-- Global site tag (gtag.js) - Google Analytics -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-3HDXLBC4ZP"></script>
@@ -95,7 +95,7 @@
             <ul class="list-inline text-center">
               {{#each this}}
               <div class="post-preview">
-                <a href="/post/{{fileName}}">
+                <a href="/blog/post/{{fileName}}">
                   <h2 class="post-title">{{title}}</h2>
                   <h3 class="post-subtitle">{{subtitle}}</h3>
                 </a>
@@ -138,6 +138,6 @@
     <script src="js/clean-blog.min.js"></script>
 
     <!-- Older posts script -->
-    <script src="older-posts.js"></script>
+    <script src="/blog/older-posts.js"></script>
   </body>
 </html>

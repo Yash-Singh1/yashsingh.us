@@ -1,7 +1,7 @@
 ---
 title: Javascript Custom Iterables
 subtitle: Building custom Iterables classes using Symbol.iterator
-image: /img/iterator.png
+image: ../img/iterator.png
 author: Yash Singh
 date: March 26, 2021
 ---

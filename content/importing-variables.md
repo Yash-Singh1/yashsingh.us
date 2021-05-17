@@ -1,7 +1,7 @@
 ---
 title: Importing Variables
 subtitle: Import variables that are from other files and not exported
-image: /img/importing-variables.png
+image: ../img/importing-variables.png
 author: Yash Singh
 date: April 23, 2021
 ---
