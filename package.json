@@ -23,7 +23,9 @@
     "highlight.js": "^10.7.1",
     "jsdom": "^16.5.1",
     "markdownlint": "^0.23.1",
-    "marked": "^2.0.1"
+    "marked": "^2.0.1",
+    "tailwindcss": "^2.1.2",
+    "typed.js": "^2.0.12"
   },
   "devDependencies": {
     "markdownlint-cli": "^0.27.1"

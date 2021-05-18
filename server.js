@@ -43,7 +43,7 @@ function getFrontmatter(file) {
 }
 
 app.get('/', (req, res) => {
-  res.redirect('/blog/');
+  res.sendFile('profile.html', { root: 'profile' });
 });
 
 app.get('/blog/', (req, res) => {
@@ -92,6 +92,14 @@ app.get('/blog/index.css', (req, res) => {
 
 app.get('/blog/post.css', (req, res) => {
   res.sendFile('post.css', { root: 'blog' });
+});
+
+app.get('/profile/profile-typing.js', (req, res) => {
+  res.sendFile('profile-typing.js', { root: 'profile' });
+});
+
+app.get('/profile/profile.css', (req, res) => {
+  res.sendFile('profile.css', { root: 'profile' });
 });
 
 app.get('/blog/post/*', (req, res) => {

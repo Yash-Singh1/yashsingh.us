@@ -2,7 +2,7 @@
   "printWidth": 150,
   "trailingComma": "none",
   "singleQuote": true,
-  "htmlWhitespaceSensitivity": "ignore",
+  "htmlWhitespaceSensitivity": "css",
   "overrides": [
     {
       "files": "*.handlebars",
