@@ -70,6 +70,10 @@ app.get('/index.html', (req, res) => {
   res.redirect('/');
 });
 
+app.get('/about.html', (req, res) => {
+  res.sendFile('about.html', { root: 'template' });
+});
+
 app.get('/blog/index.html', (req, res) => {
   res.redirect('/blog/');
 });
