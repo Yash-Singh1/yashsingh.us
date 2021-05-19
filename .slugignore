@@ -7,6 +7,4 @@ README.md
 .markdownlint.json
 .markdownlintignore
 .npmrc
-template/README.md
-template/LICENSE
 profile/tailwind.config.js

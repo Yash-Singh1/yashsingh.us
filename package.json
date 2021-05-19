@@ -5,8 +5,8 @@
   "main": "server.js",
   "scripts": {
     "start": "node server.js",
-    "lint": "markdownlint **/*.md --ignore template/README.md",
-    "code-style": "markdownlint **/*.md --ignore template/README.md --fix"
+    "lint": "markdownlint **/*.md",
+    "code-style": "markdownlint **/*.md --fix"
   },
   "keywords": [
     "blog",

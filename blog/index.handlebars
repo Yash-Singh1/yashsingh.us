@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Yash Singh's Blog</title>
+    <link href="/node_modules/tailwindcss/dist/tailwind.css" rel="stylesheet" />
+    <script src="/node_modules/typed.js/lib/typed.min.js"></script>
+  </head>
+
+  <body style="background-color: #0f172a">
+    <div class="py-12 lg:py-16 xl:py-24 2xl:py-32 px-6 md:px-12 lg:px-24 max-w-screen-2xl w-full mx-auto">
+      <h1 class="font-semibold text-xl font-mono text-purple-700">Hey there 😃! Welcome to</h1>
+      <h1 class="font-bold text-6xl text-gray-200 mt-5" href="/">Yash Singh's Blog</h1>
+      <h1 class="font-semibold text-2xl font-mono text-purple-700 mt-5">
+        Working on
+        <span id="app-type"></span>
+      </h1>
+      {{#each this}}
+      <br />
+      <br />
+      <a href="/blog/post/{{fileName}}" class="group">
+        <span class="text-purple-700 uppercase font-mono font-bold text-2xl group-hover:text-purple-500 transition">{{title}}</span>
+        <p class="text-gray-400 text-xl w-3/4 group-hover:text-gray-100 transition">{{subtitle}}</p>
+        <i class="text-gray-300 text-sm w-3/4 group-hover:text-gray-100">Posted by {{author}} on {{date}}</i>
+      </a>
+      {{/each}}
+      <br />
+      <br />
+      <p class="mt-5 text-gray-400 text-2xl font-mono">
+        <a class="underline" href="/">About</a>
+        ·
+        <a class="underline" href="mailto:saiansh2525@gmail.com">Email</a>
+        ·
+        <a class="underline" href="https://github.com/Yash-Singh1">Github</a>
+      </p>
+    </div>
+    <script src="/profile/profile-typing.js"></script>
+  </body>
+</html>

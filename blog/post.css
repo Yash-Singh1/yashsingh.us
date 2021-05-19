@@ -11,3 +11,41 @@
     padding: 15px;
   }
 }
+
+.markdown-body .highlight pre,
+.markdown-body pre {
+  background-color: #2d333b !important;
+}
+
+.markdown-body table td,
+.markdown-body table th {
+  background-color: #2d333b;
+  border: 1px solid rgba(223, 226, 229, 0.5) !important;
+}
+
+.markdown-body h1,
+.markdown-body h2 {
+  border-bottom: none !important;
+}
+
+.markdown-body h1,
+.markdown-body h2,
+.markdown-body h3,
+.markdown-body h4,
+.markdown-body h5,
+.markdown-body h6 {
+  color: #4cacfc;
+}
+
+ul {
+  list-style-type: disc !important;
+}
+
+::-webkit-scrollbar {
+  background-color: #202324;
+  color: #aba499;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: #454a4d;
+}

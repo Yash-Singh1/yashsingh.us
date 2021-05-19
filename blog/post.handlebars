@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Yash Singh's Blog</title>
+    <link href="/node_modules/tailwindcss/dist/tailwind.css" rel="stylesheet" />
+    <link href="/node_modules/highlight.js/styles/atom-one-dark-reasonable.css" rel="stylesheet" />
+    <link href="/blog/post.css" rel="stylesheet" />
+    <link href="/node_modules/github-markdown-css/github-markdown.css" rel="stylesheet" />
+    <script src="/node_modules/typed.js/lib/typed.min.js"></script>
+  </head>
+
+  <body style="background-color: #0f172a !important">
+    <div class="py-12 lg:py-16 xl:py-24 2xl:py-32 px-6 md:px-12 lg:px-24 max-w-screen-2xl w-full mx-auto">
+      <img src="{{image}}" class="w-1/2 max-h-80 object-center mx-auto" />
+      <br />
+      <br />
+      <h1 class="font-semibold text-6xl text-purple-700 text-center uppercase tracking-wider">{{title}}</h1>
+      <h1 class="font-semibold text-2xl font-mono text-purple-500 text-center mt-2">{{subtitle}}</h1>
+      <p class="font-semibold text-medium font-mono text-purple-300 text-center italic mt-2">Posted by {{author}} on {{date}}</p>
+      <br />
+      <br />
+      <article class="markdown-body" style="color: white;">
+        {{{content}}}
+      </article>
+      <p class="mt-5 text-gray-400 text-2xl font-mono text-center">
+        <a class="underline" href="/">About</a>
+        ·
+        <a class="underline" href="/blog/">Blog</a>
+        ·
+        <a class="underline" href="mailto:saiansh2525@gmail.com">Email</a>
+        ·
+        <a class="underline" href="https://github.com/Yash-Singh1">Github</a>
+      </p>
+    </div>
+  </body>
+</html>
