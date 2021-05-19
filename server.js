@@ -98,6 +98,14 @@ app.get('/profile/profile-typing.js', (req, res) => {
   res.sendFile('profile-typing.js', { root: 'profile' });
 });
 
+app.get('/profile/fill-progress.js', (req, res) => {
+  res.sendFile('fill-progress.js', { root: 'profile' });
+});
+
+app.get('/profile/show-more-or-less.js', (req, res) => {
+  res.sendFile('show-more-or-less.js', { root: 'profile' });
+});
+
 app.get('/profile/profile.css', (req, res) => {
   res.sendFile('profile.css', { root: 'profile' });
 });
