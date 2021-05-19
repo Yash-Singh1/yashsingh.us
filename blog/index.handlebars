@@ -22,6 +22,21 @@
         <p id="subtitle">{{subtitle}}</p>
         <i id="info">Posted by {{author}} on {{date}}</i>
       </a>
+      {{#if @last}}
+      <br />
+      <br />
+      <button
+        id="older-posts"
+        class="bg-blue-500 hover:bg-blue-400 text-white font-bold py-2 px-4 border-blue-700 hover:border-blue-500 rounded-full cursor-pointer"
+        style="outline: none"
+      >
+        Older Posts
+      </button>
+      {{/if}}
+      {{else}}
+      <br />
+      <br />
+      <p id="subtitle">No posts found</p>
       {{/each}}
       <br />
       <br />
@@ -34,5 +49,6 @@
       </p>
     </div>
     <script src="/profile/profile-typing.js"></script>
+    <script src="/blog/older-posts.js"></script>
   </body>
 </html>
