@@ -78,18 +78,6 @@ app.get('/favicon.ico', (req, res) => {
   res.sendStatus(204);
 });
 
-app.get('/blog/older-posts.js', (req, res) => {
-  res.sendFile('older-posts.js', { root: 'blog' });
-});
-
-app.get('/blog/index.css', (req, res) => {
-  res.sendFile('index.css', { root: 'blog' });
-});
-
-app.get('/blog/post.css', (req, res) => {
-  res.sendFile('post.css', { root: 'blog' });
-});
-
 app.get('/profile/*', (req, res) => {
   res.sendFile(req.path.slice('/profile/'.length), { root: 'profile' });
 });

@@ -2,9 +2,8 @@
 <html lang="en">
   <head>
     <title>Yash Singh's Blog</title>
-    <link href="/node_modules/tailwindcss/dist/tailwind.css" rel="stylesheet" />
+    <link href="/blog/build.css" rel="stylesheet" />
     <link href="/node_modules/highlight.js/styles/atom-one-dark-reasonable.css" rel="stylesheet" />
-    <link href="/blog/post.css" rel="stylesheet" />
     <link href="/node_modules/github-markdown-css/github-markdown.css" rel="stylesheet" />
     <script src="/node_modules/typed.js/lib/typed.min.js"></script>
   </head>
@@ -19,9 +18,7 @@
       <p class="font-semibold text-medium font-mono text-purple-300 text-center italic mt-2">Posted by {{author}} on {{date}}</p>
       <br />
       <br />
-      <article class="markdown-body" style="color: white;">
-        {{{content}}}
-      </article>
+      <article class="markdown-body" style="color: white">{{{content}}}</article>
       <p class="mt-5 text-gray-400 text-2xl font-mono text-center">
         <a class="underline" href="/">About</a>
         ·

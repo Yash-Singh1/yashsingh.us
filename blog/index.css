@@ -1,3 +1,84 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
 footer {
   padding: initial !important;
+}
+
+.markdown-body {
+  min-width: 200px;
+  @apply box-border;
+  @apply max-w-5xl;
+  @apply m-auto;
+  @apply p-11;
+}
+
+@media (max-width: 767px) {
+  .markdown-body {
+    @apply p-4;
+  }
+}
+
+.markdown-body .highlight pre,
+.markdown-body pre {
+  background-color: #2d333b !important;
+}
+
+.markdown-body table td,
+.markdown-body table th {
+  background-color: #2d333b;
+  border: 1px solid rgba(223, 226, 229, 0.5) !important;
+}
+
+.markdown-body h1,
+.markdown-body h2 {
+  border-bottom: none !important;
+}
+
+.markdown-body h1,
+.markdown-body h2,
+.markdown-body h3,
+.markdown-body h4,
+.markdown-body h5,
+.markdown-body h6 {
+  color: #4cacfc;
+}
+
+ul {
+  @apply list-disc;
+}
+
+::-webkit-scrollbar {
+  background-color: #202324;
+  color: #aba499;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: #454a4d;
+}
+
+#title {
+  @apply text-purple-700;
+  @apply uppercase;
+  @apply font-mono;
+  @apply font-bold;
+  @apply text-2xl;
+  @apply group-hover:text-purple-500;
+  @apply transition;
+}
+
+#subtitle {
+  @apply text-gray-400;
+  @apply text-xl;
+  @apply w-3/4;
+  @apply group-hover:text-gray-100;
+  @apply transition;
+}
+
+#info {
+  @apply text-gray-300;
+  @apply text-sm;
+  @apply w-3/4;
+  @apply group-hover:text-gray-100;
 }

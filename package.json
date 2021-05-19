@@ -6,7 +6,8 @@
   "scripts": {
     "start": "node server.js",
     "lint": "markdownlint **/*.md",
-    "code-style": "markdownlint **/*.md --fix"
+    "code-style": "markdownlint **/*.md --fix",
+    "build": "tailwindcss build ./blog/index.css -o ./blog/build.css && tailwindcss build ./profile/index.css -o ./profile/build.css"
   },
   "keywords": [
     "blog",
@@ -16,6 +17,7 @@
   "license": "MIT",
   "dependencies": {
     "@github-docs/frontmatter": "^1.3.1",
+    "autoprefixer": "^10.2.5",
     "dompurify": "^2.2.7",
     "express": "^4.17.1",
     "github-markdown-css": "^4.0.0",
@@ -24,6 +26,7 @@
     "jsdom": "^16.5.1",
     "markdownlint": "^0.23.1",
     "marked": "^2.0.1",
+    "postcss": "^8.2.15",
     "tailwindcss": "^2.1.2",
     "typed.js": "^2.0.12"
   },

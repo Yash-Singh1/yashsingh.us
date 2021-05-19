@@ -2,7 +2,7 @@
 <html lang="en">
   <head>
     <title>Yash Singh's Blog</title>
-    <link href="/node_modules/tailwindcss/dist/tailwind.css" rel="stylesheet" />
+    <link href="/blog/build.css" rel="stylesheet" />
     <script src="/node_modules/typed.js/lib/typed.min.js"></script>
   </head>
 
@@ -18,9 +18,9 @@
       <br />
       <br />
       <a href="/blog/post/{{fileName}}" class="group">
-        <span class="text-purple-700 uppercase font-mono font-bold text-2xl group-hover:text-purple-500 transition">{{title}}</span>
-        <p class="text-gray-400 text-xl w-3/4 group-hover:text-gray-100 transition">{{subtitle}}</p>
-        <i class="text-gray-300 text-sm w-3/4 group-hover:text-gray-100">Posted by {{author}} on {{date}}</i>
+        <span id="title">{{title}}</span>
+        <p id="subtitle">{{subtitle}}</p>
+        <i id="info">Posted by {{author}} on {{date}}</i>
       </a>
       {{/each}}
       <br />

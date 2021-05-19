@@ -1,0 +1,55 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.subheading {
+  @apply text-purple-700;
+  @apply uppercase;
+  @apply font-mono;
+  @apply font-bold;
+  @apply text-2xl;
+}
+
+span#project-note ~ div {
+  @apply flex;
+  @apply items-stretch;
+}
+
+span#project-note ~ div > a {
+  @apply mt-5;
+}
+
+span#project-note ~ div > a:nth-child(2) {
+  @apply ml-10;
+}
+
+#skills > p {
+  @apply mt-5;
+  @apply mb-2;
+  @apply text-purple-700;
+  @apply font-medium;
+}
+
+#skills > div:not(#show-more-container):not(#show-less-container) {
+  @apply relative;
+  @apply pt-1;
+  @apply mr-2;
+}
+
+#skills > div:not(#show-more-container):not(#show-less-container) > div {
+  @apply overflow-hidden;
+  @apply h-2;
+  @apply mb-4;
+  @apply flex;
+  @apply rounded-full;
+  @apply bg-gray-300;
+}
+
+.progress-bar {
+  @apply shadow-none;
+  @apply flex;
+  @apply flex-col;
+  @apply justify-center;
+  @apply bg-purple-400;
+  @apply rounded-full;
+}

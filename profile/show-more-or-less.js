@@ -2,8 +2,8 @@ document.getElementById('show-more').onclick = () => {
   document.getElementById('show-more-container').classList.add('hidden');
   for (let child of document.querySelectorAll('#skills > :not(#show-less-container):not(#show-more-container)')) {
     child.classList.remove('hidden');
-    if (child.querySelector('#progress-bar') && !child.querySelector('#progress-bar').classList.contains('done-progress')) {
-      fillProgress(child.querySelector('#progress-bar'));
+    if (child.querySelector('.progress-bar') && !child.querySelector('.progress-bar').classList.contains('progress-going-or-done')) {
+      fillProgress(child.querySelector('.progress-bar'));
     }
   }
   document.getElementById('show-less-container').classList.remove('hidden');
