@@ -8,10 +8,7 @@ footer {
 
 .markdown-body {
   min-width: 200px;
-  @apply box-border;
-  @apply max-w-5xl;
-  @apply m-auto;
-  @apply p-11;
+  @apply box-border max-w-5xl m-auto p-11;
 }
 
 @media (max-width: 767px) {
@@ -59,26 +56,13 @@ ul {
 }
 
 #title {
-  @apply text-purple-700;
-  @apply uppercase;
-  @apply font-mono;
-  @apply font-bold;
-  @apply text-2xl;
-  @apply group-hover:text-purple-500;
-  @apply transition;
+  @apply text-purple-700 uppercase font-mono font-bold text-2xl group-hover:text-purple-500 transition;
 }
 
 #subtitle {
-  @apply text-gray-400;
-  @apply text-xl;
-  @apply w-3/4;
-  @apply group-hover:text-gray-100;
-  @apply transition;
+  @apply text-gray-400 text-xl w-3/4 group-hover:text-gray-100 transition;
 }
 
 #info {
-  @apply text-gray-300;
-  @apply text-sm;
-  @apply w-3/4;
-  @apply group-hover:text-gray-100;
+  @apply text-gray-300 text-sm w-3/4 group-hover:text-gray-100;
 }

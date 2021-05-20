@@ -7,7 +7,7 @@
     "start": "node server.js",
     "lint": "markdownlint **/*.md",
     "code-style": "markdownlint **/*.md --fix",
-    "build": "tailwindcss build ./blog/index.css -o ./blog/build.css && tailwindcss build ./profile/index.css -o ./profile/build.css"
+    "build": "tailwindcss build ./blog/index.pcss -o ./blog/build.css && tailwindcss build ./profile/index.pcss -o ./profile/build.css"
   },
   "keywords": [
     "blog",
