@@ -59,7 +59,7 @@ app.get('/blog/', (req, res) => {
     template(
       fs
         .readdirSync('content')
-        .map((file) => ({ ...getFrontmatter(file), fileName: file }))
+        .map((file) => ({ ...getFrontmatter(file), fileName: file, before: req.query.page > 1 }))
         .sort((postA, postB) => new Date(postB.date) - new Date(postA.date))
         .slice(page * 5 - 5, page * 5 - 1)
     )

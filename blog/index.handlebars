@@ -25,9 +25,18 @@
       {{#if @last}}
       <br />
       <br />
+      {{#if before}}
+      <button
+        id="newer-posts"
+        class="bg-blue-500 hover:bg-blue-400 text-white font-bold py-2 px-4 border-blue-700 hover:border-blue-500 rounded-full cursor-pointer"
+        style="outline: none"
+      >
+        Newer Posts
+      </button>
+      {{/if}}
       <button
         id="older-posts"
-        class="bg-blue-500 hover:bg-blue-400 text-white font-bold py-2 px-4 border-blue-700 hover:border-blue-500 rounded-full cursor-pointer"
+        class="ml-5 bg-blue-500 hover:bg-blue-400 text-white font-bold py-2 px-4 border-blue-700 hover:border-blue-500 rounded-full cursor-pointer"
         style="outline: none"
       >
         Older Posts
@@ -50,5 +59,6 @@
     </div>
     <script src="/profile/profile-typing.js"></script>
     <script src="/blog/older-posts.js"></script>
+    <script src="/blog/newer-posts.js"></script>
   </body>
 </html>
