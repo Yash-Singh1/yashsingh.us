@@ -9,6 +9,7 @@ new Typed('#app-type', {
     'APIs',
     'libraries',
     'parsers',
+    'linters',
     'shell scripts'
   ].map(str => str + '...'),
   typeSpeed: 50,
