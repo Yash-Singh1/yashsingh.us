@@ -40,7 +40,7 @@ Then, initialize NPM and install `express`:
 
 ```sh
 npm init -y
-npm install --save express
+npm install express
 ```
 
 Create a new file called `index.js`:
