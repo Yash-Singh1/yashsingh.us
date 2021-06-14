@@ -110,4 +110,6 @@ app.get('/blog/*', (req, res) => {
 });
 
 const port = process.env.PORT || 5678;
-app.listen(port);
+app.listen(port, () => {
+  console.log('Listening on :' + port);
+});
