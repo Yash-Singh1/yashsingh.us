@@ -1,0 +1,44 @@
+---
+title: React Router DOM with live-server
+subtitle: How to use the React Router DOM module with live-server
+image: ../img/react-router-dom-with-live-server.png
+author: Yash Singh
+date: June 18, 2021
+---
+
+# React Router DOM with `live-server`
+
+In one of my projects I was using React Router DOM and hosting my site using `live-server`.
+
+However the problem was that even though I was able to click, for example a link
+to an about page, I couldn't open it manually at the route `/about`.
+
+It would display the following message:
+
+```text
+Cannot GET /about
+```
+
+## Why?
+
+Let's start with why this message is appearing. `live-server` gets a request at `/about`
+and looks for a `about.html` in the `dist/` directory, but it doesn't find one, giving
+back this message. `react-router-dom` works with the idea that all paths will return
+the source code for `index.html` and it would just read the path requested and display
+the respective component.
+
+## Fixing it
+
+The solution would be to use the `--entry-file` option inside the CLI.
+
+Here is the documentation on it:
+
+> serve this file (server root relative) in place of
+> missing files (useful for single page apps)
+
+This would just return the contents of the file specified whenever a 404
+has to be returned. Here is how to use it with `live-server`:
+
+```sh
+live-server dist --entry-file=index.html
+```
