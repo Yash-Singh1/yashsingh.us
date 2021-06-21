@@ -2,34 +2,36 @@
 @tailwind components;
 @tailwind utilities;
 
-.subheading {
-  @apply text-purple-700 uppercase font-mono font-bold text-2xl;
-}
+@layers components {
+  .subheading {
+    @apply text-purple-700 uppercase font-mono font-bold text-2xl;
+  }
 
-span#project-note ~ div {
-  @apply flex items-stretch;
-}
+  span#project-note ~ div {
+    @apply flex items-stretch;
+  }
 
-span#project-note ~ div > a {
-  @apply mt-5;
-}
+  span#project-note ~ div > a {
+    @apply mt-5;
+  }
 
-span#project-note ~ div > a:nth-child(2) {
-  @apply ml-10;
-}
+  span#project-note ~ div > a:nth-child(2) {
+    @apply ml-10;
+  }
 
-#skills > p {
-  @apply mt-5 mb-2 text-purple-700 font-medium;
-}
+  #skills > p {
+    @apply mt-5 mb-2 text-purple-700 font-medium;
+  }
 
-#skills > div:not(#show-more-container):not(#show-less-container) {
-  @apply relative pt-1 mr-2;
-}
+  #skills > div:not(#show-more-container):not(#show-less-container) {
+    @apply relative pt-1 mr-2;
+  }
 
-#skills > div:not(#show-more-container):not(#show-less-container) > div {
-  @apply overflow-hidden h-2 mb-4 flex rounded-full bg-gray-300;
-}
+  #skills > div:not(#show-more-container):not(#show-less-container) > div {
+    @apply overflow-hidden h-2 mb-4 flex rounded-full bg-gray-300;
+  }
 
-.progress-bar {
-  @apply shadow-none flex flex-col justify-center bg-purple-400 rounded-full;
+  .progress-bar {
+    @apply shadow-none flex flex-col justify-center bg-purple-400 rounded-full;
+  }
 }

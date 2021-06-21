@@ -2,67 +2,69 @@
 @tailwind components;
 @tailwind utilities;
 
-footer {
-  padding: initial !important;
-}
-
-.markdown-body {
-  min-width: 200px;
-  @apply box-border max-w-5xl m-auto p-11;
-}
-
-@media (max-width: 767px) {
-  .markdown-body {
-    @apply p-4;
+@layer components {
+  footer {
+    padding: initial !important;
   }
-}
 
-.markdown-body .highlight pre,
-.markdown-body pre {
-  background-color: #2d333b !important;
-}
+  .markdown-body {
+    min-width: 200px;
+    @apply box-border max-w-5xl m-auto p-11;
+  }
 
-.markdown-body table td,
-.markdown-body table th {
-  background-color: #2d333b;
-  border: 1px solid rgba(223, 226, 229, 0.5) !important;
-}
+  @media (max-width: 767px) {
+    .markdown-body {
+      @apply p-4;
+    }
+  }
 
-.markdown-body h1,
-.markdown-body h2 {
-  border-bottom: none !important;
-}
+  .markdown-body .highlight pre,
+  .markdown-body pre {
+    background-color: #2d333b !important;
+  }
 
-.markdown-body h1,
-.markdown-body h2,
-.markdown-body h3,
-.markdown-body h4,
-.markdown-body h5,
-.markdown-body h6 {
-  color: #4cacfc;
-}
+  .markdown-body table td,
+  .markdown-body table th {
+    background-color: #2d333b;
+    border: 1px solid rgba(223, 226, 229, 0.5) !important;
+  }
 
-ul {
-  @apply list-disc;
-}
+  .markdown-body h1,
+  .markdown-body h2 {
+    border-bottom: none !important;
+  }
 
-::-webkit-scrollbar {
-  background-color: #202324;
-  color: #aba499;
-}
+  .markdown-body h1,
+  .markdown-body h2,
+  .markdown-body h3,
+  .markdown-body h4,
+  .markdown-body h5,
+  .markdown-body h6 {
+    color: #4cacfc;
+  }
 
-::-webkit-scrollbar-thumb {
-  background-color: #454a4d;
-}
+  ul {
+    @apply list-disc;
+  }
 
-#title {
-  @apply text-purple-700 uppercase font-mono font-bold text-2xl group-hover:text-purple-500 transition;
-}
+  ::-webkit-scrollbar {
+    background-color: #202324;
+    color: #aba499;
+  }
 
-#subtitle {
-  @apply text-gray-400 text-xl w-3/4 group-hover:text-gray-100 transition;
-}
+  ::-webkit-scrollbar-thumb {
+    background-color: #454a4d;
+  }
 
-#info {
-  @apply text-gray-300 text-sm w-3/4 group-hover:text-gray-100;
+  #title {
+    @apply text-purple-700 uppercase font-mono font-bold text-2xl group-hover:text-purple-500 transition;
+  }
+
+  #subtitle {
+    @apply text-gray-400 text-xl w-3/4 group-hover:text-gray-100 transition;
+  }
+
+  #info {
+    @apply text-gray-300 text-sm w-3/4 group-hover:text-gray-100;
+  }
 }
