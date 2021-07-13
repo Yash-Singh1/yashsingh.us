@@ -4,6 +4,17 @@
     <title>Yash Singh's Blog</title>
     <link href="/blog/build.css" rel="stylesheet" />
     <script src="/node_modules/typed.js/lib/typed.min.js"></script>
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-T7G01BVK0J"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag('js', new Date());
+
+      gtag('config', 'G-T7G01BVK0J');
+    </script>
   </head>
 
   <body style="background-color: #0f172a">
@@ -41,8 +52,7 @@
       >
         Older Posts
       </button>
-      {{/if}}
-      {{else}}
+      {{/if}} {{else}}
       <br />
       <br />
       <p id="subtitle">No posts found</p>
