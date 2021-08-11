@@ -10,6 +10,7 @@ new Typed('#app-type', {
     'libraries',
     'parsers',
     'linters',
+    'eslint plugins',
     'shell scripts'
   ].map(str => str + '...'),
   typeSpeed: 50,
