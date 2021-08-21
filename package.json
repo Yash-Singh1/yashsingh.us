@@ -7,7 +7,7 @@
     "start": "node server.js",
     "lint": "markdownlint **/*.md",
     "code-style": "markdownlint **/*.md --fix",
-    "build": "tailwindcss build -i ./blog/index.pcss -o ./blog/build.css && tailwindcss build -i ./profile/index.pcss -o ./profile/build.css"
+    "build": "tailwindcss build -i ./styles/base.pcss -o ./styles/base.css && tailwindcss build -i ./styles/components.pcss -o ./styles/components.css && tailwindcss build -i ./styles/utilities.pcss -o ./styles/utilities.css && tailwindcss build -i ./blog/index.pcss -o ./blog/build.css && tailwindcss build -i ./profile/index.pcss -o ./profile/build.css"
   },
   "keywords": [
     "blog",
@@ -27,6 +27,8 @@
     "markdownlint": "^0.23.1",
     "marked": "^2.0.1",
     "postcss": "^8.2.15",
+    "postcss-import": "^14.0.2",
+    "postcss-preset-env": "^6.7.0",
     "tailwindcss": "^2.2.2",
     "typed.js": "^2.0.12"
   },

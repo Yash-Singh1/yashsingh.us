@@ -97,7 +97,7 @@ app.get('/blog/post/*', (req, res) => {
   }
 });
 
-app.get('/node_modules/*', (req, res) => {
+app.get(['/node_modules/*', '/styles/*'], (req, res) => {
   res.sendFile(req.path.slice(1), { root: '.' });
 });
 
