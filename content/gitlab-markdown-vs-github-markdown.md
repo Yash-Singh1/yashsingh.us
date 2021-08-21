@@ -11,18 +11,18 @@ date: April 29, 2021
 Here is a table that has a simplified comparison between GitLab Flavored Markdown
 and Github Flavored Markdown:
 
-|GitLab Flavored Markdown|Github Flavored Markdown|
-|--|--|
-|Diagramming Mermaid/PlantUML|No Diagramming|
-|Front Matter => YAML, JSON, TOML, and More|Front Matter => YAML|
-|Inline and Multiline Diff|Multiline Diff|
-|Equations/Math|No Equations/Math|
-|References|Less References|
-|TOC (Table of Contents)|No TOC|
-|Metrics|No metrics|
-|Single Line/Multiline Blockquotes|Single Line Blockquotes|
-|Footnotes|No Footnotes|
-|Images/Videos/Audio|Images|
+| GitLab Flavored Markdown                   | Github Flavored Markdown |
+| ------------------------------------------ | ------------------------ |
+| Diagramming Mermaid/PlantUML               | No Diagramming           |
+| Front Matter => YAML, JSON, TOML, and More | Front Matter => YAML     |
+| Inline and Multiline Diff                  | Multiline Diff           |
+| Equations/Math                             | No Equations/Math        |
+| References                                 | Less References          |
+| TOC (Table of Contents)                    | No TOC                   |
+| Metrics                                    | No metrics               |
+| Single Line/Multiline Blockquotes          | Single Line Blockquotes  |
+| Footnotes                                  | No Footnotes             |
+| Images/Videos/Audio                        | Images                   |
 
 # Explanation
 
@@ -103,9 +103,9 @@ This is supported in both GitLab Flavored Markdown and Github Flavored Markdown
 
 ```markdown
 ---
-title:  About Front Matter
+title: About Front Matter
 example:
-language:  yaml
+language: yaml
 ---
 ```
 
@@ -128,10 +128,10 @@ This is only supported in GitLab Flavored Markdown
 ```markdown
 ;;;
 {
- "title": "About Front Matter"
- "example": {
-  "language": "json"
- }
+  "title": "About Front Matter"
+  "example": {
+    "language": "json"
+  }
 }
 ;;;
 ```
@@ -145,7 +145,7 @@ This is only supported in GitLab Flavored Markdown. Here is an example with `PHP
 ---php
 $title = "About Front Matter";
 $example = array(
- 'language' => "php",
+  'language' => "php",
 );
 ---
 ```
@@ -194,7 +194,8 @@ as the syntax highlighting specified in a multiline code block.
 There are multiple types of references that can be used to refer to different
 repositories, people, commits, etc. Keep in mind that the same namespace
 trick is only available inside GitLab Flavored Markdown.
- Here is a list of different references:
+
+Here is a list of different references:
 
 ### User
 
@@ -250,10 +251,10 @@ reference, use `group/subgroup&ID`.
 Introduced in 13.7, vulnerabilities is a GitLab Ultimate feature, but feature
 flags is avaliable to all. To reference them:
 
-|Reference|Input|Cross-project Reference|Shortcut withing same Namespace|
-|--|--|--|--|
-|vulnerabilities|`[vulnerability:123]`|`[vulnerability:namespace/project/123]`|`[vulnerability:project/123]`|
-|feature flags|`[feature_flag:123]`|`[feature_flag:namespace/project/123]`|`[feature_flag:project/123]`|
+| Reference       | Input                 | Cross-project Reference                 | Shortcut withing same Namespace |
+| --------------- | --------------------- | --------------------------------------- | ------------------------------- |
+| vulnerabilities | `[vulnerability:123]` | `[vulnerability:namespace/project/123]` | `[vulnerability:project/123]`   |
+| feature flags   | `[feature_flag:123]`  | `[feature_flag:namespace/project/123]`  | `[feature_flag:project/123]`    |
 
 ### Labels
 
@@ -261,13 +262,17 @@ According to this issue: [https://github.com/isaacs/github/issues/305](https://g
 Github Flavored Markdown does not support references to labels, yet. Here is a
 table brought from the GitLab documentation for label references:
 
-|Reference|Input|Cross-project Reference|Shortcut withing same Namespace|
-|--|--|--|--|
-|label by ID|`~123`|`namespace/project~123`|`project~123`|
-|one-word label by name|`~bug`|`namespace/project~bug`|`project~bug`|
+| Reference              | Input  | Cross-project Reference | Shortcut withing same Namespace |
+| ---------------------- | ------ | ----------------------- | ------------------------------- |
+| label by ID            | `~123` | `namespace/project~123` | `project~123`                   |
+| one-word label by name | `~bug` | `namespace/project~bug` | `project~bug`                   |
+
 <!-- markdownlint-disable MD013 -->
+
 |multi-word label by name|`~"feature request"`|`namespace/project~"feature request"`|`project~"feature request"`|
+
 <!-- markdownlint-enable MD013 -->
+
 |scoped label by name|`~"priority::high"`|`namespace/project~"priority::high"`|`project~"priority::high"`|
 
 ### Milestones
@@ -276,12 +281,15 @@ Again, GitHub Flavored Markdown doesn’t have support for referencing milestone
 However, GitLab Flavored Markdown does. Here is a table on how to reference
 milestones in GitLab Flavored Markdown:
 
-|Reference|Input|Cross-project Reference|Shortcut withing same Namespace|
-|--|--|--|--|
-|milestone by ID|`%123`|`namespace/project%123`|`project%123`|
-|one-word milestone by name|`%bug`|`namespace/project%bug`|`project%bug`|
+| Reference                  | Input  | Cross-project Reference | Shortcut withing same Namespace |
+| -------------------------- | ------ | ----------------------- | ------------------------------- |
+| milestone by ID            | `%123` | `namespace/project%123` | `project%123`                   |
+| one-word milestone by name | `%bug` | `namespace/project%bug` | `project%bug`                   |
+
 <!-- markdownlint-disable MD013 -->
+
 |multi-word milestone by name|`%"feature request"`|`namespace/project%"feature request"`|`project%"feature request"`|
+
 <!-- markdownlint-enable MD013 -->
 
 ### Commits
@@ -318,13 +326,18 @@ This will create a table of contents at the position where `[[_TOC_]]` is found.
 Though GitHub doesn't natively allow you to do this, there are multiple workarounds.
 Here are some of them:
 
+<!-- markdownlint-disable MD029 -->
+
 1. Use the builtin table of contents viewer when previewing markdown:
 
 ![Table of Contents Viewer](https://i.ibb.co/pycnfM1/Screen-Shot-2021-04-28-at-5-59-41-PM.png)\
+
 2. Use `doctoc`. This is a GitHub Action that will update your table of contents.
-An example repository using it is `nvm`: <https://github.com/nvm-sh/nvm>
+   An example repository using it is `nvm`: <https://github.com/nvm-sh/nvm>
 3. Use the `Markdown All in One` Visual Studio Code extension: <https://marketplace.visualstudio.com/items?itemName=yzhang.markdown-all-in-one>
 4. Manually type in and update the Table of Contents
+
+<!-- markdownlint-enable MD029 -->
 
 If any of the above don't work, there is a `StackOverFlow` question
 on this topic: <https://stackoverflow.com/questions/18244417/how-do-i-create-some-kind-of-table-of-content-in-github-wiki>.
@@ -346,12 +359,13 @@ Person A:
 I found a bug inside the program
 
 Person B:
+
 > I found a bug inside the program
 
 What is the bug?
 
 Person A:
->
+
 > > I found a bug inside the program
 >
 > What is the bug?
@@ -365,6 +379,7 @@ with a `>`. Here is an example:
 
 ```markdown
 > Imagination is more important than knowledge.
+>
 > - _Albert Einstein_
 ```
 
@@ -396,7 +411,6 @@ A footnote reference tag looks like this: [^1]
 This reference tag is a mix of letters and numbers. [^footnote-42]
 
 [^1]: This is the text inside a footnote.
-
 [^footnote-42]: This is another footnote.
 ```
 
@@ -436,7 +450,7 @@ markdown is like this:
 
 ```markdown
 ![alt text1][logo]
-![alt text](img/markdown_logo.png "Title Text")
+![alt text](img/markdown_logo.png 'Title Text')
 ```
 
 However there is another method which looks similar to footnotes as mentioned
@@ -444,7 +458,7 @@ above. It is only supported in GitLab Flavored Markdown:
 
 ```markdown
 [logo]: img/markdown_logo.png
-[logo]: img/markdown_logo.png "Title Text"
+[logo]: img/markdown_logo.png 'Title Text'
 ```
 
 In this syntax, the alternative text comes first in square brackets and is

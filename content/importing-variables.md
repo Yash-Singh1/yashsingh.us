@@ -20,13 +20,13 @@ Before I introduce the workaround, let me introduce `eval`. `eval` is a function
 that allows to run the code provided as a string inside the arguments. For example:
 
 ```js
-eval('console.log("hello world")')
+eval('console.log("hello world")');
 ```
 
 Would run:
 
 ```js
-console.log("hello world")
+console.log('hello world');
 ```
 
 Another thing to keep in mind is that `eval` is unsafe and not allowed to be
@@ -37,7 +37,7 @@ used everywhere.
 To import a variable `VAR` from a file `FILE`, run:
 
 ```js
-eval('(()=>{' + fs.readFileSync(FILE, 'utf8') + ';return ' + VAR + ';})()')
+eval('(()=>{' + fs.readFileSync(FILE, 'utf8') + ';return ' + VAR + ';})()');
 ```
 
 This would have a function that runs the contents of the file and returns the

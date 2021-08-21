@@ -44,7 +44,7 @@ That is when I came across the `Symbol.iterator` property.
 From the MDN docs:
 
 > The well-known **`Symbol.iterator`** symbol specifies the default iterator for
-an object. Used by [`for...of`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/for...of).
+> an object. Used by [`for...of`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/for...of).
 
 The `Symbol.iterator` is a property of the builtin `Symbol` object that exists
 as a property on the `Array` prototype, `Set` prototype, and many other builtin iterators.

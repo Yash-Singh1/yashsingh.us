@@ -45,7 +45,7 @@ QUnit.module('test group', {
   },
   after() {
     // Stuff after this test group runs
-  },
+  }
   // ...
 });
 ```

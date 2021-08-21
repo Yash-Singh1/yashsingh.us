@@ -26,14 +26,14 @@ Most people, are unaware of `Infinity` being present in Javascript and run
 something like:
 
 ```js
-Game.Earn(999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999)
+Game.Earn(999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999);
 ```
 
 Cookie Clicker even offers its own DevTools with buttons to multiply and control
 the game. Another alternative to hacking would also be to do:
 
 ```js
-Game.RuinTheFun()
+Game.RuinTheFun();
 ```
 
 This is a function that just gives you lots and lots of cookies and
@@ -42,7 +42,7 @@ wrinklers that have to be clicked to be removed. Of course it is possible to
 write a script that would remove them:
 
 ```js
-delete Game.wrinklers
+delete Game.wrinklers;
 ```
 
 Some things that the Ruin The Fun hack has that mine doesn't is dragons and some
@@ -54,16 +54,19 @@ three of the pieces of code combined could make a winning game.
 Straight up, here is the code:
 
 ```js
-Game.cookies = Infinity
-Game.lumps = Infinity
+Game.cookies = Infinity;
+Game.lumps = Infinity;
 function doEverything() {
-  Game.ObjectsById.forEach(obj => { obj.buy(10000);Game.cookies=Infinity })
-  document.querySelectorAll('#upgrades > div').forEach((div) => div.click())
-  Game.cookiesPs = Infinity
-  Game.ObjectsById[0].levelUp()
-  setTimeout(() => doEverything(), 1000)
+  Game.ObjectsById.forEach((obj) => {
+    obj.buy(10000);
+    Game.cookies = Infinity;
+  });
+  document.querySelectorAll('#upgrades > div').forEach((div) => div.click());
+  Game.cookiesPs = Infinity;
+  Game.ObjectsById[0].levelUp();
+  setTimeout(() => doEverything(), 1000);
 }
-doEverything()
+doEverything();
 ```
 
 First of all, it will earn `Infinity` cookies and sugar lumps, followed with a

@@ -31,7 +31,7 @@ A rule contains the following schema:
 ```ts
 interface RuleSchema {
   meta: {
-    type: "problem" | "suggestion" | "layout";
+    type: 'problem' | 'suggestion' | 'layout';
     docs: {
       description: string;
       category: string;
@@ -39,12 +39,14 @@ interface RuleSchema {
       url: string;
       suggestion: boolean;
     };
-    fixable: "code" | "whitespace";
+    fixable: 'code' | 'whitespace';
     schema: Array<object>; // JSON Schema Format
     deprecated: boolean;
     replacedBy: Array<string>; // if deprecated, replacement rules
   };
-  create: (context: object /* information on the code */) => {
+  create: (
+    context: object /* information on the code */
+  ) => {
     [ASTSelector: string]: (node) => void;
   };
 }

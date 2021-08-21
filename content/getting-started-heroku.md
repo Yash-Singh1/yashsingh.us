@@ -66,11 +66,11 @@ app.listen(port, () => {
 
 1. Over here, we are importing `express` and creating a new application.
 2. This creates a new router that listens for requests on the `/` path. When a
-request is recieved, it returns `"Hello world"`
+   request is recieved, it returns `"Hello world"`
 3. In Heroku, the `PORT` enviorment variable is set to the port that has to be
-listened to. Over here, we are listening to `1455` if there is no `PORT` (development)
+   listened to. Over here, we are listening to `1455` if there is no `PORT` (development)
 4. This makes the application actually listen for any requests and logs the port
-listened to
+   listened to
 
 Now let's test out our application:
 

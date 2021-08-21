@@ -12,7 +12,7 @@ new Typed('#app-type', {
     'linters',
     'eslint plugins',
     'shell scripts'
-  ].map(str => str + '...'),
+  ].map((str) => str + '...'),
   typeSpeed: 50,
   backSpeed: 40,
   backDelay: 2000,
