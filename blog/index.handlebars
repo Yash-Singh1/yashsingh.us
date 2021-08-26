@@ -31,7 +31,6 @@
       </h1>
       {{#each this}}
       <br />
-      <br />
       <a href="/blog/post/{{fileName}}" class="group">
         <span id="title">{{title}}</span>
         <p id="subtitle">{{subtitle}}</p>
@@ -59,10 +58,12 @@
       >
         Older Posts
       </button>
-      {{/if}} {{/if}} {{else}}
+      {{/if}} {{/if}}
+      <br />
+      {{else}}
+      <br />
       <p id="subtitle">No posts found</p>
       {{/each}}
-      <br />
       <br />
       <p class="mt-5 text-gray-400 text-2xl font-mono">
         <a class="underline" href="/">About</a>
