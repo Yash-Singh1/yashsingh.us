@@ -1,5 +1,5 @@
 ---
-title: GitLab Flavored Markdown vs. GitHub Flavored Markdown
+title: GitLab Flavored Markdown vs GitHub Flavored Markdown
 subtitle: A complete comparision between the two markdown syntaxes
 image: ../img/gitlab-markdown-vs-github-markdown.png
 author: Yash Singh
@@ -330,7 +330,7 @@ Here are some of them:
 
 1. Use the builtin table of contents viewer when previewing markdown:
 
-![Table of Contents Viewer](https://i.ibb.co/pycnfM1/Screen-Shot-2021-04-28-at-5-59-41-PM.png)\
+![Table of Contents Viewer](https://i.ibb.co/pycnfM1/Screen-Shot-2021-04-28-at-5-59-41-PM.png)
 
 2. Use `doctoc`. This is a GitHub Action that will update your table of contents.
    An example repository using it is `nvm`: <https://github.com/nvm-sh/nvm>
