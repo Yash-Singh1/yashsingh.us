@@ -37,10 +37,13 @@
         <p id="subtitle">{{subtitle}}</p>
         <i id="info">Posted by {{author}} on {{date}}</i>
       </a>
-      {{#if @last}}
+      {{#if @last}} {{#if before}}
       <br />
       <br />
-      {{#if before}}
+      {{else}} {{#if after}}
+      <br />
+      <br />
+      {{/if}} {{/if}} {{#if before}}
       <button
         id="newer-posts"
         class="bg-blue-500 hover:bg-blue-400 text-white font-bold py-2 px-4 border-blue-700 hover:border-blue-500 rounded-full cursor-pointer"
@@ -48,7 +51,7 @@
       >
         Newer Posts
       </button>
-      {{/if}}
+      {{/if}} {{#if after}}
       <button
         id="older-posts"
         class="ml-5 bg-blue-500 hover:bg-blue-400 text-white font-bold py-2 px-4 border-blue-700 hover:border-blue-500 rounded-full cursor-pointer"
@@ -56,9 +59,7 @@
       >
         Older Posts
       </button>
-      {{/if}} {{else}}
-      <br />
-      <br />
+      {{/if}} {{/if}} {{else}}
       <p id="subtitle">No posts found</p>
       {{/each}}
       <br />
