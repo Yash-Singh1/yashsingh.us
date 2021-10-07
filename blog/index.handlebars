@@ -31,7 +31,7 @@
       </h1>
       {{#each this}}
       <br />
-      <a href="/blog/post/{{fileName}}" class="group">
+      <a href="{{#if link}}{{link}}{{else}}/blog/post/{{fileName}}{{/if}}" class="group">
         <span id="title">{{title}}</span>
         <p id="subtitle">{{subtitle}}</p>
         <i id="info">Posted by {{author}} on {{date}}</i>

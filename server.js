@@ -86,10 +86,14 @@ app.get('/profile/*', (req, res) => {
 app.get('/blog/post/*', (req, res) => {
   const template = handlebars.compile(fs.readFileSync('blog/post.handlebars', 'utf8'));
   const fileName = req.path.slice('/blog/post/'.length);
+  const frontMatter = getFrontmatter(fileName);
+  if (frontMatter.link) {
+    return res.redirect(frontMatter.link);
+  }
   try {
     res.header({ 'Content-Type': 'text/html' }).send(
       template({
-        ...getFrontmatter(fileName),
+        ...frontMatter,
         content: DOMPurify.sanitize(marked(fs.readFileSync('content/' + fileName, 'utf8').replace(frontMatterRe, '')))
       })
     );
