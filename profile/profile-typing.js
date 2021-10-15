@@ -12,7 +12,9 @@ new Typed('#app-type', {
     'linters',
     'eslint plugins',
     'shell scripts',
-    'editor plugins'
+    'editor plugins',
+    'react hooks',
+    'react components'
   ].map((str) => str + '...'),
   typeSpeed: 50,
   backSpeed: 40,
