@@ -1,0 +1,82 @@
+export const title = 'Hacking Cookie Clicker';
+export const subtitle = 'Complete Cookie Clicker in seconds with this piece of code';
+export const image = '/img/cookie-clicker.jpg';
+export const author = 'Yash Singh';
+export const date = 'April 22, 2021';
+
+# Hacking Cookie Clicker
+
+In this article I will share a little piece of code that took over Cookie Clicker
+from sugar lumps, to cookies, to upgrades. It does everything.
+
+## What is Cookie Clicker?
+
+[Cookie Clicker](https://orteil.dashnet.org/cookieclicker/) is an idle game that
+allows you to buy buildings and upgrades that will make cookies for you. You can
+also click on the large displayed cookie to get more. The buildings increase your
+CPS (Cookies per second) to speed up cookie production. The game adds in much
+more, such as sugar lumps, milk, and dragons that is there to explore.
+
+## About Hacking Cookie Clicker
+
+There are multiple ways to hack cookie clicker that were made before.
+Most people, are unaware of `Infinity` being present in Javascript and run
+something like:
+
+```js
+Game.Earn(999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999);
+```
+
+Cookie Clicker even offers its own DevTools with buttons to multiply and control
+the game. Another alternative to hacking would also be to do:
+
+```js
+Game.RuinTheFun();
+```
+
+This is a function that just gives you lots and lots of cookies and
+CPS (Cookies Per Second). However, this spawns some Cookie Swallowers called
+wrinklers that have to be clicked to be removed. Of course it is possible to
+write a script that would remove them:
+
+```js
+delete Game.wrinklers;
+```
+
+Some things that the Ruin The Fun hack has that mine doesn't is dragons and some
+squid. However, it doesn't increase your milk, CPS, and cookies to max. All
+three of the pieces of code combined could make a winning game.
+
+## Code
+
+Straight up, here is the code:
+
+```js
+Game.cookies = Infinity;
+Game.lumps = Infinity;
+function doEverything() {
+  Game.ObjectsById.forEach((obj) => {
+    obj.buy(10000);
+    Game.cookies = Infinity;
+  });
+  document.querySelectorAll('#upgrades > div').forEach((div) => div.click());
+  Game.cookiesPs = Infinity;
+  Game.ObjectsById[0].levelUp();
+  setTimeout(() => doEverything(), 1000);
+}
+doEverything();
+```
+
+First of all, it will earn `Infinity` cookies and sugar lumps, followed with a
+recursive function that will buy every item 10000 times, reearn the money, and
+then buy all the upgrades. Lastly, the level is leveled up using the sugar lumps.
+Using this code, it didn't take long to reach the highest milk level and finish
+the game with the `Infinity` cookie.
+
+## Save
+
+If instead of writing in the code, you want the save code, here it is:
+
+```text
+Mi4wMzF8fDE2MTkxMjgwOTk5OTY7MTYxOTEyODA5OTk5NjsxNjE5MTMwNTIzOTYxO0Nvb2wgU3BhY2VzaGlwO3NyeXFnfDExMTExMTAxMTAwMTAwMTAwMTAxMHxOYU47SW5maW5pdHk7MDsxOzA7MTswOzA7MDswOzA7MDs2NTsyNDM5NTswOzE7MDswOzA7MDswOzA7OzA7MDswOzA7MDswOzA7LTE7LTE7LTE7LTE7LTE7MDswOzA7MDs1MDswOzA7SW5maW5pdHk7MDsxNjE5MTI4MTc0MzcyOzA7MDs7NDE7MDswOzIuNjMyMjczMjAzNjAxNDY2ZSszMDt8NTA2Miw1MDYyLDIuNjAzMTQxODc2MDY1NDc3ZSszMCw0OCwsMCw1MDYyOzUxOTAsNTE5MCw5Ljk3MDI4OTk3OTY0MjgzM2UrMjQsMCwsMCw1MTkwOzUwMDAsNTAwMCwxLjU1MDk2ODAzOTA4Mzk0NzJlKzIyLDAsLDAsNTAwMDs1MDAwLDUwMDAsNC42NDI5ODQ3NzAyNTgxMDJlKzIyLDAsLDAsNTAwMDs0OTk2LDQ5OTYsMS43NDMwMDE5ODY5NDA0MjNlKzIzLDAsLDAsNDk5Njs0OTAwLDQ5MDAsNy4wMzA3OTUxNDY0Nzg4NjZlKzIzLDAsLDAsNDkwMDs0OTAwLDQ5MDAsMy4xOTAzMzQ0NzUxMDMxMDU1ZSsyNCwwLCwwLDQ5MDA7NDkwMCw0OTAwLDEuNTI2MzQwNzc5ODQ1ODEzMmUrMjUsMCwsMCw0OTAwOzQ5MDAsNDkwMCw3Ljg2NTU5OTQwODcyOTE1OWUrMjUsMCwsMCw0OTAwOzQ5MDAsNDkwMCw0LjMwNzg5NzkzNTk2MDU4ZSsyNiwwLCwwLDQ5MDA7NDg4Miw0ODgyLDIuNDI0NjU2NDMyOTcyMjMwMmUrMjcsMCwsMCw0ODgyOzQ4MDAsNDgwMCwxLjQxNzcwNTE3MDA2MTExMDNlKzI4LDAsLDAsNDgwMDs0ODAwLDQ4MDAsOC42NjUwMTU2MTk1OTcxMjdlKzI4LDAsLDAsNDgwMDs0ODAwLDQ4MDAsNS40NDI3NjU3NDM0ODkwOTI1ZSsyOSwwLCwwLDQ4MDA7NDgwMCw0ODAwLDMuNjk1NTU3MzEwMjk4NDEyZSszMCwwLCwwLDQ4MDA7NDc5Miw0NzkyLDIuNDg1MDcyMzQ3ODkwMDY4ZSszMSwwLCwwLDQ3OTI7NDcwMCw0NzAwLDEuNjkzNzYzODA5Mzg1NDY0NmUrMzIsMCwsMCw0NzAwOzQ3MDAsNDcwMCwxLjIxNjIwMTI3NDQ3MjIyODJlKzMzLDAsLDAsNDcwMDt8MTExMTExMTExMTExMTExMTExMTExMTExMTExMTExMTExMTExMTExMTExMTExMTExMTExMTExMTExMTExMTExMTExMTExMTExMTExMTExMTExMTExMTExMTExMTExMTExMTExMTExMTEwMDAwMTExMTExMTExMTExMTExMTExMTExMTAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDExMTExMTAwMDAwMDAwMDAxMTExMTEwMDExMDAwMDAwMDAwMDAwMTExMTExMTExMTExMTExMTExMTExMTExMTExMTExMTExMTExMTExMTAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMTExMTAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAxMTExMTExMTExMTEwMDAwMDAwMDAwMDAxMTExMTEwMDAwMTExMTExMTExMTExMTExMTExMTEwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAxMTExMTExMTExMTExMTExMTExMTExMTExMTExMTExMTExMTExMTExMTEwMDAwMDAxMTExMTExMTExMTExMTExMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMTExMTExMTExMTExMTExMTExMTExMTExMTExMTExMTExMTExMTExMTExMTExMTExMTExMTExMTExMTAwMDAwMDAwMDAwMDAwMDAwMDAwMDAxMTExMTExMTExMTExMTExMTExMTAwMDAwMDAwMDAwMDExMTExMTAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAxMTAwMDAxMTExMTExMTExMDAwMDAwMDAwMDAwMDAxMTExMTExMTExMTExMTExMTEwMDExMTEwMDExMTExMTExMTExMTExMTExMTExMTExMTExMTExMTAwMTExMTExMTExMTAwMDAwMDAwMTExMTExMTExMTExMDAwMDAwMTEwMDExMTExMTExMTExMTAwMDAwMDAwMDAwMDAwMTExMTExMTExMTExMTExMTExMTExMTExMTExMTExMTExMTExMDAwMDExMTExMTExMTExMTExMTEwMDExMTExMTExMTExMTExMTExMTExMTExMTExMTEwMDExMTExMTExMTExMTExMTExMTExMTExMTAwMDAxMTExMDAxMTAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAxMTExMTExMTExMTExMTExMTExMTExMTExMTExMTExMTExMTExMTExMTExMTExMTEwMDAwMDAwMDExMTExMTExMTExMTExMTExMTExMTExMTAwMDAxMTExMTEwMDAwMDAxMTExMTExMTExMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAxMTExMTExMTExMTExMTExMTEwMDExMTExMTExMTExMTExMTExMTExMTExMTExMTExMTExMTExMTExMTExMTExMTExMTExMTExMTExMTExMTExMTExMTExMDAwMDAwMTExMTExMTExMTExMTExMTExMTExMTExMTExMTExMTExMTExMDAwMDAwMDAxMTExMTExMTAwMDAxMTExfDExMTExMTExMTExMTExMTExMTExMTExMTExMDAwMTAwMDAxMTExMTAxMTExMTExMTExMTExMTExMTExMTExMTExMTExMDAxMDExMTEwMDEwMDEwMTAwMDExMTExMTExMTAwMDAwMTEwMDAwMDAwMDAwMDAxMTExMTExMTExMTExMTEwMTAxMTExMTExMTExMTEwMDExMTExMTExMTExMTAwMDAwMDAwMDAwMDExMTExMTExMTExMTExMTExMTEwMTExMDAwMDAwMDAwMDAwMDAxMTExMTExMTExMTExMTAxMTExMTExMTExMTExMTExMTExMTAwMDExMTAxMTExMTExMTExMTEwMDAwMDAwMDAwMDExMTExMTExMTExMTExMTExMTExMDAwMDAwMDAwMDAwMDAxMDAwMDAwMDAwMDAwMDAwMDAxMTExMTExMTEwMDAwMTExMTExMTExMTExMTExMTExMTExMTExMTExMTEwMDAwMDExMTEwMDAwMDAwMDAwMDAwMDExMTExMTAwMTExMTExMTExMTExMTExMTExMTExMTExMTExMDAwMDEwMTAxMTExMTExMTExMTEwMDAwMDAxMTEwMDAwMDAwMDAwMDExMDAwMTExMDExMTExMTExMTExMTExMTExMDAxMTExMTExMTExMTExMTExMTExMTExMTExMTExMTEwMDAxMTExMTAwMDExMTB8fA%3D%3D%21END%21
+```

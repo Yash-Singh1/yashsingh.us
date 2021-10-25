@@ -1,7 +1,0 @@
----
-title: "Google Translate Versus Microsoft Translator: Who Wins?"
-subtitle: Complete comparasion of Google Translate and Microsoft Translator
-author: Yash Singh
-date: Jul 30, 2020
-link: https://medium.com/swlh/google-translate-versus-microsoft-translate-who-wins-846bf2f85f5a
----

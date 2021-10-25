@@ -1,0 +1,54 @@
+@import 'highlight.js/styles/atom-one-dark-reasonable.css';
+@import 'github-markdown-css/github-markdown.css';
+
+footer {
+  padding: initial !important;
+}
+
+.markdown-body {
+  min-width: 200px;
+  @apply box-border max-w-5xl m-auto p-11 bg-transparent;
+}
+
+@media (max-width: 767px) {
+  .markdown-body {
+    @apply p-4;
+  }
+}
+
+.markdown-body .highlight pre,
+.markdown-body pre {
+  background-color: #2d333b !important;
+}
+
+.markdown-body table td,
+.markdown-body table th {
+  background-color: #2d333b;
+  border: 1px solid rgba(223, 226, 229, 0.5) !important;
+}
+
+.markdown-body h1,
+.markdown-body h2 {
+  border-bottom: none !important;
+}
+
+.markdown-body h1,
+.markdown-body h2,
+.markdown-body h3,
+.markdown-body h4,
+.markdown-body h5,
+.markdown-body h6 {
+  color: #4cacfc;
+}
+
+ul {
+  @apply list-disc;
+}
+
+blockquote {
+  --color-border-default: gray;
+}
+
+.hljs {
+  @apply bg-transparent;
+}

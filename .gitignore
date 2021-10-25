@@ -1,4 +1,6 @@
+# Dependencies
 node_modules/
 package-lock.json
-build.css
-styles/*.css
+
+# Build
+public/bundle.*

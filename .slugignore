@@ -1,9 +1,6 @@
 .github/
-.gitattributes
 .gitignore
 LICENSE
 README.md
 .prettierrc.json
-.markdownlint.json
-.markdownlintignore
 .npmrc

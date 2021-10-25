@@ -1,0 +1,24 @@
+/* Inspired by https://vineethtrv.github.io/loader/ */
+
+.loader {
+  width: 48px;
+  height: 48px;
+  border: 5px solid #fff;
+  border-top: 5px solid red;
+  border-radius: 50%;
+  display: inline-block;
+  position: absolute;
+  top: calc(50% - 48px);
+  right: calc(50% - 48px);
+  box-sizing: border-box;
+  animation: rotation 1s linear infinite;
+}
+
+@keyframes rotation {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}

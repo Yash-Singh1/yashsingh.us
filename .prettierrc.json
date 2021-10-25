@@ -2,6 +2,7 @@
   "printWidth": 150,
   "trailingComma": "none",
   "singleQuote": true,
+  "jsxSingleQuote": true,
   "htmlWhitespaceSensitivity": "css",
   "overrides": [
     {
