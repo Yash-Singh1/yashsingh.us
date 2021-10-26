@@ -5,7 +5,12 @@ function Section({ title, children }) {
     <>
       <br id={title.toLowerCase()} />
       <br />
-      <span className='subheading'>
+      <span
+        className='subheading'
+        onClick={() => {
+          location.hash = `#${title.toLowerCase()}`;
+        }}
+      >
         {title}
       </span>
       {children}

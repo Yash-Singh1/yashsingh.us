@@ -1,5 +1,12 @@
 .subheading {
-  @apply text-purple-700 uppercase font-mono font-bold text-2xl;
+  @apply text-purple-700 uppercase font-mono font-bold text-2xl cursor-pointer;
+}
+
+.subheading:hover::before {
+  content: '🔗';
+  margin-left: -40px;
+  margin-right: 10px;
+  @apply text-purple-400;
 }
 
 span#project-note ~ div {
