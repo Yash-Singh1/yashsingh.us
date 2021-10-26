@@ -6,13 +6,15 @@ import Loader from '../Loader';
 import ButtonLink from './ButtonLink';
 import '../../styles/blog.css';
 import usePosts from '../../hooks/usePosts';
+import useLoaded from '../../hooks/useLoaded';
 
 function Blog() {
   const posts = usePosts();
+  const loaded = useLoaded();
 
   const page = new URLSearchParams(location.search).get('page') || 1;
 
-  return posts ? (
+  return posts && loaded ? (
     <Container>
       <Header title="Yash Singh's Blog" intro='Welcome to' />
       <br />

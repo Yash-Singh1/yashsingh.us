@@ -6,6 +6,7 @@ import Code from './Markdown_Components/Code';
 import '../../styles/post.css';
 import HeadingFactory from './Markdown_Components/HeadingFactory';
 import usePosts from '../../hooks/usePosts';
+import useLoaded from '../../hooks/useLoaded';
 
 function Post({
   match: {
@@ -13,10 +14,11 @@ function Post({
   }
 }) {
   const posts = usePosts();
+  const loaded = useLoaded();
 
   const postInfo = posts ? posts.default[posts.filenames.indexOf(/([^/]*?)(\.[^/.]*?)?$/.exec(post)[1])] : undefined;
 
-  return postInfo ? (
+  return postInfo && loaded ? (
     <Container>
       <img src={postInfo.image} className='w-1/2 max-h-80 object-center mx-auto' />
       <br />

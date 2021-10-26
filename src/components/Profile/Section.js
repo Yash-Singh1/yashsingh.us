@@ -3,9 +3,11 @@ import PropTypes from 'prop-types';
 function Section({ title, children }) {
   return (
     <>
+      <br id={title.toLowerCase()} />
       <br />
-      <br />
-      <span className='subheading'>{title}</span>
+      <span className='subheading'>
+        {title}
+      </span>
       {children}
     </>
   );

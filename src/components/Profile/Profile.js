@@ -1,3 +1,4 @@
+import { useEffect, useState } from 'react';
 import Header from '../Header';
 import Paragraph from './Paragraph';
 import Section from './Section';
@@ -6,11 +7,23 @@ import More from './More';
 import RepoCard from './RepoCard';
 import Contacts from '../Contacts';
 import Container from '../Container';
+import Loader from '../Loader';
+import useLoaded from '../../hooks/useLoaded';
 import { Link } from 'react-router-dom';
 import '../../styles/profile.css';
 
 function Profile() {
-  return (
+  const loaded = useLoaded();
+  const [loadedImages, loadImage] = useState([]);
+  const imageOnLoad = () => loadImage([...loadedImages, true]);
+
+  useEffect(() => {
+    if (loaded && location.hash && loadedImages.length === 6) {
+      document.getElementById(location.hash.slice(1).toLowerCase())?.scrollIntoView({ behavior: 'smooth' });
+    }
+  }, [loaded, loadedImages]);
+
+  return loaded ? (
     <Container>
       <Header title='Saiansh (Yash) Singh' intro="It's" />
       <Section title='About'>
@@ -24,16 +37,16 @@ function Profile() {
         <div className='text-gray-400 text-xl mt-5'>
           <span id='project-note'>I have many interesting projects. Here are a few handpicked ones:</span>
           <div>
-            <RepoCard repo='Yash-Singh1/epack' />
-            <RepoCard repo='Yash-Singh1/randomgen-parser' />
+            <RepoCard repo='Yash-Singh1/epack' onLoad={imageOnLoad} />
+            <RepoCard repo='Yash-Singh1/randomgen-parser' onLoad={imageOnLoad} />
           </div>
           <div>
-            <RepoCard repo='Yash-Singh1/kanda-weather' />
-            <RepoCard repo='Yash-Singh1/eslint-plugin-userscripts' />
+            <RepoCard repo='Yash-Singh1/kanda-weather' onLoad={imageOnLoad} />
+            <RepoCard repo='Yash-Singh1/eslint-plugin-userscripts' onLoad={imageOnLoad} />
           </div>
           <div>
-            <RepoCard repo='Yash-Singh1/equation-slides' />
-            <RepoCard repo='Yash-Singh1/monkeyide' />
+            <RepoCard repo='Yash-Singh1/equation-slides' onLoad={imageOnLoad} />
+            <RepoCard repo='Yash-Singh1/monkeyide' onLoad={imageOnLoad} />
           </div>
         </div>
       </Section>
@@ -76,6 +89,8 @@ function Profile() {
         />
       </Section>
     </Container>
+  ) : (
+    <Loader />
   );
 }
 
