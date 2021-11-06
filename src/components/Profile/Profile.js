@@ -8,22 +8,20 @@ import RepoCard from './RepoCard';
 import Contacts from '../Contacts';
 import Container from '../Container';
 import Loader from '../Loader';
-import useLoaded from '../../hooks/useLoaded';
 import { Link } from 'react-router-dom';
 import '../../styles/profile.css';
 
 function Profile() {
-  const loaded = useLoaded();
   const [loadedImages, loadImage] = useState([]);
   const imageOnLoad = () => loadImage([...loadedImages, true]);
 
   useEffect(() => {
-    if (loaded && location.hash && loadedImages.length === 6) {
+    if (location.hash && loadedImages.length === 6) {
       document.getElementById(location.hash.slice(1).toLowerCase())?.scrollIntoView({ behavior: 'smooth' });
     }
-  }, [loaded, loadedImages]);
+  }, [loadedImages]);
 
-  return loaded ? (
+  return (
     <Container>
       <Header title='Saiansh (Yash) Singh' intro="It's" />
       <Section title='About'>
@@ -83,14 +81,13 @@ function Profile() {
       <Section title='Contact Me'>
         <Contacts
           contacts={[
+            { name: 'Blog', href: '/blog/?page=1', internal: true },
             { name: 'Email', href: 'mailto:saiansh2525@gmail.com' },
             { name: 'GitHub', href: 'https://github.com/Yash-Singh1' }
           ]}
         />
       </Section>
     </Container>
-  ) : (
-    <Loader />
   );
 }
 

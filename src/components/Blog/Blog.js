@@ -6,24 +6,23 @@ import Loader from '../Loader';
 import ButtonLink from './ButtonLink';
 import '../../styles/blog.css';
 import usePosts from '../../hooks/usePosts';
-import useLoaded from '../../hooks/useLoaded';
+import { useLocation } from 'react-router';
 
 function Blog() {
   const posts = usePosts();
-  const loaded = useLoaded();
 
-  const page = new URLSearchParams(location.search).get('page') || 1;
+  const page = new URLSearchParams(useLocation().search).get('page') || 1;
 
-  return posts && loaded ? (
+  return posts ? (
     <Container>
       <Header title="Yash Singh's Blog" intro='Welcome to' />
       <br />
       {posts.default.slice(page * 5 - 5, page * 5).map((post, index) => (
         <Post key={index} {...post} filename={posts.filenames[index + (page * 5 - 5)]} />
       ))}
-      {page > 1 ? <ButtonLink to={`?page=${Number(page) - 1}`}>Newer Posts</ButtonLink> : null}
+      {page > 1 ? <ButtonLink to={`/blog/?page=${Number(page) - 1}`}>Newer Posts</ButtonLink> : null}
       {page * 5 >= posts.default.length ? null : (
-        <ButtonLink to={`?page=${Number(page) + 1}`} className={page > 1 ? 'ml-5' : ''}>
+        <ButtonLink to={`/blog/?page=${Number(page) + 1}`} className={page > 1 ? 'ml-5' : ''}>
           Older Posts
         </ButtonLink>
       )}
@@ -31,7 +30,7 @@ function Blog() {
       <br />
       <Contacts
         contacts={[
-          { name: 'About', href: '/' },
+          { name: 'About', href: '/', internal: true },
           { name: 'Email', href: 'mailto:saiansh2525@gmail.com' },
           { name: 'GitHub', href: 'https://github.com/Yash-Singh1' }
         ]}

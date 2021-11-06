@@ -1,4 +1,4 @@
-import { BrowserRouter, Switch, Route } from 'react-router-dom';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import Blog from './Blog/Blog';
 import Post from './Post/Post';
 import Profile from './Profile/Profile';
@@ -6,11 +6,11 @@ import Profile from './Profile/Profile';
 function App() {
   return (
     <BrowserRouter>
-      <Switch>
-        <Route exact path='/' component={Profile} />
-        <Route exact path='/blog' component={Blog} />
-        <Route path='/blog/post/:post' component={Post} />
-      </Switch>
+      <Routes>
+        <Route exact path='/' element={<Profile />} />
+        <Route exact path='/blog' element={<Blog />} />
+        <Route path='/blog/post/:post' element={<Post />} />
+      </Routes>
     </BrowserRouter>
   );
 }

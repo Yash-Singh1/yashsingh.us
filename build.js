@@ -10,7 +10,9 @@ import('xdm/esbuild.js').then(({ default: xdm }) => {
     .build({
       entryPoints: ['src/index.js'],
       bundle: true,
-      outfile: 'public/bundle.js',
+      outdir: 'public/',
+      splitting: true,
+      format: 'esm',
       plugins: [ImportGlobPlugin(), postCssPlugin(require('./postcss.config.js')), xdm()],
       minify: true,
       loader: {
@@ -18,7 +20,8 @@ import('xdm/esbuild.js').then(({ default: xdm }) => {
       },
       watch: dev,
       inject: ['./src/inject/react-shim.js'],
-      logLevel: dev ? 'info' : 'error'
+      logLevel: dev ? 'info' : 'error',
+      minify: !dev
     })
     .catch((e) => console.error(e.message));
 
