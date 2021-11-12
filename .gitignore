@@ -3,5 +3,6 @@ node_modules/
 package-lock.json
 
 # Build
-public/
-!public/index.*
+public/*
+!public/img/
+!public/index.html
