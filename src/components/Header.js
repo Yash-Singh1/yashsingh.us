@@ -24,7 +24,9 @@ function Header({ title, intro }) {
             'shell scripts',
             'editor plugins',
             'react hooks',
-            'react components'
+            'react components',
+            'github actions',
+            'userscripts'
           ].map((str) => str + '...')}
           typeSpeed={50}
           backSpeed={40}
