@@ -16,7 +16,7 @@ function TechCovid() {
         const matchingNode = svg.current.querySelector(`#everything > [for="${iconNode.getAttribute('for')}"]`);
         matchingNode.classList.add('hidden');
 
-        iconNode.onmouseenter = () => {
+        iconNode.onmouseover = () => {
           matchingNode.classList.remove('hidden');
         };
 
