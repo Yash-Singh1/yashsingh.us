@@ -21,3 +21,7 @@ svg.infographic-svg {
 svg.infographic-svg > g > [for] {
   cursor: help;
 }
+
+svg.infographic-svg g#everything > [for] {
+  pointer-events: none;
+}

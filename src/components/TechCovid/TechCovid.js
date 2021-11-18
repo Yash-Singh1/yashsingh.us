@@ -17,18 +17,23 @@ function TechCovid() {
         matchingNode.classList.add('hidden');
 
         iconNode.onmouseover = () => {
+          matchingNode.classList.add('inside');
           matchingNode.classList.remove('hidden');
         };
 
         iconNode.onmouseleave = () => {
+          matchingNode.classList.remove('inside');
+          if (matchingNode.classList.contains('dont-hide')) return;
           matchingNode.classList.add('hidden');
         };
 
         iconNode.onclick = () => {
-          if (matchingNode.classList.contains('hidden')) {
-            matchingNode.classList.remove('hidden');
-          } else {
+          if (matchingNode.classList.contains('hidden') || matchingNode.classList.contains('inside')) {
+            matchingNode.classList.remove('hidden', 'inside');
+            matchingNode.classList.add('dont-hide');
+          } else if (!matchingNode.classList.contains('inside')) {
             matchingNode.classList.add('hidden');
+            matchingNode.classList.remove('dont-hide');
           }
         };
       });
