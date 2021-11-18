@@ -17,6 +17,7 @@ function TechCovid() {
         matchingNode.classList.add('hidden');
 
         iconNode.onmouseover = () => {
+          if (matchingNode.classList.contains('dont-hide')) return;
           matchingNode.classList.add('inside');
           matchingNode.classList.remove('hidden');
         };
@@ -29,7 +30,8 @@ function TechCovid() {
 
         iconNode.onclick = () => {
           if (matchingNode.classList.contains('hidden') || matchingNode.classList.contains('inside')) {
-            matchingNode.classList.remove('hidden', 'inside');
+            matchingNode.classList.remove('hidden');
+            matchingNode.classList.remove('inside');
             matchingNode.classList.add('dont-hide');
           } else if (!matchingNode.classList.contains('inside')) {
             matchingNode.classList.add('hidden');
