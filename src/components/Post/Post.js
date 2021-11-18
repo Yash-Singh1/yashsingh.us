@@ -7,22 +7,27 @@ import '../../styles/post.css';
 import HeadingFactory from './Markdown_Components/HeadingFactory';
 import usePosts from '../../hooks/usePosts';
 import { useParams } from 'react-router';
+import { Link } from 'react-router-dom';
 
 function Post() {
   const { post } = useParams();
 
   const posts = usePosts();
 
-  const postInfo = posts ? posts.default[posts.filenames.indexOf(/([^/]*?)(\.[^/.]*?)?$/.exec(post)[1])] : undefined;
+  const filenameIndex = posts ? posts.filenames.indexOf(/([^/]*?)(\.[^/.]*?)?$/.exec(post)[1]) : undefined;
+  const postInfo = posts ? posts.default[filenameIndex] : undefined;
 
   return postInfo ? (
     <Container>
+      <Link to={`/blog/?page=${(filenameIndex - (filenameIndex % 5)) / 5 + 1}`} className='lg:bottom-10 xl:bottom-18 2xl:bottom-26 text-blue-500 relative text-2xl'>
+        ← Back to blog
+      </Link>
       <img src={postInfo.image} className='w-1/2 max-h-80 object-center mx-auto' />
       <br />
       <br />
-      <h1 class='font-semibold text-6xl text-purple-700 text-center uppercase tracking-wider'>{postInfo.title}</h1>
-      <h1 class='font-semibold text-2xl font-mono text-purple-500 text-center mt-2'>{postInfo.subtitle}</h1>
-      <p class='font-semibold text-medium font-mono text-purple-300 text-center italic mt-2'>
+      <h1 className='font-semibold text-6xl text-purple-700 text-center uppercase tracking-wider'>{postInfo.title}</h1>
+      <h1 className='font-semibold text-2xl font-mono text-purple-500 text-center mt-2'>{postInfo.subtitle}</h1>
+      <p className='font-semibold text-medium font-mono text-purple-300 text-center italic mt-2'>
         Posted by {postInfo.author} on {postInfo.date}
       </p>
       <br />
