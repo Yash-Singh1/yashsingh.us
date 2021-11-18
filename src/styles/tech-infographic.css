@@ -10,14 +10,6 @@ html.infographic-tech-covid div#root {
   height: 100%;
 }
 
-html.infographic-tech-covid > body article {
-  min-height: 95%;
-}
-
-svg.infographic-svg {
-  width: 100%;
-}
-
 svg.infographic-svg > g > [for] {
   cursor: help;
 }
