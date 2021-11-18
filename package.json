@@ -30,6 +30,7 @@
     "esbuild": "^0.13.6",
     "esbuild-plugin-import-glob": "^0.1.1",
     "esbuild-plugin-postcss2": "^0.1.0",
+    "esbuild-plugin-svgr": "^0.0.3",
     "postcss": "^8.3.9",
     "postcss-import": "^14.0.2",
     "postcss-preset-env": "^7.0.0",

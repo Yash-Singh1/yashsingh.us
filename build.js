@@ -2,6 +2,7 @@ const esbuild = require('esbuild');
 const { default: postCssPlugin } = require('esbuild-plugin-postcss2');
 const { default: ImportGlobPlugin } = require('esbuild-plugin-import-glob');
 const liveServer = require('live-server');
+const svgrPlugin = require('esbuild-plugin-svgr');
 
 const dev = process.argv[2] === 'dev';
 
@@ -13,7 +14,7 @@ import('xdm/esbuild.js').then(({ default: xdm }) => {
       outdir: 'public/',
       splitting: true,
       format: 'esm',
-      plugins: [ImportGlobPlugin(), postCssPlugin(require('./postcss.config.js')), xdm()],
+      plugins: [ImportGlobPlugin(), postCssPlugin(require('./postcss.config.js')), xdm(), svgrPlugin()],
       minify: true,
       loader: {
         '.js': 'jsx'
