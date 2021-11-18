@@ -7,7 +7,7 @@ const svgrPlugin = require('esbuild-plugin-svgr');
 const dev = process.argv[2] === 'dev';
 
 import('xdm/esbuild.js').then(({ default: xdm }) => {
-  import('remark-gfm'.then(({ default: remarkGfm }) => {
+  import('remark-gfm').then(({ default: remarkGfm }) => {
     esbuild
       .build({
         entryPoints: ['src/index.js'],
