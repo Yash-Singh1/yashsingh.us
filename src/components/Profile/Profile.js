@@ -7,12 +7,13 @@ import More from './More';
 import RepoCard from './RepoCard';
 import Contacts from '../Contacts';
 import Container from '../Container';
-import Loader from '../Loader';
 import { Link } from 'react-router-dom';
 import '../../styles/profile.css';
 
 function Profile() {
   const [loadedImages, loadImage] = useState([]);
+  const [animateAgain, setAnimateAgain] = useState(true);
+
   const imageOnLoad = () => loadImage([...loadedImages, true]);
 
   useEffect(() => {
@@ -58,11 +59,11 @@ function Profile() {
           <Progress skill='Bootstrap' percent={70} />
           <Progress skill='Tailwind CSS' percent={60} />
           <Progress skill='CoffeeScript' percent={60} />
-          <More>
-            <Progress skill='CSS' percent={50} />
-            <Progress skill='Python' percent={50} />
-            <Progress skill='Typescript' percent={50} />
-            <Progress skill='C# in Unity' percent={50} />
+          <More onShown={() => setAnimateAgain(false)}>
+            <Progress skill='CSS' percent={50} animate={animateAgain} />
+            <Progress skill='Python' percent={50} animate={animateAgain} />
+            <Progress skill='Typescript' percent={50} animate={animateAgain} />
+            <Progress skill='C# in Unity' percent={50} animate={animateAgain} />
           </More>
         </div>
       </Section>

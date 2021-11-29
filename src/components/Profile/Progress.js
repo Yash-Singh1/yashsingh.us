@@ -3,8 +3,8 @@ import PropTypes from 'prop-types';
 
 const intervalGap = 20;
 
-function Progress({ percent, skill }) {
-  const [currentPercent, setCurrentPercent] = useState(0);
+function Progress({ percent, skill, animate = true }) {
+  const [currentPercent, setCurrentPercent] = useState(animate ? 0 : percent);
 
   if (percent !== currentPercent) {
     setTimeout(() => setCurrentPercent(currentPercent + 1), intervalGap);
@@ -26,7 +26,8 @@ function Progress({ percent, skill }) {
 
 Progress.propTypes = {
   skill: PropTypes.string,
-  currentPercent: PropTypes.number
+  currentPercent: PropTypes.number,
+  animate: PropTypes.bool
 };
 
 export default Progress;

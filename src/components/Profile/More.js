@@ -1,8 +1,16 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 
-function More({ children }) {
+function More({ children, onShown = () => {} }) {
+  console.log(onShown.toString())
+
   const [moreShown, showMore] = useState(false);
+
+  useEffect(() => {
+    if (moreShown) {
+      onShown();
+    }
+  }, [moreShown]);
 
   return (
     <>
@@ -32,7 +40,8 @@ function More({ children }) {
 }
 
 More.propTypes = {
-  children: PropTypes.node
+  children: PropTypes.node,
+  onShown: PropTypes.func
 };
 
 export default More;
