@@ -10,6 +10,7 @@ function ButtonLink({ children, to, className }) {
         className || ''
       }`}
       onClick={() => navigate(to)}
+      type='button'
     >
       {children}
     </button>

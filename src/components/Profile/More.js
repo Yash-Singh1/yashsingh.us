@@ -11,6 +11,7 @@ function More({ children }) {
           id='show-more'
           className='bg-blue-500 hover:bg-blue-400 text-white font-bold py-2 px-4 border-blue-700 hover:border-blue-500 rounded-full cursor-pointer outline-none'
           onClick={() => showMore(true)}
+          type='button'
         >
           Show More
         </button>
@@ -21,6 +22,7 @@ function More({ children }) {
           id='show-less'
           className='bg-blue-500 hover:bg-blue-400 text-white font-bold py-2 px-4 border-blue-700 hover:border-blue-500 rounded-full cursor-pointer outline-none'
           onClick={() => showMore(false)}
+          type='button'
         >
           Show Less
         </button>

@@ -27,8 +27,8 @@ function Profile() {
       <Section title='About'>
         <Paragraph>
           I am a dude programming stuff in the Bay Area. I love learning new things and facing challenges and bugs. Without them, I am bored (or I
-          create more bugs!). I can program in multiple different languages, the one I can code the coolest stuff in is JavaScript. I play a lot of
-          basketball.
+          create more bugs!). I can program in multiple different languages, the one I can code the coolest stuff in is JavaScript/Typescript. I play
+          a lot of basketball.
         </Paragraph>
       </Section>
       <Section title='Projects'>
@@ -50,7 +50,7 @@ function Profile() {
       </Section>
       <Section title='Skills'>
         <Paragraph>Here is a list of some of my skills and their progress:</Paragraph>
-        <div id='skills'>
+        <div id='skills-list'>
           <Progress skill='JavaScript' percent={80} />
           <Progress skill='React and Redux' percent={80} />
           <Progress skill='Version Control' percent={80} />
