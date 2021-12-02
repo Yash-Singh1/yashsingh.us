@@ -2,8 +2,6 @@ import { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 
 function More({ children, onShown = () => {} }) {
-  console.log(onShown.toString())
-
   const [moreShown, showMore] = useState(false);
 
   useEffect(() => {
