@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 import { useIsMounted } from 'react-tidy';
-const intervalGap = 20;
+const intervalGap = 50;
 
 function Progress({ percent, skill, animate = true }) {
   const [currentPercent, setCurrentPercent] = useState(animate ? 0 : percent);
