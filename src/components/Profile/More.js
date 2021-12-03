@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 
-function More({ children, onShown = () => {} }) {
+function More({ children, onShown = () => {}, onHidden = () => {} }) {
   const [moreShown, showMore] = useState(false);
 
   useEffect(() => {
@@ -27,7 +27,10 @@ function More({ children, onShown = () => {} }) {
         <button
           id='show-less'
           className='bg-blue-500 hover:bg-blue-400 text-white font-bold py-2 px-4 border-blue-700 hover:border-blue-500 rounded-full cursor-pointer outline-none'
-          onClick={() => showMore(false)}
+          onClick={() => {
+            onHidden();
+            showMore(false);
+          }}
           type='button'
         >
           Show Less
@@ -39,7 +42,8 @@ function More({ children, onShown = () => {} }) {
 
 More.propTypes = {
   children: PropTypes.node,
-  onShown: PropTypes.func
+  onShown: PropTypes.func,
+  onHidden: PropTypes.func
 };
 
 export default More;
