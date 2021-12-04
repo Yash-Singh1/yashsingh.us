@@ -41,7 +41,8 @@ function Post() {
           { name: 'About', href: '/', internal: true },
           { name: 'Blog', href: '/blog/?page=1', internal: true },
           { name: 'Email', href: 'mailto:saiansh2525@gmail.com' },
-          { name: 'GitHub', href: 'https://github.com/Yash-Singh1' }
+          { name: 'GitHub', href: 'https://github.com/Yash-Singh1' },
+          { name: 'DevPage', href: 'https://dev.page/yash' }
         ]}
       />
     </Container>
