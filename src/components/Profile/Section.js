@@ -1,20 +1,23 @@
 import PropTypes from 'prop-types';
 
 function Section({ title, children }) {
+  const hash = title.toLowerCase().replace(' ', '-');
   return (
-    <>
-      <br id={title.toLowerCase()} />
-      <br />
-      <span
-        className='subheading'
-        onClick={() => {
-          location.hash = `#${title.toLowerCase()}`;
-        }}
-      >
-        {title}
-      </span>
-      {children}
-    </>
+    <div className='min-h-full section' id={hash}>
+      <div data-aos='slide-right'>
+        <br />
+        <br />
+        <span
+          className='subheading'
+          onClick={() => {
+            location.hash = `#${hash}`;
+          }}
+        >
+          {title}
+        </span>
+        {children}
+      </div>
+    </div>
   );
 }
 

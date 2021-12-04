@@ -9,6 +9,7 @@ import Contacts from '../Contacts';
 import Container from '../Container';
 import { Link } from 'react-router-dom';
 import '../../styles/profile.css';
+import AOS from 'aos';
 
 function Profile() {
   const [loadedImages, loadImage] = useState([]);
@@ -22,16 +23,27 @@ function Profile() {
     }
   }, [loadedImages]);
 
+  useEffect(() => {
+    AOS.init({ duration: 500 });
+  }, []);
+
   return (
-    <Container>
-      <Header title='Saiansh (Yash) Singh' intro="It's" />
-      <Section title='About'>
+    <Container className='box-content container-profile'>
+      <Header title='Saiansh (Yash) Singh' intro="It's">
         <Paragraph>
           I am a dude programming stuff in the Bay Area. I love learning new things and facing challenges and bugs. Without them, I am bored (or I
           create more bugs!). I can program in multiple different languages, the one I can code the coolest stuff in is JavaScript/Typescript. I play
           a lot of basketball.
         </Paragraph>
-      </Section>
+        <br />
+        <button
+          className='bg-blue-500 hover:bg-blue-400 text-white font-bold py-2 px-4 border-blue-700 hover:border-blue-500 cursor-pointer rounded-lg outline-none'
+          onClick={() => (location.hash = '#projects')}
+          type='button'
+        >
+          Learn More About Me
+        </button>
+      </Header>
       <Section title='Projects'>
         <div className='text-gray-400 text-xl mt-5'>
           <span id='project-note'>I have many interesting projects. Here are a few handpicked ones:</span>
@@ -67,19 +79,14 @@ function Profile() {
           </More>
         </div>
       </Section>
-      <Section title='Blog'>
+      <Section title='More'>
         <Paragraph>
           I maintain a blog site with multiple posts on different topics related to programming at{' '}
           <Link className='text-blue-500' to='/blog/?page=1'>
             http://www.yashsingh.us/blog/
           </Link>
-          .
+          . I am also currently enrolled ⚡ Lawson Middle School (Lightning) ⚡.
         </Paragraph>
-      </Section>
-      <Section title='School'>
-        <Paragraph>I am currently in Lawson Middle School.</Paragraph>
-      </Section>
-      <Section title='Contact Me'>
         <Contacts
           contacts={[
             { name: 'Blog', href: '/blog/?page=1', internal: true },

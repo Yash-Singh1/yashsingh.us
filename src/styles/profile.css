@@ -1,3 +1,5 @@
+@import url('aos/dist/aos.css');
+
 .subheading {
   @apply text-purple-700 uppercase font-mono font-bold text-2xl cursor-pointer;
 }
@@ -35,4 +37,33 @@ span#project-note ~ div > a:nth-child(2) {
 
 .progress-bar {
   @apply shadow-none flex flex-col justify-center bg-purple-400 rounded-full;
+}
+
+.container-profile {
+  width: calc(100% - 48px) !important;
+}
+
+@media (min-width: 768px) {
+  .container-profile {
+    width: calc(100% - 96px) !important;
+  }
+}
+
+@media (min-width: 1024px) {
+  .container-profile {
+    width: calc(100% - 192px) !important;
+  }
+}
+
+[data-aos='slide-right'] {
+  -webkit-transform: translate3d(-100%, 0, 0);
+  -ms-transform: translate3d(-100%, 0, 0);
+  transform: translate3d(-100%, 0, 0);
+}
+
+.section {
+  padding: inherit;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }

@@ -2,6 +2,16 @@
 @tailwind components;
 @tailwind utilities;
 
+html {
+  scroll-behavior: smooth;
+}
+
+html,
+body,
+div#root {
+  height: 100%;
+}
+
 body {
   background-color: #0f172a;
 }
