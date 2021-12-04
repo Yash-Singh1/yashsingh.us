@@ -67,3 +67,7 @@ span#project-note ~ div > a:nth-child(2) {
   flex-direction: column;
   justify-content: center;
 }
+
+.container-profile .header {
+  padding: inherit;
+}

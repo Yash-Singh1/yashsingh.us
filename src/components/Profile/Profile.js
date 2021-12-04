@@ -31,9 +31,8 @@ function Profile() {
     <Container className='box-content container-profile'>
       <Header title='Saiansh (Yash) Singh' intro="It's">
         <Paragraph>
-          I am a dude programming stuff in the Bay Area. I love learning new things and facing challenges and bugs. Without them, I am bored (or I
-          create more bugs!). I can program in multiple different languages, the one I can code the coolest stuff in is JavaScript/Typescript. I play
-          a lot of basketball.
+          I am a programmer of the Bay Area. I program many cool stuff in a variety of languages, my best being JavaScript/TypeScript. I am better at
+          frontend and work with React.
         </Paragraph>
         <br />
         <button
@@ -59,6 +58,9 @@ function Profile() {
             <RepoCard repo='Yash-Singh1/equation-slides' onLoad={imageOnLoad} />
             <RepoCard repo='Yash-Singh1/monkeyide' onLoad={imageOnLoad} />
           </div>
+          <Paragraph className='text-blue-400 text-lg cursor-pointer'>
+            <a href='https://github.com/Yash-Singh1/?tab=repositories&sort=stargazers'>See more...</a>
+          </Paragraph>
         </div>
       </Section>
       <Section title='Skills'>
