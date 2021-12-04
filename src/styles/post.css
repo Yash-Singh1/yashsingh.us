@@ -52,3 +52,7 @@ blockquote {
 .hljs {
   @apply bg-transparent;
 }
+
+ol {
+  list-style-type: decimal !important;
+}
