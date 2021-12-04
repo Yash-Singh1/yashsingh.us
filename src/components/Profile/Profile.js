@@ -29,7 +29,7 @@ function Profile() {
 
   return (
     <Container className='box-content container-profile'>
-      <Header title='Saiansh (Yash) Singh' intro="It's">
+      <Header title='Saiansh (Yash) Singh' intro="It's" large>
         <Paragraph>
           I am a programmer of the Bay Area. I program many cool stuff in a variety of languages, my best being JavaScript/TypeScript. I am better at
           frontend and work with React.
