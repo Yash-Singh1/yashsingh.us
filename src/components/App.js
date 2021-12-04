@@ -5,6 +5,7 @@ const Blog = React.lazy(() => import('./Blog/Blog'));
 const Post = React.lazy(() => import('./Post/Post'));
 const Profile = React.lazy(() => import('./Profile/Profile'));
 const TechCovid = React.lazy(() => import('./TechCovid/TechCovid'));
+const NotFound = React.lazy(() => import('./NotFound/NotFound'));
 
 function App() {
   return (
@@ -42,6 +43,14 @@ function App() {
           element={
             <LoadingWrapper>
               <TechCovid />
+            </LoadingWrapper>
+          }
+        />
+        <Route
+          path='*'
+          element={
+            <LoadingWrapper>
+              <NotFound />{' '}
             </LoadingWrapper>
           }
         />

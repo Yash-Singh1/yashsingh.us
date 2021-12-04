@@ -1,0 +1,8 @@
+div#root {
+  display: table;
+}
+
+div#root > div {
+  display: table-cell;
+  vertical-align: middle;
+}
