@@ -1,14 +1,14 @@
 @import url('aos/dist/aos.css');
 
 .subheading {
-  @apply text-purple-700 uppercase font-mono font-bold text-2xl cursor-pointer;
+  @apply text-violet-700 uppercase font-mono font-bold text-2xl cursor-pointer;
 }
 
 .subheading:hover::before {
   content: '🔗';
   margin-left: -40px;
   margin-right: 10px;
-  @apply text-purple-400;
+  @apply text-violet-400;
 }
 
 span#project-note ~ div {
@@ -24,7 +24,7 @@ span#project-note ~ div > a:nth-child(2) {
 }
 
 #skills-list > p {
-  @apply mt-5 mb-2 text-purple-700 font-medium;
+  @apply mt-5 mb-2 text-violet-700 font-medium;
 }
 
 #skills-list > div:not(#show-more-container):not(#show-less-container) {
@@ -36,7 +36,7 @@ span#project-note ~ div > a:nth-child(2) {
 }
 
 .progress-bar {
-  @apply shadow-none flex flex-col justify-center bg-purple-400 rounded-full;
+  @apply shadow-none flex flex-col justify-center bg-violet-400 rounded-full;
 }
 
 .container-profile {
