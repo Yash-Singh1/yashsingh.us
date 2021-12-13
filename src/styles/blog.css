@@ -3,7 +3,7 @@ body {
 }
 
 #title {
-  @apply text-purple-700 uppercase font-mono font-bold text-2xl group-hover:text-purple-500 transition;
+  @apply text-violet-700 uppercase font-mono font-bold text-2xl group-hover:text-violet-500 transition;
 }
 
 #subtitle {

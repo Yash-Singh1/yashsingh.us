@@ -4,9 +4,9 @@ import PropTypes from 'prop-types';
 function Header({ title, intro, children = null, large = false }) {
   return (
     <div className={`${large ? 'min-h-full' : ''} header`}>
-      <h1 className='font-semibold text-xl font-mono text-purple-700'>Hey there 😃! {intro}</h1>
+      <h1 className='font-semibold text-xl font-mono text-violet-700'>Hey there 😃! {intro}</h1>
       <h1 className='font-bold text-6xl text-gray-200 mt-5'>{title}</h1>
-      <h1 className='font-semibold text-2xl font-mono text-purple-700 mt-5'>
+      <h1 className='font-semibold text-2xl font-mono text-violet-700 mt-5'>
         Working on{' '}
         <Typer
           strings={[

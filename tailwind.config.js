@@ -1,13 +1,6 @@
 module.exports = {
-  purge: {
-    enabled: true,
-    content: ['./src/components/**/*.js']
-  },
-  darkMode: false,
+  content: ['./src/components/**/*.js'],
   theme: {
-    extend: {}
-  },
-  variants: {
     extend: {}
   },
   plugins: []
