@@ -1,5 +1,4 @@
 import { useEffect } from 'react';
-import '../../styles/index.css';
 import '../../styles/not-found.css';
 import Paragraph from '../Profile/Paragraph';
 
