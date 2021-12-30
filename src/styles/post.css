@@ -7,7 +7,17 @@ footer {
 
 .markdown-body {
   min-width: 200px;
-  @apply box-border max-w-5xl m-auto p-11 bg-transparent;
+  @apply box-border m-auto p-11 bg-transparent;
+}
+
+.markdown-body {
+  max-width: 100%;
+}
+
+@media (min-width: 992px) {
+  .markdown-body {
+    max-width: 75%;
+  }
 }
 
 @media (max-width: 767px) {
