@@ -1,8 +1,8 @@
-div#root {
+html.not-found div#root {
   display: table;
 }
 
-div#root > div {
+html.not-found div#root > div {
   display: table-cell;
   vertical-align: middle;
 }

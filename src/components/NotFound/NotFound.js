@@ -4,9 +4,9 @@ import Paragraph from '../Profile/Paragraph';
 
 function NotFound() {
   useEffect(() => {
-    document.documentElement.classList.add('404');
+    document.documentElement.classList.add('not-found');
 
-    return () => document.documentElement.classList.remove('404');
+    return () => document.documentElement.classList.remove('not-found');
   }, []);
 
   return (
