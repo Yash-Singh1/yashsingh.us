@@ -1,24 +1,35 @@
-/* Inspired by https://vineethtrv.github.io/loader/ */
+/* Inspired by https://vineethtrv.github.io/css-loader/ */
 
 .loader {
-  width: 48px;
-  height: 48px;
-  border: 5px solid #fff;
-  border-top: 5px solid red;
-  border-radius: 50%;
+  border: 8px solid rgba(6, 56, 117, 0.43);
+  background-color: rgba(16, 46, 90, 0.5);
   display: inline-block;
   position: absolute;
-  top: calc(50% - 48px);
-  right: calc(50% - 48px);
   box-sizing: border-box;
-  animation: rotation 1s linear infinite;
+  border-radius: 40%;
+  animation: rotation 1.25s linear infinite;
 }
 
 @keyframes rotation {
-  from {
+  0% {
     transform: rotate(0deg);
+    width: 48px;
+    height: 48px;
+    top: calc(50% - 48px);
+    right: calc(50% - 48px);  
   }
-  to {
+  50% {
+    transform: rotate(180deg);
+    width: 80px;
+    height: 80px;
+    top: calc(50% - 60px);
+    right: calc(50% - 60px);  
+  }
+  100% {
     transform: rotate(360deg);
+    width: 48px;
+    height: 48px;
+    top: calc(50% - 48px);
+    right: calc(50% - 48px);  
   }
 }
