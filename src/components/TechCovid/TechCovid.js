@@ -42,12 +42,6 @@ function TechCovid() {
     }
   }, [svg]);
 
-  useEffect(() => {
-    document.documentElement.classList.add('infographic-tech-covid');
-
-    return () => document.documentElement.classList.remove('infographic-tech-covid');
-  }, []);
-
   return (
     <>
       <div ref={svg}>

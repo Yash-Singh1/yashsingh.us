@@ -41,7 +41,7 @@ function App() {
           exact
           path='/infographic/tech-covid'
           element={
-            <LoadingWrapper>
+            <LoadingWrapper className='infographic-tech-covid'>
               <TechCovid />
             </LoadingWrapper>
           }
@@ -50,7 +50,7 @@ function App() {
           path='*'
           element={
             <LoadingWrapper>
-              <NotFound />{' '}
+              <NotFound />
             </LoadingWrapper>
           }
         />
