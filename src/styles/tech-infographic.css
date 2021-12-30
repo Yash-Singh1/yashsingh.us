@@ -1,6 +1,5 @@
 html.infographic-tech-covid > body {
   background-color: rgb(209, 206, 206) !important;
-  margin-top: 5%;
 }
 
 html.infographic-tech-covid > body,
@@ -8,6 +7,10 @@ html.infographic-tech-covid,
 html.infographic-tech-covid div#root {
   width: 100%;
   height: 100%;
+}
+
+svg.infographic-svg {
+  margin-top: 5%;
 }
 
 svg.infographic-svg > g > [for] {
