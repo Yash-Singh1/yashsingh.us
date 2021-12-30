@@ -1,7 +1,6 @@
 import Infographic from './infographic.svg';
 import { useEffect, useRef } from 'react';
 import '../../styles/tech-infographic.css';
-import '../../styles/post.css';
 import Info from './Information.mdx';
 import Code from '../Post/Markdown_Components/Code';
 import HeadingFactory from '../Post/Markdown_Components/HeadingFactory';

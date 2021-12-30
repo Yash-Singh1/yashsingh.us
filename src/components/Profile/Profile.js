@@ -45,7 +45,7 @@ function Profile() {
       </Header>
       <Section title='Projects'>
         <div className='text-gray-400 text-xl mt-5'>
-          <span id='project-note'>I have many interesting projects. Here are a few handpicked ones:</span>
+          <span id='project-note' className='par'>I have many interesting projects. Here are a few handpicked ones:</span>
           <div>
             <RepoCard repo='Yash-Singh1/epack' onLoad={imageOnLoad} />
             <RepoCard repo='Yash-Singh1/randomgen-parser' onLoad={imageOnLoad} />
