@@ -7,11 +7,9 @@ footer {
 
 .markdown-body {
   min-width: 200px;
-  @apply box-border m-auto p-11 bg-transparent;
-}
-
-.markdown-body {
   max-width: 100%;
+  --color-fg-default: inherit !important;
+  @apply box-border m-auto p-11 bg-transparent;
 }
 
 @media (min-width: 992px) {
