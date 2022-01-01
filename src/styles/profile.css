@@ -24,7 +24,7 @@ span#project-note ~ div > a:nth-child(2) {
 }
 
 #skills-list > p {
-  @apply mt-5 mb-2 text-violet-700 font-medium;
+  @apply mt-5 mb-2 text-violet-700;
 }
 
 #skills-list > div:not(#show-more-container):not(#show-less-container) {

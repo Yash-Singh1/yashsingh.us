@@ -9,8 +9,8 @@ function Post({ ...frontmatter }) {
     <>
       <LinkComponent {...linkProps} className='group'>
         <span id='title'>{frontmatter.title}</span>
-        <p id='subtitle'>{frontmatter.subtitle}</p>
-        <i id='info'>
+        <p id='subtitle' className='par'>{frontmatter.subtitle}</p>
+        <i id='info' className='par'>
           Posted by {frontmatter.author} on {frontmatter.date}
         </i>
       </LinkComponent>
