@@ -48,7 +48,7 @@ function TechCovid() {
       </div>
 
       <article className='markdown-body'>
-        <Info components={{ code: Code, h1: HeadingFactory(1), h2: HeadingFactory(2), h3: HeadingFactory(3) }} />{' '}
+        <Info components={{ code: Code, h1: HeadingFactory(1), h2: HeadingFactory(2), h3: HeadingFactory(3) }} />
       </article>
     </>
   );

@@ -14,7 +14,7 @@ div#root {
   height: 100%;
 }
 
-.par, .markdown-body {
+.par, .markdown-body, text {
   font-family: 'Baloo Bhai 2', cursive;
 }
 
