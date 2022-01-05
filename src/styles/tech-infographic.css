@@ -1,5 +1,5 @@
 html.infographic-tech-covid > body {
-  background-color: #00203FFF !important;
+  background-color: #37474f !important;
 }
 
 html.infographic-tech-covid > body,
@@ -10,7 +10,11 @@ html.infographic-tech-covid div#root {
 }
 
 html.infographic-tech-covid article.markdown-body {
-  color: #adefd1ff;
+  color: #eee;
+}
+
+html.infographic-tech-covid .loader {
+  filter: contrast(0.25) brightness(1.5);
 }
 
 html.infographic-tech-covid [fill='#29384d']:not(path#dk):not(path#dl) {
@@ -38,6 +42,6 @@ svg.infographic-svg g#everything > [for] {
   pointer-events: none;
 }
 
-.markdown-body {
-  --color-accent-fg: #b7d8f5;
+html.infographic-tech-covid .markdown-body {
+  --color-accent-fg: #6bb9f0;
 }
