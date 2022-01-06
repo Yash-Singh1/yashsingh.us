@@ -27,7 +27,8 @@
     "start": "npm run build && live-server public/ --entry-file=index.html --no-browser",
     "dev": "npm run build -- dev",
     "storybook": "start-storybook -p 6006",
-    "build-storybook": "build-storybook"
+    "build-storybook": "build-storybook",
+    "format": "prettier --write ."
   },
   "devDependencies": {
     "@babel/core": "^7.16.0",

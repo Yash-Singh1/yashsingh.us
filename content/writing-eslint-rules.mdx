@@ -42,9 +42,7 @@ interface RuleSchema {
     deprecated: boolean;
     replacedBy: Array<string>; // if deprecated, replacement rules
   };
-  create: (
-    context: object /* information on the code */
-  ) => {
+  create: (context: object /* information on the code */) => {
     [ASTSelector: string]: (node) => void;
   };
 }

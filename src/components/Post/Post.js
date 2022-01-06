@@ -14,26 +14,42 @@ function Post() {
 
   const posts = usePosts();
 
-  const filenameIndex = posts ? posts.filenames.indexOf(/([^/]*?)(\.[^/.]*?)?$/.exec(post)[1]) : undefined;
+  const filenameIndex = posts
+    ? posts.filenames.indexOf(/([^/]*?)(\.[^/.]*?)?$/.exec(post)[1])
+    : undefined;
   const postInfo = posts ? posts.default[filenameIndex] : undefined;
 
   return postInfo ? (
     <Container>
-      <Link to={`/blog/?page=${(filenameIndex - (filenameIndex % 5)) / 5 + 1}`} className='lg:bottom-10 xl:bottom-18 2xl:bottom-26 text-blue-500 relative text-2xl'>
+      <Link
+        to={`/blog/?page=${(filenameIndex - (filenameIndex % 5)) / 5 + 1}`}
+        className='lg:bottom-10 xl:bottom-18 2xl:bottom-26 text-blue-500 relative text-2xl'
+      >
         ← Back to blog
       </Link>
       <img src={postInfo.image} className='w-1/2 max-h-80 object-center mx-auto' />
       <br />
       <br />
-      <h1 className='font-semibold text-6xl text-violet-700 text-center uppercase tracking-wider'>{postInfo.title}</h1>
-      <h1 className='font-semibold text-2xl font-mono text-violet-500 text-center mt-2'>{postInfo.subtitle}</h1>
+      <h1 className='font-semibold text-6xl text-violet-700 text-center uppercase tracking-wider'>
+        {postInfo.title}
+      </h1>
+      <h1 className='font-semibold text-2xl font-mono text-violet-500 text-center mt-2'>
+        {postInfo.subtitle}
+      </h1>
       <p className='font-semibold text-medium font-mono text-violet-300 text-center italic mt-2'>
         Posted by {postInfo.author} on {postInfo.date}
       </p>
       <br />
       <br />
       <article className='markdown-body text-white'>
-        <postInfo.default components={{ code: Code, h1: HeadingFactory(1), h2: HeadingFactory(2), h3: HeadingFactory(3) }} />
+        <postInfo.default
+          components={{
+            code: Code,
+            h1: HeadingFactory(1),
+            h2: HeadingFactory(2),
+            h3: HeadingFactory(3)
+          }}
+        />
       </article>
       <Contacts
         className='text-center'

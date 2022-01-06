@@ -3,13 +3,17 @@ import { Link } from 'react-router-dom';
 
 function Post({ ...frontmatter }) {
   const LinkComponent = frontmatter.link ? 'a' : Link;
-  const linkProps = frontmatter.link ? { href: frontmatter.link, target: '_blank' } : { to: `/blog/post/${frontmatter.filename}` };
+  const linkProps = frontmatter.link
+    ? { href: frontmatter.link, target: '_blank' }
+    : { to: `/blog/post/${frontmatter.filename}` };
 
   return (
     <>
       <LinkComponent {...linkProps} className='group'>
         <span id='title'>{frontmatter.title}</span>
-        <p id='subtitle' className='par'>{frontmatter.subtitle}</p>
+        <p id='subtitle' className='par'>
+          {frontmatter.subtitle}
+        </p>
         <i id='info' className='par'>
           Posted by {frontmatter.author} on {frontmatter.date}
         </i>

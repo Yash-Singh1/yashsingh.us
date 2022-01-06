@@ -12,7 +12,9 @@ function TechCovid() {
   useEffect(() => {
     if (svg && svg.current) {
       svg.current.querySelectorAll(':not(#everything) > [for]').forEach((iconNode) => {
-        const matchingNode = svg.current.querySelector(`#everything > [for="${iconNode.getAttribute('for')}"]`);
+        const matchingNode = svg.current.querySelector(
+          `#everything > [for="${iconNode.getAttribute('for')}"]`
+        );
         matchingNode.classList.add('hidden');
 
         iconNode.onmouseover = () => {
@@ -28,7 +30,10 @@ function TechCovid() {
         };
 
         iconNode.onclick = () => {
-          if (matchingNode.classList.contains('hidden') || matchingNode.classList.contains('inside')) {
+          if (
+            matchingNode.classList.contains('hidden') ||
+            matchingNode.classList.contains('inside')
+          ) {
             matchingNode.classList.remove('hidden');
             matchingNode.classList.remove('inside');
             matchingNode.classList.add('dont-hide');
@@ -48,7 +53,14 @@ function TechCovid() {
       </div>
 
       <article className='markdown-body'>
-        <Info components={{ code: Code, h1: HeadingFactory(1), h2: HeadingFactory(2), h3: HeadingFactory(3) }} />
+        <Info
+          components={{
+            code: Code,
+            h1: HeadingFactory(1),
+            h2: HeadingFactory(2),
+            h3: HeadingFactory(3)
+          }}
+        />
       </article>
     </>
   );

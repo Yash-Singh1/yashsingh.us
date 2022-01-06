@@ -19,7 +19,9 @@ function Profile() {
 
   useEffect(() => {
     if (location.hash && loadedImages.length === 6) {
-      document.getElementById(location.hash.slice(1).toLowerCase())?.scrollIntoView({ behavior: 'smooth' });
+      document
+        .getElementById(location.hash.slice(1).toLowerCase())
+        ?.scrollIntoView({ behavior: 'smooth' });
     }
   }, [loadedImages]);
 
@@ -31,8 +33,8 @@ function Profile() {
     <Container className='box-content container-profile'>
       <Header title='Saiansh (Yash) Singh' intro="It's" large>
         <Paragraph>
-          I am a programmer of the Bay Area. I program many cool stuff in a variety of languages, my best being JavaScript/TypeScript. I am better at
-          frontend and work with React.
+          I am a programmer of the Bay Area. I program many cool stuff in a variety of languages, my
+          best being JavaScript/TypeScript. I am better at frontend and work with React.
         </Paragraph>
         <br />
         <button
@@ -45,7 +47,9 @@ function Profile() {
       </Header>
       <Section title='Projects'>
         <div className='text-gray-400 text-xl mt-5'>
-          <span id='project-note' className='par'>I have many interesting projects. Here are a few handpicked ones:</span>
+          <span id='project-note' className='par'>
+            I have many interesting projects. Here are a few handpicked ones:
+          </span>
           <div>
             <RepoCard repo='Yash-Singh1/epack' onLoad={imageOnLoad} />
             <RepoCard repo='Yash-Singh1/randomgen-parser' onLoad={imageOnLoad} />
@@ -59,7 +63,9 @@ function Profile() {
             <RepoCard repo='Yash-Singh1/monkeyide' onLoad={imageOnLoad} />
           </div>
           <Paragraph className='text-blue-400 text-lg cursor-pointer'>
-            <a href='https://github.com/Yash-Singh1/?tab=repositories&sort=stargazers'>See more...</a>
+            <a href='https://github.com/Yash-Singh1/?tab=repositories&sort=stargazers'>
+              See more...
+            </a>
           </Paragraph>
         </div>
       </Section>
@@ -71,12 +77,13 @@ function Profile() {
           <Progress skill='Version Control' percent={80} />
           <Progress skill='Chrome Extensions' percent={80} />
           <Progress skill='Bootstrap' percent={70} />
-          <Progress skill='Tailwind CSS' percent={60} />
-          <Progress skill='CoffeeScript' percent={60} />
+          <Progress skill='CSS' percent={70} />
+          <Progress skill='Python' percent={70} animate={animateAgain} />
           <More onHidden={() => setAnimateAgain(false)}>
-            <Progress skill='CSS' percent={50} animate={animateAgain} />
-            <Progress skill='Python' percent={50} animate={animateAgain} />
-            <Progress skill='Typescript' percent={50} animate={animateAgain} />
+            <Progress skill='Typescript' percent={70} animate={animateAgain} />
+            <Progress skill='Tailwind CSS' percent={60} />
+            <Progress skill='CoffeeScript' percent={60} animate={animateAgain} />
+            <Progress skill='C++' percent={60} animate={animateAgain} />
             <Progress skill='C# in Unity' percent={50} animate={animateAgain} />
           </More>
         </div>

@@ -33,7 +33,12 @@ function reactSyntaxHighlighterLanguage(lang) {
 function Code({ className, ...props }) {
   const match = /language-(\w+)/.exec(className || '');
   return match ? (
-    <SyntaxHighlighter language={reactSyntaxHighlighterLanguage(match[1])} PreTag='div' useInlineStyles={false} {...props} />
+    <SyntaxHighlighter
+      language={reactSyntaxHighlighterLanguage(match[1])}
+      PreTag='div'
+      useInlineStyles={false}
+      {...props}
+    />
   ) : (
     <code className={className} {...props} />
   );

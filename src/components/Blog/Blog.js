@@ -20,7 +20,9 @@ function Blog() {
       {posts.default.slice(page * 5 - 5, page * 5).map((post, index) => (
         <Post key={index} {...post} filename={posts.filenames[index + (page * 5 - 5)]} />
       ))}
-      {page > 1 ? <ButtonLink to={`/blog/?page=${Number(page) - 1}`}>Newer Posts</ButtonLink> : null}
+      {page > 1 ? (
+        <ButtonLink to={`/blog/?page=${Number(page) - 1}`}>Newer Posts</ButtonLink>
+      ) : null}
       {page * 5 >= posts.default.length ? null : (
         <ButtonLink to={`/blog/?page=${Number(page) + 1}`} className={page > 1 ? 'ml-5' : ''}>
           Older Posts

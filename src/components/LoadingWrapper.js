@@ -9,9 +9,9 @@ function LoadingWrapper({ children, className }) {
   if (className) {
     useEffect(() => {
       document.documentElement.classList.add(className);
-  
+
       return () => document.documentElement.classList.remove(className);
-    }, []);  
+    }, []);
   }
 
   return <Suspense fallback={<Loader />}>{children}</Suspense>;

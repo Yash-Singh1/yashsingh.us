@@ -15,7 +15,12 @@ import('xdm/esbuild.js').then(({ default: xdm }) => {
         outdir: 'public/',
         splitting: true,
         format: 'esm',
-        plugins: [ImportGlobPlugin(), postCssPlugin(require('./postcss.config.js')), xdm({ remarkPlugins: [remarkGfm] }), svgrPlugin()],
+        plugins: [
+          ImportGlobPlugin(),
+          postCssPlugin(require('./postcss.config.js')),
+          xdm({ remarkPlugins: [remarkGfm] }),
+          svgrPlugin()
+        ],
         minify: true,
         loader: {
           '.js': 'jsx'
