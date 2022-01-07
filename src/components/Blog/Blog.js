@@ -7,23 +7,30 @@ import ButtonLink from './ButtonLink';
 import '../../styles/blog.css';
 import usePosts from '../../hooks/usePosts';
 import { useLocation } from 'react-router';
+import filenames from '../../data/filenames.json';
 
 function Blog() {
-  const posts = usePosts();
+  const { info } = usePosts(false);
 
   const page = new URLSearchParams(useLocation().search).get('page') || 1;
 
-  return posts ? (
+  return info ? (
     <Container>
       <Header title="Yash Singh's Blog" intro='Welcome to' />
       <br />
-      {posts.default.slice(page * 5 - 5, page * 5).map((post, index) => (
-        <Post key={index} {...post} filename={posts.filenames[index + (page * 5 - 5)]} />
-      ))}
+      {Object.values(info)
+        .slice(page * 5 - 5, page * 5)
+        .map((info) => (
+          <Post
+            key={info.index}
+            {...info}
+            filename={/([^/]*?)(\.[^/.]*?)?$/.exec(filenames[info.index + (page * 5 - 5)])[1]}
+          />
+        ))}
       {page > 1 ? (
         <ButtonLink to={`/blog/?page=${Number(page) - 1}`}>Newer Posts</ButtonLink>
       ) : null}
-      {page * 5 >= posts.default.length ? null : (
+      {page * 5 >= info.length ? null : (
         <ButtonLink to={`/blog/?page=${Number(page) + 1}`} className={page > 1 ? 'ml-5' : ''}>
           Older Posts
         </ButtonLink>

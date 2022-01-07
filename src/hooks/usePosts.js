@@ -1,12 +1,16 @@
 import { useSelector, useDispatch } from 'react-redux';
-import { fetchPosts } from '../actions/recievePosts';
+import { fetchInfo } from '../actions/recieveInfo';
+import { fetchPost } from '../actions/recievePost';
 
-function usePosts() {
+function usePosts(postsInclude = false) {
   const posts = useSelector((state) => state.posts);
   const dispatch = useDispatch();
 
-  if (!posts) {
-    dispatch(fetchPosts());
+  if (postsInclude && (!posts.posts || !posts.posts[postsInclude]) && posts.info) {
+    dispatch(fetchInfo());
+    dispatch(fetchPost(postsInclude));
+  } else if (!posts.info) {
+    dispatch(fetchInfo());
   }
 
   return posts;

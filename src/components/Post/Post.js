@@ -8,18 +8,19 @@ import HeadingFactory from './Markdown_Components/HeadingFactory';
 import usePosts from '../../hooks/usePosts';
 import { useParams } from 'react-router';
 import { Link } from 'react-router-dom';
+import filenames from '../../data/filenames.json';
 
 function Post() {
-  const { post } = useParams();
+  let { post } = useParams();
+  post = /([^/]*?)(\.[^/.]*?)?$/.exec(post)[1];
 
-  const posts = usePosts();
+  const { posts, info } = usePosts(post);
 
-  const filenameIndex = posts
-    ? posts.filenames.indexOf(/([^/]*?)(\.[^/.]*?)?$/.exec(post)[1])
-    : undefined;
-  const postInfo = posts ? posts.default[filenameIndex] : undefined;
+  const filenameIndex = posts ? filenames.indexOf(post) : undefined;
+  const postInfo = info ? info[`${post}.mdx`] : undefined;
+  const PostComponent = posts ? posts[post] : undefined;
 
-  return postInfo ? (
+  return postInfo && posts && PostComponent ? (
     <Container>
       <Link
         to={`/blog/?page=${(filenameIndex - (filenameIndex % 5)) / 5 + 1}`}
@@ -42,7 +43,7 @@ function Post() {
       <br />
       <br />
       <article className='markdown-body text-white'>
-        <postInfo.default
+        <PostComponent
           components={{
             code: Code,
             h1: HeadingFactory(1),

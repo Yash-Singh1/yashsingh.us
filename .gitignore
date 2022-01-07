@@ -6,3 +6,4 @@ package-lock.json
 public/*
 !public/img/
 !public/index.html
+src/data
