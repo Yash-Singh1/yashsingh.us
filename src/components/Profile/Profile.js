@@ -78,10 +78,10 @@ function Profile() {
           <Progress skill='Chrome Extensions' percent={80} />
           <Progress skill='Bootstrap' percent={70} />
           <Progress skill='CSS' percent={70} />
-          <Progress skill='Python' percent={70} animate={animateAgain} />
+          <Progress skill='Python' percent={70} />
           <More onHidden={() => setAnimateAgain(false)}>
             <Progress skill='Typescript' percent={70} animate={animateAgain} />
-            <Progress skill='Tailwind CSS' percent={60} />
+            <Progress skill='Tailwind CSS' percent={60} animate={animateAgain} />
             <Progress skill='CoffeeScript' percent={60} animate={animateAgain} />
             <Progress skill='C++' percent={60} animate={animateAgain} />
             <Progress skill='C# in Unity' percent={50} animate={animateAgain} />
