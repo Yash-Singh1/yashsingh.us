@@ -37,3 +37,15 @@ body {
 ::-webkit-scrollbar-thumb {
   background-color: #454a4d;
 }
+
+.logo {
+  height: 3rem;
+  width: 3rem;
+  display: inline-block;
+  margin: 10px;
+  background-color: transparent !important;
+  user-select: none;
+  -moz-user-select: none;
+  -webkit-user-select: none;
+  -ms-user-select: none;
+}

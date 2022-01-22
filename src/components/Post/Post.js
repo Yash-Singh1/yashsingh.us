@@ -57,9 +57,9 @@ function Post() {
         contacts={[
           { name: 'About', href: '/', internal: true },
           { name: 'Blog', href: '/blog/?page=1', internal: true },
+          { name: 'Contacts', href: '/contacts', internal: true },
           { name: 'Email', href: 'mailto:saiansh2525@gmail.com' },
-          { name: 'GitHub', href: 'https://github.com/Yash-Singh1' },
-          { name: 'DevPage', href: 'https://dev.page/yash' }
+          { name: 'GitHub', href: 'https://github.com/Yash-Singh1' }
         ]}
       />
     </Container>
