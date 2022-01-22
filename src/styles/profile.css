@@ -4,6 +4,10 @@
   @apply text-violet-700 uppercase font-mono font-bold text-2xl cursor-pointer;
 }
 
+.full-min-h {
+  min-height: 100vh;
+}
+
 .subheading:hover::before {
   content: '🔗';
   margin-left: -40px;
