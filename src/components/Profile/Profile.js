@@ -14,16 +14,18 @@ import AOS from 'aos';
 function Profile() {
   const [loadedImages, loadImage] = useState([]);
   const [animateAgain, setAnimateAgain] = useState(true);
+  const [changedHash, changeHash] = useState(false);
 
   const imageOnLoad = () => loadImage([...loadedImages, true]);
 
   useEffect(() => {
-    if (location.hash && loadedImages.length === 6) {
+    if ((location.hash && loadedImages.length === 6) || changeHash == true) {
+      if (changedHash) changeHash(false);
       document
         .getElementById(location.hash.slice(1).toLowerCase())
         ?.scrollIntoView({ behavior: 'smooth' });
     }
-  }, [loadedImages]);
+  }, [loadedImages, changedHash]);
 
   useEffect(() => {
     AOS.init({ duration: 500 });
@@ -39,7 +41,10 @@ function Profile() {
         <br />
         <button
           className='bg-blue-500 hover:bg-blue-400 text-white font-bold py-2 px-4 border-blue-700 hover:border-blue-500 cursor-pointer rounded-lg outline-none par'
-          onClick={() => (location.hash = '#projects')}
+          onClick={() => {
+            location.hash = '#projects';
+            changeHash(true);
+          }}
           type='button'
         >
           Learn More About Me
