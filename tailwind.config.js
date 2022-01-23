@@ -1,5 +1,5 @@
 module.exports = {
-  content: ['./src/components/**/*.{js,svg}'],
+  content: ['./src/components/**/*.{js,svg}', './src/helpers/badgeColorMap.json'],
   theme: {
     extend: {}
   },

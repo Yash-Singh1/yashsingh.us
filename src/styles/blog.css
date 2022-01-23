@@ -1,5 +1,16 @@
+.posts-container {
+  display: inline-block;
+  width: 80%;
+}
+
+.keywords-container {
+  display: inline-block;
+  vertical-align: top;
+  width: 20%;
+}
+
 #title {
-  @apply text-violet-700 uppercase font-mono font-bold text-2xl group-hover:text-violet-500 transition;
+  @apply text-violet-700 uppercase font-mono font-bold text-2xl group-hover:text-violet-500 transition mr-2;
 }
 
 #subtitle {

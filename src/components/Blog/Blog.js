@@ -6,35 +6,93 @@ import Loader from '../Loader';
 import ButtonLink from './ButtonLink';
 import '../../styles/blog.css';
 import usePosts from '../../hooks/usePosts';
-import { useLocation } from 'react-router';
+import { useLocation, useNavigate } from 'react-router';
 import filenames from '../../data/filenames.json';
+import badgeColorMap from '../../helpers/badgeColorMap.json';
 
 function Blog() {
   const { info } = usePosts(false);
+  const navigate = useNavigate();
 
-  const page = new URLSearchParams(useLocation().search).get('page') || 1;
+  const params = new URLSearchParams(useLocation().search);
+  const page = params.get('page') || 1;
+  const realInfo = info
+    ? Object.fromEntries(
+        Object.entries(info).filter(([, info]) =>
+          (params.get('keywords') || '')
+            .split(',')
+            .some((keyword) => !params.get('keywords') || (info.keywords || []).includes(keyword))
+        )
+      )
+    : undefined;
 
   return info ? (
     <Container>
       <Header title="Yash Singh's Blog" intro='Welcome to' />
       <br />
-      {Object.values(info)
-        .slice(page * 5 - 5, page * 5)
-        .map((info) => (
-          <Post
-            key={info.index}
-            {...info}
-            filename={/([^/]*?)(\.[^/.]*?)?$/.exec(filenames[info.index + (page * 5 - 5)])[1]}
-          />
+      <div className='posts-container'>
+        {Object.values(realInfo)
+          .slice(page * 5 - 5, page * 5)
+          .map((info) => (
+            <Post
+              key={info.index}
+              {...info}
+              filename={/([^/]*?)(\.[^/.]*?)?$/.exec(filenames[info.index + (page * 5 - 5)])[1]}
+            />
+          ))}
+        {page > 1 ? (
+          <ButtonLink
+            to={`/blog/?page=${Number(page) - 1}${
+              params.get('keywords') ? '&keywords=' + params.get('keywords') : ''
+            }`}
+          >
+            Newer Posts
+          </ButtonLink>
+        ) : null}
+        {page * 5 >= Object.keys(realInfo).length ? null : (
+          <ButtonLink
+            to={`/blog/?page=${Number(page) + 1}${
+              params.get('keywords') ? '&keywords=' + params.get('keywords') : ''
+            }`}
+            className={page > 1 ? 'ml-5' : ''}
+          >
+            Older Posts
+          </ButtonLink>
+        )}
+      </div>
+      <div className='keywords-container text-white text-2xl par'>
+        <span className='mb-2 block'>Keywords</span>
+        {Object.keys(badgeColorMap).map((keyword, index) => (
+          <span
+            key={index}
+            className={`inline-flex items-center justify-center px-3 py-1 mr-2 text-xs font-bold leading-none text-red-100 ${badgeColorMap[keyword]} rounded-full relative h-6 bottom-1 cursor-pointer`}
+            onClick={() => {
+              navigate(
+                `${params.get('page') ? '?page=' + params.get('page') : ''}${
+                  params.get('page') ? '&' : '?'
+                }keywords=${(params.get('keywords') || '')
+                  .split(',')
+                  .filter(
+                    (str, _, paramKeywords) =>
+                      str && (str === keyword && paramKeywords.includes(keyword) ? false : true)
+                  )
+                  .reduce((keywords, matchingKeyword) => {
+                    if (!keywords.includes(matchingKeyword)) {
+                      keywords.push(matchingKeyword);
+                    }
+                    return keywords;
+                  }, [])
+                  .concat(
+                    (params.get('keywords') || '').split(',').includes(keyword) ? [] : keyword
+                  )
+                  .join(',')}`
+              );
+            }}
+          >
+            {keyword} {(params.get('keywords') || '').split(',').includes(keyword) ? '×' : ''}
+          </span>
         ))}
-      {page > 1 ? (
-        <ButtonLink to={`/blog/?page=${Number(page) - 1}`}>Newer Posts</ButtonLink>
-      ) : null}
-      {page * 5 >= info.length ? null : (
-        <ButtonLink to={`/blog/?page=${Number(page) + 1}`} className={page > 1 ? 'ml-5' : ''}>
-          Older Posts
-        </ButtonLink>
-      )}
+      </div>
       <br />
       <br />
       <Contacts

@@ -103,7 +103,6 @@ function Profile() {
         </Paragraph>
         <Contacts
           contacts={[
-            { name: 'Blog', href: '/blog/?page=1', internal: true },
             { name: 'Contacts', href: '/contacts', internal: true },
             { name: 'Email', href: 'mailto:saiansh2525@gmail.com' },
             { name: 'GitHub', href: 'https://github.com/Yash-Singh1' }
