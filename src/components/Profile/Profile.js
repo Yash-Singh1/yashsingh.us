@@ -97,7 +97,7 @@ function Profile() {
         <Paragraph>
           I maintain a blog site with multiple posts on different topics related to programming at{' '}
           <Link className='text-blue-500' to='/blog/?page=1'>
-            http://www.yashsingh.us/blog/
+            https://www.yashsingh.us/blog/
           </Link>
           . I am also currently enrolled ⚡ Lawson Middle School (Lightning) ⚡.
         </Paragraph>
