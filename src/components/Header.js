@@ -21,6 +21,7 @@ function Header({ title, intro, children = null, large = false }) {
             'libraries',
             'parsers',
             'grammars',
+            'discord servers',
             'chat bots',
             'algorithms',
             'linters',
@@ -33,6 +34,7 @@ function Header({ title, intro, children = null, large = false }) {
             'documentation',
             'react components',
             'github actions',
+            'discord bots',
             'userscripts'
           ].map((str) => str + '...')}
           typeSpeed={50}
