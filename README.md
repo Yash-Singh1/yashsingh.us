@@ -1,6 +1,6 @@
 # `yashsingh.us`
 
-This is my personal website running at [`yashsingh.us`](http://www.yashsingh.us/).
+This is my personal website running at [`yashsingh.us`](https://www.yashsingh.us/).
 
 ## Development
 
