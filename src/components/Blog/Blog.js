@@ -37,7 +37,7 @@ function Blog() {
             <Post
               key={info.index}
               {...info}
-              filename={/([^/]*?)(\.[^/.]*?)?$/.exec(filenames[info.index + (page * 5 - 5)])[1]}
+              filename={/([^/]*?)(\.[^/.]*?)?$/.exec(filenames[info.index])[1]}
             />
           ))}
         {page > 1 ? (
