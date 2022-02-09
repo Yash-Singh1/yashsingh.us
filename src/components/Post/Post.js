@@ -20,6 +20,11 @@ function Post() {
   const postInfo = info ? info[`${post}.mdx`] : undefined;
   const PostComponent = posts ? posts[post] : undefined;
 
+  if (postInfo && typeof postInfo.link != 'undefined') {
+    location.href = postInfo.link;
+    return null;
+  }
+
   return postInfo && posts && PostComponent ? (
     <Container>
       <Link
