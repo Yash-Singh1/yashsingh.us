@@ -68,6 +68,7 @@ ${filenames
   <description>Blog articles on topics related to programming</description>
   <link>https://www.yashsingh.us/blog</link>
   <lastBuildDate>${rssDateFormat(new Date())}</lastBuildDate>
+  <ttl>600</ttl>
   <language>en-us</language>${Object.entries(info)
     .sort(({ 1: { date: date1 } }, { 1: { date: date2 } }) => new Date(date2) - new Date(date1))
     .map(
