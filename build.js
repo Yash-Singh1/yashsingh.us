@@ -108,7 +108,7 @@ ${filenames
           },
           watch: dev ? { onRebuild: buildMDXInfo } : false,
           inject: ['./src/inject/react-shim.js'],
-          logLevel: dev ? 'info' : 'error',
+          logLevel: 'info',
           minify: !dev
         })
         .catch((e) => console.error(e.message));
