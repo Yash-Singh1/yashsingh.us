@@ -8,6 +8,29 @@ const yaml = require('js-yaml');
 
 const dev = process.argv[2] === 'dev';
 
+function rssDateFormat(date) {
+  const days = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
+  const months = [
+    'Jan',
+    'Feb',
+    'Mar',
+    'Apr',
+    'May',
+    'Jun',
+    'Jul',
+    'Aug',
+    'Sep',
+    'Oct',
+    'Nov',
+    'Dec'
+  ];
+  return `${days[date.getDay()]}, ${date.getDate() < 10 ? '0' : ''}${date.getDate()} ${
+    months[date.getMonth()]
+  } ${date.getFullYear()} ${date.toTimeString().split(' ')[0]} ${
+    date.toTimeString().split('GMT')[1].split(' ')[0]
+  }`;
+}
+
 import('xdm/esbuild.js').then(({ default: xdm }) => {
   function buildMDXInfo() {
     const filenames = [];
@@ -35,6 +58,30 @@ ${filenames
   )
   .join(',\n')}
 };
+`
+    );
+    fs.writeFileSync(
+      './public/feed.xml',
+      `<rss version="2.0">
+<channel>
+  <title>Yash Singh's Blog</title>
+  <description>Blog articles on topics related to programming</description>
+  <link>https://www.yashsingh.us/blog</link>
+  <lastBuildDate>${rssDateFormat(new Date())}</lastBuildDate>
+  <language>en-us</language>${Object.entries(info)
+    .sort(({ 1: { date: date1 } }, { 1: { date: date2 } }) => new Date(date2) - new Date(date1))
+    .map(
+      (item) => `
+  <item>
+    <title>${item[1].title}</title>
+    <link>https://www.yashsingh.us/blog/post/${/([^/]*?)(\.[^/.]*?)?$/.exec(item[0])[1]}</link>
+    <description>${item[1].subtitle}</description>
+    <pubDate>${rssDateFormat(new Date(item[1].date))}</pubDate>
+  </item>`
+    )
+    .join('')}
+</channel>
+</rss>
 `
     );
   }
