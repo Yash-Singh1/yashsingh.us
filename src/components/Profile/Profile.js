@@ -57,15 +57,15 @@ function Profile() {
           </span>
           <div>
             <RepoCard repo='Yash-Singh1/epack' onLoad={imageOnLoad} />
-            <RepoCard repo='Yash-Singh1/randomgen-parser' onLoad={imageOnLoad} />
-          </div>
-          <div>
-            <RepoCard repo='Yash-Singh1/kanda-weather' onLoad={imageOnLoad} />
             <RepoCard repo='Yash-Singh1/eslint-plugin-userscripts' onLoad={imageOnLoad} />
           </div>
           <div>
-            <RepoCard repo='Yash-Singh1/equation-slides' onLoad={imageOnLoad} />
-            <RepoCard repo='Yash-Singh1/monkeyide' onLoad={imageOnLoad} />
+            <RepoCard repo='Yash-Singh1/ball-royale' onLoad={imageOnLoad} />
+            <RepoCard repo='Yash-Singh1/randomgen-parser' onLoad={imageOnLoad} />
+          </div>
+          <div>
+            <RepoCard repo='Yash-Singh1/dotfiles' onLoad={imageOnLoad} />
+            <RepoCard repo='Yash-Singh1/competitive-programming' onLoad={imageOnLoad} />
           </div>
           <Paragraph className='text-blue-400 text-lg cursor-pointer'>
             <a href='https://github.com/Yash-Singh1/?tab=repositories&sort=stargazers'>
