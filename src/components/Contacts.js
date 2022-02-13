@@ -9,8 +9,7 @@ function Contacts({ contacts, className }) {
         const LinkComponent = contact.internal ? Link : 'a';
 
         return (
-          <React.Fragment key={index}>
-            {index === 0 ? null : '· '}
+          <span key={index}>
             <LinkComponent
               className='underline'
               {...(contact.internal
@@ -22,8 +21,9 @@ function Contacts({ contacts, className }) {
                   })}
             >
               {contact.name}
-            </LinkComponent>{' '}
-          </React.Fragment>
+            </LinkComponent>
+            {index === contacts.length - 1 ? null : ' · '}
+          </span>
         );
       })}
     </p>

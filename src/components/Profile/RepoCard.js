@@ -7,6 +7,7 @@ function RepoCard({ repo, onLoad }) {
         src={`https://github-readme-stats.vercel.app/api/pin/?username=${repo.split('/')[0]}&repo=${
           repo.split('/')[1]
         }&theme=nord`}
+        width={400}
         onLoad={onLoad || (() => null)}
         alt={`Badge for Yash-Singh1/${repo}`}
       />

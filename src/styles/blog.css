@@ -1,20 +1,25 @@
+.overall-container {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  row-gap: 20px;
+}
+
 .posts-container {
   display: inline-block;
-  width: 80%;
+  @apply sm:w-3/4;
 }
 
 .keywords-container {
-  display: inline-block;
-  vertical-align: top;
-  width: 20%;
+  @apply xl:w-max sm:w-min w-max;
 }
 
 #title {
-  @apply text-violet-700 uppercase font-mono font-bold text-2xl group-hover:text-violet-500 transition mr-2;
+  @apply text-violet-700 uppercase font-mono font-bold sm:text-2xl text-xl group-hover:text-violet-500 transition mr-2;
 }
 
 #subtitle {
-  @apply text-gray-400 text-xl w-3/4 group-hover:text-gray-100 transition;
+  @apply text-gray-400 sm:text-xl text-lg w-3/4 group-hover:text-gray-100 transition;
 }
 
 #info {

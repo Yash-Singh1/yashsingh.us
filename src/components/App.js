@@ -45,7 +45,7 @@ function App() {
           path='/contacts'
           element={
             <LoadingWrapper>
-              <article className='markdown-body'>
+              <article className='markdown-body pl-5 pt-6'>
                 <Contact
                   components={{
                     code: Code,

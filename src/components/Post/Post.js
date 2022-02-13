@@ -36,10 +36,10 @@ function Post() {
       <img src={postInfo.image} className='w-1/2 max-h-80 object-center mx-auto' />
       <br />
       <br />
-      <h1 className='font-semibold text-6xl text-violet-700 text-center uppercase tracking-wider'>
+      <h1 className='font-semibold lg:text-6xl md:text-5xl sm:text-3xl text-2xl text-violet-700 text-center uppercase tracking-wider'>
         {postInfo.title}
       </h1>
-      <h1 className='font-semibold text-2xl font-mono text-violet-500 text-center mt-2'>
+      <h1 className='font-semibold md:text-2xl sm:text-xl text-lg font-mono text-violet-500 text-center mt-2'>
         {postInfo.subtitle}
       </h1>
       <p className='font-semibold text-medium font-mono text-violet-300 text-center italic mt-2'>
@@ -58,7 +58,7 @@ function Post() {
         />
       </article>
       <Contacts
-        className='text-center'
+        className='md:text-center px-6'
         contacts={[
           { name: 'About', href: '/', internal: true },
           { name: 'Blog', href: '/blog/?page=1', internal: true },

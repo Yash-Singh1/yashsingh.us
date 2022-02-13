@@ -16,15 +16,15 @@
 }
 
 span#project-note ~ div {
-  @apply flex items-stretch;
+  @apply flex items-stretch flex-row flex-wrap gap-5;
 }
 
 span#project-note ~ div > a {
   @apply mt-5;
 }
 
-span#project-note ~ div > a:nth-child(2) {
-  @apply ml-10;
+span#project-note ~ div > a {
+  min-width: 400px;
 }
 
 #skills-list > p {
