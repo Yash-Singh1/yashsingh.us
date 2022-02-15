@@ -9,6 +9,8 @@ import usePosts from '../../hooks/usePosts';
 import { useParams } from 'react-router';
 import { Link } from 'react-router-dom';
 import filenames from '../../data/filenames.json';
+import Mail from '../SimpleIconLogos/Mail';
+import GitHub from '../SimpleIconLogos/GitHub';
 
 function Post() {
   let { post } = useParams();
@@ -63,8 +65,16 @@ function Post() {
           { name: 'About', href: '/', internal: true },
           { name: 'Blog', href: '/blog/?page=1', internal: true },
           { name: 'Contacts', href: '/contacts', internal: true },
-          { name: 'Email', href: 'mailto:saiansh2525@gmail.com' },
-          { name: 'GitHub', href: 'https://github.com/Yash-Singh1' }
+          {
+            name: 'Email',
+            href: 'mailto:saiansh2525@gmail.com',
+            logo: <Mail className='logo-small' />
+          },
+          {
+            name: 'GitHub',
+            href: 'https://github.com/Yash-Singh1',
+            logo: <GitHub className='logo-small' />
+          }
         ]}
       />
     </Container>

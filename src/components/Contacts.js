@@ -5,22 +5,27 @@ import { Link } from 'react-router-dom';
 function Contacts({ contacts, className }) {
   return (
     <p className={`mt-5 text-gray-400 text-2xl font-mono ${className || ''}`}>
-      {contacts.map((contact, index) => {
-        const LinkComponent = contact.internal ? Link : 'a';
+      {contacts.map(({internal = false, href, name, logo: Logo = false}, index) => {
+        const LinkComponent = internal ? Link : 'a';
 
         return (
           <span key={index}>
+            {Logo === false ? null : (
+              <a target='_blank' href={href}>
+                {Logo}
+              </a>
+            )}
             <LinkComponent
               className='underline'
-              {...(contact.internal
+              {...(internal
                 ? {
-                    to: contact.href
+                    to: href
                   }
                 : {
-                    href: contact.href
+                    href: href
                   })}
             >
-              {contact.name}
+              {name}
             </LinkComponent>
             {index === contacts.length - 1 ? null : ' · '}
           </span>
@@ -35,7 +40,8 @@ Contacts.propTypes = {
     PropTypes.shape({
       name: PropTypes.string.isRequired,
       href: PropTypes.string.isRequired,
-      internal: PropTypes.bool
+      internal: PropTypes.bool,
+      logo: PropTypes.node
     })
   ).isRequired,
   className: PropTypes.string

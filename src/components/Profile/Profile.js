@@ -10,6 +10,8 @@ import Container from '../Container';
 import { Link } from 'react-router-dom';
 import '../../styles/profile.css';
 import AOS from 'aos';
+import GitHub from '../SimpleIconLogos/GitHub';
+import Mail from '../SimpleIconLogos/Mail';
 
 function Profile() {
   const [loadedImages, loadImage] = useState([]);
@@ -104,8 +106,16 @@ function Profile() {
         <Contacts
           contacts={[
             { name: 'Contacts', href: '/contacts', internal: true },
-            { name: 'Email', href: 'mailto:saiansh2525@gmail.com' },
-            { name: 'GitHub', href: 'https://github.com/Yash-Singh1' }
+            {
+              name: 'Email',
+              href: 'mailto:saiansh2525@gmail.com',
+              logo: <Mail className='logo-small' />
+            },
+            {
+              name: 'GitHub',
+              href: 'https://github.com/Yash-Singh1',
+              logo: <GitHub className='logo-small' />
+            }
           ]}
         />
       </Section>

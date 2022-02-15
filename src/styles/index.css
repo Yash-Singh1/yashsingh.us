@@ -49,3 +49,10 @@ body {
   -webkit-user-select: none;
   -ms-user-select: none;
 }
+
+.logo-small {
+  display: inline-block;
+  margin-right: 10px;
+  height: 2rem;
+  width: 2rem;
+}

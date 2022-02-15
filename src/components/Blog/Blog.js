@@ -9,6 +9,8 @@ import usePosts from '../../hooks/usePosts';
 import { useLocation, useNavigate } from 'react-router';
 import filenames from '../../data/filenames.json';
 import badgeColorMap from '../../helpers/badgeColorMap.json';
+import Mail from '../SimpleIconLogos/Mail';
+import GitHub from '../SimpleIconLogos/GitHub';
 
 function Blog() {
   const { info } = usePosts(false);
@@ -115,8 +117,16 @@ function Blog() {
         contacts={[
           { name: 'About', href: '/', internal: true },
           { name: 'Contacts', href: '/contacts', internal: true },
-          { name: 'Email', href: 'mailto:saiansh2525@gmail.com' },
-          { name: 'GitHub', href: 'https://github.com/Yash-Singh1' },
+          {
+            name: 'Email',
+            href: 'mailto:saiansh2525@gmail.com',
+            logo: <Mail className='logo-small' />
+          },
+          {
+            name: 'GitHub',
+            href: 'https://github.com/Yash-Singh1',
+            logo: <GitHub className='logo-small' />
+          },
           { name: 'RSS Feed', href: '/feed.xml' }
         ]}
       />
