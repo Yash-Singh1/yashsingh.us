@@ -42,7 +42,6 @@
     "@storybook/react": "^6.4.4",
     "babel-loader": "^8.2.3",
     "esbuild": "^0.14.0",
-    "esbuild-plugin-import-glob": "^0.1.1",
     "esbuild-plugin-postcss2": "0.1.1",
     "esbuild-plugin-svgr": "^0.0.3",
     "js-yaml": "^4.1.0",

@@ -1,5 +1,4 @@
 import esbuild from 'esbuild';
-import EsbuildPluginImportGlob from 'esbuild-plugin-import-glob';
 import liveServer from 'live-server';
 import postCssPlugin from 'esbuild-plugin-postcss2';
 import svgrPlugin from 'esbuild-plugin-svgr';
@@ -108,7 +107,6 @@ if (!serve) {
       splitting: true,
       format: 'esm',
       plugins: [
-        EsbuildPluginImportGlob.default(),
         postCssPlugin.default(postcssConfig),
         xdm({ remarkPlugins: [remarkGfm, remarkFrontmatter], rehypePlugins: [rehypeHighlight] }),
         svgrPlugin()
