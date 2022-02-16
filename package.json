@@ -23,7 +23,7 @@
     "typed.js": "^2.0.12"
   },
   "scripts": {
-    "build": "node build.js",
+    "build": "node build.mjs",
     "start": "npm run build && live-server public/ --entry-file=index.html --no-browser",
     "dev": "npm run build -- dev",
     "storybook": "start-storybook -p 6006",
@@ -49,6 +49,7 @@
     "postcss-import": "^14.0.2",
     "postcss-preset-env": "^7.0.0",
     "redux-devtools-extension": "^2.13.9",
+    "rehype-highlight": "^5.0.2",
     "remark-frontmatter": "^4.0.1",
     "remark-gfm": "^3.0.1",
     "storybook-dark-mode": "^1.0.8",
