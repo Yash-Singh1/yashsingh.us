@@ -12,6 +12,7 @@ import postcssConfig from './postcss.config.js';
 import rehypeHighlight from 'rehype-highlight';
 
 const dev = process.argv[2] === 'dev';
+const serve = process.argv[2] == 'serve';
 
 function rssDateFormat(date) {
   const days = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
@@ -94,38 +95,41 @@ ${filenames
 `
   );
 }
-buildMDXInfo();
 
-esbuild
-  .build({
-    entryPoints: ['src/index.js'],
-    bundle: true,
-    sourcemap: dev ? 'inline' : false,
-    outdir: 'public/',
-    splitting: true,
-    format: 'esm',
-    plugins: [
-      EsbuildPluginImportGlob.default(),
-      postCssPlugin.default(postcssConfig),
-      xdm({ remarkPlugins: [remarkGfm, remarkFrontmatter], rehypePlugins: [rehypeHighlight] }),
-      svgrPlugin()
-    ],
-    minify: true,
-    loader: {
-      '.js': 'jsx'
-    },
-    watch: dev ? { onRebuild: buildMDXInfo } : false,
-    inject: ['./src/inject/react-shim.js'],
-    logLevel: 'info',
-    minify: !dev,
-    metafile: true
-  })
-  .then((result) => {
-    console.log(esbuild.analyzeMetafileSync(result.metafile));
-  })
-  .catch((e) => console.error(e.message));
+if (!serve) {
+  buildMDXInfo();
 
-if (dev) {
+  esbuild
+    .build({
+      entryPoints: ['src/index.js'],
+      bundle: true,
+      sourcemap: dev ? 'inline' : false,
+      outdir: 'public/',
+      splitting: true,
+      format: 'esm',
+      plugins: [
+        EsbuildPluginImportGlob.default(),
+        postCssPlugin.default(postcssConfig),
+        xdm({ remarkPlugins: [remarkGfm, remarkFrontmatter], rehypePlugins: [rehypeHighlight] }),
+        svgrPlugin()
+      ],
+      minify: true,
+      loader: {
+        '.js': 'jsx'
+      },
+      watch: dev ? { onRebuild: buildMDXInfo } : false,
+      inject: ['./src/inject/react-shim.js'],
+      logLevel: 'info',
+      minify: !dev,
+      metafile: true
+    })
+    .then((result) => {
+      console.log(esbuild.analyzeMetafileSync(result.metafile));
+    })
+    .catch((e) => console.error(e.message));
+}
+
+if (dev || serve) {
   liveServer.start({
     port: 5678,
     root: 'public',
