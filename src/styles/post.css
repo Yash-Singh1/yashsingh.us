@@ -49,17 +49,23 @@ footer {
 .markdown-body h2:hover::before,
 .markdown-body h3:hover::before {
   content: '🔗';
-  margin-left: -40px;
   margin-right: 10px;
   @apply text-violet-400;
 }
 
-.markdown-body h1:hover {
-  margin-left: -10px;
+.markdown-body h1:hover::before {
+  margin-left: calc(-1.5rem * 1.02083333333 - 10px);
+  font-size: 1.5rem;
 }
 
-.markdown-body h3:hover {
-  margin-left: 5px;
+.markdown-body h2:hover::before {
+  margin-left: calc(-1.25rem * 1.02083333333 - 10px);
+  font-size: 1.25rem;
+}
+
+.markdown-body h3:hover::before {
+  margin-left: calc(-1rem * 1.02083333333 - 10px);
+  font-size: 1rem;
 }
 
 .markdown-body pre code,
@@ -67,11 +73,11 @@ footer {
   display: table;
 }
 
-.markdown-body ul {
-  @apply list-disc;
+ul {
+  list-style-type: '▪  ' !important;
 }
 
-.markdown-body ol {
+ol {
   @apply list-decimal;
 }
 
@@ -81,8 +87,4 @@ blockquote {
 
 .hljs {
   @apply bg-transparent;
-}
-
-ol {
-  list-style-type: decimal !important;
 }
