@@ -2,7 +2,6 @@ import React from 'react';
 import Container from '../Container';
 import Contacts from '../Contacts';
 import Loader from '../Loader';
-import Code from './Markdown_Components/Code';
 import '../../styles/post.css';
 import HeadingFactory from './Markdown_Components/HeadingFactory';
 import usePosts from '../../hooks/usePosts';
@@ -52,7 +51,6 @@ function Post() {
       <article className='markdown-body text-white'>
         <PostComponent
           components={{
-            code: Code,
             h1: HeadingFactory(1),
             h2: HeadingFactory(2),
             h3: HeadingFactory(3)

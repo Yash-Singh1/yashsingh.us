@@ -2,7 +2,6 @@ import Infographic from './infographic.svg';
 import { useEffect, useRef } from 'react';
 import '../../styles/tech-infographic.css';
 import Info from './Information.mdx';
-import Code from '../Post/Markdown_Components/Code';
 import HeadingFactory from '../Post/Markdown_Components/HeadingFactory';
 
 function TechCovid() {
@@ -55,7 +54,6 @@ function TechCovid() {
       <article className='markdown-body'>
         <Info
           components={{
-            code: Code,
             h1: HeadingFactory(1),
             h2: HeadingFactory(2),
             h3: HeadingFactory(3)
