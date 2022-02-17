@@ -37,6 +37,7 @@
     "js-yaml": "^4.1.0",
     "postcss": "^8.4.4",
     "postcss-import": "^14.0.2",
+    "postcss-import-url": "^7.0.0",
     "postcss-preset-env": "^7.0.0",
     "redux-devtools-extension": "^2.13.9",
     "rehype-highlight": "^5.0.2",
