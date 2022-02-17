@@ -2,6 +2,7 @@
 
 @tailwind base;
 @tailwind components;
+@tailwind utilities;
 
 html {
   scroll-behavior: smooth;
@@ -16,7 +17,7 @@ div#root {
 .par,
 .markdown-body,
 text {
-  font-family: 'Baloo Bhai 2', cursive;
+  font-family: 'Baloo Bhai 2', cursive !important;
 }
 
 .markdown-body a:hover {
@@ -55,5 +56,3 @@ body {
   height: 2rem;
   width: 2rem;
 }
-
-@tailwind utilities;

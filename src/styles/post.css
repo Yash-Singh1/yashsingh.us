@@ -8,7 +8,6 @@ footer {
 .markdown-body {
   min-width: 200px;
   max-width: 100%;
-  --color-fg-default: inherit !important;
   --color-accent-fg: #4cacfc;
   @apply box-border m-auto p-11 bg-transparent;
 }
@@ -50,7 +49,6 @@ footer {
 .markdown-body h3:hover::before {
   content: '🔗';
   margin-right: 10px;
-  @apply text-violet-400;
 }
 
 .markdown-body h1:hover::before {

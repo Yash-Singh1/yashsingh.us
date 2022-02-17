@@ -1,8 +1,6 @@
-import React from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import LoadingWrapper from './LoadingWrapper';
 import HeadingFactory from './Post/Markdown_Components/HeadingFactory';
-import '../styles/uses.css';
 const Blog = React.lazy(() => import('./Blog/Blog'));
 const Post = React.lazy(() => import('./Post/Post'));
 const Profile = React.lazy(() => import('./Profile/Profile'));

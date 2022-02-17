@@ -1,4 +1,4 @@
-import Typer from './Typer.js';
+import Typer from './Typer.jsx';
 import PropTypes from 'prop-types';
 
 function Header({ title, intro, children = null, large = false }) {

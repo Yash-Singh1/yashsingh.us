@@ -1,6 +1,6 @@
 module.exports = {
   content: [
-    './src/components/**/*.js',
+    './src/components/**/*.{js,jsx}',
     './{src,content}/**/*.mdx',
     './src/helpers/badgeColorMap.json'
   ],

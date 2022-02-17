@@ -4,13 +4,13 @@ import Post from './Post';
 import Contacts from '../Contacts';
 import Loader from '../Loader';
 import ButtonLink from './ButtonLink';
-import '../../styles/blog.css';
 import usePosts from '../../hooks/usePosts';
 import { useLocation, useNavigate } from 'react-router';
 import filenames from '../../data/filenames.json';
 import badgeColorMap from '../../helpers/badgeColorMap.json';
 import Mail from '../SimpleIconLogos/Mail';
 import GitHub from '../SimpleIconLogos/GitHub';
+import '../../styles/blog.css';
 
 function Blog() {
   const { info } = usePosts(false);

@@ -10,9 +10,8 @@
 
 .subheading:hover::before {
   content: '🔗';
-  margin-left: -40px;
+  margin-left: calc(-24px * 1.02083333333 - 10px);
   margin-right: 10px;
-  @apply text-violet-400;
 }
 
 span#project-note ~ div {

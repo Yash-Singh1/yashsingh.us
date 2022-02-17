@@ -3,9 +3,6 @@ node_modules/
 package-lock.json
 
 # Build
-public/*
-!public/img/
-!public/index.html
-!public/favicon.ico
-!public/robots.txt
-src/data
+src/data/
+dist/
+public/feed.xml

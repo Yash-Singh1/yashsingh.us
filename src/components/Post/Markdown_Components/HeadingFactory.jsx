@@ -1,5 +1,3 @@
-import React from 'react';
-
 function getInnerText(children) {
   if (typeof children === 'string') {
     return children;

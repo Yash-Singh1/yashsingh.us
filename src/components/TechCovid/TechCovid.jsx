@@ -1,8 +1,9 @@
-import Infographic from './infographic.svg';
+import {ReactComponent as Infographic} from './Infographic.svg';
 import { useEffect, useRef } from 'react';
-import '../../styles/tech-infographic.css';
 import Info from './Information.mdx';
 import HeadingFactory from '../Post/Markdown_Components/HeadingFactory';
+import '../../styles/post.css';
+import '../../styles/tech-infographic.css';
 
 function TechCovid() {
   /** @type {{current: HTMLDivElement | null}} */

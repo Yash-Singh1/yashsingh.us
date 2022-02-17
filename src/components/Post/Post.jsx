@@ -1,8 +1,6 @@
-import React from 'react';
 import Container from '../Container';
 import Contacts from '../Contacts';
 import Loader from '../Loader';
-import '../../styles/post.css';
 import HeadingFactory from './Markdown_Components/HeadingFactory';
 import usePosts from '../../hooks/usePosts';
 import { useParams } from 'react-router';
@@ -10,6 +8,7 @@ import { Link } from 'react-router-dom';
 import filenames from '../../data/filenames.json';
 import Mail from '../SimpleIconLogos/Mail';
 import GitHub from '../SimpleIconLogos/GitHub';
+import '../../styles/post.css';
 
 function Post() {
   let { post } = useParams();

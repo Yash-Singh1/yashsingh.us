@@ -1,4 +1,3 @@
-import React from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 
@@ -9,7 +8,7 @@ function Contacts({ contacts, className }) {
         const LinkComponent = internal ? Link : 'a';
 
         return (
-          <span key={index}>
+          <p key={index} style={{ display: 'inline-block', marginLeft: '1.5rem' }}>
             {Logo === false ? null : (
               <a target='_blank' href={href}>
                 {Logo}
@@ -28,7 +27,7 @@ function Contacts({ contacts, className }) {
               {name}
             </LinkComponent>
             {index === contacts.length - 1 ? null : ' · '}
-          </span>
+          </p>
         );
       })}
     </p>
