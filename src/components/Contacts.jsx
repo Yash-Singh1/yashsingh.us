@@ -8,7 +8,7 @@ function Contacts({ contacts, className }) {
         const LinkComponent = internal ? Link : 'a';
 
         return (
-          <p key={index} style={{ display: 'inline-block', marginLeft: '1.5rem' }}>
+          <p key={index} style={{ display: 'inline-block', marginLeft: index === 0 ? '0' : '1.5rem' }}>
             {Logo === false ? null : (
               <a target='_blank' href={href}>
                 {Logo}

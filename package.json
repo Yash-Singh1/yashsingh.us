@@ -7,9 +7,7 @@
   "license": "MIT",
   "dependencies": {
     "aos": "^2.3.4",
-    "connect-redirection": "^0.0.1",
     "github-markdown-css": "^5.0.0",
-    "live-server": "^1.2.1",
     "prop-types": "^15.7.2",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
@@ -30,18 +28,12 @@
     "format": "prettier --write ."
   },
   "devDependencies": {
-    "@babel/core": "^7.16.0",
-    "@fullhuman/postcss-purgecss": "^4.0.3",
     "@storybook/addon-a11y": "^6.4.4",
     "@storybook/addon-actions": "^6.4.4",
     "@storybook/addon-essentials": "^6.4.4",
     "@storybook/addon-links": "^6.4.4",
     "@storybook/addon-storysource": "^6.4.4",
     "@storybook/react": "^6.4.4",
-    "babel-loader": "^8.2.3",
-    "esbuild": "^0.14.0",
-    "esbuild-plugin-postcss2": "0.1.1",
-    "esbuild-plugin-svgr": "^0.0.3",
     "js-yaml": "^4.1.0",
     "postcss": "^8.4.4",
     "postcss-import": "^14.0.2",

@@ -88,6 +88,8 @@ ${filenames
   );
 }
 
+buildMDXInfo();
+
 /**
  * @type {import('vite').UserConfig}
  */
@@ -96,15 +98,15 @@ const config = {
     jsxInject: `import React from 'react'`
   },
   plugins: [
-    xdm({ remarkPlugins: [remarkGfm, remarkFrontmatter], rehypePlugins: [rehypeHighlight] }),
-    svgrPlugin(),
     {
       name: 'build-info-and-feed',
       transformIndexHtml(html) {
         buildMDXInfo();
         return html;
       }
-    }
+    },
+    xdm({ remarkPlugins: [remarkGfm, remarkFrontmatter], rehypePlugins: [rehypeHighlight] }),
+    svgrPlugin()
   ]
 };
 
