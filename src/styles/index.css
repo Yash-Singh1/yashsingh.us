@@ -2,7 +2,6 @@
 
 @tailwind base;
 @tailwind components;
-@tailwind utilities;
 
 html {
   scroll-behavior: smooth;
@@ -56,3 +55,5 @@ body {
   height: 2rem;
   width: 2rem;
 }
+
+@tailwind utilities;

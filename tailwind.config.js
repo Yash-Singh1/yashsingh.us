@@ -1,6 +1,6 @@
 module.exports = {
   content: [
-    './src/components/**/*.{js,svg}',
+    './src/components/**/*.js',
     './{src,content}/**/*.mdx',
     './src/helpers/badgeColorMap.json'
   ],
@@ -14,6 +14,5 @@ module.exports = {
       xl: '1280px',
       '2xl': '1536px'
     }
-  },
-  plugins: []
+  }
 };
