@@ -3,7 +3,7 @@ import remarkFrontmatter from 'remark-frontmatter';
 import rehypeHighlight from 'rehype-highlight';
 import xdm from 'xdm/rollup.js';
 import svgrPlugin from 'vite-plugin-svgr';
-import fs from 'fs';
+import fs from 'node:fs';
 import yaml from 'js-yaml';
 
 function rssDateFormat(date) {
