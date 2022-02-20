@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 
 function Contacts({ contacts, className }) {
   return (
-    <p className={`mt-5 text-gray-400 text-2xl font-mono ${className || ''}`}>
+    <div className={`mt-5 text-gray-400 text-2xl font-mono ${className || ''}`}>
       {contacts.map(({internal = false, href, name, logo: Logo = false}, index) => {
         const LinkComponent = internal ? Link : 'a';
 
@@ -30,7 +30,7 @@ function Contacts({ contacts, className }) {
           </p>
         );
       })}
-    </p>
+    </div>
   );
 }
 

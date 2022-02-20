@@ -1,3 +1,5 @@
+import PropTypes from 'prop-types';
+
 function getInnerText(children) {
   if (typeof children === 'string') {
     return children;
@@ -11,17 +13,20 @@ function getInnerText(children) {
 }
 
 function HeadingFactory(level) {
-  return ({ children }) => {
-    const innerText = getInnerText(children)
-      .toLowerCase()
-      .replace(/[^\w]+/g, '-');
-    const LevelHeading = `h${level}`;
-    return (
-      <LevelHeading id={innerText} className='section-heading'>
-        <a href={`#${innerText}`}>{children}</a>
-      </LevelHeading>
-    );
-  };
+  return Object.assign(
+    ({ children }) => {
+      const innerText = getInnerText(children)
+        .toLowerCase()
+        .replace(/[^\w]+/g, '-');
+      const LevelHeading = `h${level}`;
+      return (
+        <LevelHeading id={innerText} className='section-heading'>
+          <a href={`#${innerText}`}>{children}</a>
+        </LevelHeading>
+      );
+    },
+    { propTypes: { children: PropTypes.node } }
+  );
 }
 
 export default HeadingFactory;
