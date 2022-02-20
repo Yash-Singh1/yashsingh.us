@@ -6,3 +6,4 @@ package-lock.json
 src/data/
 dist/
 public/feed.xml
+storybook-static/
