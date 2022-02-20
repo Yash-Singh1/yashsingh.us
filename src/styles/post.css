@@ -71,6 +71,15 @@ footer {
   display: table;
 }
 
+.markdown-body h1 a:hover,
+.markdown-body h2 a:hover,
+.markdown-body h3 a:hover,
+.markdown-body h4 a:hover,
+.markdown-body h5 a:hover,
+.markdown-body h6 a:hover {
+  text-decoration: none;
+}
+
 ul {
   list-style-type: '▪  ' !important;
 }
