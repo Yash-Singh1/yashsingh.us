@@ -9,6 +9,7 @@ footer {
   min-width: 200px;
   max-width: 100%;
   --color-accent-fg: #4cacfc;
+  --color-fg-default: #ddd;
   @apply box-border m-auto p-11 bg-transparent;
 }
 
