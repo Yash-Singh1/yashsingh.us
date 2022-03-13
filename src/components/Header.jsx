@@ -35,7 +35,8 @@ function Header({ title, intro, children = null, large = false }) {
             'react components',
             'github actions',
             'discord bots',
-            'userscripts'
+            'userscripts',
+            'zsh plugins'
           ].map((str) => str + '...')}
           typeSpeed={50}
           backSpeed={40}
