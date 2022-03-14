@@ -10,7 +10,6 @@ module.exports = {
       features: {
         'nesting-rules': true
       }
-    }),
-    require('postcss-import-url')()
+    })
   ]
 };
