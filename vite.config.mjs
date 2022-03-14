@@ -72,7 +72,11 @@ ${filenames
       (item) => `
   <item>
     <title>${item[1].title}</title>
-    <link>https://www.yashsingh.us/blog/post/${/([^/]*?)(\.[^/.]*?)?$/.exec(item[0])[1]}</link>
+    <link>${
+      item[1].link
+        ? item[1].link
+        : `https://www.yashsingh.us/blog/post/${/([^/]*?)(\.[^/.]*?)?$/.exec(item[0])[1]}`
+    }</link>
     <description>${item[1].subtitle}</description>${(item[1].keywords || [])
         .map(
           (keyword, keyIndex) => `${keyIndex === 0 ? '\n' : ''}    <category>${keyword}</category>`
