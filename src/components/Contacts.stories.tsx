@@ -1,3 +1,4 @@
+import type { ComponentMeta, ComponentStory } from '@storybook/react';
 import React from 'react';
 import Contacts from './Contacts';
 
@@ -14,9 +15,9 @@ export default {
       defaultValue: ''
     }
   }
-};
+} as ComponentMeta<typeof Contacts>;
 
-const Template = (args) => <Contacts {...args} />;
+const Template: ComponentStory<typeof Contacts> = (args) => <Contacts {...args} />;
 
 export const Default = Template.bind({});
 Default.args = {
