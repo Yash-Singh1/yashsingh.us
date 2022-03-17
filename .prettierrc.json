@@ -3,13 +3,5 @@
   "trailingComma": "none",
   "singleQuote": true,
   "jsxSingleQuote": true,
-  "htmlWhitespaceSensitivity": "css",
-  "overrides": [
-    {
-      "files": "*.handlebars",
-      "options": {
-        "parser": "html"
-      }
-    }
-  ]
+  "htmlWhitespaceSensitivity": "css"
 }
