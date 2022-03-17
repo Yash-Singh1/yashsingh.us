@@ -39,6 +39,6 @@ These components make it simpler to read the code and/or reduce repetition of co
 
 These components take in input. When there is a complex type of input and/or repeated classnames/styling and/or complex data manipulation of raw input, you should create a seperate component to keep the main component more focused.
 
-## Rerendering Isolation
+### Rerendering Isolation
 
 When you have a component that contains some state that is specific to an inner component or tag, that state will cause the entire larger component to rerender just for one inner element. This can cause performance issues. For example, if you have a modal that rerenders the entire page just to display or no longer show the modal, that is a problem. In these cases, it's best to seperate your the inner element or component into a seperate component and take the problematic state with it.
