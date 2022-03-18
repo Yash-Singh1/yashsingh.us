@@ -5,7 +5,7 @@ import badgeColorMap from '../../helpers/badgeColorMap.json';
 function Post({ ...frontmatter }) {
   const LinkComponent = frontmatter.link ? 'a' : Link;
   const linkProps = frontmatter.link
-    ? { href: frontmatter.link, target: '_blank' rel="noreferrer noopener" }
+    ? { href: frontmatter.link, target: '_blank' }
     : { to: `/blog/post/${frontmatter.filename}` };
 
   return (
