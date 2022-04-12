@@ -21,7 +21,7 @@ function Profile() {
   const imageOnLoad = () => loadImage([...loadedImages, true]);
 
   useEffect(() => {
-    if ((location.hash && loadedImages.length === 6) || changeHash == true) {
+    if ((location.hash && loadedImages.length === 6) || changedHash == true) {
       if (changedHash) changeHash(false);
       document
         .getElementById(location.hash.slice(1).toLowerCase())
