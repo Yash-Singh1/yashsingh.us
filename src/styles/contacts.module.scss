@@ -1,0 +1,7 @@
+@use 'mixins';
+
+.markdown-body {
+  @apply text-white pl-5 pt-6;
+}
+
+@include mixins.cool-bg-light;

@@ -1,0 +1,74 @@
+@use 'mixins';
+
+.subheading {
+  @apply text-violet-700 uppercase font-mono font-bold text-2xl cursor-pointer;
+
+  &:hover:before {
+    @include mixins.linkIcon;
+  }
+}
+
+.full-min-h {
+  min-height: 100vh;
+}
+
+span.project-note ~ div {
+  @apply flex items-stretch flex-row flex-wrap gap-5;
+}
+
+span.project-note ~ div > a {
+  @apply mt-5;
+}
+
+span.project-note ~ div > a {
+  min-width: 400px;
+}
+
+.skills-list > p {
+  @apply mt-5 mb-2 text-violet-700;
+}
+
+.skills-list > div:not(.show-more-container):not(.show-less-container) {
+  @apply relative pt-1 mr-2;
+}
+
+.skills-list > div:not(.show-more-container):not(.show-less-container) > div {
+  @apply overflow-hidden h-2 mb-4 flex rounded-full bg-gray-300;
+}
+
+.progress-bar {
+  @apply shadow-none flex flex-col justify-center bg-violet-400 rounded-full;
+}
+
+.container-profile {
+  width: calc(100% - 48px) !important;
+}
+
+@media (min-width: 768px) {
+  .container-profile {
+    width: calc(100% - 96px) !important;
+  }
+}
+
+@media (min-width: 1024px) {
+  .container-profile {
+    width: calc(100% - 192px) !important;
+  }
+}
+
+[data-aos='slide-right'].aos {
+  -webkit-transform: translate3d(-100%, 0, 0);
+  -ms-transform: translate3d(-100%, 0, 0);
+  transform: translate3d(-100%, 0, 0);
+}
+
+.section {
+  padding: inherit;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.cool-bg .header {
+  padding: inherit;
+}

@@ -1,0 +1,98 @@
+@use "colors";
+@use "mixins";
+@use '../../node_modules/aos/dist/aos.css';
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-size: revert;
+  font-weight: revert;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+html,
+body,
+div#root {
+  height: 100%;
+}
+
+.par,
+.markdown-body,
+text {
+  font-family: 'Baloo Bhai 2', cursive !important;
+}
+
+.markdown-body a:hover {
+  text-decoration: none;
+}
+
+body {
+  background-color: colors.$background;
+  margin: 0;
+}
+
+::-webkit-scrollbar {
+  background-color: #202324;
+  color: #aba499;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: #454a4d;
+}
+
+.logo {
+  height: 3rem;
+  width: 3rem;
+  display: inline-block;
+  margin: 10px;
+  background-color: transparent !important;
+  user-select: none;
+  @include mixins.no-select;
+  cursor: pointer;
+}
+
+.logo-small {
+  display: inline-block;
+  margin-right: 10px;
+  height: 2rem;
+  width: 2rem;
+}
+
+ul {
+  list-style-type: '▪  ' !important;
+}
+
+ol {
+  @apply list-decimal;
+}
+
+footer {
+  padding: initial !important;
+}
+
+blockquote {
+  --color-border-default: gray;
+}
+
+.hljs {
+  @apply bg-transparent;
+}
+
+html,
+body,
+div#_next,
+div#_next > div,
+div#_next > div > main {
+  width: 100%;
+  height: 100%;
+}

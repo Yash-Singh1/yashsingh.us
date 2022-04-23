@@ -1,0 +1,26 @@
+@use "mixins";
+
+.not-found-container {
+  display: table;
+  width: 100%;
+}
+
+.not-found-content {
+  display: table-cell;
+  vertical-align: middle;
+  height: 100vh;
+
+  h1 {
+    @include mixins.no-select;
+  }
+}
+
+.link {
+  color: #518bd5;
+  transition: 0.5s;
+}
+
+.link:hover {
+  color: #5865f2;
+  transition: 0.5s;
+}

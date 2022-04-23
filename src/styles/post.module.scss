@@ -1,0 +1,65 @@
+@use 'mixins';
+@use '../../node_modules/highlight.js/styles/atom-one-dark-reasonable.css';
+@use '../../node_modules/github-markdown-css/github-markdown.css';
+
+.markdown-body {
+  min-width: 200px;
+  max-width: 100%;
+  --color-accent-fg: #4cacfc;
+  --color-fg-default: #ddd;
+  @apply box-border m-auto p-11 bg-transparent;
+}
+
+@media (min-width: 992px) {
+  .markdown-body {
+    max-width: 75%;
+  }
+}
+
+@media (max-width: 767px) {
+  .markdown-body {
+    @apply p-4;
+  }
+}
+
+.markdown-body .highlight pre,
+.markdown-body pre {
+  background-color: #2d333b !important;
+}
+
+.markdown-body table td,
+.markdown-body table th {
+  background-color: #2d333b;
+  border: 1px solid rgba(223, 226, 229, 0.5) !important;
+}
+
+.markdown-body pre code,
+.markdown-body pre tt {
+  display: table;
+}
+
+@for $headingLevel from 1 through 6 {
+  .markdown-body h#{$headingLevel} {
+    a:hover {
+      text-decoration: none;
+    }
+
+    @if $headingLevel <= 3 {
+      @if $headingLevel == 1 or $headingLevel == 2 {
+        border-bottom: none !important;
+
+        @if $headingLevel == 1 {
+          font-size: 1.75em;
+        }
+      }
+
+      &:hover::before {
+        @include mixins.linkIcon;
+      }
+
+      a {
+        vertical-align: top;
+      }
+    }
+  }
+}

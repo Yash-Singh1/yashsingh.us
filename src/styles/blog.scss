@@ -1,0 +1,27 @@
+.overall-container {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  row-gap: 20px;
+}
+
+.posts-container {
+  display: inline-block;
+  @apply sm:w-3/4;
+}
+
+.keywords-container {
+  @apply xl:w-max sm:w-min w-max;
+}
+
+#title {
+  @apply text-violet-700 uppercase font-mono font-bold sm:text-2xl text-xl group-hover:text-violet-500 transition mr-2;
+}
+
+#subtitle {
+  @apply text-gray-400 sm:text-xl text-lg w-3/4 group-hover:text-gray-100 transition;
+}
+
+#info {
+  @apply text-gray-300 text-sm w-3/4 group-hover:text-gray-100 transition;
+}
