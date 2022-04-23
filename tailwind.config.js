@@ -2,7 +2,6 @@ module.exports = {
   content: [
     './src/**/*.{ts,tsx,js,jsx}',
     './{src,content}/**/*.mdx',
-    './src/helpers/badgeColorMap.json',
   ],
   theme: {
     extend: {},
