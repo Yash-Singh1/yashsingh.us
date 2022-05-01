@@ -1,0 +1,38 @@
+---
+title: 'Using Open Graph Images over github-readme-stats'
+subtitle: "Use GitHub's Open Graph Images API to get a card on your repository"
+image: '/img/open-graph-gallery.png'
+author: 'Yash Singh'
+date: 'November 12, 2021'
+keywords: [api]
+---
+
+# Using Open Graph Images as an Alternative to `github-readme-stats`
+
+In this article, I will show you how to use GitHub's Open Graph Images to
+create a card for your repository. It is a pretty cool and lightweight
+feature when you don't want to use something more advanced like
+`github-readme-stats` (or if `github-readme-stats` banned you).
+
+## What is Open Graph Images?
+
+Have you ever pasted a link into a message bar and gotten a pretty neat preview
+of the page with an image, title, description, and text?
+
+That is through a specification called Open Graph that specifies the format for `og:*`
+metadata that can be detected by social networks or chatting platforms like Discord
+and Google Chat.
+
+## What is the format for GitHub?
+
+Here is the format:
+
+```text
+https://opengraph.githubassets.com/1/<owner>/<repo>
+```
+
+Here is it in HTML:
+
+```html
+<img src="https://opengraph.githubassets.com/1/<owner>/<repo>" />
+```

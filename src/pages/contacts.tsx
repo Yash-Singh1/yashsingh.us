@@ -15,9 +15,7 @@ const ContactsPage: NextPage = function ContactsPage() {
       </Head>
 
       <main className={`${coolBgStyles['cool-bg']} ${contactStyles['cool-bg']}`}>
-        <article
-          className={`${postStyles['markdown-body']} ${contactStyles['markdown-body']} par`}
-        >
+        <article className={`${postStyles['markdown-body']} ${contactStyles['markdown-body']} par`}>
           <Contacts
             components={{
               h1: HeadingFactory(1),

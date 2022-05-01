@@ -1,0 +1,21 @@
+fragment HomeParts on Home {
+  description
+  projects
+  skills {
+    __typename
+    name
+    percentage
+    priority
+  }
+}
+
+fragment PostsParts on Posts {
+  title
+  subtitle
+  image
+  author
+  date
+  keywords
+  link
+  body
+}

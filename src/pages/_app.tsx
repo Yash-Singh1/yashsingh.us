@@ -5,10 +5,11 @@ import '@fontsource/baloo-bhai-2/700.css';
 import type { AppProps } from 'next/app';
 import Script from 'next/script';
 import js from '../helpers/js';
+import Tina from '../../.tina/components/TinaDynamicProvider.js';
 
-function App({ Component, pageProps }: AppProps) {
+function App({ Component, pageProps }: AppProps & { Component: any }) {
   return (
-    <>
+    <Tina>
       <Script src='https://www.googletagmanager.com/gtag/js?id=G-T7G01BVK0J' async></Script>
       <Script id='gtag-script'>{js`
       if (navigator.onLine) {
@@ -19,7 +20,7 @@ function App({ Component, pageProps }: AppProps) {
         gtag('config', 'G-T7G01BVK0J');
       }`}</Script>
       <Component {...pageProps} />
-    </>
+    </Tina>
   );
 }
 

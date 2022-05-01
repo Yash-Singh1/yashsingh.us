@@ -12,16 +12,14 @@
   min-height: 100vh;
 }
 
-span.project-note ~ div {
+.projects-container {
   @apply flex items-stretch flex-row flex-wrap gap-5;
 }
 
-span.project-note ~ div > a {
-  @apply mt-5;
-}
-
-span.project-note ~ div > a {
-  min-width: 400px;
+span.project-note ~ a {
+  min-width: 300px;
+  flex-basis: calc(50% - 1.25rem);
+  flex-grow: 1;
 }
 
 .skills-list > p {

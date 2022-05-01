@@ -1,0 +1,106 @@
+---
+title: 'Working with Array#reduce Asynchronously'
+subtitle: 'Guide to doing asynchronous operations inside Array.reduce'
+image: '/img/async-array-reduce.png'
+author: 'Yash Singh'
+date: 'September 23, 2021'
+keywords: [javascript]
+---
+
+# Working with `Array#reduce` Asynchronously
+
+While working on a chrome extension that groups tabs together by certain
+criterias, I ran across a problem where I was using `Array#reduce` and had
+to run an asynchronous chrome extension API inside it. In this article, I
+will show you how to do asynchronous operations inside `Array#reduce`.
+
+## What is `Array#reduce`?
+
+`Array#reduce` allows you to iterate through an array and modify an accumalator
+object every iteration, that is provided back to the next element in the next
+iteration.
+
+## Example with `Array#reduce`
+
+The following code will run the function every iteration and pass it the current
+element's value and the current accumalator's value. The default accumalator is
+set to 0.
+
+```js
+// Find the sum of an array
+console.log(
+  [1, 2, 3].reduce(
+    /* function that modifies accumalator */ function (accumalator, number) {
+      return accumalator + number;
+    },
+    0 /* starting accumalator */
+  )
+);
+
+// Expected output: 6
+```
+
+## How do you use `Array#reduce` asynchronously
+
+This diagram might help:
+
+[![Array reduce asynchronous flow](https://mermaid.ink/img/eyJjb2RlIjoic2VxdWVuY2VEaWFncmFtXG4gICAgcGFydGljaXBhbnQgQSBhcyBGaXJzdCBFbGVtZW50XG4gICAgcGFydGljaXBhbnQgQiBhcyBTZWNvbmQgRWxlbWVudFxuICAgIHBhcnRpY2lwYW50IEMgYXMgVGhpcmQgRWxlbWVudFxuICAgIHBhcnRpY2lwYW50IEQgYXMgRm91cnRoIEVsZW1lbnRcbiAgICBBIC0tPj4gQjogUHJvbWlzZVxuICAgIEIgLS0-PiBBOiBBd2FpdCBQcm9taXNlXG4gICAgQiAtLT4-IEM6IFByb21pc2VcbiAgICBDIC0tPj4gQjogQXdhaXQgUHJvbWlzZVxuICAgIEMgLS0-PiBEOiBQcm9taXNlXG4gICAgRCAtLT4-IEM6IEF3YWl0IFByb21pc2VcbiIsIm1lcm1haWQiOnsidGhlbWUiOiJkZWZhdWx0In0sInVwZGF0ZUVkaXRvciI6dHJ1ZSwiYXV0b1N5bmMiOnRydWUsInVwZGF0ZURpYWdyYW0iOmZhbHNlfQ)](https://mermaid.live/edit/#eyJjb2RlIjoic2VxdWVuY2VEaWFncmFtXG4gICAgcGFydGljaXBhbnQgQSBhcyBGaXJzdCBFbGVtZW50XG4gICAgcGFydGljaXBhbnQgQiBhcyBTZWNvbmQgRWxlbWVudFxuICAgIHBhcnRpY2lwYW50IEMgYXMgVGhpcmQgRWxlbWVudFxuICAgIHBhcnRpY2lwYW50IEQgYXMgRm91cnRoIEVsZW1lbnRcbiAgICBBIC0tPj4gQjogUHJvbWlzZVxuICAgIEIgLS0-PiBBOiBBd2FpdCBQcm9taXNlXG4gICAgQiAtLT4-IEM6IFByb21pc2VcbiAgICBDIC0tPj4gQjogQXdhaXQgUHJvbWlzZVxuICAgIEMgLS0-PiBEOiBQcm9taXNlXG4gICAgRCAtLT4-IEM6IEF3YWl0IFByb21pc2VcbiIsIm1lcm1haWQiOiJ7XG4gIFwidGhlbWVcIjogXCJkYXJrXCJcbn0iLCJ1cGRhdGVFZGl0b3IiOmZhbHNlLCJhdXRvU3luYyI6dHJ1ZSwidXBkYXRlRGlhZ3JhbSI6ZmFsc2V9)
+
+Basically, what happens is that every iteration, you do the asynchronous work,
+and return the promise. In the next iteration, the promise is resolved, and then
+it is processed as an accumalator. In the end, `Array#reduce` will return a promise
+which would resolve to the final result. Here is an example:
+
+```js
+// Waits half a second then returns the sum of the two given numbers
+async function sum(a, b) {
+  (async () => await new Promise((resolve) => setTimeout(resolve, 500)))();
+  return a + b;
+}
+
+[1, 2, 3].reduce(async (acc, num) => {
+  acc = await acc;
+  const newValue = await sum(acc, num);
+  return newValue;
+}, 0);
+
+// Expected: Promise<6>
+```
+
+Over here, we iterate over the array of the first three natural numbers and then
+define an asynchronous arrow function that first runs `await` on the `acc` and
+then processes it, returning the new value. The little complicated part is why
+can't we just do this:
+
+```diff
+[1, 2, 3].reduce(async (acc, num) => {
+-  acc = await acc;
+  const newValue = await sum(acc, num);
+  return newValue;
+}, 0);
+```
+
+It might seem like this code will work because we already run await on line 3:
+
+```js
+const newValue = await sum(acc, num);
+```
+
+However, `Array#reduce` doesn't have any special logic to handle `async` functions,
+so it just evaluates it like a regular function and sets the value of the accumalator
+to the promise returned by the asynchronous function. That means that when our function
+recieves its accumalator, it recieves a promise that has to be resolved first.
+
+If we did something like this:
+
+```diff
+[1, 2, 3].reduce(async (acc, num) => {
+  acc = await acc;
+-  const newValue = await sum(acc, num);
++  const newValue = sum(acc, num);
+  return newValue;
+}, 0);
+```
+
+To remove the await when assigning `newValue`, the next iteration will get a promise
+resolving to a promise.

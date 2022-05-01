@@ -19,6 +19,7 @@ module.exports = {
     'unicorn/prefer-array-find': 'error',
     'unicorn/no-null': 'off',
     'unicorn/no-array-callback-reference': 'off',
+    'unicorn/no-new-array': 'off',
     'eslint-comments/no-unused-disable': 'error',
     'no-unused-vars': [
       'error',
@@ -26,6 +27,7 @@ module.exports = {
         varsIgnorePattern: '^_',
       },
     ],
+    'no-empty': ['error', { allowEmptyCatch: true }],
     '@next/next/no-img-element': 'off', // TODO: Enable when AVIF file format has better compatibility
   },
   globals: {

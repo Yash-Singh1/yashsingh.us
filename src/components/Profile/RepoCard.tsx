@@ -6,15 +6,13 @@ interface RepoCardProps {
 function RepoCard({ repo, onLoad = () => {} }: RepoCardProps) {
   return (
     <a
-      href={`https://github.com/${repo}`}
-      aria-label={`Yash-Singh1/${repo}`}
+      href={`https://github.com/Yash-Singh1/${repo}`}
+      aria-label={repo}
       target='_blank'
       rel='noreferrer noopener'
     >
       <img
-        src={`https://github-readme-stats.vercel.app/api/pin/?username=${repo.split('/')[0]}&repo=${
-          repo.split('/')[1]
-        }&theme=nord`}
+        src={`https://github-readme-stats.vercel.app/api/pin/?username=Yash-Singh1&repo=${repo}&theme=nord`}
         width={400}
         height={120}
         onLoad={onLoad}

@@ -1,0 +1,68 @@
+{
+  "description": "I am an incoming freshman in middle school who likes programming in his free time. One of my other hobbies is basketball.",
+  "projects": [
+    "epack",
+    "eslint-plugin-userscripts",
+    "ball-royale",
+    "randomgen-parser",
+    "dotfiles",
+    "competitive-programming"
+  ],
+  "skills": [
+    {
+      "name": "JavaScript",
+      "percentage": 80,
+      "priority": 100
+    },
+    {
+      "name": "React, Redux, and Next.js",
+      "percentage": 80,
+      "priority": 100
+    },
+    {
+      "name": "Version Control",
+      "percentage": 80,
+      "priority": 30
+    },
+    {
+      "name": "Typescript",
+      "percentage": 70,
+      "priority": 100
+    },
+    {
+      "name": "C++",
+      "percentage": 60,
+      "priority": 100
+    },
+    {
+      "name": "Python",
+      "percentage": 70,
+      "priority": 100
+    },
+    {
+      "name": "CSS",
+      "percentage": 70,
+      "priority": 50
+    },
+    {
+      "name": "Bootstrap",
+      "percentage": 60,
+      "priority": 40
+    },
+    {
+      "name": "Tailwind CSS",
+      "percentage": 60,
+      "priority": 45
+    },
+    {
+      "name": "CoffeeScript",
+      "percentage": 60,
+      "priority": 40
+    },
+    {
+      "name": "C# in Unity",
+      "percentage": 50,
+      "priority": 45
+    }
+  ]
+}

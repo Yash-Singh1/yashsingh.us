@@ -13,8 +13,13 @@ import coolBgStyles from '../../styles/cool-bg.module.scss';
 import AOS from 'aos';
 import GitHub from '../SimpleIconLogos/GitHub';
 import Mail from '../SimpleIconLogos/Mail';
+import { Home } from '../../../.tina/__generated__/types';
 
-function Profile() {
+interface ProfileProps {
+  data: Home;
+}
+
+function Profile({ data }: ProfileProps) {
   const [loadedImages, loadImage] = useState<boolean[]>([]);
   const [animateAgain, setAnimateAgain] = useState<boolean>(true);
   const [changedHash, changeHash] = useState<boolean>(false);
@@ -23,12 +28,13 @@ function Profile() {
   const imageOnLoad = () => loadImage([...loadedImages, true]);
 
   useEffect(() => {
-    if ((location.hash && loadedImages.length === 6) || changedHash === true) {
+    if ((location.hash && loadedImages.length === data?.projects?.length) || changedHash === true) {
       document
         .querySelector(`#${location.hash.slice(1).toLowerCase()}`)
         ?.scrollIntoView({ behavior: 'smooth' });
       if (changedHash) changeHash(false);
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [changedHash, loadedImages]);
 
   useEffect(() => {
@@ -38,10 +44,7 @@ function Profile() {
   return (
     <Container className={`box-content ${coolBgStyles['cool-bg']} ${profileStyles['cool-bg']}`}>
       <Header title='Saiansh (Yash) Singh' intro="It's" large className={profileStyles['header']}>
-        <Paragraph>
-          I am a programmer of the Bay Area. I program many cool stuff in a variety of languages, my
-          best being JavaScript/TypeScript. I am best at frontend and work with React.
-        </Paragraph>
+        <Paragraph>{data ? data.description : ''}</Paragraph>
         <br />
         <button
           className='bg-blue-500 hover:bg-blue-400 text-white font-bold py-2 px-4 border-blue-700 hover:border-blue-500 cursor-pointer rounded-lg outline-none par'
@@ -55,22 +58,15 @@ function Profile() {
         </button>
       </Header>
       <Section title='Projects'>
-        <div className='text-gray-400 text-xl mt-5'>
+        <div className={`text-gray-400 text-xl mt-5 ${profileStyles['projects-container']}`}>
           <span className={`${profileStyles['project-note']} par`}>
             I have many interesting projects. Here are a few handpicked ones:
           </span>
-          <div>
-            <RepoCard repo='Yash-Singh1/epack' onLoad={imageOnLoad} />
-            <RepoCard repo='Yash-Singh1/eslint-plugin-userscripts' onLoad={imageOnLoad} />
-          </div>
-          <div>
-            <RepoCard repo='Yash-Singh1/ball-royale' onLoad={imageOnLoad} />
-            <RepoCard repo='Yash-Singh1/randomgen-parser' onLoad={imageOnLoad} />
-          </div>
-          <div>
-            <RepoCard repo='Yash-Singh1/dotfiles' onLoad={imageOnLoad} />
-            <RepoCard repo='Yash-Singh1/competitive-programming' onLoad={imageOnLoad} />
-          </div>
+          {data
+            ? data.projects!.map((project, index) => (
+                <RepoCard repo={project!} onLoad={imageOnLoad} key={index} />
+              ))
+            : null}
           <Paragraph className='text-blue-400 text-lg cursor-pointer'>
             <a href='https://github.com/Yash-Singh1/?tab=repositories&sort=stargazers'>
               See more...
@@ -81,19 +77,32 @@ function Profile() {
       <Section title='Skills'>
         <Paragraph>Here is a list of some of my skills and their progress:</Paragraph>
         <div className={profileStyles['skills-list']} ref={progressbarsRef}>
-          <Progress skill='JavaScript' percent={80} reference={progressbarsRef} />
-          <Progress skill='React and Redux' percent={80} reference={progressbarsRef} />
-          <Progress skill='Version Control' percent={80} reference={progressbarsRef} />
-          <Progress skill='Chrome Extensions' percent={80} reference={progressbarsRef} />
-          <Progress skill='Typescript' percent={70} reference={progressbarsRef} />
-          <Progress skill='Python' percent={70} reference={progressbarsRef} />
-          <Progress skill='C++' percent={60} reference={progressbarsRef} />
-          <Progress skill='CSS' percent={60} reference={progressbarsRef} />
+          {data
+            ? data
+                .skills!.slice(0, 8)
+                .map((skill) => (
+                  <Progress
+                    key={skill!.name}
+                    skill={skill!.name as string}
+                    percent={skill!.percentage as number}
+                    reference={progressbarsRef}
+                  />
+                ))
+            : null}
           <More onHidden={() => setAnimateAgain(false)}>
-            <Progress skill='Bootstrap' percent={60} reference={progressbarsRef} animate={animateAgain} />
-            <Progress skill='Tailwind CSS' percent={60} reference={progressbarsRef} animate={animateAgain} />
-            <Progress skill='CoffeeScript' percent={60} reference={progressbarsRef} animate={animateAgain} />
-            <Progress skill='C# in Unity' percent={50} reference={progressbarsRef} animate={animateAgain} />
+            {data
+              ? data
+                  .skills!.slice(8)
+                  .map((skill) => (
+                    <Progress
+                      key={skill!.name}
+                      skill={skill!.name as string}
+                      percent={skill!.percentage as number}
+                      reference={progressbarsRef}
+                      animate={animateAgain}
+                    />
+                  ))
+              : null}
           </More>
         </div>
       </Section>

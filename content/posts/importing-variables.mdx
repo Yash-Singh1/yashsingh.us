@@ -1,0 +1,47 @@
+---
+title: 'Importing Variables'
+subtitle: 'Import variables that are from other files and not exported'
+image: '/img/importing-variables.png'
+author: 'Yash Singh'
+date: 'April 23, 2021'
+keywords: [javascript]
+---
+
+# Importing Variables
+
+A while back I had installed a submodule inside one
+of my repositories: [`Yash-Singh1/npm-expansions-randomgen`](https://github.com/Yash-Singh1/npm-expansions-randomgen).
+The submodules contained lists of all the words of a part of speech. However,
+it was a gist and the variables weren't exported. This article shows a workaround
+using `eval` that solves the problem.
+
+## Eval
+
+Before I introduce the workaround, let me introduce `eval`. `eval` is a function
+that allows to run the code provided as a string inside the arguments. For example:
+
+```js
+eval('console.log("hello world")');
+```
+
+Would run:
+
+```js
+console.log('hello world');
+```
+
+Another thing to keep in mind is that `eval` is unsafe and not allowed to be
+used everywhere.
+
+## Importing Unexported Variables
+
+To import a variable `VAR` from a file `FILE`, run:
+
+```js
+eval('(()=>{' + fs.readFileSync(FILE, 'utf8') + ';return ' + VAR + ';})()');
+```
+
+This would have a function that runs the contents of the file and returns the
+string `VAR` that is the variable. This function is then run inside `eval`.
+
+Here is an example in my [code](https://github.com/Yash-Singh1/npm-expansions-randomgen/blob/main/generate.js#L19).

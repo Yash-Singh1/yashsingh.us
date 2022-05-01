@@ -5,6 +5,7 @@ export default function Document() {
     <Html lang='en'>
       <Head>
         <meta name='author' content='Yash Singh' />
+        <meta httpEquiv='content-language' content='en' />
       </Head>
       <body>
         <Main />
