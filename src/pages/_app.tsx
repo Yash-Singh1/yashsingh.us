@@ -6,6 +6,7 @@ import type { AppProps } from 'next/app';
 import Script from 'next/script';
 import js from '../helpers/js';
 import Tina from '../../.tina/components/TinaDynamicProvider.js';
+import Footer from '../components/Footer';
 
 function App({ Component, pageProps }: AppProps & { Component: any }) {
   return (
@@ -20,6 +21,7 @@ function App({ Component, pageProps }: AppProps & { Component: any }) {
         gtag('config', 'G-T7G01BVK0J');
       }`}</Script>
       <Component {...pageProps} />
+      <Footer />
     </Tina>
   );
 }

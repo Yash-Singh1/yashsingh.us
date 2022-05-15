@@ -25,7 +25,7 @@ export default defineSchema({
           type: 'object',
           list: true,
           ui: {
-            itemProps: async function (item) {
+            itemProps: function (item) {
               return {
                 label: item?.name,
               };
@@ -115,7 +115,7 @@ export const tinaConfig = defineConfig({
   cmsCallback: (cms) => {
     import('tinacms').then(({ RouteMappingPlugin }) => {
       const RouteMapping = new RouteMappingPlugin((collection, document) => {
-        if (collection.name === 'home' && document.sys.filename === 'Home') {
+        if (collection.name === 'home' && document._sys.filename === 'Home') {
           return '/';
         }
 

@@ -16,26 +16,7 @@ const withMDX = nextMDX({
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   reactStrictMode: true,
-  pageExtensions: ['ts', 'tsx', 'js', 'jsx', 'md', 'mdx'],
-  rewrites: async function () {
-    return [
-      {
-        source: '/blog',
-        has: [
-          {
-            type: 'query',
-            key: 'page',
-            value: '(?<page>.+)',
-          },
-        ],
-        destination: '/blog/:page',
-      },
-      {
-        source: '/blog',
-        destination: '/blog/1',
-      },
-    ];
-  },
+  pageExtensions: ['ts', 'tsx', 'js', 'jsx', 'md', 'mdx']
 };
 
 export default withPlugins([withMDX, withSvgr], nextConfig);

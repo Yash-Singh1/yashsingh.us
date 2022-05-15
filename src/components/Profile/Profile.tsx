@@ -109,7 +109,7 @@ function Profile({ data }: ProfileProps) {
       <Section title='More'>
         <Paragraph>
           I maintain a blog site with multiple posts on different topics related to programming at{' '}
-          <Link href='/blog/?page=1'>
+          <Link href='/blog/'>
             <a className='text-blue-500'>https://www.yashsingh.us/blog/</a>
           </Link>
           . I am also currently enrolled ⚡ Lawson Middle School (Lightning) ⚡.

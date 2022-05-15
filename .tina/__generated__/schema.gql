@@ -30,38 +30,41 @@ interface Node {
 
 """"""
 interface Document {
-  sys: SystemInfo
   id: ID!
-  form: JSON!
-  values: JSON!
+  _sys: SystemInfo
+  _values: JSON!
 }
 
 """A relay-compliant pagination connection"""
 interface Connection {
   totalCount: Float!
+  pageInfo: PageInfo!
 }
 
 type Query {
   getOptimizedQuery(queryString: String!): String
-  getCollection(collection: String): Collection!
-  getCollections: [Collection!]!
+  collection(collection: String): Collection!
+  collections: [Collection!]!
   node(id: String): Node!
-  getDocument(collection: String, relativePath: String): DocumentNode!
-  getDocumentList(before: String, after: String, first: Float, last: Float, sort: String): DocumentConnection!
-  getDocumentFields: JSON!
-  getHomeDocument(relativePath: String): HomeDocument!
-  getHomeList(before: String, after: String, first: Float, last: Float, sort: String): HomeConnection!
-  getPostsDocument(relativePath: String): PostsDocument!
-  getPostsList(before: String, after: String, first: Float, last: Float, sort: String): PostsConnection!
+  document(collection: String, relativePath: String): DocumentNode!
+  home(relativePath: String): Home!
+  homeConnection(before: String, after: String, first: Float, last: Float, sort: String, filter: HomeFilter): HomeConnection!
+  posts(relativePath: String): Posts!
+  postsConnection(before: String, after: String, first: Float, last: Float, sort: String, filter: PostsFilter): PostsConnection!
+}
+
+input DocumentFilter {
+  home: HomeFilter
+  posts: PostsFilter
 }
 
 type DocumentConnectionEdges {
-  cursor: String
+  cursor: String!
   node: DocumentNode
 }
 
 type DocumentConnection implements Connection {
-  pageInfo: PageInfo
+  pageInfo: PageInfo!
   totalCount: Float!
   edges: [DocumentConnectionEdges]
 }
@@ -75,10 +78,10 @@ type Collection {
   matches: String
   templates: [JSON]
   fields: [JSON]
-  documents(before: String, after: String, first: Float, last: Float, sort: String): DocumentConnection!
+  documents(before: String, after: String, first: Float, last: Float, sort: String, filter: DocumentFilter): DocumentConnection!
 }
 
-union DocumentNode = HomeDocument | PostsDocument
+union DocumentNode = Home | Posts
 
 type HomeSkills {
   name: String
@@ -86,33 +89,56 @@ type HomeSkills {
   priority: Float
 }
 
-type Home {
+type Home implements Node & Document {
   description: String
   projects: [String]
   skills: [HomeSkills]
+  id: ID!
+  _sys: SystemInfo!
+  _values: JSON!
 }
 
-type HomeDocument implements Node & Document {
-  id: ID!
-  sys: SystemInfo!
-  data: Home!
-  form: JSON!
-  values: JSON!
-  dataJSON: JSON!
+input StringFilter {
+  startsWith: String
+  eq: String
+  exists: Boolean
+  in: [String]
+}
+
+input NumberFilter {
+  lt: Float
+  lte: Float
+  gte: Float
+  gt: Float
+  eq: Float
+  exists: Boolean
+  in: [Float]
+}
+
+input HomeSkillsFilter {
+  name: StringFilter
+  percentage: NumberFilter
+  priority: NumberFilter
+}
+
+input HomeFilter {
+  description: StringFilter
+  projects: StringFilter
+  skills: HomeSkillsFilter
 }
 
 type HomeConnectionEdges {
-  cursor: String
-  node: HomeDocument
+  cursor: String!
+  node: Home
 }
 
 type HomeConnection implements Connection {
-  pageInfo: PageInfo
+  pageInfo: PageInfo!
   totalCount: Float!
   edges: [HomeConnectionEdges]
 }
 
-type Posts {
+type Posts implements Node & Document {
   title: String
   subtitle: String
   image: String
@@ -121,24 +147,43 @@ type Posts {
   keywords: [String]
   link: String
   body: JSON
+  id: ID!
+  _sys: SystemInfo!
+  _values: JSON!
 }
 
-type PostsDocument implements Node & Document {
-  id: ID!
-  sys: SystemInfo!
-  data: Posts!
-  form: JSON!
-  values: JSON!
-  dataJSON: JSON!
+input DatetimeFilter {
+  after: String
+  before: String
+  eq: String
+  exists: Boolean
+  in: [String]
+}
+
+input RichTextFilter {
+  startsWith: String
+  eq: String
+  exists: Boolean
+}
+
+input PostsFilter {
+  title: StringFilter
+  subtitle: StringFilter
+  image: StringFilter
+  author: StringFilter
+  date: DatetimeFilter
+  keywords: StringFilter
+  link: StringFilter
+  body: RichTextFilter
 }
 
 type PostsConnectionEdges {
-  cursor: String
-  node: PostsDocument
+  cursor: String!
+  node: Posts
 }
 
 type PostsConnection implements Connection {
-  pageInfo: PageInfo
+  pageInfo: PageInfo!
   totalCount: Float!
   edges: [PostsConnectionEdges]
 }
@@ -148,10 +193,10 @@ type Mutation {
   updateDocument(collection: String, relativePath: String!, params: DocumentMutation!): DocumentNode!
   deleteDocument(collection: String, relativePath: String!): DocumentNode!
   createDocument(collection: String, relativePath: String!, params: DocumentMutation!): DocumentNode!
-  updateHomeDocument(relativePath: String!, params: HomeMutation!): HomeDocument!
-  createHomeDocument(relativePath: String!, params: HomeMutation!): HomeDocument!
-  updatePostsDocument(relativePath: String!, params: PostsMutation!): PostsDocument!
-  createPostsDocument(relativePath: String!, params: PostsMutation!): PostsDocument!
+  updateHome(relativePath: String!, params: HomeMutation!): Home!
+  createHome(relativePath: String!, params: HomeMutation!): Home!
+  updatePosts(relativePath: String!, params: PostsMutation!): Posts!
+  createPosts(relativePath: String!, params: PostsMutation!): Posts!
 }
 
 input DocumentMutation {

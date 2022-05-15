@@ -8,7 +8,7 @@
 .not-found-content {
   display: table-cell;
   vertical-align: middle;
-  height: 100vh;
+  height: 90vh;
 
   h1 {
     @include mixins.no-select;

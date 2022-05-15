@@ -3,10 +3,10 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "tinacms server:start -c \"next dev\"",
-    "build": "tinacms server:start -c \"next build\"",
+    "dev": "tinacms server:start -c \"next dev\" --experimentalData",
+    "build": "tinacms server:start -c \"next build\" --experimentalData",
     "postbuild": "next-sitemap",
-    "start": "tinacms server:start -c \"next start\"",
+    "start": "tinacms server:start -c \"next start\" --experimentalData",
     "lint": "next lint && prettier --check .",
     "lint:fix": "next lint --fix && prettier --write .",
     "storybook": "start-storybook -p 6006",
@@ -16,7 +16,7 @@
     "@fontsource/baloo-bhai-2": "^4.5.4",
     "@mdx-js/loader": "^2.1.1",
     "@next/mdx": "^12.1.4",
-    "@tinacms/cli": "^0.60.12",
+    "@tinacms/cli": "^0.60.15",
     "aos": "^2.3.4",
     "github-markdown-css": "^5.1.0",
     "highlight.js": "^11.5.0",
@@ -27,7 +27,7 @@
     "sass": "^1.50.0",
     "styled-components": "^5.3.5",
     "tailwind-override": "^0.6.1",
-    "tinacms": "^0.67.3",
+    "tinacms": "^0.68.2",
     "typed.js": "^2.0.12"
   },
   "devDependencies": {

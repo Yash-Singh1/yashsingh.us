@@ -4,29 +4,46 @@ import Profile from '../components/Profile/Profile';
 import { useTina } from 'tinacms/dist/edit-state';
 import { gql, staticRequest } from 'tinacms';
 import { Query } from '../../.tina/__generated__/types';
+import { useEffect, useState } from 'react';
+import AOS from 'aos';
 
 const query = gql`
   {
-    getHomeDocument(relativePath: "Home.json") {
-      data {
-        description
-        projects
-        skills {
-          name
-          percentage
-          priority
-        }
+    home(relativePath: "Home.json") {
+      description
+      projects
+      skills {
+        name
+        percentage
+        priority
       }
     }
   }
 `;
 
 const Home: NextPage<{ data: Query }> = (props) => {
-  const { data } = useTina<Query>({
-    query,
-    variables: {},
-    data: props.data,
-  });
+  const [{ data }, setData] = useState<{ data: Query }>(
+    useTina<Query>({
+      query,
+      variables: {},
+      data: props.data,
+    })
+  );
+
+  useEffect(() => {
+    data.home.skills!.sort((skillA, skillB) => {
+      if (skillA!.percentage! > skillB!.percentage!) return -1;
+      else if (skillA!.percentage! < skillB!.percentage!) return 1;
+      if (skillA!.priority! > skillB!.priority!) return -1;
+      else if (skillA!.priority! < skillB!.priority!) return 1;
+      return 0;
+    });
+    setData({ data });
+  }, [data]);
+
+  useEffect(() => {
+    AOS.init({ duration: 500 });
+  }, []);
 
   return (
     <div>
@@ -40,7 +57,7 @@ const Home: NextPage<{ data: Query }> = (props) => {
       </Head>
 
       <main>
-        <Profile data={data.getHomeDocument.data} />
+        <Profile data={data.home} />
       </main>
     </div>
   );

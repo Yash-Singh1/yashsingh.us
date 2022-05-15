@@ -48,30 +48,28 @@ export type Node = {
 };
 
 export type Document = {
-  sys?: Maybe<SystemInfo>;
   id: Scalars['ID'];
-  form: Scalars['JSON'];
-  values: Scalars['JSON'];
+  _sys?: Maybe<SystemInfo>;
+  _values: Scalars['JSON'];
 };
 
 /** A relay-compliant pagination connection */
 export type Connection = {
   totalCount: Scalars['Float'];
+  pageInfo: PageInfo;
 };
 
 export type Query = {
   __typename?: 'Query';
   getOptimizedQuery?: Maybe<Scalars['String']>;
-  getCollection: Collection;
-  getCollections: Array<Collection>;
+  collection: Collection;
+  collections: Array<Collection>;
   node: Node;
-  getDocument: DocumentNode;
-  getDocumentList: DocumentConnection;
-  getDocumentFields: Scalars['JSON'];
-  getHomeDocument: HomeDocument;
-  getHomeList: HomeConnection;
-  getPostsDocument: PostsDocument;
-  getPostsList: PostsConnection;
+  document: DocumentNode;
+  home: Home;
+  homeConnection: HomeConnection;
+  posts: Posts;
+  postsConnection: PostsConnection;
 };
 
 
@@ -80,7 +78,7 @@ export type QueryGetOptimizedQueryArgs = {
 };
 
 
-export type QueryGetCollectionArgs = {
+export type QueryCollectionArgs = {
   collection?: InputMaybe<Scalars['String']>;
 };
 
@@ -90,57 +88,55 @@ export type QueryNodeArgs = {
 };
 
 
-export type QueryGetDocumentArgs = {
+export type QueryDocumentArgs = {
   collection?: InputMaybe<Scalars['String']>;
   relativePath?: InputMaybe<Scalars['String']>;
 };
 
 
-export type QueryGetDocumentListArgs = {
-  before?: InputMaybe<Scalars['String']>;
-  after?: InputMaybe<Scalars['String']>;
-  first?: InputMaybe<Scalars['Float']>;
-  last?: InputMaybe<Scalars['Float']>;
-  sort?: InputMaybe<Scalars['String']>;
-};
-
-
-export type QueryGetHomeDocumentArgs = {
+export type QueryHomeArgs = {
   relativePath?: InputMaybe<Scalars['String']>;
 };
 
 
-export type QueryGetHomeListArgs = {
+export type QueryHomeConnectionArgs = {
   before?: InputMaybe<Scalars['String']>;
   after?: InputMaybe<Scalars['String']>;
   first?: InputMaybe<Scalars['Float']>;
   last?: InputMaybe<Scalars['Float']>;
   sort?: InputMaybe<Scalars['String']>;
+  filter?: InputMaybe<HomeFilter>;
 };
 
 
-export type QueryGetPostsDocumentArgs = {
+export type QueryPostsArgs = {
   relativePath?: InputMaybe<Scalars['String']>;
 };
 
 
-export type QueryGetPostsListArgs = {
+export type QueryPostsConnectionArgs = {
   before?: InputMaybe<Scalars['String']>;
   after?: InputMaybe<Scalars['String']>;
   first?: InputMaybe<Scalars['Float']>;
   last?: InputMaybe<Scalars['Float']>;
   sort?: InputMaybe<Scalars['String']>;
+  filter?: InputMaybe<PostsFilter>;
+};
+
+export type DocumentFilter = {
+  home?: InputMaybe<HomeFilter>;
+  posts?: InputMaybe<PostsFilter>;
 };
 
 export type DocumentConnectionEdges = {
   __typename?: 'DocumentConnectionEdges';
-  cursor?: Maybe<Scalars['String']>;
+  cursor: Scalars['String'];
   node?: Maybe<DocumentNode>;
 };
 
 export type DocumentConnection = Connection & {
   __typename?: 'DocumentConnection';
-  pageInfo?: Maybe<PageInfo>;
+  pageInfo: PageInfo;
   totalCount: Scalars['Float'];
   edges?: Maybe<Array<Maybe<DocumentConnectionEdges>>>;
 };
@@ -165,9 +161,10 @@ export type CollectionDocumentsArgs = {
   first?: InputMaybe<Scalars['Float']>;
   last?: InputMaybe<Scalars['Float']>;
   sort?: InputMaybe<Scalars['String']>;
+  filter?: InputMaybe<DocumentFilter>;
 };
 
-export type DocumentNode = HomeDocument | PostsDocument;
+export type DocumentNode = Home | Posts;
 
 export type HomeSkills = {
   __typename?: 'HomeSkills';
@@ -176,37 +173,59 @@ export type HomeSkills = {
   priority?: Maybe<Scalars['Float']>;
 };
 
-export type Home = {
+export type Home = Node & Document & {
   __typename?: 'Home';
   description?: Maybe<Scalars['String']>;
   projects?: Maybe<Array<Maybe<Scalars['String']>>>;
   skills?: Maybe<Array<Maybe<HomeSkills>>>;
+  id: Scalars['ID'];
+  _sys: SystemInfo;
+  _values: Scalars['JSON'];
 };
 
-export type HomeDocument = Node & Document & {
-  __typename?: 'HomeDocument';
-  id: Scalars['ID'];
-  sys: SystemInfo;
-  data: Home;
-  form: Scalars['JSON'];
-  values: Scalars['JSON'];
-  dataJSON: Scalars['JSON'];
+export type StringFilter = {
+  startsWith?: InputMaybe<Scalars['String']>;
+  eq?: InputMaybe<Scalars['String']>;
+  exists?: InputMaybe<Scalars['Boolean']>;
+  in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+};
+
+export type NumberFilter = {
+  lt?: InputMaybe<Scalars['Float']>;
+  lte?: InputMaybe<Scalars['Float']>;
+  gte?: InputMaybe<Scalars['Float']>;
+  gt?: InputMaybe<Scalars['Float']>;
+  eq?: InputMaybe<Scalars['Float']>;
+  exists?: InputMaybe<Scalars['Boolean']>;
+  in?: InputMaybe<Array<InputMaybe<Scalars['Float']>>>;
+};
+
+export type HomeSkillsFilter = {
+  name?: InputMaybe<StringFilter>;
+  percentage?: InputMaybe<NumberFilter>;
+  priority?: InputMaybe<NumberFilter>;
+};
+
+export type HomeFilter = {
+  description?: InputMaybe<StringFilter>;
+  projects?: InputMaybe<StringFilter>;
+  skills?: InputMaybe<HomeSkillsFilter>;
 };
 
 export type HomeConnectionEdges = {
   __typename?: 'HomeConnectionEdges';
-  cursor?: Maybe<Scalars['String']>;
-  node?: Maybe<HomeDocument>;
+  cursor: Scalars['String'];
+  node?: Maybe<Home>;
 };
 
 export type HomeConnection = Connection & {
   __typename?: 'HomeConnection';
-  pageInfo?: Maybe<PageInfo>;
+  pageInfo: PageInfo;
   totalCount: Scalars['Float'];
   edges?: Maybe<Array<Maybe<HomeConnectionEdges>>>;
 };
 
-export type Posts = {
+export type Posts = Node & Document & {
   __typename?: 'Posts';
   title?: Maybe<Scalars['String']>;
   subtitle?: Maybe<Scalars['String']>;
@@ -216,27 +235,45 @@ export type Posts = {
   keywords?: Maybe<Array<Maybe<Scalars['String']>>>;
   link?: Maybe<Scalars['String']>;
   body?: Maybe<Scalars['JSON']>;
+  id: Scalars['ID'];
+  _sys: SystemInfo;
+  _values: Scalars['JSON'];
 };
 
-export type PostsDocument = Node & Document & {
-  __typename?: 'PostsDocument';
-  id: Scalars['ID'];
-  sys: SystemInfo;
-  data: Posts;
-  form: Scalars['JSON'];
-  values: Scalars['JSON'];
-  dataJSON: Scalars['JSON'];
+export type DatetimeFilter = {
+  after?: InputMaybe<Scalars['String']>;
+  before?: InputMaybe<Scalars['String']>;
+  eq?: InputMaybe<Scalars['String']>;
+  exists?: InputMaybe<Scalars['Boolean']>;
+  in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+};
+
+export type RichTextFilter = {
+  startsWith?: InputMaybe<Scalars['String']>;
+  eq?: InputMaybe<Scalars['String']>;
+  exists?: InputMaybe<Scalars['Boolean']>;
+};
+
+export type PostsFilter = {
+  title?: InputMaybe<StringFilter>;
+  subtitle?: InputMaybe<StringFilter>;
+  image?: InputMaybe<StringFilter>;
+  author?: InputMaybe<StringFilter>;
+  date?: InputMaybe<DatetimeFilter>;
+  keywords?: InputMaybe<StringFilter>;
+  link?: InputMaybe<StringFilter>;
+  body?: InputMaybe<RichTextFilter>;
 };
 
 export type PostsConnectionEdges = {
   __typename?: 'PostsConnectionEdges';
-  cursor?: Maybe<Scalars['String']>;
-  node?: Maybe<PostsDocument>;
+  cursor: Scalars['String'];
+  node?: Maybe<Posts>;
 };
 
 export type PostsConnection = Connection & {
   __typename?: 'PostsConnection';
-  pageInfo?: Maybe<PageInfo>;
+  pageInfo: PageInfo;
   totalCount: Scalars['Float'];
   edges?: Maybe<Array<Maybe<PostsConnectionEdges>>>;
 };
@@ -247,10 +284,10 @@ export type Mutation = {
   updateDocument: DocumentNode;
   deleteDocument: DocumentNode;
   createDocument: DocumentNode;
-  updateHomeDocument: HomeDocument;
-  createHomeDocument: HomeDocument;
-  updatePostsDocument: PostsDocument;
-  createPostsDocument: PostsDocument;
+  updateHome: Home;
+  createHome: Home;
+  updatePosts: Posts;
+  createPosts: Posts;
 };
 
 
@@ -281,25 +318,25 @@ export type MutationCreateDocumentArgs = {
 };
 
 
-export type MutationUpdateHomeDocumentArgs = {
+export type MutationUpdateHomeArgs = {
   relativePath: Scalars['String'];
   params: HomeMutation;
 };
 
 
-export type MutationCreateHomeDocumentArgs = {
+export type MutationCreateHomeArgs = {
   relativePath: Scalars['String'];
   params: HomeMutation;
 };
 
 
-export type MutationUpdatePostsDocumentArgs = {
+export type MutationUpdatePostsArgs = {
   relativePath: Scalars['String'];
   params: PostsMutation;
 };
 
 
-export type MutationCreatePostsDocumentArgs = {
+export type MutationCreatePostsArgs = {
   relativePath: Scalars['String'];
   params: PostsMutation;
 };
@@ -336,29 +373,29 @@ export type HomePartsFragment = { __typename?: 'Home', description?: string | nu
 
 export type PostsPartsFragment = { __typename?: 'Posts', title?: string | null, subtitle?: string | null, image?: string | null, author?: string | null, date?: string | null, keywords?: Array<string | null> | null, link?: string | null, body?: any | null };
 
-export type GetHomeDocumentQueryVariables = Exact<{
+export type HomeQueryVariables = Exact<{
   relativePath: Scalars['String'];
 }>;
 
 
-export type GetHomeDocumentQuery = { __typename?: 'Query', getHomeDocument: { __typename?: 'HomeDocument', id: string, sys: { __typename?: 'SystemInfo', filename: string, basename: string, breadcrumbs: Array<string>, path: string, relativePath: string, extension: string }, data: { __typename?: 'Home', description?: string | null, projects?: Array<string | null> | null, skills?: Array<{ __typename: 'HomeSkills', name?: string | null, percentage?: number | null, priority?: number | null } | null> | null } } };
+export type HomeQuery = { __typename?: 'Query', home: { __typename?: 'Home', id: string, description?: string | null, projects?: Array<string | null> | null, _sys: { __typename?: 'SystemInfo', filename: string, basename: string, breadcrumbs: Array<string>, path: string, relativePath: string, extension: string }, skills?: Array<{ __typename: 'HomeSkills', name?: string | null, percentage?: number | null, priority?: number | null } | null> | null } };
 
-export type GetHomeListQueryVariables = Exact<{ [key: string]: never; }>;
+export type HomeConnectionQueryVariables = Exact<{ [key: string]: never; }>;
 
 
-export type GetHomeListQuery = { __typename?: 'Query', getHomeList: { __typename?: 'HomeConnection', totalCount: number, edges?: Array<{ __typename?: 'HomeConnectionEdges', node?: { __typename?: 'HomeDocument', id: string, sys: { __typename?: 'SystemInfo', filename: string, basename: string, breadcrumbs: Array<string>, path: string, relativePath: string, extension: string }, data: { __typename?: 'Home', description?: string | null, projects?: Array<string | null> | null, skills?: Array<{ __typename: 'HomeSkills', name?: string | null, percentage?: number | null, priority?: number | null } | null> | null } } | null } | null> | null } };
+export type HomeConnectionQuery = { __typename?: 'Query', homeConnection: { __typename?: 'HomeConnection', totalCount: number, edges?: Array<{ __typename?: 'HomeConnectionEdges', node?: { __typename?: 'Home', id: string, description?: string | null, projects?: Array<string | null> | null, _sys: { __typename?: 'SystemInfo', filename: string, basename: string, breadcrumbs: Array<string>, path: string, relativePath: string, extension: string }, skills?: Array<{ __typename: 'HomeSkills', name?: string | null, percentage?: number | null, priority?: number | null } | null> | null } | null } | null> | null } };
 
-export type GetPostsDocumentQueryVariables = Exact<{
+export type PostsQueryVariables = Exact<{
   relativePath: Scalars['String'];
 }>;
 
 
-export type GetPostsDocumentQuery = { __typename?: 'Query', getPostsDocument: { __typename?: 'PostsDocument', id: string, sys: { __typename?: 'SystemInfo', filename: string, basename: string, breadcrumbs: Array<string>, path: string, relativePath: string, extension: string }, data: { __typename?: 'Posts', title?: string | null, subtitle?: string | null, image?: string | null, author?: string | null, date?: string | null, keywords?: Array<string | null> | null, link?: string | null, body?: any | null } } };
+export type PostsQuery = { __typename?: 'Query', posts: { __typename?: 'Posts', id: string, title?: string | null, subtitle?: string | null, image?: string | null, author?: string | null, date?: string | null, keywords?: Array<string | null> | null, link?: string | null, body?: any | null, _sys: { __typename?: 'SystemInfo', filename: string, basename: string, breadcrumbs: Array<string>, path: string, relativePath: string, extension: string } } };
 
-export type GetPostsListQueryVariables = Exact<{ [key: string]: never; }>;
+export type PostsConnectionQueryVariables = Exact<{ [key: string]: never; }>;
 
 
-export type GetPostsListQuery = { __typename?: 'Query', getPostsList: { __typename?: 'PostsConnection', totalCount: number, edges?: Array<{ __typename?: 'PostsConnectionEdges', node?: { __typename?: 'PostsDocument', id: string, sys: { __typename?: 'SystemInfo', filename: string, basename: string, breadcrumbs: Array<string>, path: string, relativePath: string, extension: string }, data: { __typename?: 'Posts', title?: string | null, subtitle?: string | null, image?: string | null, author?: string | null, date?: string | null, keywords?: Array<string | null> | null, link?: string | null, body?: any | null } } | null } | null> | null } };
+export type PostsConnectionQuery = { __typename?: 'Query', postsConnection: { __typename?: 'PostsConnection', totalCount: number, edges?: Array<{ __typename?: 'PostsConnectionEdges', node?: { __typename?: 'Posts', id: string, title?: string | null, subtitle?: string | null, image?: string | null, author?: string | null, date?: string | null, keywords?: Array<string | null> | null, link?: string | null, body?: any | null, _sys: { __typename?: 'SystemInfo', filename: string, basename: string, breadcrumbs: Array<string>, path: string, relativePath: string, extension: string } } | null } | null> | null } };
 
 export const HomePartsFragmentDoc = gql`
     fragment HomeParts on Home {
@@ -384,10 +421,10 @@ export const PostsPartsFragmentDoc = gql`
   body
 }
     `;
-export const GetHomeDocumentDocument = gql`
-    query getHomeDocument($relativePath: String!) {
-  getHomeDocument(relativePath: $relativePath) {
-    sys {
+export const HomeDocument = gql`
+    query home($relativePath: String!) {
+  home(relativePath: $relativePath) {
+    _sys {
       filename
       basename
       breadcrumbs
@@ -396,20 +433,18 @@ export const GetHomeDocumentDocument = gql`
       extension
     }
     id
-    data {
-      ...HomeParts
-    }
+    ...HomeParts
   }
 }
     ${HomePartsFragmentDoc}`;
-export const GetHomeListDocument = gql`
-    query getHomeList {
-  getHomeList {
+export const HomeConnectionDocument = gql`
+    query homeConnection {
+  homeConnection {
     totalCount
     edges {
       node {
         id
-        sys {
+        _sys {
           filename
           basename
           breadcrumbs
@@ -417,18 +452,16 @@ export const GetHomeListDocument = gql`
           relativePath
           extension
         }
-        data {
-          ...HomeParts
-        }
+        ...HomeParts
       }
     }
   }
 }
     ${HomePartsFragmentDoc}`;
-export const GetPostsDocumentDocument = gql`
-    query getPostsDocument($relativePath: String!) {
-  getPostsDocument(relativePath: $relativePath) {
-    sys {
+export const PostsDocument = gql`
+    query posts($relativePath: String!) {
+  posts(relativePath: $relativePath) {
+    _sys {
       filename
       basename
       breadcrumbs
@@ -437,20 +470,18 @@ export const GetPostsDocumentDocument = gql`
       extension
     }
     id
-    data {
-      ...PostsParts
-    }
+    ...PostsParts
   }
 }
     ${PostsPartsFragmentDoc}`;
-export const GetPostsListDocument = gql`
-    query getPostsList {
-  getPostsList {
+export const PostsConnectionDocument = gql`
+    query postsConnection {
+  postsConnection {
     totalCount
     edges {
       node {
         id
-        sys {
+        _sys {
           filename
           basename
           breadcrumbs
@@ -458,9 +489,7 @@ export const GetPostsListDocument = gql`
           relativePath
           extension
         }
-        data {
-          ...PostsParts
-        }
+        ...PostsParts
       }
     }
   }
@@ -469,17 +498,17 @@ export const GetPostsListDocument = gql`
 export type Requester<C= {}> = <R, V>(doc: DocumentNode, vars?: V, options?: C) => Promise<R>
   export function getSdk<C>(requester: Requester<C>) {
     return {
-      getHomeDocument(variables: GetHomeDocumentQueryVariables, options?: C): Promise<{data: GetHomeDocumentQuery, variables: GetHomeDocumentQueryVariables, query: string}> {
-        return requester<{data: GetHomeDocumentQuery, variables: GetHomeDocumentQueryVariables, query: string}, GetHomeDocumentQueryVariables>(GetHomeDocumentDocument, variables, options);
+      home(variables: HomeQueryVariables, options?: C): Promise<{data: HomeQuery, variables: HomeQueryVariables, query: string}> {
+        return requester<{data: HomeQuery, variables: HomeQueryVariables, query: string}, HomeQueryVariables>(HomeDocument, variables, options);
       },
-    getHomeList(variables?: GetHomeListQueryVariables, options?: C): Promise<{data: GetHomeListQuery, variables: GetHomeListQueryVariables, query: string}> {
-        return requester<{data: GetHomeListQuery, variables: GetHomeListQueryVariables, query: string}, GetHomeListQueryVariables>(GetHomeListDocument, variables, options);
+    homeConnection(variables?: HomeConnectionQueryVariables, options?: C): Promise<{data: HomeConnectionQuery, variables: HomeConnectionQueryVariables, query: string}> {
+        return requester<{data: HomeConnectionQuery, variables: HomeConnectionQueryVariables, query: string}, HomeConnectionQueryVariables>(HomeConnectionDocument, variables, options);
       },
-    getPostsDocument(variables: GetPostsDocumentQueryVariables, options?: C): Promise<{data: GetPostsDocumentQuery, variables: GetPostsDocumentQueryVariables, query: string}> {
-        return requester<{data: GetPostsDocumentQuery, variables: GetPostsDocumentQueryVariables, query: string}, GetPostsDocumentQueryVariables>(GetPostsDocumentDocument, variables, options);
+    posts(variables: PostsQueryVariables, options?: C): Promise<{data: PostsQuery, variables: PostsQueryVariables, query: string}> {
+        return requester<{data: PostsQuery, variables: PostsQueryVariables, query: string}, PostsQueryVariables>(PostsDocument, variables, options);
       },
-    getPostsList(variables?: GetPostsListQueryVariables, options?: C): Promise<{data: GetPostsListQuery, variables: GetPostsListQueryVariables, query: string}> {
-        return requester<{data: GetPostsListQuery, variables: GetPostsListQueryVariables, query: string}, GetPostsListQueryVariables>(GetPostsListDocument, variables, options);
+    postsConnection(variables?: PostsConnectionQueryVariables, options?: C): Promise<{data: PostsConnectionQuery, variables: PostsConnectionQueryVariables, query: string}> {
+        return requester<{data: PostsConnectionQuery, variables: PostsConnectionQueryVariables, query: string}, PostsConnectionQueryVariables>(PostsConnectionDocument, variables, options);
       }
     };
   }
