@@ -34,15 +34,14 @@
     display: flex;
     flex-direction: column;
   }
-  grid-template-areas: 
-    "first second third";
+  grid-template-areas: 'first second third';
   grid-template-columns: 1fr 1fr 1fr;
 
   &:nth-child(1) {
     height: 100vh;
-    grid-template-areas: 
-      "latest old1"
-      "latest old2";
+    grid-template-areas:
+      'latest old1'
+      'latest old2';
     grid-template-columns: 2fr 1fr;
     padding-bottom: 0;
 
@@ -61,7 +60,7 @@
     padding: 32px 16px;
   }
 
-  div[role="img"] {
+  div[role='img'] {
     width: 100%;
     margin-bottom: 8px;
   }
