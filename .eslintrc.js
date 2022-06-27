@@ -8,7 +8,6 @@ module.exports = {
     'plugin:eslint-comments/recommended',
     'next/core-web-vitals',
     'prettier',
-    'plugin:storybook/recommended',
   ],
   rules: {
     'unicorn/prefer-module': 'off',

@@ -35,7 +35,7 @@ my class was the following structure:
 I wanted someone to be able to do `[...pattern]` and get back:
 
 ```typescript
-Array<{ pattern: String, match: Function }> // length = n + 1
+Array<{ pattern: String; match: Function }>; // length = n + 1
 ```
 
 That is when I came across the `Symbol.iterator` property.
