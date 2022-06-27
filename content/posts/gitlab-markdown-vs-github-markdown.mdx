@@ -13,12 +13,12 @@ and Github Flavored Markdown:
 
 | GitLab Flavored Markdown                   | Github Flavored Markdown |
 | ------------------------------------------ | ------------------------ |
-| Diagramming Mermaid/PlantUML               | No Diagramming           |
+| Diagramming Mermaid/PlantUML               | Diagramming + Geography  |
 | Front Matter => YAML, JSON, TOML, and More | Front Matter => YAML     |
 | Inline and Multiline Diff                  | Multiline Diff           |
-| Equations/Math                             | No Equations/Math        |
+| Equations/Math                             | Equations/Math           |
 | References                                 | Less References          |
-| TOC (Table of Contents)                    | No TOC                   |
+| TOC (Table of Contents)                    | Native Table of Contents |
 | Metrics                                    | No metrics               |
 | Single Line/Multiline Blockquotes          | Single Line Blockquotes  |
 | Footnotes                                  | No Footnotes             |
@@ -30,11 +30,10 @@ Above was just a breakdown table, this is a more detailed explanation of each fe
 
 ## Diagrams/Flowcharts
 
-GitLab Flavored Markdown supports `Mermaid`/`PlantUML`. At the writing of this
-article, Github Flavored Markdown doesn’t support any of them. Both `Mermaid` and
-`PlantUML` are “Markdownish ways to render diagrams”. Since Github Flavored Markdown
-doesn’tsupport either, I can’t demonstrate each. Here is some raw text that
-displays some examples for each:
+GitLab Flavored Markdown supports `Mermaid`/`PlantUML`. GitHub Flavored Markdown added
+for this too in March 17, 2022. Both `Mermaid` and `PlantUML` are “Markdownish ways
+to render diagrams”. Since Github Flavored Markdown doesn’t support either, I can’t
+demonstrate each. Here is some raw text that displays some examples for each:
 
 ### Mermaid
 
@@ -79,6 +78,12 @@ User --> (2. write uml diagram)
 
 Here is how this would look in real life:
 ![PlantUML](http://www.plantuml.com/plantuml/png/SoWkIImgAStDuU9AJ2x9Br88BKujuk82aGgwkdOA6ePw2iMfEQd99GebgRa5EOabgPf8iaPw2kL5cIMf2a0J558o4zEB4dCrkHnIyrA00W00)
+
+### geoJSON, topoJSON, and STL
+
+geoJSON and topoJSON are geography data formats, and STL is a 3D rendering language.
+All three of these are also supported in GitHub Flavored Markdown when diagramming
+support was added (March 17, 2022).
 
 ## Emoji
 
@@ -178,10 +183,10 @@ This would be rendered as:
 
 ## Equations/Math
 
-GitLab Flavored Markdown can render math and Github Flavored Markdown can’t.
-According to the documentation, math is rendered using `KaTeX` and written in `LaTeX`.
-Inline math can be rendered with `$` (dollar signs). Here is an example using
-inline math:
+GitLab Flavored Markdown can render math and so can Github Flavored Markdown (since May
+19, 2022). According to the documentation, math is rendered using `KaTeX` and written
+in `LaTeX`. Inline math can be rendered with `$` (dollar signs). Here is an
+example using inline math:
 
 ```markdown
 $a^2+b^2=c^2$
@@ -259,9 +264,15 @@ flags is avaliable to all. To reference them:
 
 ### Labels
 
-According to this issue: [https://github.com/isaacs/github/issues/305](https://github.com/isaacs/github/issues/305),
-Github Flavored Markdown does not support references to labels, yet. Here is a
-table brought from the GitLab documentation for label references:
+As of February 3, 2022 you can reference labels in GitHub Flavored Markdown.
+To reference a label, simply paste the link in the format:
+
+```text
+https://github.com/{user}/{repository}/labels/{label}
+```
+
+Here is a table brought from the GitLab documentation for label references
+in their Markdown syntax:
 
 | Reference              | Input  | Cross-project Reference | Shortcut withing same Namespace |
 | ---------------------- | ------ | ----------------------- | ------------------------------- |
@@ -381,9 +392,23 @@ of using multi-line blockquotes:
 > > > Everything I am typing will render as a blockquote in GitLab Flavored Markdown
 ```
 
+Since May 19, 2022, GitHub introduced a way to render warnings and info boxes in markdown.
+To use this feature, simply insert a new blockquote before the an existing one
+with in bold saying `Note` or `Warning`:
+
+```markdown
+> **Note**
+> My note
+```
+
+```markdown
+> **Warning**
+> My warning
+```
+
 ## Footnotes
 
-Footnotes is a feature avaliable only inside GitLab Flavored Markdown. Footnotes
+Footnotes is a feature avaliable in both GitHub and Gitlabs' Markdown Syntax. Footnotes
 let you link to notes at the end of the markdown. For example, if I want to write
 the definition for some complicated word underneath, then I can use it. Also, if
 I want to give credit or links, then it can be used for that too. It is currently
@@ -438,6 +463,8 @@ markdown is like this:
 ![alt text1][logo]
 ![alt text](img/markdown_logo.png 'Title Text')
 ```
+
+You can also [specify images with theme context](https://github.com/github-community/community/discussions/16910).
 
 However there is another method which looks similar to footnotes as mentioned
 above. It is only supported in GitLab Flavored Markdown:
