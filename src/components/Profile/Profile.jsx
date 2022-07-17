@@ -37,8 +37,9 @@ function Profile() {
     <Container className='box-content container-profile'>
       <Header title='Saiansh (Yash) Singh' intro="It's" large>
         <Paragraph>
-          I am an incoming freshman and programmer. I program many cool stuff in a variety of languages, my
-          best being JavaScript/TypeScript. I am better at frontend and work with React.
+          I am an incoming freshman and programmer. I program many cool stuff in a variety of
+          languages, my best being JavaScript/TypeScript. I am better at frontend and work with
+          React.
         </Paragraph>
         <br />
         <button
@@ -101,7 +102,7 @@ function Profile() {
           <Link className='text-blue-500' to='/blog/?page=1'>
             https://www.yashsingh.us/blog/
           </Link>
-          . I am also currently enrolled ⚡ Lawson Middle School (Lightning) ⚡.
+          .
         </Paragraph>
         <Contacts
           contacts={[

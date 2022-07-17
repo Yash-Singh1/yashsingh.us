@@ -1,4 +1,4 @@
-import {ReactComponent as Infographic} from './Infographic.svg';
+import { ReactComponent as Infographic } from './Infographic.svg';
 import { useEffect, useRef } from 'react';
 import Info from './Information.mdx';
 import HeadingFactory from '../Post/Markdown_Components/HeadingFactory';

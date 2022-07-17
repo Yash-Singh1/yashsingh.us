@@ -5,9 +5,9 @@ module.exports = {
       name: '@storybook/addon-postcss',
       options: {
         postcssLoaderOptions: {
-          implementation: require('postcss'),
-        },
-      },
+          implementation: require('postcss')
+        }
+      }
     },
     '@storybook/addon-links',
     '@storybook/addon-essentials',

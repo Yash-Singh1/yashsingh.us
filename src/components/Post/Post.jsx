@@ -33,7 +33,13 @@ function Post() {
       >
         ← Back to blog
       </Link>
-      <img alt='Cover Image' src={postInfo.image} width={window.innerWidth / 2} height={320} className='w-1/2 max-h-80 object-center mx-auto' />
+      <img
+        alt='Cover Image'
+        src={postInfo.image}
+        width={window.innerWidth / 2}
+        height={320}
+        className='w-1/2 max-h-80 object-center mx-auto'
+      />
       <br />
       <br />
       <h1 className='font-semibold lg:text-6xl md:text-5xl sm:text-3xl text-2xl text-violet-700 text-center uppercase tracking-wider'>
