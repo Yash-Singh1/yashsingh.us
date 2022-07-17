@@ -6,6 +6,8 @@ import { gql, staticRequest } from 'tinacms';
 import { Query } from '../../.tina/__generated__/types';
 import { useEffect, useState } from 'react';
 import AOS from 'aos';
+import { graphql } from '@octokit/graphql';
+import type RepoInfo from '../types/RepoInfo';
 
 const query = gql`
   {
@@ -21,7 +23,7 @@ const query = gql`
   }
 `;
 
-const Home: NextPage<{ data: Query }> = (props) => {
+const Home: NextPage<{ data: Query; repoInfo: { [key: string]: RepoInfo } }> = (props) => {
   const [{ data }, setData] = useState<{ data: Query }>(
     useTina<Query>({
       query,
@@ -57,7 +59,7 @@ const Home: NextPage<{ data: Query }> = (props) => {
       </Head>
 
       <main>
-        <Profile data={data.home} />
+        <Profile data={data.home} repoInfo={props.repoInfo} />
       </main>
     </>
   );
@@ -71,11 +73,42 @@ export const getStaticProps = async () => {
       variables: {},
     })) as Query;
   } catch {}
-
+  let repoInfo: {
+    [key: string]: RepoInfo;
+  } = {};
+  for (const project of data.home.projects!) {
+    const repo = await graphql<RepoInfo>(
+      gql`
+        query RepositoryInfo($name: String!, $owner: String!) {
+          repository(name: $name, owner: $owner) {
+            description
+            primaryLanguage {
+              color
+              name
+            }
+            stargazerCount
+            forkCount
+            name
+            url
+          }
+        }
+      `,
+      {
+        name: project!,
+        owner: 'Yash-Singh1',
+        headers: {
+          authorization: `bearer ${process.env.GH_TOKEN}`,
+        },
+      }
+    );
+    repoInfo[project!] = repo;
+  }
   return {
     props: {
       data,
+      repoInfo,
     },
+    revalidate: 60 * 60, // Rebuild every hour
   };
 };
 

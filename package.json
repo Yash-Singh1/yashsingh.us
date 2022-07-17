@@ -12,9 +12,13 @@
   },
   "dependencies": {
     "@fontsource/baloo-bhai-2": "^4.5.8",
+    "@fortawesome/fontawesome-svg-core": "^6.1.1",
+    "@fortawesome/free-solid-svg-icons": "^6.1.1",
+    "@fortawesome/react-fontawesome": "^0.2.0",
     "@mdx-js/loader": "^2.1.2",
     "@mdx-js/react": "^2.1.2",
     "@next/mdx": "^12.2.2",
+    "@octokit/graphql": "^5.0.0",
     "@tinacms/cli": "^0.60.28",
     "aos": "^2.3.4",
     "github-markdown-css": "^5.1.0",

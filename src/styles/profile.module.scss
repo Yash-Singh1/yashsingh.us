@@ -13,10 +13,10 @@
 }
 
 .projects-container {
-  @apply flex items-stretch flex-row flex-wrap gap-5;
+  @apply flex items-stretch flex-row flex-wrap gap-5 mt-5 lg:w-3/4 w-full;
 }
 
-span.project-note ~ a {
+.projects-container > a {
   min-width: 300px;
   flex-basis: calc(50% - 1.25rem);
   flex-grow: 1;

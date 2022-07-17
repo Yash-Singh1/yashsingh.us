@@ -14,28 +14,26 @@ import AOS from 'aos';
 import GitHub from '../SimpleIconLogos/GitHub';
 import Mail from '../SimpleIconLogos/Mail';
 import { Home } from '../../../.tina/__generated__/types';
+import type RepoInfo from '../../types/RepoInfo';
 
 interface ProfileProps {
   data: Home;
+  repoInfo: { [key: string]: RepoInfo };
 }
 
-function Profile({ data }: ProfileProps) {
-  const [loadedImages, loadImage] = useState<boolean[]>([]);
+function Profile({ data, repoInfo }: ProfileProps) {
   const [animateAgain, setAnimateAgain] = useState<boolean>(true);
   const [changedHash, changeHash] = useState<boolean>(false);
   const progressbarsRef = useRef<HTMLDivElement>(null);
 
-  const imageOnLoad = () => loadImage([...loadedImages, true]);
-
   useEffect(() => {
-    if ((location.hash && loadedImages.length === data?.projects?.length) || changedHash === true) {
+    if (location.hash || changedHash === true) {
       document
         .querySelector(`#${location.hash.slice(1).toLowerCase()}`)
         ?.scrollIntoView({ behavior: 'smooth' });
       if (changedHash) changeHash(false);
     }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [changedHash, loadedImages]);
+  }, [changedHash]);
 
   useEffect(() => {
     AOS.init({ duration: 500 });
@@ -58,16 +56,18 @@ function Profile({ data }: ProfileProps) {
         </button>
       </Header>
       <Section title='Projects'>
-        <div className={`text-gray-400 text-xl mt-5 ${profileStyles['projects-container']}`}>
-          <span className={`${profileStyles['project-note']} par`}>
+        <div className={`text-gray-400 text-xl mt-5`}>
+          <span className='par'>
             I have many interesting projects. Here are a few handpicked ones:
           </span>
-          {data
-            ? data.projects!.map((project, index) => (
-                <RepoCard repo={project!} onLoad={imageOnLoad} key={index} />
-              ))
-            : null}
-          <Paragraph className='text-blue-400 text-lg cursor-pointer'>
+          <div className={profileStyles['projects-container']}>
+            {data
+              ? data.projects!.map((project, index) => (
+                  <RepoCard repo={repoInfo[project!]} key={index} />
+                ))
+              : null}
+          </div>
+          <Paragraph className='text-blue-400 text-xl cursor-pointer'>
             <a href='https://github.com/Yash-Singh1/?tab=repositories&sort=stargazers'>
               See more...
             </a>
