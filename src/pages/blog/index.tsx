@@ -6,7 +6,6 @@ import { Query } from '../../../.tina/__generated__/types';
 import blogStyles from '../../styles/blog.module.scss';
 import profileStyles from '../../styles/profile.module.scss';
 import coolBgStyles from '../../styles/cool-bg.module.scss';
-import Container from '../../components/Container';
 
 const query = gql`
   {
