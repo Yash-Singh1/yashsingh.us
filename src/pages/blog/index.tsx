@@ -4,6 +4,9 @@ import { useTina } from 'tinacms/dist/edit-state';
 import { staticRequest, gql } from 'tinacms';
 import { Query } from '../../../.tina/__generated__/types';
 import blogStyles from '../../styles/blog.module.scss';
+import profileStyles from '../../styles/profile.module.scss';
+import coolBgStyles from '../../styles/cool-bg.module.scss';
+import Container from '../../components/Container';
 
 const query = gql`
   {
@@ -28,12 +31,12 @@ const Blog: NextPage<{ slug: string; data: Query }> = function Blog(props) {
   });
 
   return (
-    <div style={{ backgroundColor: 'white' }}>
+    <>
       <Head>
         <title>{"Saiansh (Yash) Singh's Blog"}</title>
       </Head>
 
-      <main>
+      <main className={`box-content ${coolBgStyles['cool-bg']} ${profileStyles['cool-bg']} p-0`}>
         {data.postsConnection
           ? data.postsConnection
               .edges!.reverse()
@@ -50,11 +53,11 @@ const Blog: NextPage<{ slug: string; data: Query }> = function Blog(props) {
                 return (
                   <section key={index} className={blogStyles['section']}>
                     {edgeGroup?.map((edge) => (
-                      <div key={edge!.node!.id}>
+                      <div key={edge!.node!.id} className='justify-start'>
                         <div role='img'>
                           <img src={edge!.node!.image!} alt={edge!.node!.title!} />
                         </div>
-                        <h1>{edge!.node!.title!}</h1>
+                        <h1 className={profileStyles['subheading']}>{edge!.node!.title!}</h1>
                         <p className='text-gray-400'>{edge!.node!.subtitle!}</p>
                       </div>
                     ))}
@@ -63,7 +66,7 @@ const Blog: NextPage<{ slug: string; data: Query }> = function Blog(props) {
               })
           : null}
       </main>
-    </div>
+    </>
   );
 };
 

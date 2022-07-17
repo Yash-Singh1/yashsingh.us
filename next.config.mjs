@@ -17,6 +17,14 @@ const withMDX = nextMDX({
 const nextConfig = {
   reactStrictMode: true,
   pageExtensions: ['ts', 'tsx', 'js', 'jsx', 'md', 'mdx'],
+  images: {
+    domains: ['avatars.githubusercontent.com'],
+  },
+  experimental: {
+    images: {
+      allowFutureImage: true,
+    },
+  },
 };
 
 export default withPlugins([withMDX, withSvgr], nextConfig);

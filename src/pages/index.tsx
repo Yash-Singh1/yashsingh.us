@@ -46,7 +46,7 @@ const Home: NextPage<{ data: Query }> = (props) => {
   }, []);
 
   return (
-    <div>
+    <>
       <Head>
         <title>Saiansh (Yash) Singh</title>
         <meta
@@ -59,7 +59,7 @@ const Home: NextPage<{ data: Query }> = (props) => {
       <main>
         <Profile data={data.home} />
       </main>
-    </div>
+    </>
   );
 };
 

@@ -1,31 +1,42 @@
 query home($relativePath: String!) {
   home(relativePath: $relativePath) {
-    _sys {
-      filename
-      basename
-      breadcrumbs
-      path
-      relativePath
-      extension
+    ... on Document {
+      _sys {
+        filename
+        basename
+        breadcrumbs
+        path
+        relativePath
+        extension
+      }
+      id
     }
-    id
     ...HomeParts
   }
 }
 
-query homeConnection {
-  homeConnection {
+query homeConnection($before: String, $after: String, $first: Float, $last: Float, $sort: String, $filter: HomeFilter) {
+  homeConnection(
+    before: $before
+    after: $after
+    first: $first
+    last: $last
+    sort: $sort
+    filter: $filter
+  ) {
     totalCount
     edges {
       node {
-        id
-        _sys {
-          filename
-          basename
-          breadcrumbs
-          path
-          relativePath
-          extension
+        ... on Document {
+          _sys {
+            filename
+            basename
+            breadcrumbs
+            path
+            relativePath
+            extension
+          }
+          id
         }
         ...HomeParts
       }
@@ -35,32 +46,43 @@ query homeConnection {
 
 query posts($relativePath: String!) {
   posts(relativePath: $relativePath) {
-    _sys {
-      filename
-      basename
-      breadcrumbs
-      path
-      relativePath
-      extension
+    ... on Document {
+      _sys {
+        filename
+        basename
+        breadcrumbs
+        path
+        relativePath
+        extension
+      }
+      id
     }
-    id
     ...PostsParts
   }
 }
 
-query postsConnection {
-  postsConnection {
+query postsConnection($before: String, $after: String, $first: Float, $last: Float, $sort: String, $filter: PostsFilter) {
+  postsConnection(
+    before: $before
+    after: $after
+    first: $first
+    last: $last
+    sort: $sort
+    filter: $filter
+  ) {
     totalCount
     edges {
       node {
-        id
-        _sys {
-          filename
-          basename
-          breadcrumbs
-          path
-          relativePath
-          extension
+        ... on Document {
+          _sys {
+            filename
+            basename
+            breadcrumbs
+            path
+            relativePath
+            extension
+          }
+          id
         }
         ...PostsParts
       }
