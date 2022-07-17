@@ -112,7 +112,7 @@ function Profile({ data }: ProfileProps) {
           <Link href='/blog/'>
             <a className='text-blue-500'>https://www.yashsingh.us/blog/</a>
           </Link>
-          . I am also currently enrolled ⚡ Lawson Middle School (Lightning) ⚡.
+          .
         </Paragraph>
         <Contacts
           contacts={[
