@@ -30,16 +30,19 @@ svg.infographic-svg g#everything use {
   fill: #f95700ff;
 }
 
-svg.infographic-svg {
-  margin-top: 5%;
-}
-
 svg.infographic-svg > g > [for] {
   cursor: help;
 }
 
 svg.infographic-svg g#everything > [for] {
   pointer-events: none;
+}
+
+svg.infographic-svg {
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 5vh;
+  max-height: 95vh;
 }
 
 html.infographic-tech-covid .markdown-body {
