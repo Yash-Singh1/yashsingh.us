@@ -36,7 +36,7 @@ function Progress({ percent, skill, animate = true, reference }: ProgressProps) 
 
   return (
     <>
-      <p className='par'>
+      <p className='par text-lg'>
         {skill} ({currentPercent}%)
       </p>
       <div>

@@ -1,4 +1,4 @@
-import type { NextPage } from 'next';
+import type { GetStaticProps, NextPage } from 'next';
 import Head from 'next/head';
 import Profile from '../components/Profile/Profile';
 import { useTina } from 'tinacms/dist/edit-state';
@@ -65,7 +65,7 @@ const Home: NextPage<{ data: Query; repoInfo: { [key: string]: RepoInfo } }> = (
   );
 };
 
-export const getStaticProps = async () => {
+export const getStaticProps: GetStaticProps = async () => {
   let data: Query = {} as Query;
   try {
     data = (await staticRequest({

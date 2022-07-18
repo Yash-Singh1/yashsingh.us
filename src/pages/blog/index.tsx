@@ -48,7 +48,6 @@ const Blog: NextPage<{ slug: string; data: Query }> = function Blog(props) {
                 return allPosts;
               }, [])
               .map((edgeGroup, index) => {
-                console.log(edgeGroup);
                 return (
                   <section key={index} className={blogStyles['section']}>
                     {edgeGroup?.map((edge) => (
