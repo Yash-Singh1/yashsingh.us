@@ -85,9 +85,10 @@ type Collection {
 union DocumentNode = Home | Posts
 
 type HomeSkills {
+  status: String
   name: String
-  percentage: Float
-  priority: Float
+  icon: String
+  link: String
 }
 
 type Home implements Node & Document {
@@ -106,20 +107,18 @@ input StringFilter {
   in: [String]
 }
 
-input NumberFilter {
-  lt: Float
-  lte: Float
-  gte: Float
-  gt: Float
-  eq: Float
+input ImageFilter {
+  startsWith: String
+  eq: String
   exists: Boolean
-  in: [Float]
+  in: [String]
 }
 
 input HomeSkillsFilter {
+  status: StringFilter
   name: StringFilter
-  percentage: NumberFilter
-  priority: NumberFilter
+  icon: ImageFilter
+  link: StringFilter
 }
 
 input HomeFilter {
@@ -206,9 +205,10 @@ input DocumentMutation {
 }
 
 input HomeSkillsMutation {
+  status: String
   name: String
-  percentage: Float
-  priority: Float
+  icon: String
+  link: String
 }
 
 input HomeMutation {

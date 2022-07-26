@@ -4,7 +4,7 @@ import Profile from '../components/Profile/Profile';
 import { useTina } from 'tinacms/dist/edit-state';
 import { gql, staticRequest } from 'tinacms';
 import { Query } from '../../.tina/__generated__/types';
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
 import AOS from 'aos';
 import { graphql } from '@octokit/graphql';
 import type RepoInfo from '../types/RepoInfo';
@@ -16,33 +16,19 @@ const query = gql`
       projects
       skills {
         name
-        percentage
-        priority
+        status
+        icon
       }
     }
   }
 `;
 
 const Home: NextPage<{ data: Query; repoInfo: { [key: string]: RepoInfo } }> = (props) => {
-  const [{ data }, setData] = useState<{ data: Query }>(
-    useTina<Query>({
-      query,
-      variables: {},
-      data: props.data,
-    })
-  );
-
-  useEffect(() => {
-    data.home.skills!.sort((skillA, skillB) => {
-      if (skillA!.percentage! > skillB!.percentage!) return -1;
-      else if (skillA!.percentage! < skillB!.percentage!) return 1;
-      if (skillA!.priority! > skillB!.priority!) return -1;
-      else if (skillA!.priority! < skillB!.priority!) return 1;
-      return 0;
-    });
-    setData({ data });
-  }, [data]);
-
+  const { data } = useTina<Query>({
+    query,
+    variables: {},
+    data: props.data,
+  });
   useEffect(() => {
     AOS.init({ duration: 500 });
   }, []);

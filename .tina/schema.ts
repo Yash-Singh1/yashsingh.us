@@ -33,19 +33,24 @@ export default defineSchema({
           },
           fields: [
             {
+              name: 'status',
+              label: 'Status',
+              type: 'string',
+            },
+            {
               name: 'name',
               label: 'Name',
               type: 'string',
             },
             {
-              name: 'percentage',
-              label: 'Percentage',
-              type: 'number',
+              name: 'icon',
+              label: 'Icon',
+              type: 'image',
             },
             {
-              name: 'priority',
-              label: 'Priority',
-              type: 'number',
+              name: 'link',
+              label: 'Link',
+              type: 'string',
             },
           ],
         },
@@ -102,6 +107,14 @@ export default defineSchema({
       ],
     },
   ],
+  config: {
+    media: {
+      tina: {
+        publicFolder: 'public',
+        mediaRoot: 'img/uploads',
+      },
+    },
+  },
 });
 
 const branch = 'main';
@@ -123,6 +136,7 @@ export const tinaConfig = defineConfig({
       });
       cms.plugins.add(RouteMapping);
     });
+    cms.flags.set('experimentalData', true);
 
     return cms;
   },

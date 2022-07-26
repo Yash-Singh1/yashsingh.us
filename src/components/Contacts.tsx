@@ -21,18 +21,25 @@ const Contacts = function Contacts({ contacts, className }: ContactProps) {
           <p
             key={index}
             style={{ display: 'inline-block', marginLeft: index === 0 ? '0' : '1.5rem' }}
+            className='group'
           >
             {Logo === false ? null : (
-              <a target='_blank' rel='noreferrer noopener' href={href}>
+              <a target='_blank' rel='noreferrer noopener' tabIndex={-1} href={href}>
                 {Logo}
               </a>
             )}
             <LinkComponent
-              className='underline'
+              className='group-hover:border-b-slate-400 border-b-2 border-b-slate-500 group-hover:transition-all'
               href={href}
               {...(internal ? {} : { target: '_blank', rel: 'noreferrer noopener' })}
             >
-              {internal ? <a className='underline'>{name}</a> : name}
+              {internal ? (
+                <a className='group-hover:border-b-slate-400 border-b-2 border-b-slate-500 group-hover:transition-all'>
+                  {name}
+                </a>
+              ) : (
+                name
+              )}
             </LinkComponent>
             {index === contacts.length - 1 ? null : ' · '}
           </p>

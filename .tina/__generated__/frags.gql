@@ -3,9 +3,10 @@ fragment HomeParts on Home {
   projects
   skills {
     __typename
+    status
     name
-    percentage
-    priority
+    icon
+    link
   }
 }
 

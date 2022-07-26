@@ -10,59 +10,106 @@
   ],
   "skills": [
     {
+      "status": "proficient",
       "name": "JavaScript",
-      "percentage": 80,
-      "priority": 100
+      "icon": "/img/uploads/335b60970f507ce70d6e3bac36ca488a46653394-32x32 (1).svg",
+      "link": "https://developer.mozilla.org/en-US/docs/Web/JavaScript"
     },
     {
-      "name": "React, Redux, and Next.js",
-      "percentage": 80,
-      "priority": 100
+      "status": "proficient",
+      "name": "TypeScript",
+      "icon": "/img/uploads/7f2043586b0797d4e7229d6cf75314b3f2ad2e56-32x32.svg",
+      "link": "https://www.typescriptlang.org/"
     },
     {
-      "name": "Version Control",
-      "percentage": 80,
-      "priority": 30
+      "status": "proficient",
+      "name": "Node.js",
+      "icon": "/img/uploads/7a55574100a6d18b70ae7178d765c48b59568c90-32x32.svg",
+      "link": "https://nodejs.org/en/"
     },
     {
-      "name": "Typescript",
-      "percentage": 70,
-      "priority": 100
+      "status": "proficient",
+      "name": "Next.js",
+      "icon": "/img/uploads/5d0c785f5f53299fe2da8d639d6950a073eb0ff1-32x32.svg",
+      "link": "https://nextjs.org/"
     },
     {
+      "status": "proficient",
+      "name": "SCSS",
+      "icon": "/img/uploads/sass.svg",
+      "link": "https://sass-lang.com/"
+    },
+    {
+      "status": "proficient",
+      "name": "Redux",
+      "icon": "/img/uploads/redux.svg",
+      "link": "https://redux.js.org/"
+    },
+    {
+      "status": "proficient",
+      "name": "React",
+      "icon": "/img/uploads/react.svg",
+      "link": "https://reactjs.org/"
+    },
+    {
+      "status": "proficient",
+      "name": "Git",
+      "icon": "/img/uploads/git.svg",
+      "link": "https://git-scm.com/"
+    },
+    {
+      "status": "good",
       "name": "C++",
-      "percentage": 60,
-      "priority": 100
+      "icon": "/img/uploads/cplusplus.svg",
+      "link": "https://cplusplus.com/"
     },
     {
+      "status": "good",
       "name": "Python",
-      "percentage": 70,
-      "priority": 100
+      "icon": "/img/uploads/python.svg",
+      "link": "https://www.python.org/"
     },
     {
+      "status": "proficient",
       "name": "CSS",
-      "percentage": 70,
-      "priority": 50
+      "icon": "/img/uploads/css3.svg",
+      "link": "https://developer.mozilla.org/en-US/docs/Web/CSS"
     },
     {
+      "status": "proficient",
       "name": "Bootstrap",
-      "percentage": 60,
-      "priority": 40
+      "icon": "/img/uploads/bootstrap.svg",
+      "link": "https://getbootstrap.com/"
     },
     {
+      "status": "proficient",
       "name": "Tailwind CSS",
-      "percentage": 60,
-      "priority": 45
+      "icon": "/img/uploads/tailwindcss.svg",
+      "link": "https://tailwindcss.com/"
     },
     {
+      "status": "good",
       "name": "CoffeeScript",
-      "percentage": 60,
-      "priority": 40
+      "icon": "/img/uploads/coffeescript.svg",
+      "link": "https://coffeescript.org/"
     },
     {
-      "name": "C# in Unity",
-      "percentage": 50,
-      "priority": 45
+      "status": "learning",
+      "name": "Deno",
+      "icon": "/img/uploads/deno.svg",
+      "link": "https://deno.land/"
+    },
+    {
+      "status": "learning",
+      "name": "Docker",
+      "icon": "/img/uploads/docker.svg",
+      "link": "https://www.docker.com/"
+    },
+    {
+      "status": "learning",
+      "name": "Unity",
+      "icon": "/img/uploads/unity.svg",
+      "link": "https://unity.com/en/"
     }
   ]
 }

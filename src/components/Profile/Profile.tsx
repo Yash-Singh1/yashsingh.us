@@ -1,9 +1,7 @@
-import { useEffect, useState, useRef } from 'react';
+import { useEffect, useState } from 'react';
 import Header from '../Header';
 import Paragraph from '../Paragraph';
 import Section from './Section';
-import Progress from './Progress';
-import More from './More';
 import RepoCard from './RepoCard';
 import Contacts from '../Contacts';
 import Container from '../Container';
@@ -15,6 +13,7 @@ import GitHub from '../SimpleIconLogos/GitHub';
 import Mail from '../SimpleIconLogos/Mail';
 import { Home } from '../../../.tina/__generated__/types';
 import type RepoInfo from '../../types/RepoInfo';
+import Badge from './Badge';
 
 interface ProfileProps {
   data: Home;
@@ -22,9 +21,7 @@ interface ProfileProps {
 }
 
 function Profile({ data, repoInfo }: ProfileProps) {
-  const [animateAgain, setAnimateAgain] = useState<boolean>(true);
   const [changedHash, changeHash] = useState<boolean>(false);
-  const progressbarsRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     if (location.hash || changedHash === true) {
@@ -75,8 +72,8 @@ function Profile({ data, repoInfo }: ProfileProps) {
         </div>
       </Section>
       <Section title='Skills'>
-        <Paragraph>Here is a list of some of my skills and their progress:</Paragraph>
-        <div className={profileStyles['skills-list']} ref={progressbarsRef}>
+        <Paragraph>I am proficient in</Paragraph>
+        {/* <div className={profileStyles['skills-list']} ref={progressbarsRef}>
           {data
             ? data
                 .skills!.slice(0, 8)
@@ -104,7 +101,21 @@ function Profile({ data, repoInfo }: ProfileProps) {
                   ))
               : null}
           </More>
+        </div> */}
+        <div className='flex flex-wrap gap-3'>
+          {data
+            ? data.skills!.map((skill) => {console.log(skill);return (
+                <Badge
+                  key={skill!.name!}
+                  link={skill!.link!}
+                  icon={skill!.icon!}
+                  text={skill!.name!}
+                />
+              )})
+            : null}
         </div>
+        <Paragraph>I am good at</Paragraph>
+        <Paragraph>I am learning</Paragraph>
       </Section>
       <Section title='More'>
         <Paragraph>

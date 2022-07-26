@@ -18,7 +18,7 @@ function RepoCard({ repo }: RepoCardProps) {
       href={repo.repository.url}
       className='p-5 pb-10 block relative bg-[#343a40]/75 rounded-lg shadow-xl active:shadow-xl active:mt-0 active:mb-0 active:duration-75 cursor-pointer hover:shadow-2xl hover:mt-[-0.25rem] hover:mb-1 hover:transition-all transition-all border-2 border-gray-800'
     >
-      <h3 className='mb-1'>{repo.repository.name}</h3>
+      <h3 className='mb-2'>{repo.repository.name}</h3>
       <p className='max-w-full par font-thin text-xl h-14'>{repo.repository.description}</p>
       <br />
       <div className='absolute bottom-5'>
