@@ -5,7 +5,7 @@ import '@fontsource/baloo-bhai-2/700.css';
 import type { AppProps } from 'next/app';
 import Script from 'next/script';
 import js from '../helpers/js';
-import Tina from '../../.tina/components/TinaDynamicProvider.js';
+import Tina from '../../.tina/components/TinaDynamicProvider';
 import Footer from '../components/Footer';
 
 function App({ Component, pageProps }: AppProps & { Component: any }) {

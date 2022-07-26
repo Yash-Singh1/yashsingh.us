@@ -30,7 +30,7 @@
     {
       "status": "proficient",
       "name": "Next.js",
-      "icon": "/img/uploads/5d0c785f5f53299fe2da8d639d6950a073eb0ff1-32x32.svg",
+      "icon": "/img/uploads/nextjs-icon-light.svg",
       "link": "https://nextjs.org/"
     },
     {
@@ -60,13 +60,13 @@
     {
       "status": "good",
       "name": "C++",
-      "icon": "/img/uploads/cplusplus.svg",
+      "icon": "/img/uploads/ISO_C++_Logo.svg",
       "link": "https://cplusplus.com/"
     },
     {
       "status": "good",
       "name": "Python",
-      "icon": "/img/uploads/python.svg",
+      "icon": "/img/uploads/1024px-Python-logo-notext.svg.png",
       "link": "https://www.python.org/"
     },
     {
@@ -74,6 +74,12 @@
       "name": "CSS",
       "icon": "/img/uploads/css3.svg",
       "link": "https://developer.mozilla.org/en-US/docs/Web/CSS"
+    },
+    {
+      "status": "proficient",
+      "name": "Vue.js",
+      "icon": "/img/uploads/vuedotjs.svg",
+      "link": "https://vuejs.org/"
     },
     {
       "status": "proficient",
@@ -97,6 +103,7 @@
       "status": "learning",
       "name": "Deno",
       "icon": "/img/uploads/deno.svg",
+      "circlize": true,
       "link": "https://deno.land/"
     },
     {
@@ -109,7 +116,7 @@
       "status": "learning",
       "name": "Unity",
       "icon": "/img/uploads/unity.svg",
-      "link": "https://unity.com/en/"
+      "link": "https://unity.com/"
     }
   ]
 }

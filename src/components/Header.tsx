@@ -1,6 +1,5 @@
 import Typer from './Typer';
 import type { ReactNode } from 'react';
-import profileStyles from '../styles/profile.module.scss';
 
 interface HeaderProps {
   title: string;
@@ -12,7 +11,7 @@ interface HeaderProps {
 
 function Header({ title, intro, children = null, large = false, className = '' }: HeaderProps) {
   return (
-    <div className={`${large ? profileStyles['full-min-h'] : ''} header ${className}`}>
+    <div className={`${large ? 'min-h-screen' : ''} header ${className}`}>
       <h1 className='font-semibold sm:text-xl text-lg font-mono text-violet-700'>
         Hey there 😃! {intro}
       </h1>

@@ -18,6 +18,8 @@ const query = gql`
         name
         status
         icon
+        link
+        circlize
       }
     }
   }

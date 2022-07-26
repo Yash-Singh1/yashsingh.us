@@ -13,15 +13,37 @@ import GitHub from '../SimpleIconLogos/GitHub';
 import Mail from '../SimpleIconLogos/Mail';
 import { Home } from '../../../.tina/__generated__/types';
 import type RepoInfo from '../../types/RepoInfo';
-import Badge from './Badge';
+import BadgeSection from './BadgeSection';
 
 interface ProfileProps {
   data: Home;
   repoInfo: { [key: string]: RepoInfo };
 }
 
+interface SkillsGrouped {
+  [key: string]: Home['skills'];
+}
+
 function Profile({ data, repoInfo }: ProfileProps) {
   const [changedHash, changeHash] = useState<boolean>(false);
+  const [groupedSkills, setGroupedSkills] = useState<SkillsGrouped | null>(null);
+
+  function handleHashChange() {
+    changeHash(true);
+  }
+
+  useEffect(() => {
+    if (data) {
+      const skillsGrouped: SkillsGrouped = {};
+      data.skills!.forEach!((skill) => {
+        if (!skillsGrouped[skill!.status!]) {
+          skillsGrouped[skill!.status!] = [];
+        }
+        skillsGrouped[skill!.status!]!.push(skill!);
+      });
+      setGroupedSkills(skillsGrouped);
+    }
+  }, [data]);
 
   useEffect(() => {
     if (location.hash || changedHash === true) {
@@ -52,7 +74,7 @@ function Profile({ data, repoInfo }: ProfileProps) {
           Learn More About Me
         </button>
       </Header>
-      <Section title='Projects'>
+      <Section title='Projects' handleHashChange={handleHashChange}>
         <div className={`text-gray-400 text-xl mt-5`}>
           <span className='par'>
             I have many interesting projects. Here are a few handpicked ones:
@@ -65,62 +87,31 @@ function Profile({ data, repoInfo }: ProfileProps) {
               : null}
           </div>
           <Paragraph className='text-blue-400 text-xl cursor-pointer'>
-            <a href='https://github.com/Yash-Singh1/?tab=repositories&sort=stargazers'>
+            <a
+              href='https://github.com/Yash-Singh1/?tab=repositories&sort=stargazers'
+              target='_blank'
+              rel='noreferrer'
+            >
               See more...
             </a>
           </Paragraph>
         </div>
       </Section>
-      <Section title='Skills'>
-        <Paragraph>I am proficient in</Paragraph>
-        {/* <div className={profileStyles['skills-list']} ref={progressbarsRef}>
-          {data
-            ? data
-                .skills!.slice(0, 8)
-                .map((skill) => (
-                  <Progress
-                    key={skill!.name}
-                    skill={skill!.name as string}
-                    percent={skill!.percentage as number}
-                    reference={progressbarsRef}
-                  />
-                ))
-            : null}
-          <More onHidden={() => setAnimateAgain(false)}>
-            {data
-              ? data
-                  .skills!.slice(8)
-                  .map((skill) => (
-                    <Progress
-                      key={skill!.name}
-                      skill={skill!.name as string}
-                      percent={skill!.percentage as number}
-                      reference={progressbarsRef}
-                      animate={animateAgain}
-                    />
-                  ))
-              : null}
-          </More>
-        </div> */}
-        <div className='flex flex-wrap gap-3'>
-          {data
-            ? data.skills!.map((skill) => {
-                console.log(skill);
-                return (
-                  <Badge
-                    key={skill!.name!}
-                    link={skill!.link!}
-                    icon={skill!.icon!}
-                    text={skill!.name!}
-                  />
-                );
-              })
-            : null}
-        </div>
-        <Paragraph>I am good at</Paragraph>
-        <Paragraph>I am learning</Paragraph>
+      <Section title='Skills' handleHashChange={handleHashChange}>
+        <BadgeSection
+          description='I am proficient in'
+          badges={groupedSkills ? groupedSkills['proficient'] : undefined}
+        />
+        <BadgeSection
+          description='I am good at'
+          badges={groupedSkills ? groupedSkills['good'] : undefined}
+        />
+        <BadgeSection
+          description='I am learning'
+          badges={groupedSkills ? groupedSkills['learning'] : undefined}
+        />
       </Section>
-      <Section title='More'>
+      <Section title='More' handleHashChange={handleHashChange}>
         <Paragraph>
           I maintain a blog site with multiple posts on different topics related to programming at{' '}
           <Link href='/blog/'>

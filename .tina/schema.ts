@@ -1,6 +1,6 @@
 import { defineSchema, defineConfig } from 'tinacms';
 
-export default defineSchema({
+const schema = defineSchema({
   collections: [
     {
       label: 'Home Page',
@@ -51,6 +51,11 @@ export default defineSchema({
               name: 'link',
               label: 'Link',
               type: 'string',
+            },
+            {
+              name: 'circlize',
+              label: 'Circle',
+              type: 'boolean',
             },
           ],
         },
@@ -117,6 +122,8 @@ export default defineSchema({
   },
 });
 
+export default schema;
+
 const branch = 'main';
 const apiURL =
   process.env.NODE_ENV == 'development'
@@ -125,6 +132,7 @@ const apiURL =
 
 export const tinaConfig = defineConfig({
   apiURL,
+  schema,
   cmsCallback: (cms) => {
     import('tinacms').then(({ RouteMappingPlugin }) => {
       const RouteMapping = new RouteMappingPlugin((collection, document) => {

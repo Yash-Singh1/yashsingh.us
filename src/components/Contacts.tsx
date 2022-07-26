@@ -29,12 +29,12 @@ const Contacts = function Contacts({ contacts, className }: ContactProps) {
               </a>
             )}
             <LinkComponent
-              className='group-hover:border-b-slate-400 border-b-2 border-b-slate-500 group-hover:transition-all'
+              className='group-hover:border-b-slate-400 border-b-2 border-b-slate-500 group-hover:transition-all transition-all'
               href={href}
               {...(internal ? {} : { target: '_blank', rel: 'noreferrer noopener' })}
             >
               {internal ? (
-                <a className='group-hover:border-b-slate-400 border-b-2 border-b-slate-500 group-hover:transition-all'>
+                <a className='group-hover:border-b-slate-400 border-b-2 border-b-slate-500 group-hover:transition-all transition-all'>
                   {name}
                 </a>
               ) : (

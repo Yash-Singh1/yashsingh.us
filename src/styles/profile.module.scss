@@ -8,10 +8,6 @@
   }
 }
 
-.full-min-h {
-  min-height: 100vh;
-}
-
 .projects-container {
   @apply flex items-stretch flex-row flex-wrap gap-5 mt-5 lg:w-3/4 w-full;
 }
@@ -19,7 +15,7 @@
 .projects-container > a {
   min-width: 300px;
   flex-basis: calc(50% - 1.25rem);
-  flex-grow: 1;
+  @apply flex-grow;
 }
 
 .skills-list > p {
@@ -61,12 +57,14 @@
 }
 
 .section {
+  @apply flex flex-col justify-center;
   padding: inherit;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
 }
 
 .cool-bg .header {
   padding: inherit;
+}
+
+.no-select {
+  @include mixins.no-select;
 }

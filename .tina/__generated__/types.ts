@@ -179,6 +179,7 @@ export type HomeSkills = {
   name?: Maybe<Scalars['String']>;
   icon?: Maybe<Scalars['String']>;
   link?: Maybe<Scalars['String']>;
+  circlize?: Maybe<Scalars['Boolean']>;
 };
 
 export type Home = Node & Document & {
@@ -205,11 +206,17 @@ export type ImageFilter = {
   in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
 };
 
+export type BooleanFilter = {
+  eq?: InputMaybe<Scalars['Boolean']>;
+  exists?: InputMaybe<Scalars['Boolean']>;
+};
+
 export type HomeSkillsFilter = {
   status?: InputMaybe<StringFilter>;
   name?: InputMaybe<StringFilter>;
   icon?: InputMaybe<ImageFilter>;
   link?: InputMaybe<StringFilter>;
+  circlize?: InputMaybe<BooleanFilter>;
 };
 
 export type HomeFilter = {
@@ -357,6 +364,7 @@ export type HomeSkillsMutation = {
   name?: InputMaybe<Scalars['String']>;
   icon?: InputMaybe<Scalars['String']>;
   link?: InputMaybe<Scalars['String']>;
+  circlize?: InputMaybe<Scalars['Boolean']>;
 };
 
 export type HomeMutation = {
@@ -376,7 +384,7 @@ export type PostsMutation = {
   body?: InputMaybe<Scalars['JSON']>;
 };
 
-export type HomePartsFragment = { __typename?: 'Home', description?: string | null, projects?: Array<string | null> | null, skills?: Array<{ __typename: 'HomeSkills', status?: string | null, name?: string | null, icon?: string | null, link?: string | null } | null> | null };
+export type HomePartsFragment = { __typename?: 'Home', description?: string | null, projects?: Array<string | null> | null, skills?: Array<{ __typename: 'HomeSkills', status?: string | null, name?: string | null, icon?: string | null, link?: string | null, circlize?: boolean | null } | null> | null };
 
 export type PostsPartsFragment = { __typename?: 'Posts', title?: string | null, subtitle?: string | null, image?: string | null, author?: string | null, date?: string | null, keywords?: Array<string | null> | null, link?: string | null, body?: any | null };
 
@@ -385,7 +393,7 @@ export type HomeQueryVariables = Exact<{
 }>;
 
 
-export type HomeQuery = { __typename?: 'Query', home: { __typename?: 'Home', id: string, description?: string | null, projects?: Array<string | null> | null, _sys: { __typename?: 'SystemInfo', filename: string, basename: string, breadcrumbs: Array<string>, path: string, relativePath: string, extension: string }, skills?: Array<{ __typename: 'HomeSkills', status?: string | null, name?: string | null, icon?: string | null, link?: string | null } | null> | null } };
+export type HomeQuery = { __typename?: 'Query', home: { __typename?: 'Home', id: string, description?: string | null, projects?: Array<string | null> | null, _sys: { __typename?: 'SystemInfo', filename: string, basename: string, breadcrumbs: Array<string>, path: string, relativePath: string, extension: string }, skills?: Array<{ __typename: 'HomeSkills', status?: string | null, name?: string | null, icon?: string | null, link?: string | null, circlize?: boolean | null } | null> | null } };
 
 export type HomeConnectionQueryVariables = Exact<{
   before?: InputMaybe<Scalars['String']>;
@@ -397,7 +405,7 @@ export type HomeConnectionQueryVariables = Exact<{
 }>;
 
 
-export type HomeConnectionQuery = { __typename?: 'Query', homeConnection: { __typename?: 'HomeConnection', totalCount: number, edges?: Array<{ __typename?: 'HomeConnectionEdges', node?: { __typename?: 'Home', id: string, description?: string | null, projects?: Array<string | null> | null, _sys: { __typename?: 'SystemInfo', filename: string, basename: string, breadcrumbs: Array<string>, path: string, relativePath: string, extension: string }, skills?: Array<{ __typename: 'HomeSkills', status?: string | null, name?: string | null, icon?: string | null, link?: string | null } | null> | null } | null } | null> | null } };
+export type HomeConnectionQuery = { __typename?: 'Query', homeConnection: { __typename?: 'HomeConnection', totalCount: number, edges?: Array<{ __typename?: 'HomeConnectionEdges', node?: { __typename?: 'Home', id: string, description?: string | null, projects?: Array<string | null> | null, _sys: { __typename?: 'SystemInfo', filename: string, basename: string, breadcrumbs: Array<string>, path: string, relativePath: string, extension: string }, skills?: Array<{ __typename: 'HomeSkills', status?: string | null, name?: string | null, icon?: string | null, link?: string | null, circlize?: boolean | null } | null> | null } | null } | null> | null } };
 
 export type PostsQueryVariables = Exact<{
   relativePath: Scalars['String'];
@@ -428,6 +436,7 @@ export const HomePartsFragmentDoc = gql`
     name
     icon
     link
+    circlize
   }
 }
     `;

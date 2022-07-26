@@ -4,23 +4,29 @@ import profileStyles from '../../styles/profile.module.scss';
 interface SectionProps {
   title: string;
   children: ReactNode;
+  handleHashChange?: () => void;
 }
 
-function Section({ title, children }: SectionProps) {
+function Section({ title, children, handleHashChange }: SectionProps) {
   const hash = title.toLowerCase().replace(' ', '-');
   return (
-    <div className={`${profileStyles['full-min-h']} ${profileStyles['section']}`} id={hash}>
-      <div data-aos='slide-right' className={profileStyles.aos}>
-        <span
-          className={profileStyles['subheading']}
-          onClick={() => {
-            location.hash = `#${hash}`;
-          }}
-        >
-          {title}
-        </span>
-        {children}
-      </div>
+    <div
+      data-aos='slide-right'
+      className={`${profileStyles.aos} min-h-screen ${profileStyles['section']}`}
+      id={hash}
+    >
+      <span
+        className={profileStyles['subheading']}
+        onClick={() => {
+          location.hash = `#${hash}`;
+          if (handleHashChange) {
+            handleHashChange();
+          }
+        }}
+      >
+        {title}
+      </span>
+      {children}
     </div>
   );
 }
