@@ -104,14 +104,17 @@ function Profile({ data, repoInfo }: ProfileProps) {
         </div> */}
         <div className='flex flex-wrap gap-3'>
           {data
-            ? data.skills!.map((skill) => {console.log(skill);return (
-                <Badge
-                  key={skill!.name!}
-                  link={skill!.link!}
-                  icon={skill!.icon!}
-                  text={skill!.name!}
-                />
-              )})
+            ? data.skills!.map((skill) => {
+                console.log(skill);
+                return (
+                  <Badge
+                    key={skill!.name!}
+                    link={skill!.link!}
+                    icon={skill!.icon!}
+                    text={skill!.name!}
+                  />
+                );
+              })
             : null}
         </div>
         <Paragraph>I am good at</Paragraph>
