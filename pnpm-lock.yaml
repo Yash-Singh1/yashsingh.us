@@ -13,6 +13,7 @@ specifiers:
   '@tinacms/auth': ^0.50.3
   '@tinacms/cli': ^0.60.28
   '@types/aos': ^3.0.4
+  '@types/mdx': ^2.0.2
   '@types/node': 17.0.21
   '@types/react': 17.0.40
   aos: ^2.3.4
@@ -80,6 +81,7 @@ dependencies:
 devDependencies:
   '@babel/core': 7.18.6
   '@types/aos': 3.0.4
+  '@types/mdx': 2.0.2
   '@types/node': 17.0.21
   '@types/react': 17.0.40
   autoprefixer: 10.4.7_postcss@8.4.14
@@ -3046,7 +3048,6 @@ packages:
 
   /@types/mdx/2.0.2:
     resolution: {integrity: sha512-mJGfgj4aWpiKb8C0nnJJchs1sHBHn0HugkVfqqyQi7Wn6mBRksLeQsPOFvih/Pu8L1vlDzfe/LidhVHBeUk3aQ==}
-    dev: false
 
   /@types/ms/0.7.31:
     resolution: {integrity: sha512-iiUgKzV9AuaEkZqkOLDIvlQiL6ltuZd9tGcW3gwpnX8JbuiuhFlEGmmFXEXkN50Cvq7Os88IY2v0dkDqXYWVgA==}
