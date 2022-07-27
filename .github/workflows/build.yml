@@ -1,4 +1,4 @@
-name: Lint pull requests or commits
+name: Build pull requests or commits
 on:
   push:
     branches:
@@ -13,8 +13,8 @@ on:
       - synchronize
       - ready_for_review
 jobs:
-  lint:
-    name: Lint code
+  build:
+    name: Build code
     runs-on: ubuntu-latest
     steps:
       - name: Clone repository
@@ -34,5 +34,5 @@ jobs:
       - name: Install pnpm dependencies
         run: pnpm install
 
-      - name: Lint code
-        run: pnpm run lint
+      - name: Build code
+        run: pnpm run build
