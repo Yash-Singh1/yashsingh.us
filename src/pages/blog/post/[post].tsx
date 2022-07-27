@@ -5,7 +5,7 @@ import postStyles from '../../../styles/post.module.scss';
 import coolBgStyles from '../../../styles/cool-bg.module.scss';
 import Container from '../../../components/Container';
 import Head from 'next/head';
-import { GeistProvider, CssBaseline, Text, Breadcrumbs } from '@geist-ui/core';
+import { GeistProvider, CssBaseline, Breadcrumbs } from '@geist-ui/core';
 import { serialize } from 'next-mdx-remote/serialize';
 import { MDXRemote, MDXRemoteSerializeResult } from 'next-mdx-remote';
 import * as fs from 'node:fs';
@@ -13,9 +13,8 @@ import balooTheme from '../../../themes/baloo';
 import remarkGfm from 'remark-gfm';
 import remarkFrontmatter from 'remark-frontmatter';
 import rehypePrettyCode from 'rehype-pretty-code';
-import Code from '../../../components/Post/Markdown_Components/Code';
-import headings from '../../../components/Post/Markdown_Components/Headings';
 import Router from 'next/router';
+import components from '../../../components/Post/Markdown_Components';
 
 const Post: NextPage<{ data: Query['posts']; content: MDXRemoteSerializeResult }> = function ({
   data,
@@ -43,16 +42,7 @@ const Post: NextPage<{ data: Query['posts']; content: MDXRemoteSerializeResult }
               <Breadcrumbs.Item>{data.title}</Breadcrumbs.Item>
             </Breadcrumbs>
             <article className={`${postStyles['markdown-body']} ${postStyles['blog-post-body']}`}>
-              <MDXRemote
-                {...content}
-                components={{
-                  ...headings,
-                  code: Code,
-                  p: (props) => {
-                    return <Text {...Object.assign({ ref: undefined }, props)} font='1.25rem' />;
-                  },
-                }}
-              />
+              <MDXRemote {...content} components={components} />
             </article>
           </GeistProvider>
         </Container>

@@ -144,9 +144,6 @@ export const tinaConfig = defineConfig({
       });
       cms.plugins.add(RouteMapping);
     });
-    import('react-tinacms-editor').then((field) => {
-      cms.plugins.add(field.MarkdownFieldPlugin);
-    });
     cms.flags.set('experimentalData', true);
 
     return cms;

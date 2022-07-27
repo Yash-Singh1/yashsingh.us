@@ -7,20 +7,20 @@ date: '2021/09/23'
 keywords: [javascript]
 ---
 
-# Working with `Array#reduce` Asynchronously
+# Working with `Array#reduce{:js}` Asynchronously
 
 While working on a chrome extension that groups tabs together by certain
-criterias, I ran across a problem where I was using `Array#reduce` and had
+criterias, I ran across a problem where I was using `Array#reduce{:js}` and had
 to run an asynchronous chrome extension API inside it. In this article, I
-will show you how to do asynchronous operations inside `Array#reduce`.
+will show you how to do asynchronous operations inside `Array#reduce{:js}`.
 
-## What is `Array#reduce`?
+## What is `Array#reduce{:js}`?
 
 `Array#reduce{:js}` allows you to iterate through an array and modify an accumalator
 object every iteration, that is provided back to the next element in the next
 iteration.
 
-## Example with `Array#reduce`
+## Example with `Array#reduce{:js}`
 
 The following code will run the function every iteration and pass it the current
 element's value and the current accumalator's value. The default accumalator is
@@ -40,7 +40,7 @@ console.log(
 // Expected output: 6
 ```
 
-## How do you use `Array#reduce` asynchronously
+## How do you use `Array#reduce{:js}` asynchronously
 
 This diagram might help:
 
@@ -48,7 +48,7 @@ This diagram might help:
 
 Basically, what happens is that every iteration, you do the asynchronous work,
 and return the promise. In the next iteration, the promise is resolved, and then
-it is processed as an accumalator. In the end, `Array#reduce` will return a promise
+it is processed as an accumalator. In the end, `Array#reduce{:js}` will return a promise
 which would resolve to the final result. Here is an example:
 
 ```js

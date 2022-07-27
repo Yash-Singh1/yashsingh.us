@@ -8,7 +8,7 @@ export const balooTheme = Themes.createFromDark({
   },
   palette: {
     foreground: '#ddd',
-  }
+  },
 });
 
 export default balooTheme;

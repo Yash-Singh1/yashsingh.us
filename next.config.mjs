@@ -24,6 +24,16 @@ const nextConfig = {
     images: {
       allowFutureImage: true,
     },
+    swcMinifyDebugOptions: {
+      compress: {
+        defaults: true,
+        side_effects: false,
+      },
+    },
+  },
+  swcMinify: true,
+  compiler: {
+    styledComponents: false,
   },
 };
 

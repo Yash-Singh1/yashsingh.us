@@ -6,8 +6,8 @@ import Uses from '../components/Uses/Uses.mdx';
 import { GeistProvider, CssBaseline } from '@geist-ui/core';
 import Head from 'next/head';
 import balooTheme from '../themes/baloo';
-import Code from '../components/Post/Markdown_Components/Code';
-import headings from '../components/Post/Markdown_Components/Headings';
+import Container from '../components/Container';
+import components from '../components/Post/Markdown_Components';
 
 const UsesPage: NextPage = function UsesPage() {
   return (
@@ -18,17 +18,16 @@ const UsesPage: NextPage = function UsesPage() {
       </Head>
 
       <main className={`${coolBgStyles['cool-bg']} ${usesStyles['cool-bg']}`}>
-        <GeistProvider themeType='baloo' themes={[balooTheme]}>
-          <CssBaseline />
-          <article className={`${postStyles['markdown-body']} ${usesStyles['markdown-body']} par`}>
-            <Uses
-              components={{
-                ...headings,
-                code: Code,
-              }}
-            />
-          </article>{' '}
-        </GeistProvider>
+        <Container className='bg-black/5'>
+          <GeistProvider themeType='baloo' themes={[balooTheme]}>
+            <CssBaseline />
+            <article
+              className={`${postStyles['markdown-body']} ${usesStyles['markdown-body']} par`}
+            >
+              <Uses components={components} />
+            </article>
+          </GeistProvider>
+        </Container>
       </main>
     </div>
   );

@@ -20,7 +20,7 @@ function App({ Component, pageProps }: AppProps) {
 
         gtag('config', 'G-T7G01BVK0J');
       }`}</Script>
-        <Component {...pageProps} />
+      <Component {...pageProps} />
       <Footer />
     </Tina>
   );
