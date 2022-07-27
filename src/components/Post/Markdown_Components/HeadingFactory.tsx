@@ -1,4 +1,5 @@
 import type { ReactNode } from 'react';
+import { Text } from '@geist-ui/core';
 
 function getInnerText(children: ReactNode): string {
   if (typeof children === 'string') {
@@ -12,13 +13,13 @@ function getInnerText(children: ReactNode): string {
 type HTMLHeadings = 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6';
 
 function HeadingFactory(level: number) {
-  return function Heading({ children = null }: { children?: ReactNode }) {
+  return function Heading({ children = null }: { children?: ReactNode } | undefined = {}) {
     const innerText = getInnerText(children).toLowerCase().replace(/\W+/g, '-');
-    const LevelHeading: HTMLHeadings = `h${level}` as HTMLHeadings;
+    const levelHeading: HTMLHeadings = `h${level}` as HTMLHeadings;
     return (
-      <LevelHeading id={innerText} className='section-heading'>
+      <Text {...{ [levelHeading]: true }} id={innerText} className='section-heading'>
         <a href={`#${innerText}`}>{children}</a>
-      </LevelHeading>
+      </Text>
     );
   };
 }

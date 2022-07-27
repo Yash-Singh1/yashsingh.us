@@ -8,6 +8,7 @@ import { useEffect } from 'react';
 import AOS from 'aos';
 import { graphql } from '@octokit/graphql';
 import type RepoInfo from '../types/RepoInfo';
+import type SkillsGrouped from '../types/skillsGrouped';
 
 const query = gql`
   {
@@ -25,7 +26,11 @@ const query = gql`
   }
 `;
 
-const Home: NextPage<{ data: Query; repoInfo: { [key: string]: RepoInfo } }> = (props) => {
+const Home: NextPage<{
+  data: Query;
+  repoInfo: { [key: string]: RepoInfo };
+  skillsGrouped: SkillsGrouped;
+}> = (props) => {
   const { data } = useTina<Query>({
     query,
     variables: {},
@@ -47,7 +52,7 @@ const Home: NextPage<{ data: Query; repoInfo: { [key: string]: RepoInfo } }> = (
       </Head>
 
       <main>
-        <Profile data={data.home} repoInfo={props.repoInfo} />
+        <Profile data={data.home} repoInfo={props.repoInfo} skillsGrouped={props.skillsGrouped} />
       </main>
     </>
   );
@@ -91,10 +96,20 @@ export const getStaticProps: GetStaticProps = async () => {
     );
     repoInfo[project!] = repo;
   }
+
+  const skillsGrouped: SkillsGrouped = {};
+  data.home.skills!.forEach!((skill) => {
+    if (!skillsGrouped[skill!.status!]) {
+      skillsGrouped[skill!.status!] = [];
+    }
+    skillsGrouped[skill!.status!]!.push(skill!);
+  });
+
   return {
     props: {
       data,
       repoInfo,
+      skillsGrouped,
     },
     revalidate: 60 * 60, // Rebuild every hour
   };

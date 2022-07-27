@@ -8,7 +8,7 @@ import js from '../helpers/js';
 import Tina from '../../.tina/components/TinaDynamicProvider';
 import Footer from '../components/Footer';
 
-function App({ Component, pageProps }: AppProps & { Component: any }) {
+function App({ Component, pageProps }: AppProps) {
   return (
     <Tina>
       <Script src='https://www.googletagmanager.com/gtag/js?id=G-T7G01BVK0J' async></Script>
@@ -20,7 +20,7 @@ function App({ Component, pageProps }: AppProps & { Component: any }) {
 
         gtag('config', 'G-T7G01BVK0J');
       }`}</Script>
-      <Component {...pageProps} />
+        <Component {...pageProps} />
       <Footer />
     </Tina>
   );

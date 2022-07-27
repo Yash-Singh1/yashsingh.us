@@ -16,7 +16,7 @@ will show you how to do asynchronous operations inside `Array#reduce`.
 
 ## What is `Array#reduce`?
 
-`Array#reduce` allows you to iterate through an array and modify an accumalator
+`Array#reduce{:js}` allows you to iterate through an array and modify an accumalator
 object every iteration, that is provided back to the next element in the next
 iteration.
 
@@ -86,7 +86,7 @@ It might seem like this code will work because we already run await on line 3:
 const newValue = await sum(acc, num);
 ```
 
-However, `Array#reduce` doesn't have any special logic to handle `async` functions,
+However, `Array#reduce{:js}` doesn't have any special logic to handle `async{:js}` functions,
 so it just evaluates it like a regular function and sets the value of the accumalator
 to the promise returned by the asynchronous function. That means that when our function
 recieves its accumalator, it recieves a promise that has to be resolved first.
@@ -102,5 +102,5 @@ If we did something like this:
 }, 0);
 ```
 
-To remove the await when assigning `newValue`, the next iteration will get a promise
+To remove the await when assigning `newValue{:js}`, the next iteration will get a promise
 resolving to a promise.

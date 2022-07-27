@@ -3,9 +3,10 @@ import Head from 'next/head';
 import { useTina } from 'tinacms/dist/edit-state';
 import { staticRequest, gql } from 'tinacms';
 import { Query } from '../../../.tina/__generated__/types';
-import blogStyles from '../../styles/blog.module.scss';
-import profileStyles from '../../styles/profile.module.scss';
 import coolBgStyles from '../../styles/cool-bg.module.scss';
+import Container from '../../components/Container';
+import Header from '../../components/Header';
+import Link from 'next/link';
 
 const query = gql`
   {
@@ -16,6 +17,10 @@ const query = gql`
           title
           subtitle
           image
+          link
+          _sys {
+            filename
+          }
         }
       }
     }
@@ -35,34 +40,31 @@ const Blog: NextPage<{ slug: string; data: Query }> = function Blog(props) {
         <title>{"Saiansh (Yash) Singh's Blog"}</title>
       </Head>
 
-      <main className={`box-content ${coolBgStyles['cool-bg']} ${profileStyles['cool-bg']} p-0`}>
-        {data.postsConnection
-          ? data.postsConnection
-              .edges!.reverse()
-              .reduce((allPosts: Query['postsConnection']['edges'][], post, postIndex) => {
-                if (postIndex % 3 === 0) {
-                  allPosts.push([post]);
-                } else {
-                  allPosts[allPosts.length - 1]!.push(post);
-                }
-                return allPosts;
-              }, [])
-              .map((edgeGroup, index) => {
-                return (
-                  <section key={index} className={blogStyles['section']}>
-                    {edgeGroup?.map((edge) => (
-                      <div key={edge!.node!.id} className='justify-start'>
-                        <div role='img'>
-                          <img src={edge!.node!.image!} alt={edge!.node!.title!} />
-                        </div>
-                        <h1 className={profileStyles['subheading']}>{edge!.node!.title!}</h1>
-                        <p className='text-gray-400'>{edge!.node!.subtitle!}</p>
-                      </div>
-                    ))}
-                  </section>
-                );
-              })
-          : null}
+      <main className={`box-content ${coolBgStyles['cool-bg']} p-0`}>
+        <Container>
+          <Header title="Yash Singh's Blog" intro='Welcome to' className='w-3/4 mx-auto' />
+          <div className='mt-10 w-full flex flex-wrap flex-grow-0 flex-shrink-0 justify-center items-center'>
+            {data.postsConnection
+              ? data.postsConnection.edges!.reverse().map((edge) => {
+                  return (
+                    <Link
+                      href={edge!.node!.link || `/blog/post/${edge!.node!._sys!.filename!}`}
+                      key={edge!.node!.id}
+                    >
+                      <a className='p-4 border-[3px] border-gray-300/60 active:border-gray-300/60 hover:border-gray-200/80 rounded-md m-3 ml-0 basis-full lg:basis-3/4 bg-black/20 group shadow-md cursor-pointer relative hover:bottom-1 hover:ring-4 hover:bg-black/30 hover:ring-blue-900 hover:shadow-xl hover:transition-all transition-all active:bottom-0 active:shadow-md active:ring-0 active:transition-none'>
+                        <h1 className='text-violet-700 uppercase font-mono font-bold sm:text-2xl text-xl group-hover:text-violet-500 transition mr-2'>
+                          {edge!.node!.title!}
+                        </h1>
+                        <p className='text-gray-400 w-3/4 group-hover:text-gray-300 transition'>
+                          {edge!.node!.subtitle!}
+                        </p>
+                      </a>
+                    </Link>
+                  );
+                })
+              : null}
+          </div>
+        </Container>
       </main>
     </>
   );

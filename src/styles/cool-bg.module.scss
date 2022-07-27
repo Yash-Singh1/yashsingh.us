@@ -7,4 +7,6 @@
       rgba(255, 255, 255, 0.06)
     ),
     radial-gradient(ellipse at center, rgba(0, 0, 0, 0) 75%, #9198e50f);
+  z-index: -100;
+  position: relative;
 }

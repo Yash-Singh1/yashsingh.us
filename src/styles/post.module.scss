@@ -1,14 +1,4 @@
 @use 'mixins';
-@use '../../node_modules/highlight.js/styles/atom-one-dark-reasonable.css';
-@use '../../node_modules/github-markdown-css/github-markdown.css';
-
-.markdown-body {
-  min-width: 200px;
-  max-width: 100%;
-  --color-accent-fg: #4cacfc;
-  --color-fg-default: #ddd;
-  @apply box-border m-auto p-11 bg-transparent;
-}
 
 @media (min-width: 992px) {
   .markdown-body {
@@ -22,20 +12,53 @@
   }
 }
 
-.markdown-body .highlight pre,
-.markdown-body pre {
-  background-color: #2d333b !important;
+.markdown-body {
+  min-width: 200px;
+  max-width: 100%;
+  --color-accent-fg: #4cacfc;
+  --color-fg-default: #ddd;
+  color: var(--color-fg-default);
+  @apply box-border m-auto p-11 bg-transparent;
+
+  pre {
+    background-color: #2d333b !important;
+  }
+
+  table {
+    display: block;
+    width: 100%;
+    width: max-content;
+    max-width: 100%;
+    overflow: auto;
+    background-color: #0d1117cc;
+    margin-bottom: 1rem;
+
+    th {
+      font-weight: 800;
+    }
+
+    th,
+    td {
+      padding: 6px 13px;
+      border: 1px solid #30363dcc;
+    }
+
+    tr {
+      border-top: 1px solid #21262dcc;
+
+      &:nth-child(2n) {
+        background-color: #161b22cc;
+      }
+    }
+
+    img {
+      background-color: transparent;
+    }
+  }
 }
 
-.markdown-body table td,
-.markdown-body table th {
-  background-color: #2d333b;
-  border: 1px solid rgba(223, 226, 229, 0.5) !important;
-}
-
-.markdown-body pre code,
-.markdown-body pre tt {
-  display: table;
+.blog-post-body.markdown-body {
+  @apply pt-3;
 }
 
 @for $headingLevel from 1 through 6 {
@@ -47,10 +70,6 @@
     @if $headingLevel <= 3 {
       @if $headingLevel == 1 or $headingLevel == 2 {
         border-bottom: none !important;
-
-        @if $headingLevel == 1 {
-          font-size: 1.75em;
-        }
       }
 
       &:hover::before {
@@ -62,4 +81,9 @@
       }
     }
   }
+}
+
+.breadcrumb {
+  padding-left: 2.75rem !important;
+  font-size: 1.25rem !important;
 }

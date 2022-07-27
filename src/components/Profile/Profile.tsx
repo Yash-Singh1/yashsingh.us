@@ -14,36 +14,20 @@ import Mail from '../SimpleIconLogos/Mail';
 import { Home } from '../../../.tina/__generated__/types';
 import type RepoInfo from '../../types/RepoInfo';
 import BadgeSection from './BadgeSection';
+import type SkillsGrouped from '../../types/skillsGrouped';
 
 interface ProfileProps {
   data: Home;
   repoInfo: { [key: string]: RepoInfo };
+  skillsGrouped: SkillsGrouped;
 }
 
-interface SkillsGrouped {
-  [key: string]: Home['skills'];
-}
-
-function Profile({ data, repoInfo }: ProfileProps) {
+function Profile({ data, repoInfo, skillsGrouped }: ProfileProps) {
   const [changedHash, changeHash] = useState<boolean>(false);
-  const [groupedSkills, setGroupedSkills] = useState<SkillsGrouped | null>(null);
 
   function handleHashChange() {
     changeHash(true);
   }
-
-  useEffect(() => {
-    if (data) {
-      const skillsGrouped: SkillsGrouped = {};
-      data.skills!.forEach!((skill) => {
-        if (!skillsGrouped[skill!.status!]) {
-          skillsGrouped[skill!.status!] = [];
-        }
-        skillsGrouped[skill!.status!]!.push(skill!);
-      });
-      setGroupedSkills(skillsGrouped);
-    }
-  }, [data]);
 
   useEffect(() => {
     if (location.hash || changedHash === true) {
@@ -98,18 +82,9 @@ function Profile({ data, repoInfo }: ProfileProps) {
         </div>
       </Section>
       <Section title='Skills' handleHashChange={handleHashChange}>
-        <BadgeSection
-          description='I am proficient in'
-          badges={groupedSkills ? groupedSkills['proficient'] : undefined}
-        />
-        <BadgeSection
-          description='I am good at'
-          badges={groupedSkills ? groupedSkills['good'] : undefined}
-        />
-        <BadgeSection
-          description='I am learning'
-          badges={groupedSkills ? groupedSkills['learning'] : undefined}
-        />
+        <BadgeSection description='I am proficient in' badges={skillsGrouped['proficient']} />
+        <BadgeSection description='I am good at' badges={skillsGrouped['good']} />
+        <BadgeSection description='I am learning' badges={skillsGrouped['learning']} />
       </Section>
       <Section title='More' handleHashChange={handleHashChange}>
         <Paragraph>

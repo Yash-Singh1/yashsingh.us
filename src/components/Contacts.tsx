@@ -15,8 +15,6 @@ const Contacts = function Contacts({ contacts, className }: ContactProps) {
   return (
     <div className={`mt-5 text-gray-400 text-2xl font-mono ${className || ''}`}>
       {contacts.map(({ internal = false, href, name, logo: Logo = false }, index) => {
-        const LinkComponent = internal ? Link : 'a';
-
         return (
           <p
             key={index}
@@ -24,23 +22,19 @@ const Contacts = function Contacts({ contacts, className }: ContactProps) {
             className='group'
           >
             {Logo === false ? null : (
-              <a target='_blank' rel='noreferrer noopener' tabIndex={-1} href={href}>
+              <a
+                {...(internal ? {} : { target: '_blank', rel: 'noreferrer' })}
+                tabIndex={-1}
+                href={href}
+              >
                 {Logo}
               </a>
             )}
-            <LinkComponent
-              className='group-hover:border-b-slate-400 border-b-2 border-b-slate-500 group-hover:transition-all transition-all'
-              href={href}
-              {...(internal ? {} : { target: '_blank', rel: 'noreferrer noopener' })}
-            >
-              {internal ? (
-                <a className='group-hover:border-b-slate-400 border-b-2 border-b-slate-500 group-hover:transition-all transition-all'>
-                  {name}
-                </a>
-              ) : (
-                name
-              )}
-            </LinkComponent>
+            <Link href={href} {...(internal ? {} : { target: '_blank', rel: 'noreferrer' })}>
+              <a className='group-hover:border-b-slate-400 border-b-2 border-b-slate-500 group-hover:transition-all transition-all'>
+                {name}
+              </a>
+            </Link>
             {index === contacts.length - 1 ? null : ' · '}
           </p>
         );

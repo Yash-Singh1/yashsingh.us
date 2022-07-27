@@ -3,8 +3,9 @@ import postStyles from '../styles/post.module.scss';
 import Contacts from '../components/Contacts/Contacts.mdx';
 import coolBgStyles from '../styles/cool-bg.module.scss';
 import contactStyles from '../styles/contacts.module.scss';
-import HeadingFactory from '../components/Post/Markdown_Components/HeadingFactory';
 import Head from 'next/head';
+import Code from '../components/Post/Markdown_Components/Code';
+import headings from '../components/Post/Markdown_Components/Headings';
 
 const ContactsPage: NextPage = function ContactsPage() {
   return (
@@ -18,9 +19,8 @@ const ContactsPage: NextPage = function ContactsPage() {
         <article className={`${postStyles['markdown-body']} ${contactStyles['markdown-body']} par`}>
           <Contacts
             components={{
-              h1: HeadingFactory(1),
-              h2: HeadingFactory(2),
-              h3: HeadingFactory(3),
+              ...headings,
+              code: Code,
             }}
           />
         </article>

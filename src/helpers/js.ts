@@ -1,4 +1,7 @@
-function js(strings: TemplateStringsArray, ...keys: string[]): string {
+// Template literal tag that basically clones template literal
+// Made to allow prettier formatting on javascript in a string
+
+export function js(strings: TemplateStringsArray, ...keys: string[]): string {
   const result = [strings[0]];
   for (const [index, key] of keys.entries()) {
     result.push(key);

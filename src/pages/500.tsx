@@ -22,6 +22,18 @@ const InternalServerError: NextPage = function InternalServerError() {
             Refreshing
           </button>
         </Paragraph>
+        <Paragraph className='text-xl md:text-2xl lg:text-3xl text-white mx-auto text-center'>
+          Or create a{' '}
+          <a
+            href='https://github.com/Yash-Singh1/yashsingh.us/issues/new'
+            target='_blank'
+            rel='noreferrer'
+            className='text-blue-500'
+          >
+            new issue
+          </a>{' '}
+          if you think this is a problem
+        </Paragraph>
       </main>
     </div>
   );

@@ -1,6 +1,8 @@
-import type { GetServerSideProps } from 'next';
+import type { GetServerSideProps, NextPage } from 'next';
 
-function TechCovid() {}
+const TechCovid: NextPage = function () {
+  return null;
+};
 
 export default TechCovid;
 

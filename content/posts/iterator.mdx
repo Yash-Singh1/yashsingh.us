@@ -9,8 +9,8 @@ keywords: [javascript]
 
 # Javascript Custom Iterables
 
-A while back I was creating a `URLPattern` class that allows you to match a URL
-Pattern to a URL. I allowed `', '` to act as an and operator (`&&`). In that way,
+A while back I was creating a `URLPattern{:js}` class that allows you to match a URL
+Pattern to a URL. I allowed `', '{:js}` to act as an and operator (`&&{:js}`). In that way,
 my class was the following structure:
 
 ```js
@@ -32,31 +32,31 @@ my class was the following structure:
 }
 ```
 
-I wanted someone to be able to do `[...pattern]` and get back:
+I wanted someone to be able to do `[...pattern]{:js}` and get back:
 
 ```typescript
 Array<{ pattern: String; match: Function }>; // length = n + 1
 ```
 
-That is when I came across the `Symbol.iterator` property.
+That is when I came across the `Symbol.iterator{:js}` property.
 
 ## Symbol.iterator
 
 From the MDN docs:
 
-> The well-known **`Symbol.iterator`** symbol specifies the default iterator for
-> an object. Used by [`for...of`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/for...of).
+> The well-known **`Symbol.iterator{:js}`** symbol specifies the default iterator for
+> an object. Used by [`for...of{:js}`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/for...of).
 
-The `Symbol.iterator` is a property of the builtin `Symbol` object that exists
-as a property on the `Array` prototype, `Set` prototype, and many other builtin iterators.
+The `Symbol.iterator{:js}` is a property of the builtin `Symbol{:js}` object that exists
+as a property on the `Array{:js}` prototype, `Set{:js}` prototype, and many other builtin iterators.
 
-It gets called whenever the `...` (spread syntax) or `Array.from` is run on the
-object or `for...of`.
+It gets called whenever the `...{:js}` (spread syntax) or `Array.from{:js}` is run on the
+object or `for...of{:js}`.
 
 ## Implementing in class
 
-To use `Symbol.iterator` inside classes, define a method with the method name being
-`[Symbol.iterator]`. Here is an example usage:
+To use `Symbol.iterator{:js}` inside classes, define a method with the method name being
+`[Symbol.iterator]{:js}`. Here is an example usage:
 
 ```js
 class A {
@@ -64,7 +64,7 @@ class A {
 }
 ```
 
-An example that will give back `[1, 2, 3]` is shown below:
+An example that will give back `[1, 2, 3]{:js}` is shown below:
 
 ```js
 class A {
@@ -95,7 +95,7 @@ If you want an iterator that would do the following:
 [...new myClass({ 0: 1, 1: 2, 2: 3, length: 3 })]; // [1, 2, 3]
 ```
 
-You can either copy `Array.prototype`'s iterator or build something similar. We
+You can either copy `Array.prototype{:js}`'s iterator or build something similar. We
 will see how to do both:
 
 ### Copying
@@ -114,7 +114,7 @@ myClass.prototype[Symbol.iterator] = Array.prototype[Symbol.iterator];
 [...new myClass({ 0: 1, 1: 2, 2: 3, length: 3 })]; // [1, 2, 3]
 ```
 
-What the `Array.prototype` iterator does is checks the length and yields each and
+What the `Array.prototype{:js}` iterator does is checks the length and yields each and
 every index until the length is reached.
 
 Let's try that by ourselves.

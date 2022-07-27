@@ -1,4 +1,4 @@
-// Brought from @SneK152/stemist-website
+// Brought from @StEMist-Education/stemist-website
 
 import { RefObject, useEffect, useState } from 'react';
 
