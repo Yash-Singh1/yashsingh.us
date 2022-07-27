@@ -36,3 +36,5 @@ jobs:
 
       - name: Build code
         run: pnpm run build
+        env:
+          GH_TOKEN: ${{ github.token }}
