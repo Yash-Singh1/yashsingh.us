@@ -1,6 +1,7 @@
 import { Query } from '../../../.tina/__generated__/types';
 import Paragraph from '../Paragraph';
 import Badge from './Badge';
+import profileStyles from '../../styles/profile.module.scss';
 
 interface BadgeSectionProps {
   description: string;
@@ -11,7 +12,7 @@ function BadgeSection({ badges, description }: BadgeSectionProps) {
   return (
     <>
       <Paragraph>{description}</Paragraph>
-      <div className='flex flex-wrap gap-3 gap-x-5 mt-2'>
+      <div className={`flex flex-wrap gap-3 gap-x-5 mt-2 ${profileStyles['perspective-1000']}`}>
         {badges
           ? badges.map((skill) => {
               return (

@@ -3,6 +3,7 @@ import { config } from '@fortawesome/fontawesome-svg-core';
 import '@fortawesome/fontawesome-svg-core/styles.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faStar, faCodeBranch } from '@fortawesome/free-solid-svg-icons';
+import { motion } from 'framer-motion';
 
 config.autoAddCss = false;
 
@@ -12,7 +13,22 @@ interface RepoCardProps {
 
 function RepoCard({ repo }: RepoCardProps) {
   return (
-    <a
+    <motion.a
+      whileHover={{
+        scale: 1.03,
+        transition: {
+          duration: 0.1,
+          delay: 0,
+          ease: 'easeInOut',
+        },
+      }}
+      whileTap={{
+        scale: 1,
+        transition: {
+          duration: 0.1,
+          ease: 'easeInOut',
+        },
+      }}
       target='_blank'
       rel='noreferrer'
       href={repo.repository.url}
@@ -42,7 +58,7 @@ function RepoCard({ repo }: RepoCardProps) {
           </div>
         ) : null}
       </div>
-    </a>
+    </motion.a>
   );
 }
 

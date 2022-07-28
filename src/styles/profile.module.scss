@@ -68,3 +68,7 @@
 .no-select {
   @include mixins.no-select;
 }
+
+.perspective-1000 {
+  perspective: 1000px;
+}
