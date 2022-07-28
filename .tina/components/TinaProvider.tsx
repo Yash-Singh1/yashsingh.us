@@ -1,3 +1,4 @@
+import type { FC } from 'react';
 import TinaCMS from 'tinacms';
 import { tinaConfig } from '../schema';
 
@@ -7,7 +8,7 @@ import { tinaConfig } from '../schema';
  *
  * @private Do not import this directly, please import the dynamic provider instead
  */
-const TinaProvider = ({ children }: { children: React.ReactNode }) => {
+const TinaProvider: FC<{ children: React.ReactNode }> = ({ children }) => {
   // @ts-ignore -- query isn't even given in example
   return <TinaCMS {...tinaConfig}>{children}</TinaCMS>;
 };
