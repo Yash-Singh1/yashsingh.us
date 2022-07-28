@@ -4,7 +4,7 @@
   }
 
   .cool-bg:after {
-    content: '';
+    content: none;
     background-color: rgba(0, 0, 0, 0.03);
     @apply absolute top-0 left-0;
     width: 100%;
