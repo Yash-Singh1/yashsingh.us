@@ -3,14 +3,16 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "tinacms server:start -c \"next dev\" --experimentalData",
-    "build": "tinacms server:start -c \"next build\" --experimentalData",
+    "dev": "pnpm run partytown && tinacms server:start -c \"next dev\" --experimentalData",
+    "build": "pnpm run partytown && tinacms server:start -c \"next build\" --experimentalData",
     "postbuild": "next-sitemap",
-    "start": "tinacms server:start -c \"next start\" --experimentalData",
+    "start": "pnpm run partytown && tinacms server:start -c \"next start\" --experimentalData",
     "lint": "next lint && prettier --check .",
-    "lint:fix": "next lint --fix && prettier --write ."
+    "lint:fix": "next lint --fix && prettier --write .",
+    "partytown": "partytown copylib public/~partytown"
   },
   "dependencies": {
+    "@builder.io/partytown": "^0.6.4",
     "@fontsource/baloo-bhai-2": "^4.5.8",
     "@fortawesome/fontawesome-svg-core": "^6.1.1",
     "@fortawesome/free-solid-svg-icons": "^6.1.1",

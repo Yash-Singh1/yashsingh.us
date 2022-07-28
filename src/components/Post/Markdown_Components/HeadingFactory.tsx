@@ -17,8 +17,12 @@ function HeadingFactory(level: number) {
     const innerText = getInnerText(children).toLowerCase().replace(/\W+/g, '-');
     const levelHeading: HTMLHeadings = `h${level}` as HTMLHeadings;
     return (
-      <Text {...{ [levelHeading]: true }} id={innerText} className='section-heading'>
-        <a href={`#${innerText}`}>{children}</a>
+      <Text
+        {...{ [levelHeading]: true }}
+        id={level <= 3 ? innerText : ''}
+        className='section-heading'
+      >
+        <a href={level <= 3 ? `#${innerText}` : ''}>{children}</a>
       </Text>
     );
   };

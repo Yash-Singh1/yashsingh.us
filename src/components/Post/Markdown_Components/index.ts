@@ -6,6 +6,9 @@ export const components = {
   h1: HeadingFactory(1),
   h2: HeadingFactory(2),
   h3: HeadingFactory(3),
+  h4: HeadingFactory(4),
+  h5: HeadingFactory(5),
+  h6: HeadingFactory(6),
   code: Code,
   p: Paragraph,
 };

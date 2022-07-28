@@ -11,7 +11,7 @@ import components from '../components/Post/Markdown_Components';
 
 const UsesPage: NextPage = function UsesPage() {
   return (
-    <div>
+    <>
       <Head>
         <title>Uses - yashsingh.us</title>
         <meta name='description' content="My developer setup. Inspired by Wess Bos' uses.tech." />
@@ -29,7 +29,7 @@ const UsesPage: NextPage = function UsesPage() {
           </GeistProvider>
         </Container>
       </main>
-    </div>
+    </>
   );
 };
 

@@ -8,5 +8,7 @@
     ),
     radial-gradient(ellipse at center, rgba(0, 0, 0, 0) 75%, #9198e50f);
   z-index: -100;
+  background-attachment: fixed;
+  background-position: center;
   position: relative;
 }

@@ -32,7 +32,7 @@ function Badge({ icon, text, link, circlize = false }: BadgeProps) {
       }}
       href={link || '/404'}
       target='_blank'
-      className='w-44 grid grid-cols-[max-content_1fr] cursor-pointer shadow-md relative active:shadow-md active:bottom-0 active:transition-none hover:bottom-[1px] hover:shadow-lg hover:transition-all transition-all border-2 border-gray-800 rounded-md p-0'
+      className='w-44 grid grid-cols-[max-content_1fr] cursor-pointer shadow-md active:shadow-md active:transition-none hover:shadow-lg hover:border-gray-600 hover:ring-1 active:ring-0 active:transition-all hover:ring-gray-500 group hover:transition-all transition-all border-2 border-gray-800 rounded-md p-0'
       rel='noreferrer'
     >
       <Image
@@ -42,9 +42,9 @@ function Badge({ icon, text, link, circlize = false }: BadgeProps) {
         height={45}
         className={`p-[0.3rem] bg-[#242526]/60 ${profileStyles['no-select']} h-[2.8125rem] ${
           circlize ? 'rounded-full' : 'rounded-l-md'
-        }`}
+        } group-hover:bg-[#242526]/100`}
       />
-      <Paragraph className='text-xl mt-0 bg-[#343a40]/75 rounded-r-md flex justify-start pl-2 items-center w-full md:w-full'>
+      <Paragraph className='text-xl mt-0 bg-[#343a40]/75 group-hover:bg-[#343a40]/90 group-hover:transition-all rounded-r-md flex justify-start pl-2 items-center w-full md:w-full'>
         {text || 'N/A'}
       </Paragraph>
     </motion.a>

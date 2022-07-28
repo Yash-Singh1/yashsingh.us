@@ -11,7 +11,7 @@ import components from '../components/Post/Markdown_Components';
 
 const ContactsPage: NextPage = function ContactsPage() {
   return (
-    <div>
+    <>
       <Head>
         <title>Contacts - yashsingh.us</title>
         <meta name='description' content="Yash Singh's Online Presence in one page." />
@@ -29,7 +29,7 @@ const ContactsPage: NextPage = function ContactsPage() {
           </GeistProvider>
         </Container>
       </main>
-    </div>
+    </>
   );
 };
 

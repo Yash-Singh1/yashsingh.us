@@ -7,19 +7,27 @@ import Script from 'next/script';
 import js from '../helpers/js';
 import Tina from '../../.tina/components/TinaDynamicProvider';
 import Footer from '../components/Footer';
+import { Partytown } from '@builder.io/partytown/react';
 
 function App({ Component, pageProps }: AppProps) {
   return (
     <Tina>
+      <Partytown debug={true} forward={['dataLayer.push']} />
       <Script src='https://www.googletagmanager.com/gtag/js?id=G-T7G01BVK0J' async></Script>
-      <Script id='gtag-script'>{js`
-      if (navigator.onLine) {
-        window.dataLayer = window.dataLayer || [];
-        function gtag(){dataLayer.push(arguments);}
-        gtag('js', new Date());
-
-        gtag('config', 'G-T7G01BVK0J');
-      }`}</Script>
+      <script
+        id='gtag-script'
+        type='text/partytown'
+        dangerouslySetInnerHTML={{
+          __html: js`
+        if (navigator.onLine) {
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);}
+          gtag('js', new Date());
+  
+          gtag('config', 'G-T7G01BVK0J');
+        }`,
+        }}
+      />
       <Component {...pageProps} />
       <Footer />
     </Tina>
