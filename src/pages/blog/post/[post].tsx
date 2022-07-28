@@ -105,7 +105,7 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
   } catch {}
 
   const source = fs
-    .readFileSync(path.join(__dirname, `../../../../content/posts/${params!.post}.mdx`), 'utf8')
+    .readFileSync(path.join(__dirname, `../../../../../content/posts/${params!.post}.mdx`), 'utf8')
     .replace(/^\s*---[^]*?---\s*$/m, '');
   const mdxSource = await serialize(source, {
     mdxOptions: {
