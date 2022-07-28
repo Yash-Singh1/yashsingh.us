@@ -15,6 +15,7 @@ import remarkFrontmatter from 'remark-frontmatter';
 import rehypePrettyCode from 'rehype-pretty-code';
 import Router from 'next/router';
 import components from '../../../components/Post/Markdown_Components';
+import path from 'node:path';
 
 const Post: NextPage<{ data: Query['posts']; content: MDXRemoteSerializeResult }> = function ({
   data,
@@ -104,7 +105,7 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
   } catch {}
 
   const source = fs
-    .readFileSync(`content/posts/${params!.post}.mdx`, 'utf8')
+    .readFileSync(path.join(__dirname, `../../../../content/posts/${params!.post}.mdx`), 'utf8')
     .replace(/^\s*---[^]*?---\s*$/m, '');
   const mdxSource = await serialize(source, {
     mdxOptions: {

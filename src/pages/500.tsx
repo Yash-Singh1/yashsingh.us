@@ -8,7 +8,7 @@ const InternalServerError: NextPage = function InternalServerError() {
   return (
     <div className={`${styles['not-found-container']} ${coolBgStyles['cool-bg']}`}>
       <Head>
-        <title>404 - Not Found</title>
+        <title>500 - Internal Server Error</title>
       </Head>
 
       <main className={styles['not-found-content']}>
