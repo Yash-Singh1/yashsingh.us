@@ -49,14 +49,9 @@ type Query {
   node(id: String): Node!
   document(collection: String, relativePath: String): DocumentNode!
   home(relativePath: String): Home!
-  homeConnection(before: String, after: String, first: Float, last: Float, sort: String, filter: HomeFilter): HomeConnection!
+  homeConnection(before: String, after: String, first: Float, last: Float, sort: String): HomeConnection!
   posts(relativePath: String): Posts!
-  postsConnection(before: String, after: String, first: Float, last: Float, sort: String, filter: PostsFilter): PostsConnection!
-}
-
-input DocumentFilter {
-  home: HomeFilter
-  posts: PostsFilter
+  postsConnection(before: String, after: String, first: Float, last: Float, sort: String): PostsConnection!
 }
 
 type DocumentConnectionEdges {
@@ -79,7 +74,7 @@ type Collection {
   matches: String
   templates: [JSON]
   fields: [JSON]
-  documents(before: String, after: String, first: Float, last: Float, sort: String, filter: DocumentFilter): DocumentConnection!
+  documents(before: String, after: String, first: Float, last: Float, sort: String): DocumentConnection!
 }
 
 union DocumentNode = Home | Posts
@@ -99,39 +94,6 @@ type Home implements Node & Document {
   id: ID!
   _sys: SystemInfo!
   _values: JSON!
-}
-
-input StringFilter {
-  startsWith: String
-  eq: String
-  exists: Boolean
-  in: [String]
-}
-
-input ImageFilter {
-  startsWith: String
-  eq: String
-  exists: Boolean
-  in: [String]
-}
-
-input BooleanFilter {
-  eq: Boolean
-  exists: Boolean
-}
-
-input HomeSkillsFilter {
-  status: StringFilter
-  name: StringFilter
-  icon: ImageFilter
-  link: StringFilter
-  circlize: BooleanFilter
-}
-
-input HomeFilter {
-  description: StringFilter
-  projects: StringFilter
-  skills: HomeSkillsFilter
 }
 
 type HomeConnectionEdges {
@@ -157,31 +119,6 @@ type Posts implements Node & Document {
   id: ID!
   _sys: SystemInfo!
   _values: JSON!
-}
-
-input DatetimeFilter {
-  after: String
-  before: String
-  eq: String
-  exists: Boolean
-  in: [String]
-}
-
-input RichTextFilter {
-  startsWith: String
-  eq: String
-  exists: Boolean
-}
-
-input PostsFilter {
-  title: StringFilter
-  subtitle: StringFilter
-  image: StringFilter
-  author: StringFilter
-  date: DatetimeFilter
-  keywords: StringFilter
-  link: StringFilter
-  body: RichTextFilter
 }
 
 type PostsConnectionEdges {

@@ -9,7 +9,7 @@ export default function Footer() {
       <Image
         src={pfp}
         alt='profile picture'
-        className='lg:w-16 w-10'
+        className='w-16'
         width={80}
         height={80}
         loading='lazy'

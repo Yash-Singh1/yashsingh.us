@@ -112,7 +112,6 @@ export type QueryHomeConnectionArgs = {
   first?: InputMaybe<Scalars['Float']>;
   last?: InputMaybe<Scalars['Float']>;
   sort?: InputMaybe<Scalars['String']>;
-  filter?: InputMaybe<HomeFilter>;
 };
 
 
@@ -127,12 +126,6 @@ export type QueryPostsConnectionArgs = {
   first?: InputMaybe<Scalars['Float']>;
   last?: InputMaybe<Scalars['Float']>;
   sort?: InputMaybe<Scalars['String']>;
-  filter?: InputMaybe<PostsFilter>;
-};
-
-export type DocumentFilter = {
-  home?: InputMaybe<HomeFilter>;
-  posts?: InputMaybe<PostsFilter>;
 };
 
 export type DocumentConnectionEdges = {
@@ -168,7 +161,6 @@ export type CollectionDocumentsArgs = {
   first?: InputMaybe<Scalars['Float']>;
   last?: InputMaybe<Scalars['Float']>;
   sort?: InputMaybe<Scalars['String']>;
-  filter?: InputMaybe<DocumentFilter>;
 };
 
 export type DocumentNode = Home | Posts;
@@ -190,39 +182,6 @@ export type Home = Node & Document & {
   id: Scalars['ID'];
   _sys: SystemInfo;
   _values: Scalars['JSON'];
-};
-
-export type StringFilter = {
-  startsWith?: InputMaybe<Scalars['String']>;
-  eq?: InputMaybe<Scalars['String']>;
-  exists?: InputMaybe<Scalars['Boolean']>;
-  in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
-};
-
-export type ImageFilter = {
-  startsWith?: InputMaybe<Scalars['String']>;
-  eq?: InputMaybe<Scalars['String']>;
-  exists?: InputMaybe<Scalars['Boolean']>;
-  in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
-};
-
-export type BooleanFilter = {
-  eq?: InputMaybe<Scalars['Boolean']>;
-  exists?: InputMaybe<Scalars['Boolean']>;
-};
-
-export type HomeSkillsFilter = {
-  status?: InputMaybe<StringFilter>;
-  name?: InputMaybe<StringFilter>;
-  icon?: InputMaybe<ImageFilter>;
-  link?: InputMaybe<StringFilter>;
-  circlize?: InputMaybe<BooleanFilter>;
-};
-
-export type HomeFilter = {
-  description?: InputMaybe<StringFilter>;
-  projects?: InputMaybe<StringFilter>;
-  skills?: InputMaybe<HomeSkillsFilter>;
 };
 
 export type HomeConnectionEdges = {
@@ -251,31 +210,6 @@ export type Posts = Node & Document & {
   id: Scalars['ID'];
   _sys: SystemInfo;
   _values: Scalars['JSON'];
-};
-
-export type DatetimeFilter = {
-  after?: InputMaybe<Scalars['String']>;
-  before?: InputMaybe<Scalars['String']>;
-  eq?: InputMaybe<Scalars['String']>;
-  exists?: InputMaybe<Scalars['Boolean']>;
-  in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
-};
-
-export type RichTextFilter = {
-  startsWith?: InputMaybe<Scalars['String']>;
-  eq?: InputMaybe<Scalars['String']>;
-  exists?: InputMaybe<Scalars['Boolean']>;
-};
-
-export type PostsFilter = {
-  title?: InputMaybe<StringFilter>;
-  subtitle?: InputMaybe<StringFilter>;
-  image?: InputMaybe<StringFilter>;
-  author?: InputMaybe<StringFilter>;
-  date?: InputMaybe<DatetimeFilter>;
-  keywords?: InputMaybe<StringFilter>;
-  link?: InputMaybe<StringFilter>;
-  body?: InputMaybe<RichTextFilter>;
 };
 
 export type PostsConnectionEdges = {
@@ -401,7 +335,6 @@ export type HomeConnectionQueryVariables = Exact<{
   first?: InputMaybe<Scalars['Float']>;
   last?: InputMaybe<Scalars['Float']>;
   sort?: InputMaybe<Scalars['String']>;
-  filter?: InputMaybe<HomeFilter>;
 }>;
 
 
@@ -420,7 +353,6 @@ export type PostsConnectionQueryVariables = Exact<{
   first?: InputMaybe<Scalars['Float']>;
   last?: InputMaybe<Scalars['Float']>;
   sort?: InputMaybe<Scalars['String']>;
-  filter?: InputMaybe<PostsFilter>;
 }>;
 
 
@@ -471,14 +403,13 @@ export const HomeDocument = gql`
 }
     ${HomePartsFragmentDoc}`;
 export const HomeConnectionDocument = gql`
-    query homeConnection($before: String, $after: String, $first: Float, $last: Float, $sort: String, $filter: HomeFilter) {
+    query homeConnection($before: String, $after: String, $first: Float, $last: Float, $sort: String) {
   homeConnection(
     before: $before
     after: $after
     first: $first
     last: $last
     sort: $sort
-    filter: $filter
   ) {
     totalCount
     edges {
@@ -519,14 +450,13 @@ export const PostsDocument = gql`
 }
     ${PostsPartsFragmentDoc}`;
 export const PostsConnectionDocument = gql`
-    query postsConnection($before: String, $after: String, $first: Float, $last: Float, $sort: String, $filter: PostsFilter) {
+    query postsConnection($before: String, $after: String, $first: Float, $last: Float, $sort: String) {
   postsConnection(
     before: $before
     after: $after
     first: $first
     last: $last
     sort: $sort
-    filter: $filter
   ) {
     totalCount
     edges {
