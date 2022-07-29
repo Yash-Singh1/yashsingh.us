@@ -19,7 +19,7 @@ specifiers:
   aos: ^2.3.4
   autoprefixer: ^10.4.8
   eslint: 8.11.0
-  eslint-config-next: 12.1.0
+  eslint-config-next: 12.2.3
   eslint-config-prettier: ^8.5.0
   eslint-plugin-eslint-comments: ^3.2.0
   eslint-plugin-unicorn: ^42.0.0
@@ -81,7 +81,7 @@ devDependencies:
   '@types/simple-oauth2': 4.1.1
   autoprefixer: 10.4.8_postcss@8.4.14
   eslint: 8.11.0
-  eslint-config-next: 12.1.0_a5jb7eawun5npga4mslwnyxsp4
+  eslint-config-next: 12.2.3_ynv3edxl3ah44xwgrna2g2yine
   eslint-config-prettier: 8.5.0_eslint@8.11.0
   eslint-plugin-eslint-comments: 3.2.0_eslint@8.11.0
   eslint-plugin-unicorn: 42.0.0_eslint@8.11.0
@@ -1649,8 +1649,8 @@ packages:
   /@next/env/12.2.3:
     resolution: {integrity: sha512-2lWKP5Xcvnor70NaaROZXBvU8z9mFReePCG8NhZw6NyNGnPvC+8s+Cre/63LAB1LKzWw/e9bZJnQUg0gYFRb2Q==}
 
-  /@next/eslint-plugin-next/12.1.0:
-    resolution: {integrity: sha512-WFiyvSM2G5cQmh32t/SiQuJ+I2O+FHVlK/RFw5b1565O2kEM/36EXncjt88Pa+X5oSc+1SS+tWxowWJd1lqI+g==}
+  /@next/eslint-plugin-next/12.2.3:
+    resolution: {integrity: sha512-B2e8Yg1MpuLsGxhCx4rU8/Tcnr5wFmCx1O2eyLXBPnaCcsFXfGCo067ujagtDLtWASL3GNgzg78U1SB0dbc38A==}
     dependencies:
       glob: 7.1.7
     dev: true
@@ -2917,17 +2917,16 @@ packages:
     engines: {node: '>=12'}
     dev: true
 
-  /eslint-config-next/12.1.0_a5jb7eawun5npga4mslwnyxsp4:
-    resolution: {integrity: sha512-tBhuUgoDITcdcM7xFvensi9I5WTI4dnvH4ETGRg1U8ZKpXrZsWQFdOKIDzR3RLP5HR3xXrLviaMM4c3zVoE/pA==}
+  /eslint-config-next/12.2.3_ynv3edxl3ah44xwgrna2g2yine:
+    resolution: {integrity: sha512-xAQqAqwa2bu9ZMRypz58ym4tNCo22Wc6LuoLpbpf3yW5c4ZkVib9934AgGDDvh2zKrP56Z6X0Pp6gNnuuZzcRw==}
     peerDependencies:
       eslint: ^7.23.0 || ^8.0.0
-      next: '>=10.2.0'
       typescript: '>=3.3.1'
     peerDependenciesMeta:
       typescript:
         optional: true
     dependencies:
-      '@next/eslint-plugin-next': 12.1.0
+      '@next/eslint-plugin-next': 12.2.3
       '@rushstack/eslint-patch': 1.1.4
       '@typescript-eslint/parser': 5.31.0_ynv3edxl3ah44xwgrna2g2yine
       eslint: 8.11.0
@@ -2937,7 +2936,6 @@ packages:
       eslint-plugin-jsx-a11y: 6.6.1_eslint@8.11.0
       eslint-plugin-react: 7.30.1_eslint@8.11.0
       eslint-plugin-react-hooks: 4.6.0_eslint@8.11.0
-      next: 12.2.3_bcusdemgme2mqiu55x3ou4mjvu
       typescript: 4.6.2
     transitivePeerDependencies:
       - eslint-import-resolver-webpack
