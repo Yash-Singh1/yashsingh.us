@@ -1,6 +1,5 @@
 import type { GetStaticProps, NextPage } from 'next';
 import Head from 'next/head';
-import { useTina } from 'tinacms/dist/edit-state';
 import { staticRequest, gql } from 'tinacms';
 import { Query } from '../../../.tina/__generated__/types';
 import coolBgStyles from '../../styles/cool-bg.module.scss';
@@ -19,6 +18,7 @@ const query = gql`
           subtitle
           image
           link
+          date
           _sys {
             filename
           }
@@ -29,12 +29,6 @@ const query = gql`
 `;
 
 const Blog: NextPage<{ slug: string; data: Query }> = function Blog(props) {
-  const { data } = useTina<Query>({
-    query,
-    variables: {},
-    data: props.data,
-  });
-
   return (
     <>
       <Head>
@@ -45,8 +39,8 @@ const Blog: NextPage<{ slug: string; data: Query }> = function Blog(props) {
         <Container>
           <Header title="Yash Singh's Blog" intro='Welcome to' className='w-3/4 mx-auto' />
           <div className='mt-10 w-full flex flex-wrap flex-grow-0 flex-shrink-0 justify-center items-center'>
-            {data.postsConnection
-              ? data.postsConnection.edges!.reverse().map((edge) => {
+            {props.data.postsConnection
+              ? props.data.postsConnection.edges!.map((edge) => {
                   return (
                     <Link
                       href={edge!.node!.link || `/blog/post/${edge!.node!._sys!.filename!}`}
@@ -79,16 +73,20 @@ const Blog: NextPage<{ slug: string; data: Query }> = function Blog(props) {
 export const getStaticProps: GetStaticProps = async function getStaticProps() {
   const variables = {};
 
-  let data = {};
+  let data: Query;
   try {
     data = (await staticRequest({
       query,
       variables,
-    })) as {};
+    })) as Query;
   } catch {}
 
+  data!.postsConnection.edges! = data!.postsConnection.edges!.sort((a, b) => {
+    return new Date(b!.node!.date!).getTime() - new Date(a!.node!.date!).getTime();
+  });
+
   return {
-    props: { data },
+    props: { data: data! },
   };
 };
 

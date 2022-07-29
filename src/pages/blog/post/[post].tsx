@@ -72,11 +72,6 @@ export const getStaticPaths: GetStaticPaths = async function () {
     `,
   })) as Query;
 
-  console.log(
-    postsListData.postsConnection.edges!.map((post) => ({
-      params: { post: post!.node!._sys.filename },
-    }))
-  );
   return {
     paths: postsListData.postsConnection.edges!.map((post) => ({
       params: { post: post!.node!._sys.filename },
