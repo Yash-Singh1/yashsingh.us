@@ -29,7 +29,7 @@ specifiers:
   next-compose-plugins: ^2.2.1
   next-mdx-remote: ^4.1.0
   next-plugin-svgr: ^1.1.2
-  next-sitemap: ^2.5.28
+  next-sitemap: ^3.1.15
   postcss: ^8.4.14
   postcss-import: ^14.1.0
   postcss-scss: ^4.0.4
@@ -88,7 +88,7 @@ devDependencies:
   gray-matter: 4.0.3
   next-compose-plugins: 2.2.1
   next-plugin-svgr: 1.1.2
-  next-sitemap: 2.5.28_next@12.2.3
+  next-sitemap: 3.1.15_next@12.2.3
   postcss: 8.4.14
   postcss-import: 14.1.0_postcss@8.4.14
   postcss-scss: 4.0.4_postcss@8.4.14
@@ -1378,8 +1378,8 @@ packages:
     hasBin: true
     dev: false
 
-  /@corex/deepmerge/2.6.148:
-    resolution: {integrity: sha512-6QMz0/2h5C3ua51iAnXMPWFbb1QOU1UvSM4bKBw5mzdT+WtLgjbETBBIQZ+Sh9WvEcGwlAt/DEdRpIC3XlDBMA==}
+  /@corex/deepmerge/4.0.29:
+    resolution: {integrity: sha512-q/yVUnqckA8Do+EvAfpy7RLdumnBy9ZsducMUtZTvpdbJC7azEf1hGtnYYxm0QfphYxjwggv6XtH64prvS1W+A==}
     dev: true
 
   /@emotion/is-prop-valid/0.8.8:
@@ -4561,14 +4561,15 @@ packages:
       - webpack
     dev: true
 
-  /next-sitemap/2.5.28_next@12.2.3:
-    resolution: {integrity: sha512-rDMTa7nLE0ikYnu8JDCrwQufIRm4b4Sg8BK11DGdDAmYpXmcmw4Qvm+oVBR8gUL97E6i2ihTM+cRx8mgENDACA==}
+  /next-sitemap/3.1.15_next@12.2.3:
+    resolution: {integrity: sha512-zLLbSRQjArBlwQp3SUG1nt9TDdJGvLzRj/sQaV4ZovIl4VlocKuFxlX5aWbVQ7iLhTxr8uGU7v8cFENiZCGRjA==}
     engines: {node: '>=14.18'}
     hasBin: true
     peerDependencies:
+      '@next/env': '*'
       next: '*'
     dependencies:
-      '@corex/deepmerge': 2.6.148
+      '@corex/deepmerge': 4.0.29
       minimist: 1.2.6
       next: 12.2.3_bcusdemgme2mqiu55x3ou4mjvu
     dev: true
