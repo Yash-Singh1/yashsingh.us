@@ -69,33 +69,35 @@ export const getStaticProps: GetStaticProps = async () => {
   let repoInfo: {
     [key: string]: RepoInfo;
   } = {};
-  for (const project of data.home.projects!) {
-    const repo = await graphql<RepoInfo>(
-      gql`
-        query RepositoryInfo($name: String!, $owner: String!) {
-          repository(name: $name, owner: $owner) {
-            description
-            primaryLanguage {
-              color
+  try {
+    for (const project of data.home.projects!) {
+      const repo = await graphql<RepoInfo>(
+        gql`
+          query RepositoryInfo($name: String!, $owner: String!) {
+            repository(name: $name, owner: $owner) {
+              description
+              primaryLanguage {
+                color
+                name
+              }
+              stargazerCount
+              forkCount
               name
+              url
             }
-            stargazerCount
-            forkCount
-            name
-            url
           }
+        `,
+        {
+          name: project!,
+          owner: 'Yash-Singh1',
+          headers: {
+            authorization: `bearer ${process.env.GH_TOKEN}`,
+          },
         }
-      `,
-      {
-        name: project!,
-        owner: 'Yash-Singh1',
-        headers: {
-          authorization: `bearer ${process.env.GH_TOKEN}`,
-        },
-      }
-    );
-    repoInfo[project!] = repo;
-  }
+      );
+      repoInfo[project!] = repo;
+    }
+  } catch {}
 
   const skillsGrouped: SkillsGrouped = {};
   data.home.skills!.forEach!((skill) => {

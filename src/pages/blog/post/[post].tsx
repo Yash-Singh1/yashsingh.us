@@ -76,7 +76,7 @@ export const getStaticPaths: GetStaticPaths = async function () {
     paths: postsListData.postsConnection.edges!.map((post) => ({
       params: { post: post!.node!._sys.filename },
     })),
-    fallback: 'blocking',
+    fallback: false,
   };
 };
 
@@ -104,6 +104,10 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
     })) as Query;
   } catch {}
 
+  let dir = '../../../../';
+  while (!fs.readdirSync(path.join(__dirname, dir)).includes('package.json')) {
+    dir += '../';
+  }
   const source = fs
     .readFileSync(path.join(__dirname, `../../../../../content/posts/${params!.post}.mdx`), 'utf8')
     .replace(/^\s*---[^]*?---\s*$/m, '');

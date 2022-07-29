@@ -64,11 +64,36 @@ function Profile({ data, repoInfo, skillsGrouped }: ProfileProps) {
             I have many interesting projects. Here are a few handpicked ones:
           </span>
           <div className={profileStyles['projects-container']}>
-            {data
-              ? data.projects!.map((project, index) => (
-                  <RepoCard repo={repoInfo[project!]} key={index} />
-                ))
-              : null}
+            {Object.keys(repoInfo).length > 0 && data ? (
+              data.projects!.map((project, index) => (
+                <RepoCard repo={repoInfo[project!]} key={index} />
+              ))
+            ) : (
+              <>
+                {' '}
+                <Paragraph>
+                  Please connect to the internet and ensure <code>GH_TOKEN</code> is a valid token
+                  set with the following permissions:
+                </Paragraph>
+                <ul className={profileStyles['needed-permissions']}>
+                  <li>
+                    <code>public_repo</code>
+                  </li>
+                  <li>
+                    <code>read:org</code>
+                  </li>
+                  <li>
+                    <code>repo:status</code>
+                  </li>
+                  <li>
+                    <code>repo_deployment</code>
+                  </li>
+                  <li>
+                    <code>user</code>
+                  </li>
+                </ul>
+              </>
+            )}
           </div>
           <Paragraph className='text-blue-400 text-xl cursor-pointer'>
             <a
