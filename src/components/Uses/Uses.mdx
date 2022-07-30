@@ -1,10 +1,8 @@
 import { Fragment } from 'react';
-import '../../styles/post.css';
-import '../../styles/uses.css';
 
 # <span className='text-violet-400'>/</span>Uses
 
-This page is inspired by Wess Bos' [`uses.tech`](https://uses.tech/).
+My developer setup. This page is inspired by Wess Bos' [`uses.tech`](https://uses.tech/).
 
 ## Software
 
@@ -17,7 +15,7 @@ This page is inspired by Wess Bos' [`uses.tech`](https://uses.tech/).
         width: '1.5rem',
         verticalAlign: 'middle',
         display: 'inline-block',
-        marginRight: '0.25rem'
+        marginRight: '0.25rem',
       }}
     >
       <title>Ubuntu</title>
@@ -32,30 +30,57 @@ This page is inspired by Wess Bos' [`uses.tech`](https://uses.tech/).
 
 - <a href='https://www.mozilla.org/en-US/firefox/developer/'>
     <svg
-      role='img'
-      viewBox='0 0 24 24'
-      xmlns='http://www.w3.org/2000/svg'
       style={{
         width: '1.5rem',
         verticalAlign: 'middle',
         display: 'inline-block',
-        marginRight: '0.25rem'
+        marginRight: '0.25rem',
       }}
+      xmlns='http://www.w3.org/2000/svg'
+      viewBox='0 0 100 100'
     >
-      <title>Firefox Browser</title>
-      <path
-        d='M8.824 7.287c.008 0 .004 0 0 0zm-2.8-1.4c.006 0 .003 0 0 0zm16.754 2.161c-.505-1.215-1.53-2.528-2.333-2.943.654 1.283 1.033 2.57 1.177 3.53l.002.02c-1.314-3.278-3.544-4.6-5.366-7.477-.091-.147-.184-.292-.273-.446a3.545 3.545 0 01-.13-.24 2.118 2.118 0 01-.172-.46.03.03 0 00-.027-.03.038.038 0 00-.021 0l-.006.001a.037.037 0 00-.01.005L15.624 0c-2.585 1.515-3.657 4.168-3.932 5.856a6.197 6.197 0 00-2.305.587.297.297 0 00-.147.37c.057.162.24.24.396.17a5.622 5.622 0 012.008-.523l.067-.005a5.847 5.847 0 011.957.222l.095.03a5.816 5.816 0 01.616.228c.08.036.16.073.238.112l.107.055a5.835 5.835 0 01.368.211 5.953 5.953 0 012.034 2.104c-.62-.437-1.733-.868-2.803-.681 4.183 2.09 3.06 9.292-2.737 9.02a5.164 5.164 0 01-1.513-.292 4.42 4.42 0 01-.538-.232c-1.42-.735-2.593-2.121-2.74-3.806 0 0 .537-2 3.845-2 .357 0 1.38-.998 1.398-1.287-.005-.095-2.029-.9-2.817-1.677-.422-.416-.622-.616-.8-.767a3.47 3.47 0 00-.301-.227 5.388 5.388 0 01-.032-2.842c-1.195.544-2.124 1.403-2.8 2.163h-.006c-.46-.584-.428-2.51-.402-2.913-.006-.025-.343.176-.389.206-.406.29-.787.616-1.136.974-.397.403-.76.839-1.085 1.303a9.816 9.816 0 00-1.562 3.52c-.003.013-.11.487-.19 1.073-.013.09-.026.181-.037.272a7.8 7.8 0 00-.069.667l-.002.034-.023.387-.001.06C.386 18.795 5.593 24 12.016 24c5.752 0 10.527-4.176 11.463-9.661.02-.149.035-.298.052-.448.232-1.994-.025-4.09-.753-5.844z'
-        fill='#0089E9'
-      />
+      <title>Google Chrome</title>
+      <linearGradient
+        id='b'
+        x1='55.41'
+        x2='12.11'
+        y1='96.87'
+        y2='21.87'
+        gradientUnits='userSpaceOnUse'
+      >
+        <stop offset='0' stopColor='#1e8e3e' />
+        <stop offset='1' stopColor='#34a853' />
+      </linearGradient>
+      <linearGradient id='c' x1='42.7' x2='86' y1='100' y2='25.13' gradientUnits='userSpaceOnUse'>
+        <stop offset='0' stopColor='#fcc934' />
+        <stop offset='1' stopColor='#fbbc04' />
+      </linearGradient>
+      <linearGradient
+        id='a'
+        x1='6.7'
+        x2='93.29'
+        y1='31.25'
+        y2='31.25'
+        gradientUnits='userSpaceOnUse'
+      >
+        <stop offset='0' stopColor='#d93025' />
+        <stop offset='1' stopColor='#ea4335' />
+      </linearGradient>
+      <path fill='url(#a)' d='M93.29 25a50 50 90 0 0-86.6 0l3 54z' />
+      <path fill='url(#b)' d='M28.35 62.5 6.7 25A50 50 90 0 0 50 100l49-50z' />
+      <path fill='url(#c)' d='M71.65 62.5 50 100a50 50 90 0 0 43.29-75H50z' />
+      <path fill='#fff' d='M50 75a25 25 90 1 0 0-50 25 25 90 0 0 0 50z' />
+      <path fill='#1a73e8' d='M50 69.8a19.8 19.8 90 1 0 0-39.6 19.8 19.8 90 0 0 0 39.6z' />
     </svg>
-    <Fragment>Firefox Developer Edition</Fragment>
+    <Fragment>Google Chrome</Fragment>
   </a>
-  <p>I use Firefox Developer Edition.</p>
+  <p>I use Google Chrome.</p>
 
 - <a href='https://help.gnome.org/users/gnome-terminal/stable/'>GNOME Terminal</a>
   <span style={{ display: 'block' }}></span>I use the GNOME Terminal with ZSH + Oh My ZSH w/ the
-  [`powerlevel10k`](https://github.com/romkatv/powerlevel10k) theme. ![Terminal
-  Screenshot](/img/term-screenshot.png)
+  [`powerlevel10k`](https://github.com/romkatv/powerlevel10k) theme. I am also trying out
+  [`Alacritty`](https://alacritty.org/) + [`tmux`](https://github.com/tmux/tmux/wiki) for my
+  terminal multiplexer. ![Terminal Screenshot](/img/term-screenshot.png)
 
 - <a href='https://code.visualstudio.com/'>
     <svg
@@ -66,7 +91,7 @@ This page is inspired by Wess Bos' [`uses.tech`](https://uses.tech/).
         width: '1.5rem',
         marginRight: '0.25rem',
         verticalAlign: 'middle',
-        display: 'inline-block'
+        display: 'inline-block',
       }}
     >
       <title>Visual Studio Code</title>
@@ -77,5 +102,6 @@ This page is inspired by Wess Bos' [`uses.tech`](https://uses.tech/).
     </svg>
     <Fragment>Visual Studio Code</Fragment>
   </a>
-  My primary code editor is Visual Studio Code with the Monokai Dimmed theme and the [Material Icon Theme](https://marketplace.visualstudio.com/items?itemName=PKief.material-icon-theme).
+  My primary code editor is Visual Studio Code with the [One Dark Pro Flat Theme](https://marketplace.visualstudio.com/items?itemName=akamud.vscode-theme-onedark)
+  and the [Material Icon Theme](https://marketplace.visualstudio.com/items?itemName=PKief.material-icon-theme).
   I use the [Fira Code Monospace](https://github.com/tonsky/FiraCode) font. ![VSCode Screenshot](/img/vscode-screenshot.png)

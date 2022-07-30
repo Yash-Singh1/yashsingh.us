@@ -1,0 +1,35 @@
+@use 'mixins';
+
+.footer {
+  width: 100%;
+  background-color: rgba(0, 0, 0, 0.2);
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+
+  .dot {
+    @include mixins.no-select;
+  }
+
+  img {
+    border-radius: 50%;
+    padding: 10px;
+    @include mixins.no-select;
+  }
+
+  a {
+    background-image: linear-gradient(to bottom, transparent 50%, #ff9900 50%);
+    background-size: 100% 200%;
+    padding: 4px;
+    transition: background-position 0.25s;
+    @apply text-slate-300;
+
+    &:hover {
+      background-position: 0 100%;
+      @apply text-slate-700;
+      transition: background-position 0.25s cubic-bezier(0, 1, 0, 1), color 0.25s;
+    }
+  }
+
+  @apply text-gray-100;
+}

@@ -1,0 +1,148 @@
+@use 'colors';
+@use 'mixins';
+@use '../../node_modules/aos/dist/aos.css';
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-size: revert;
+  font-weight: revert;
+}
+
+html {
+  scroll-behavior: smooth;
+  overflow-x: hidden;
+}
+
+html,
+body,
+div#__next,
+main {
+  position: relative;
+  // NOTE: Have to do this for some weird reason to make select element in DevTools work
+  z-index: -10000;
+}
+
+html,
+body,
+div#__next {
+  height: 100%;
+  background: none !important;
+}
+
+.par,
+.markdown-body,
+text {
+  font-family: 'Baloo Bhai 2', cursive !important;
+}
+
+.markdown-body a:hover {
+  text-decoration: none;
+}
+
+body {
+  background-color: colors.$background !important;
+  margin: 0;
+}
+
+::-webkit-scrollbar {
+  background-color: #202324;
+  color: #aba499;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: #454a4d;
+}
+
+.logo {
+  height: 3rem;
+  width: 3rem;
+  display: inline-block;
+  margin: 10px;
+  background-color: transparent !important;
+  user-select: none;
+  @include mixins.no-select;
+  cursor: pointer;
+}
+
+.logo-small {
+  display: inline-block;
+  margin-right: 10px;
+  height: 2rem;
+  width: 2rem;
+}
+
+ul {
+  list-style-type: '👉  ' !important;
+}
+
+ol {
+  @apply list-decimal;
+}
+
+ul,
+ol {
+  li {
+    font-size: 1.25rem;
+    &::before {
+      content: none !important;
+    }
+  }
+  margin-left: 24pt !important;
+}
+
+footer {
+  padding: initial !important;
+}
+
+blockquote {
+  --color-border-default: gray;
+}
+
+.hljs {
+  @apply bg-transparent;
+}
+
+a {
+  cursor: pointer;
+}
+
+span[data-rehype-pretty-code-fragment] > code {
+  @apply bg-black/40 rounded-sm p-1;
+}
+
+div[data-rehype-pretty-code-title] {
+  border: 1px solid #333;
+  background-color: #333;
+  color: #888;
+  height: auto;
+  line-height: 1.35em;
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  font-size: calc(0.8125 * 16px);
+  padding: calc(0.32 * 16px) calc(0.5 * 16px) calc(0.32 * 16px) calc(0.5 * 16px);
+  width: auto;
+  border-top-left-radius: calc(6px - 1px);
+  border-bottom-right-radius: 6px;
+
+  + pre {
+    position: relative;
+    margin-top: 0;
+    bottom: calc(1.35em + (5.12px * 2));
+    padding-top: calc(1.85em + (5.12px * 2));
+    z-index: -1;
+  }
+}

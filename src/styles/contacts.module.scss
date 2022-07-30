@@ -1,0 +1,11 @@
+@use 'mixins';
+
+.markdown-body {
+  @apply text-white pl-5 pt-6;
+
+  h2:not(:nth-child(1)) {
+    @apply mt-5;
+  }
+}
+
+@include mixins.cool-bg-light;

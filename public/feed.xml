@@ -1,0 +1,128 @@
+<rss version="2.0">
+<channel>
+  <title>Yash Singh's Blog</title>
+  <description>Blog articles on topics related to programming</description>
+  <link>https://www.yashsingh.us/blog</link>
+  <lastBuildDate>Wed, 16 Mar 2022 00:00:00 -0700</lastBuildDate>
+  <ttl>600</ttl>
+  <language>en-us</language>
+  <item>
+    <title>Uses</title>
+    <link>/uses</link>
+    <description>What I use in my workspace. Inspired by uses.tech.</description>
+    <pubDate>Wed, 16 Feb 2022 00:00:00 -0800</pubDate>
+  </item>
+  <item>
+    <title>Pandalny Coupon Codes</title>
+    <link>https://documenter.getpostman.com/view/11867361/UVXnJFC8</link>
+    <description>Postman Collection for accessing the Pandalny Good Fortune Arcade Coupon Code Promotions</description>
+    <category>api</category>
+    <pubDate>Wed, 19 Jan 2022 00:00:00 -0800</pubDate>
+  </item>
+  <item>
+    <title>Covid 19 Era Technology Improvements</title>
+    <link>https://www.yashsingh.us/blog/post/covid-tech-infographic</link>
+    <description>An infographic summarizing the improvements to technology in Covid-19</description>
+    <pubDate>Fri, 03 Dec 2021 00:00:00 -0800</pubDate>
+  </item>
+  <item>
+    <title>Using Open Graph Images over github-readme-stats</title>
+    <link>https://www.yashsingh.us/blog/post/open-graph-image-github-repo</link>
+    <description>Use GitHub's Open Graph Images API to get a card on your repository</description>
+    <category>api</category>
+    <pubDate>Fri, 12 Nov 2021 00:00:00 -0800</pubDate>
+  </item>
+  <item>
+    <title>Component Style Guide</title>
+    <link>https://www.yashsingh.us/blog/post/component-style-guide</link>
+    <description>Guide to classifying and seperating components</description>
+    <category>react</category>
+    <pubDate>Wed, 27 Oct 2021 00:00:00 -0700</pubDate>
+  </item>
+  <item>
+    <title>Working with Array#reduce Asynchronously</title>
+    <link>https://www.yashsingh.us/blog/post/async-array-reduce</link>
+    <description>Guide to doing asynchronous operations inside Array.reduce</description>
+    <category>javascript</category>
+    <pubDate>Thu, 23 Sep 2021 00:00:00 -0700</pubDate>
+  </item>
+  <item>
+    <title>MermaidJS Default Curves</title>
+    <link>https://www.yashsingh.us/blog/post/mermaid-default-curves</link>
+    <description>List of flowchart curves in MermaidJS</description>
+    <pubDate>Tue, 24 Aug 2021 00:00:00 -0700</pubDate>
+  </item>
+  <item>
+    <title>Writing ESLint Rules</title>
+    <link>https://www.yashsingh.us/blog/post/writing-eslint-rules</link>
+    <description>How ESLint rules are structured and how they work</description>
+    <category>javascript</category>
+    <pubDate>Tue, 10 Aug 2021 00:00:00 -0700</pubDate>
+  </item>
+  <item>
+    <title>Roblox is Finally on Ubuntu!</title>
+    <link>https://github.com/Yash-Singh1/roblox-on-ubuntu#readme</link>
+    <description>A guide to installing Roblox on Ubuntu</description>
+    <pubDate>Sun, 27 Jun 2021 00:00:00 -0700</pubDate>
+  </item>
+  <item>
+    <title>React Router DOM with live-server</title>
+    <link>https://www.yashsingh.us/blog/post/react-router-dom-with-live-server</link>
+    <description>How to use the React Router DOM module with live-server</description>
+    <category>react</category>
+    <category>javascript</category>
+    <pubDate>Fri, 18 Jun 2021 00:00:00 -0700</pubDate>
+  </item>
+  <item>
+    <title>Pushing Empty Directories in Git</title>
+    <link>https://www.yashsingh.us/blog/post/git-pushing-empty-directories</link>
+    <description>Tips on pushing directories that are empty inside a Git repository</description>
+    <pubDate>Mon, 14 Jun 2021 00:00:00 -0700</pubDate>
+  </item>
+  <item>
+    <title>Getting Started with Heroku</title>
+    <link>https://www.yashsingh.us/blog/post/getting-started-heroku</link>
+    <description>A simple guide to starting up with heroku</description>
+    <pubDate>Tue, 01 Jun 2021 00:00:00 -0700</pubDate>
+  </item>
+  <item>
+    <title>Path to Programming for Kids</title>
+    <link>https://www.yashsingh.us/blog/post/path-to-programming-for-kids</link>
+    <description>Learn how to program as a kid!</description>
+    <pubDate>Thu, 06 May 2021 00:00:00 -0700</pubDate>
+  </item>
+  <item>
+    <title>GitLab Flavored Markdown vs GitHub Flavored Markdown</title>
+    <link>https://www.yashsingh.us/blog/post/gitlab-markdown-vs-github-markdown</link>
+    <description>A complete comparision between the two markdown syntaxes</description>
+    <pubDate>Thu, 29 Apr 2021 00:00:00 -0700</pubDate>
+  </item>
+  <item>
+    <title>Importing Variables</title>
+    <link>https://www.yashsingh.us/blog/post/importing-variables</link>
+    <description>Import variables that are from other files and not exported</description>
+    <category>javascript</category>
+    <pubDate>Fri, 23 Apr 2021 00:00:00 -0700</pubDate>
+  </item>
+  <item>
+    <title>Hacking Cookie Clicker</title>
+    <link>https://www.yashsingh.us/blog/post/hack-cookie-clicker</link>
+    <description>Complete Cookie Clicker in seconds with this piece of code</description>
+    <pubDate>Thu, 22 Apr 2021 00:00:00 -0700</pubDate>
+  </item>
+  <item>
+    <title>Javascript Custom Iterables</title>
+    <link>https://www.yashsingh.us/blog/post/iterator</link>
+    <description>Building custom Iterables classes using Symbol.iterator</description>
+    <category>javascript</category>
+    <pubDate>Fri, 26 Mar 2021 00:00:00 -0700</pubDate>
+  </item>
+  <item>
+    <title>Google Translate Versus Microsoft Translator: Who Wins?</title>
+    <link>https://medium.com/swlh/google-translate-versus-microsoft-translate-who-wins-846bf2f85f5a</link>
+    <description>Complete comparasion of Google Translate and Microsoft Translator</description>
+    <category>api</category>
+    <pubDate>Thu, 30 Jul 2020 00:00:00 -0700</pubDate>
+  </item>
+</channel>
+</rss>

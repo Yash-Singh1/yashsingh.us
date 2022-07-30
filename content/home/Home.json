@@ -1,0 +1,122 @@
+{
+  "description": "I am an incoming high school freshman who likes programming in his free time. One of my other hobbies is basketball.",
+  "projects": [
+    "epack",
+    "eslint-plugin-userscripts",
+    "ball-royale",
+    "randomgen-parser",
+    "dotfiles",
+    "competitive-programming"
+  ],
+  "skills": [
+    {
+      "status": "proficient",
+      "name": "JavaScript",
+      "icon": "/img/uploads/335b60970f507ce70d6e3bac36ca488a46653394-32x32 (1).svg",
+      "link": "https://developer.mozilla.org/en-US/docs/Web/JavaScript"
+    },
+    {
+      "status": "proficient",
+      "name": "TypeScript",
+      "icon": "/img/uploads/7f2043586b0797d4e7229d6cf75314b3f2ad2e56-32x32.svg",
+      "link": "https://www.typescriptlang.org/"
+    },
+    {
+      "status": "proficient",
+      "name": "Node.js",
+      "icon": "/img/uploads/7a55574100a6d18b70ae7178d765c48b59568c90-32x32.svg",
+      "link": "https://nodejs.org/en/"
+    },
+    {
+      "status": "proficient",
+      "name": "Next.js",
+      "icon": "/img/uploads/nextjs-icon-light.svg",
+      "link": "https://nextjs.org/"
+    },
+    {
+      "status": "proficient",
+      "name": "SCSS",
+      "icon": "/img/uploads/sass.svg",
+      "link": "https://sass-lang.com/"
+    },
+    {
+      "status": "proficient",
+      "name": "Redux",
+      "icon": "/img/uploads/redux.svg",
+      "link": "https://redux.js.org/"
+    },
+    {
+      "status": "proficient",
+      "name": "React",
+      "icon": "/img/uploads/react.svg",
+      "link": "https://reactjs.org/"
+    },
+    {
+      "status": "proficient",
+      "name": "Git",
+      "icon": "/img/uploads/git.svg",
+      "link": "https://git-scm.com/"
+    },
+    {
+      "status": "good",
+      "name": "C++",
+      "icon": "/img/uploads/ISO_C++_Logo.svg",
+      "link": "https://cplusplus.com/"
+    },
+    {
+      "status": "good",
+      "name": "Python",
+      "icon": "/img/uploads/1024px-Python-logo-notext.svg.png",
+      "link": "https://www.python.org/"
+    },
+    {
+      "status": "proficient",
+      "name": "CSS",
+      "icon": "/img/uploads/css3.svg",
+      "link": "https://developer.mozilla.org/en-US/docs/Web/CSS"
+    },
+    {
+      "status": "proficient",
+      "name": "Vue.js",
+      "icon": "/img/uploads/vuedotjs.svg",
+      "link": "https://vuejs.org/"
+    },
+    {
+      "status": "proficient",
+      "name": "Bootstrap",
+      "icon": "/img/uploads/bootstrap.svg",
+      "link": "https://getbootstrap.com/"
+    },
+    {
+      "status": "proficient",
+      "name": "Tailwind CSS",
+      "icon": "/img/uploads/tailwindcss.svg",
+      "link": "https://tailwindcss.com/"
+    },
+    {
+      "status": "good",
+      "name": "CoffeeScript",
+      "icon": "/img/uploads/coffeescript.svg",
+      "link": "https://coffeescript.org/"
+    },
+    {
+      "status": "learning",
+      "name": "Deno",
+      "icon": "/img/uploads/deno.svg",
+      "circlize": true,
+      "link": "https://deno.land/"
+    },
+    {
+      "status": "learning",
+      "name": "Docker",
+      "icon": "/img/uploads/docker.svg",
+      "link": "https://www.docker.com/"
+    },
+    {
+      "status": "learning",
+      "name": "Unity",
+      "icon": "/img/uploads/unity.svg",
+      "link": "https://unity.com/"
+    }
+  ]
+}

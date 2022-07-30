@@ -1,0 +1,13 @@
+img {
+  width: 2rem;
+}
+
+div[class*='css'] {
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+body {
+  background-color: #242526;
+  color: white;
+}

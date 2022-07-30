@@ -1,0 +1,53 @@
+backend:
+  name: github
+  repo: Yash-Singh1/yashsingh.us-v2
+  branch: main
+  base_url: 'https://yashsingh-us-v2.vercel.app/'
+  auth_endpoint: 'api/auth'
+  commit_messages:
+    create: 'feat: Create {{collection}} “{{slug}}”'
+    update: 'chore: Update {{collection}} “{{slug}}”'
+    delete: 'chore: Delete {{collection}} “{{slug}}”'
+    uploadMedia: 'feat: Upload “{{path}}”'
+    deleteMedia: 'chore: Delete “{{path}}”'
+
+publish_mode: editorial_workflow
+
+media_folder: public/img/uploads
+collections:
+  - name: 'home'
+    label: 'Home'
+    files:
+      - label: 'Home page'
+        name: 'home'
+        file: 'content/home/Home.json'
+        preview_path: '/'
+        fields:
+          - label: Description
+            name: description
+            widget: string
+          - label: Projects
+            name: projects
+            widget: list
+          - label: Skills
+            name: skills
+            widget: list
+            fields:
+              - label: Name
+                name: name
+                widget: string
+              - label: Status
+                name: status
+                widget: string
+                hint: proficient
+              - label: Icon
+                name: icon
+                widget: image
+              - label: Link
+                name: link
+                widget: string
+              - label: Circlize
+                name: circlize
+                widget: boolean
+                default: false
+                required: false

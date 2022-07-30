@@ -1,19 +1,29 @@
-# `yashsingh.us`
+# `yashsingh.us-v2`
 
-This is my personal website running at [`yashsingh.us`](https://www.yashsingh.us/).
+A complete rewrite of my site using Next.js.
 
 ## Development
 
-To run it locally, simply run:
+To get started, first install dependencies:
 
 ```sh
-npm install && npm run dev
+pnpm install
 ```
 
-## Production
+For fetching repository information, make sure you specify `GH_TOKEN` (custom GitHub API Token) in the `.env.local` file. It should have the following permissions:
 
-Use the `start` script instead for production:
+- `public_repo`
+- `read:org`
+- `repo:status`
+- `repo_deployment`
+- `user`
+
+For starting up the CMS, specify a `GITHUB_ID` and a `GITHUB_SECRET` for a GitHub OAuth App.
+
+### Start Development Server
+
+Run the following command to start the development server:
 
 ```sh
-npm install && npm run start
+pnpm dev
 ```

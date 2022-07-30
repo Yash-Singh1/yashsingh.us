@@ -1,0 +1,51 @@
+---
+title: 'Pushing Empty Directories in Git'
+subtitle: 'Tips on pushing directories that are empty inside a Git repository'
+image: '/img/empty-folder-to-github.png'
+author: 'Yash Singh'
+date: '2021/06/14'
+---
+
+# Pushing Empty Directories in Git
+
+A while back some of my tests started [failing](https://github.com/Yash-Singh1/node-dedupredup/runs/2788648173)
+for no reason. It seemed that one of my empty directories didn't exist.
+The file explorer in the GitHub UI even showed this. Git
+doesn't push empty directories to your repository. However, there are ways
+to get past this.
+
+## Adding a `.gitignore`
+
+One apparent solution might be to just create a `.gitignore` with the following content:
+
+```text
+.gitignore
+```
+
+This didn't seem to work, because Git again recognized that the directory is empty.
+
+## Adding a `.keep`
+
+What I did was I added a [`.keep` file in that directory](https://github.com/Yash-Singh1/node-dedupredup/blob/main/test/output10/bthings/.keep).
+This made sure that the directory is pushed to Git. Unfortunately, that did make
+my tests fail, because that file wasn't expected.
+
+The solution was to remove all `.keep` files before starting the test and readding
+them after the test.
+
+## Hooks in Tests
+
+To remove and readd `.keep` files there is usually some system or way to define
+hooks inside a test. In QUnit (the testing framework I was using), it is:
+
+```js
+QUnit.module('test group', {
+  before() {
+    // Stuff before this test group runs
+  },
+  after() {
+    // Stuff after this test group runs
+  },
+  // ...
+});
+```

@@ -1,1 +1,45 @@
-.gitignore
+# See https://prettier.io/docs/en/ignore.html for more about ignoring files.
+
+# dependencies
+node_modules/
+package-lock.json
+/.pnp
+.pnp.js
+pnpm-lock.yaml
+
+# testing
+/coverage
+
+# next.js
+.next/
+/out/
+public/sitemap*.xml
+public/robots.txt
+
+# production
+/build
+
+# misc
+.DS_Store
+*.pem
+
+# debug
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+.pnpm-debug.log*
+
+# local env files
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+# vercel
+.vercel
+
+# typescript
+*.tsbuildinfo
+
+# PartyTown
+public/~partytown
