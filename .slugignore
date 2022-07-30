@@ -1,8 +1,0 @@
-.github/
-.storybook/
-src/**/*.stories.js
-.gitignore
-LICENSE
-README.md
-.prettierrc.json
-.npmrc

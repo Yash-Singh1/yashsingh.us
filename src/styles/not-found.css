@@ -1,8 +1,0 @@
-html.not-found div#root {
-  display: table;
-}
-
-html.not-found div#root > div {
-  display: table-cell;
-  vertical-align: middle;
-}

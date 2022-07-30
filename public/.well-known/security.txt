@@ -1,4 +1,0 @@
-# Contacts and preferences for security reports
-Contact: https://github.com/Yash-Singh1/yashsingh.us/issues
-Preferred-Languages: en
-Canonical: https://www.yashsingh.us/.well-known/security.txt
