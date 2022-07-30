@@ -24,14 +24,13 @@ collections:
             name: skills
             widget: list
             fields:
+              - label: Name
+                name: name
+                widget: string
               - label: Status
                 name: status
                 widget: string
                 hint: proficient
-                pattern: ['proficient', 'good', 'learning']
-              - label: Name
-                name: name
-                widget: string
               - label: Icon
                 name: icon
                 widget: image
@@ -42,3 +41,4 @@ collections:
                 name: circlize
                 widget: boolean
                 default: false
+                required: false
