@@ -1,8 +1,8 @@
 backend:
   name: github
   repo: Yash-Singh1/yashsingh.us-v2
-  branch: netlifycms
-  base_url: 'https://yashsingh-us-v2-git-netlifycms-yash-singh1.vercel.app/'
+  branch: main
+  base_url: 'https://yashsingh-us-v2.vercel.app/'
   auth_endpoint: 'api/auth'
   commit_messages:
     create: 'feat: Create {{collection}} “{{slug}}”'
