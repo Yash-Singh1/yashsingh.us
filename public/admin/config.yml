@@ -2,7 +2,8 @@ backend:
   name: github
   repo: Yash-Singh1/yashsingh.us-v2
   branch: main
-  base_url: https://yashsingh-us-v2.vercel.app/
+  base_url: 'https://yashsingh-us-v2-git-netlifycms-yash-singh1.vercel.app/'
+  auth_endpoint: 'api/auth'
 
 media_folder: public/img/uploads
 collections:
