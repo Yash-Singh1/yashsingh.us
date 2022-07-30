@@ -2,7 +2,7 @@ img {
   width: 2rem;
 }
 
-div[class*="css"] {
+div[class*='css'] {
   margin-top: 10px;
   margin-bottom: 10px;
 }
