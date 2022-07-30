@@ -1,7 +1,7 @@
-import { Query } from '../../.tina/__generated__/types';
+import Home from './Home';
 
 export interface SkillsGrouped {
-  [key: string]: Query['home']['skills'];
+  [key: string]: Home['skills'];
 }
 
 export default SkillsGrouped;

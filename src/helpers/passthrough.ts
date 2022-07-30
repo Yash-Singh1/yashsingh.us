@@ -1,7 +1,7 @@
 // Template literal tag that basically clones template literal
-// Made to allow prettier formatting on javascript in a string
+// Made to allow prettier formatting on various languages in a string
 
-export function js(strings: TemplateStringsArray, ...keys: string[]): string {
+export function passthrough(strings: TemplateStringsArray, ...keys: string[]): string {
   const result = [strings[0]];
   for (const [index, key] of keys.entries()) {
     result.push(key);
@@ -12,4 +12,4 @@ export function js(strings: TemplateStringsArray, ...keys: string[]): string {
   return result.join('');
 }
 
-export default js;
+export default passthrough;

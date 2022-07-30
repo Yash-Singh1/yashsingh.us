@@ -41,8 +41,5 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 
-# generated tina
-.tina/__generated__/
-
 # PartyTown
 public/~partytown

@@ -1,41 +1,19 @@
 import type { GetStaticProps, NextPage } from 'next';
 import Head from 'next/head';
 import Profile from '../components/Profile/Profile';
-import { useTina } from 'tinacms/dist/edit-state';
-import { gql, staticRequest } from 'tinacms';
-import { Query } from '../../.tina/__generated__/types';
+import gql from '../helpers/passthrough';
 import { useEffect } from 'react';
 import AOS from 'aos';
 import { graphql } from '@octokit/graphql';
 import type RepoInfo from '../types/RepoInfo';
 import type SkillsGrouped from '../types/skillsGrouped';
-
-const query = gql`
-  {
-    home(relativePath: "Home.json") {
-      description
-      projects
-      skills {
-        name
-        status
-        icon
-        link
-        circlize
-      }
-    }
-  }
-`;
+import { default as HomeType } from '../types/Home';
 
 const Home: NextPage<{
-  data: Query;
+  data: HomeType;
   repoInfo: { [key: string]: RepoInfo };
   skillsGrouped: SkillsGrouped;
 }> = (props) => {
-  const { data } = useTina<Query>({
-    query,
-    variables: {},
-    data: props.data,
-  });
   useEffect(() => {
     AOS.init({ duration: 500 });
   }, []);
@@ -52,25 +30,22 @@ const Home: NextPage<{
       </Head>
 
       <main>
-        <Profile data={data.home} repoInfo={props.repoInfo} skillsGrouped={props.skillsGrouped} />
+        <Profile data={props.data} repoInfo={props.repoInfo} skillsGrouped={props.skillsGrouped} />
       </main>
     </>
   );
 };
 
 export const getStaticProps: GetStaticProps = async () => {
-  let data: Query = {} as Query;
+  let data: HomeType;
   try {
-    data = (await staticRequest({
-      query,
-      variables: {},
-    })) as Query;
+    ({ default: data } = (await import('../../content/home/Home.json')) as { default: HomeType });
   } catch {}
   let repoInfo: {
     [key: string]: RepoInfo;
   } = {};
   try {
-    for (const project of data.home.projects!) {
+    for (const project of data!.projects) {
       const repo = await graphql<RepoInfo>(
         gql`
           query RepositoryInfo($name: String!, $owner: String!) {
@@ -100,16 +75,16 @@ export const getStaticProps: GetStaticProps = async () => {
   } catch {}
 
   const skillsGrouped: SkillsGrouped = {};
-  data.home.skills!.forEach!((skill) => {
+  for (const skill of data!.skills) {
     if (!skillsGrouped[skill!.status!]) {
       skillsGrouped[skill!.status!] = [];
     }
     skillsGrouped[skill!.status!]!.push(skill!);
-  });
+  }
 
   return {
     props: {
-      data,
+      data: data!,
       repoInfo,
       skillsGrouped,
     },

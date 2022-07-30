@@ -1,6 +1,4 @@
 import type { GetStaticPaths, GetStaticProps, NextPage } from 'next';
-import { gql, staticRequest } from 'tinacms';
-import { Query } from '../../../../.tina/__generated__/types';
 import postStyles from '../../../styles/post.module.scss';
 import coolBgStyles from '../../../styles/cool-bg.module.scss';
 import Container from '../../../components/Container';
@@ -16,8 +14,11 @@ import rehypePrettyCode from 'rehype-pretty-code';
 import Router from 'next/router';
 import components from '../../../components/Post/Markdown_Components';
 import path from 'node:path';
+import matter from 'gray-matter';
+import { Post as PostType } from '../../../types/PostList';
+import stripExtension from '../../../helpers/stripExtension';
 
-const Post: NextPage<{ data: Query['posts']; content: MDXRemoteSerializeResult }> = function ({
+const Post: NextPage<{ data: PostType; content: MDXRemoteSerializeResult }> = function ({
   data,
   content,
 }) {
@@ -55,63 +56,33 @@ const Post: NextPage<{ data: Query['posts']; content: MDXRemoteSerializeResult }
 export default Post;
 
 export const getStaticPaths: GetStaticPaths = async function () {
-  const postsListData = (await staticRequest({
-    query: gql`
-      {
-        postsConnection {
-          totalCount
-          edges {
-            node {
-              _sys {
-                filename
-              }
-            }
-          }
-        }
-      }
-    `,
-  })) as Query;
+  let dir = '../../../../';
+  while (!fs.existsSync(path.join(__dirname, dir, 'node_modules'))) {
+    dir += '../';
+  }
+  const postsListData = fs
+    .readdirSync(path.join(__dirname, dir, 'content/posts'))
+    .map((contentFileName) => {
+      return stripExtension(contentFileName);
+    });
 
   return {
-    paths: postsListData.postsConnection.edges!.map((post) => ({
-      params: { post: post!.node!._sys.filename },
+    paths: postsListData.map((post) => ({
+      params: { post },
     })),
     fallback: false,
   };
 };
 
 export const getStaticProps: GetStaticProps = async ({ params }) => {
-  const query = gql`
-    query Post($relativePath: String!) {
-      posts(relativePath: $relativePath) {
-        title
-        body
-        _sys {
-          filename
-          basename
-        }
-      }
-    }
-  `;
-
-  let data: Query = {} as Query;
-  try {
-    data = (await staticRequest({
-      query,
-      variables: {
-        relativePath: `${params!.post}.mdx`,
-      },
-    })) as Query;
-  } catch {}
-
   let dir = '../../../../';
-  while (!fs.readdirSync(path.join(__dirname, dir)).includes('package.json')) {
+  while (!fs.readdirSync(path.join(__dirname, dir)).includes('node_modules')) {
     dir += '../';
   }
-  const source = fs
-    .readFileSync(path.join(__dirname, `../../../../../content/posts/${params!.post}.mdx`), 'utf8')
-    .replace(/^\s*---[^]*?---\s*$/m, '');
-  const mdxSource = await serialize(source, {
+  const { content, data } = matter(
+    fs.readFileSync(path.join(__dirname, dir, `content/posts/${params!.post}.mdx`), 'utf8')
+  );
+  const mdxSource = await serialize(content, {
     mdxOptions: {
       remarkPlugins: [remarkGfm, remarkFrontmatter],
       rehypePlugins: [[rehypePrettyCode, { theme: 'one-dark-pro' }]],
@@ -120,7 +91,7 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
 
   return {
     props: {
-      data: data.posts,
+      data,
       content: mdxSource,
     },
   };

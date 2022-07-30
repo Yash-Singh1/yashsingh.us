@@ -1,11 +1,11 @@
-import { Query } from '../../../.tina/__generated__/types';
 import Paragraph from '../Paragraph';
 import Badge from './Badge';
 import profileStyles from '../../styles/profile.module.scss';
+import Home from '../../types/Home';
 
 interface BadgeSectionProps {
   description: string;
-  badges?: Query['home']['skills'];
+  badges?: Home['skills'];
 }
 
 function BadgeSection({ badges, description }: BadgeSectionProps) {

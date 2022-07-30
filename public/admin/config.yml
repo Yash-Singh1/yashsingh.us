@@ -1,0 +1,43 @@
+backend:
+  name: github
+  repo: Yash-Singh1/yashsingh.us-v2
+  branch: main
+  base_url: https://yashsingh-us-v2.vercel.app/
+
+media_folder: public/img/uploads
+collections:
+  - name: 'home'
+    label: 'Home'
+    files:
+      - label: 'Home page'
+        name: 'home'
+        file: 'content/home/Home.json'
+        fields:
+          - label: Description
+            name: description
+            widget: string
+          - label: Projects
+            name: projects
+            widget: list
+          - label: Skills
+            name: skills
+            widget: list
+            fields:
+              - label: Status
+                name: status
+                widget: string
+                hint: proficient
+                pattern: ['proficient', 'good', 'learning']
+              - label: Name
+                name: name
+                widget: string
+              - label: Icon
+                name: icon
+                widget: image
+              - label: Link
+                name: link
+                widget: string
+              - label: Circlize
+                name: circlize
+                widget: boolean
+                default: false

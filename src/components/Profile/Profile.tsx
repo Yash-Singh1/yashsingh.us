@@ -11,10 +11,10 @@ import coolBgStyles from '../../styles/cool-bg.module.scss';
 import AOS from 'aos';
 import GitHub from '../SimpleIconLogos/GitHub';
 import Mail from '../SimpleIconLogos/Mail';
-import { Home } from '../../../.tina/__generated__/types';
 import type RepoInfo from '../../types/RepoInfo';
 import BadgeSection from './BadgeSection';
 import type SkillsGrouped from '../../types/skillsGrouped';
+import Home from '../../types/Home';
 
 interface ProfileProps {
   data: Home;
