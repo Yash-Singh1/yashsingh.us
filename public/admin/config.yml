@@ -4,6 +4,14 @@ backend:
   branch: netlifycms
   base_url: 'https://yashsingh-us-v2-git-netlifycms-yash-singh1.vercel.app/'
   auth_endpoint: 'api/auth'
+  commit_messages:
+    create: 'feat: Create {{collection}} “{{slug}}”'
+    update: 'chore: Update {{collection}} “{{slug}}”'
+    delete: 'chore: Delete {{collection}} “{{slug}}”'
+    uploadMedia: 'feat: Upload “{{path}}”'
+    deleteMedia: 'chore: Delete “{{path}}”'
+
+publish_mode: editorial_workflow
 
 media_folder: public/img/uploads
 collections:
