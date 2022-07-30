@@ -13,6 +13,7 @@ collections:
       - label: 'Home page'
         name: 'home'
         file: 'content/home/Home.json'
+        preview_path: '/'
         fields:
           - label: Description
             name: description
