@@ -1,6 +1,6 @@
-# `yashsingh.us-v2`
+# `yashsingh.us`
 
-A complete rewrite of my site using Next.js.
+My personal site, written using Typescript, Next.js, and SCSS w/ TailwindCSS.
 
 ## Development
 
