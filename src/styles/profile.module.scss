@@ -76,3 +76,17 @@
 .needed-permissions {
   margin-left: 48pt !important;
 }
+
+.contact {
+  display: inline-block;
+  position: relative;
+}
+
+.contact::after {
+  content: ' · ';
+  display: inline-block;
+  position: absolute;
+  right: 100%;
+  top: 0;
+  margin-right: 0.5rem;
+}

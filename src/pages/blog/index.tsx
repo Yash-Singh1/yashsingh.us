@@ -38,7 +38,7 @@ const Blog: NextPage<{ slug: string; data: PostList }> = function Blog(props) {
                         <h1 className='text-violet-700 uppercase font-mono font-bold sm:text-2xl text-xl group-hover:text-violet-500 transition mr-2'>
                           {edge.title!}
                         </h1>
-                        <p className='text-gray-400 w-3/4 group-hover:text-gray-300 transition'>
+                        <p className='par text-gray-400 group-hover:text-gray-300 transition'>
                           {edge.subtitle!}
                         </p>
                       </motion.a>

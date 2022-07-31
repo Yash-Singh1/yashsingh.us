@@ -1,13 +1,12 @@
 import { motion, useAnimation } from 'framer-motion';
 import Link from 'next/link';
 import type { ReactNode } from 'react';
+import profileStyles from '../styles/profile.module.scss';
 
 interface ContactProps {
   internal?: boolean;
   href: string;
   name: string;
-  final: boolean;
-  index: number;
   logo?: ReactNode | boolean;
 }
 
@@ -16,13 +15,11 @@ export function Contact({
   href,
   name,
   logo: Logo = false,
-  final,
-  index,
 }: ContactProps) {
   const controls = useAnimation();
 
   return (
-    <p style={{ display: 'inline-block', marginLeft: index === 0 ? '0' : '1.5rem' }}>
+    <p className={profileStyles['contact']}>
       {Logo === false ? null : (
         <a {...(internal ? {} : { target: '_blank', rel: 'noreferrer' })} tabIndex={-1} href={href}>
           {Logo}
@@ -53,7 +50,6 @@ export function Contact({
           ></motion.span>
         </a>
       </Link>
-      {final ? null : ' · '}
     </p>
   );
 }
