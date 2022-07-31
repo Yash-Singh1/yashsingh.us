@@ -42,3 +42,6 @@ yarn-error.log*
 
 # PartyTown
 public/~partytown
+
+# RSS Feed
+public/feed.xml

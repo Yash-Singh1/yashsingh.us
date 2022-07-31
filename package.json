@@ -4,12 +4,13 @@
   "private": true,
   "scripts": {
     "dev": "pnpm run partytown && next dev",
-    "build": "pnpm run partytown && next build",
-    "postbuild": "next-sitemap",
+    "build": "pnpm run pre:build && pnpm run partytown && next build",
+    "pre:build": "next-sitemap && pnpm run generate-feed",
     "start": "pnpm run partytown && next start",
     "lint": "next lint && prettier --check .",
     "lint:fix": "next lint --fix && prettier --write .",
-    "partytown": "partytown copylib public/~partytown"
+    "partytown": "partytown copylib public/~partytown",
+    "generate-feed": "node -r esbuild-runner/register src/lib/generateFeed.ts"
   },
   "dependencies": {
     "@builder.io/partytown": "^0.6.4",
@@ -42,6 +43,8 @@
     "@types/react": "18.0.15",
     "@types/simple-oauth2": "^4.1.1",
     "autoprefixer": "^10.4.8",
+    "esbuild": "^0.14.51",
+    "esbuild-runner": "^2.2.1",
     "eslint": "8.20.0",
     "eslint-config-next": "12.2.3",
     "eslint-config-prettier": "^8.5.0",

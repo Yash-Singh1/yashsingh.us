@@ -1,6 +1,6 @@
 /** @type {import("next-sitemap").IConfig} */
 const config = {
-  siteUrl: 'https://yashsingh.us',
+  siteUrl: 'https://www.yashsingh.us/',
   generateRobotsTxt: true,
   exclude: ['/admin'],
 };
