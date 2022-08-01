@@ -48,7 +48,7 @@
     "eslint-config-next": "12.2.3",
     "eslint-config-prettier": "^8.5.0",
     "eslint-plugin-eslint-comments": "^3.2.0",
-    "eslint-plugin-unicorn": "^42.0.0",
+    "eslint-plugin-unicorn": "^43.0.2",
     "gray-matter": "^4.0.3",
     "next-compose-plugins": "^2.2.1",
     "next-plugin-svgr": "^1.1.2",
