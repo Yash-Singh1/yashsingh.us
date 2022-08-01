@@ -4,8 +4,7 @@
   "private": true,
   "scripts": {
     "dev": "pnpm run partytown && next dev",
-    "build": "pnpm run pre:build && pnpm run partytown && next build",
-    "pre:build": "next-sitemap && pnpm run generate-feed",
+    "build": "pnpm run generate-feed && pnpm run partytown && next build && next-sitemap",
     "start": "pnpm run partytown && next start",
     "lint": "next lint && prettier --check .",
     "lint:fix": "next lint --fix && prettier --write .",
