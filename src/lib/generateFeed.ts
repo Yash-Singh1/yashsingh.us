@@ -59,7 +59,7 @@ const feed = `<rss version="2.0">
   <item>
     <title>${post.title}</title>
     <link>${
-      post.link ? post.link : `https://www.yashsingh.us/blog/post/${stripExtension(post.filename)}`
+      post.link || `https://www.yashsingh.us/blog/post/${stripExtension(post.filename)}`
     }</link>
     <description>${post.subtitle}</description>
     <pubDate>${rssDateFormat(new Date(post.date))}</pubDate>
