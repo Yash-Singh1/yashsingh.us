@@ -28,16 +28,28 @@ function RepoCard({ repo }: RepoCardProps) {
       className='rounded-lg'
       rotateClassName='rounded-lg'
     >
-      <div className='w-full h-full absolute bg-transparent border-2 border-black/80 rounded-lg' data-atropos-offset="-1"></div>
-      <div className='w-full h-full absolute bg-transparent border-2 border-black/80 rounded-lg' data-atropos-offset="-0.5"></div>
-      <div className='w-full h-full absolute bg-transparent border-2 border-black/80 rounded-lg' data-atropos-offset="0"></div>
-      <div className='w-full h-full absolute bg-transparent border-2 border-black/80 rounded-lg' data-atropos-offset="0.5"></div>
+      <div
+        className='w-full h-full absolute bg-transparent border-2 border-black/80 rounded-lg'
+        data-atropos-offset='-1'
+      ></div>
+      <div
+        className='w-full h-full absolute bg-transparent border-2 border-black/80 rounded-lg'
+        data-atropos-offset='-0.5'
+      ></div>
+      <div
+        className='w-full h-full absolute bg-transparent border-2 border-black/80 rounded-lg'
+        data-atropos-offset='0'
+      ></div>
+      <div
+        className='w-full h-full absolute bg-transparent border-2 border-black/80 rounded-lg'
+        data-atropos-offset='0.5'
+      ></div>
       <a
         href={repo.repository.url}
         target='_blank'
         className='p-5 pb-10 block relative bg-[#343a40]/75 rounded-lg shadow-xl active:duration-75 cursor-pointer hover:shadow-2xl hover:transition-all transition-all border-2 border-gray-800'
         rel='noreferrer'
-        data-atropos-offset="1"
+        data-atropos-offset='1'
       >
         <h3 className='mb-2'>{repo.repository.name}</h3>
         <p className='max-w-full par font-thin text-xl h-14'>{repo.repository.description}</p>
