@@ -28,7 +28,7 @@
     "next": "^12.2.3",
     "next-mdx-remote": "^4.1.0",
     "react": "18.2.0",
-    "react-dom": "18.1.0",
+    "react-dom": "18.2.0",
     "sass": "^1.54.0",
     "shiki": "^0.10.1",
     "simple-oauth2": "^4.3.0",
