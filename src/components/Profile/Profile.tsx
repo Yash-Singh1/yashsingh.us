@@ -70,7 +70,6 @@ function Profile({ data, repoInfo, skillsGrouped }: ProfileProps) {
               ))
             ) : (
               <>
-                {' '}
                 <Paragraph>
                   Please connect to the internet and ensure <code>GH_TOKEN</code> is a valid token
                   set with the following permissions:

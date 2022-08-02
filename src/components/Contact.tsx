@@ -24,12 +24,12 @@ export function Contact({ internal = false, href, name, logo: Logo = false }: Co
         <a
           onMouseEnter={() =>
             controls.start({
-              scaleX: 2,
+              scaleX: 1,
             })
           }
           onMouseLeave={() =>
             controls.start({
-              scaleX: 0,
+              scaleX: 2,
             })
           }
           className='inline-flex flex-col'
@@ -37,7 +37,7 @@ export function Contact({ internal = false, href, name, logo: Logo = false }: Co
           {name}
           <motion.span
             initial={{
-              scaleX: 0,
+              scaleX: 2,
               translateX: '50%',
             }}
             animate={controls}

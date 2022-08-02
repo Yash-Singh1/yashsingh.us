@@ -72,7 +72,9 @@ export const getStaticProps: GetStaticProps = async () => {
       );
       repoInfo[project!] = repo;
     }
-  } catch {}
+  } catch (error) {
+    console.log(error);
+  }
 
   const skillsGrouped: SkillsGrouped = {};
   for (const skill of data!.skills) {

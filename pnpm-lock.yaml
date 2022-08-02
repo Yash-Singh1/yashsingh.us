@@ -17,6 +17,7 @@ specifiers:
   '@types/react': 18.0.15
   '@types/simple-oauth2': ^4.1.1
   aos: ^2.3.4
+  atropos: ^1.0.2
   autoprefixer: ^10.4.8
   esbuild: ^0.14.51
   esbuild-runner: ^2.2.1
@@ -63,6 +64,7 @@ dependencies:
   '@next/mdx': 12.2.3_todqhrvd7cvbb36hzi2r6xttgq
   '@octokit/graphql': 5.0.0
   aos: 2.3.4
+  atropos: 1.0.2
   framer-motion: 6.5.1_3cfkrkynzts6qfsozcm5ednswi
   next: 12.2.3_feh2qllqkksd6eozirw4zohvxu
   next-mdx-remote: 4.1.0_3cfkrkynzts6qfsozcm5ednswi
@@ -2332,6 +2334,11 @@ packages:
   /astring/1.8.3:
     resolution: {integrity: sha512-sRpyiNrx2dEYIMmUXprS8nlpRg2Drs8m9ElX9vVEXaCB4XEAJhKfs7IcX0IwShjuOAjLR6wzIrgoptz1n19i1A==}
     hasBin: true
+    dev: false
+
+  /atropos/1.0.2:
+    resolution: {integrity: sha512-0RqyHfMyIhRXgnHuSQz2LVOE81jtAQ7EZTrF75ngiipklIsxajZ2vD042EXdiIEDs6eEAzfE10k+YhIbNl4/eg==}
+    engines: {node: '>= 12.0.0'}
     dev: false
 
   /autoprefixer/10.4.8_postcss@8.4.14:

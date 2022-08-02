@@ -145,3 +145,12 @@ div[data-rehype-pretty-code-title] {
     z-index: -1;
   }
 }
+
+.atropos-shadow {
+  background-color: #22222275 !important;
+  filter: blur(10px) !important;
+}
+
+.atropos-inner {
+  overflow: visible !important;
+}
