@@ -40,7 +40,9 @@ function Badge({ icon, text, link, circlize = false }: BadgeProps) {
         alt={icon ? text || '' : ''}
         width={45}
         height={45}
-        className={`p-1 lg:p-[0.3rem] bg-[#242526]/75 lg:bg-[#242526]/60 ${profileStyles['no-select']} h-8 w-8 lg:h-[2.8125rem] lg:w-[2.8125rem] ${
+        className={`p-1 lg:p-[0.3rem] bg-[#242526]/75 lg:bg-[#242526]/60 ${
+          profileStyles['no-select']
+        } h-8 w-8 lg:h-[2.8125rem] lg:w-[2.8125rem] ${
           circlize ? 'rounded-full' : 'rounded-l-md'
         } group-hover:bg-[#242526]/100`}
       />

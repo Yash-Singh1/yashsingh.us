@@ -20,7 +20,11 @@ const Blog: NextPage<{ slug: string; data: PostList }> = function Blog(props) {
 
       <main className={`box-content p-0`}>
         <Container className={coolBgStyles['cool-bg']}>
-          <Header title="Yash Singh's Blog" intro='Welcome to' className={`lg:ml-[12.5%] flex flex-col flex-wrap flex-grow-0 flex-shrink-0 justify-center items-start`} />
+          <Header
+            title="Yash Singh's Blog"
+            intro='Welcome to'
+            className={`lg:ml-[12.5%] flex flex-col flex-wrap flex-grow-0 flex-shrink-0 justify-center items-start`}
+          />
           <div className='mt-6 md:mt-10 w-full flex flex-wrap flex-grow-0 flex-shrink-0 justify-center items-center'>
             {props.data
               ? props.data.map((edge) => {
