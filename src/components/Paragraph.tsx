@@ -11,7 +11,7 @@ function Paragraph({
 }) {
   return (
     <p
-      className={overrideTailwindClasses(`text-gray-400 text-xl mt-5 par ${className}`)}
+      className={overrideTailwindClasses(`text-gray-400 text-lg md:text-xl mt-5 par ${className}`)}
       {...props}
     >
       {children}

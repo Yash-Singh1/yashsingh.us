@@ -43,9 +43,9 @@ function Profile({ data, repoInfo, skillsGrouped }: ProfileProps) {
   }, []);
 
   return (
-    <Container className={`box-content ${coolBgStyles['cool-bg']} ${profileStyles['cool-bg']}`}>
-      <Header title='Saiansh (Yash) Singh' intro="It's" large className={profileStyles['header']}>
-        <Paragraph>{data ? data.description : ''}</Paragraph>
+    <Container className={`${coolBgStyles['cool-bg']} ${profileStyles['cool-bg']}`}>
+      <Header title='Saiansh (Yash) Singh' intro="It's" large className={coolBgStyles['header']}>
+        <Paragraph className='max-w-prose text-base'>{data ? data.description : ''}</Paragraph>
         <br />
         <button
           className='bg-blue-500 hover:bg-blue-400 text-white font-bold py-2 px-4 border-blue-700 hover:border-blue-500 cursor-pointer rounded-lg outline-none par'
@@ -60,7 +60,7 @@ function Profile({ data, repoInfo, skillsGrouped }: ProfileProps) {
       </Header>
       <Section title='Projects' handleHashChange={handleHashChange}>
         <div className={`text-gray-400 text-xl mt-5`}>
-          <span className='par'>
+          <span className='par max-w-prose'>
             I have many interesting projects. Here are a few handpicked ones:
           </span>
           <div className={profileStyles['projects-container']}>
@@ -111,7 +111,7 @@ function Profile({ data, repoInfo, skillsGrouped }: ProfileProps) {
         <BadgeSection description='I am learning' badges={skillsGrouped['learning']} />
       </Section>
       <Section title='More' handleHashChange={handleHashChange}>
-        <Paragraph>
+        <Paragraph className='max-w-prose'>
           I maintain a blog site with multiple posts on different topics related to programming at{' '}
           <Link href='/blog/'>
             <a className='text-blue-500'>https://www.yashsingh.us/blog/</a>

@@ -17,6 +17,8 @@ import path from 'node:path';
 import matter from 'gray-matter';
 import { Post as PostType } from '../../../types/PostList';
 import stripExtension from '../../../helpers/stripExtension';
+import pfp from '../../../assets/pfp.png';
+import Image from 'next/future/image';
 
 const Post: NextPage<{ data: PostType; content: MDXRemoteSerializeResult }> = function ({
   data,
@@ -37,12 +39,41 @@ const Post: NextPage<{ data: PostType; content: MDXRemoteSerializeResult }> = fu
                 onClick={() => {
                   Router.push('/blog');
                 }}
-                className='cursor-pointer'
+                className='cursor-pointer text-base sm:text-lg md:text-xl'
               >
                 Blog
               </Breadcrumbs.Item>
-              <Breadcrumbs.Item>{data.title}</Breadcrumbs.Item>
+              <Breadcrumbs.Item className='text-base sm:text-lg md:text-xl'>
+                {data.title}
+              </Breadcrumbs.Item>
             </Breadcrumbs>
+            <div className='md:ml-11 mt-5 mb-7'>
+              <div className='grid grid-cols-[max-content_1fr] h-8 sm:h-12 mb-4'>
+                <Image
+                  src={pfp}
+                  alt='profile picture'
+                  className='w-8 sm:w-12 rounded-full'
+                  width={80}
+                  height={80}
+                  loading='lazy'
+                  placeholder='blur'
+                />
+                <div className='flex flex-col justify-center gap-0 ml-2 text-base leading-4 sm:text-lg sm:leading-5'>
+                  <span className='text-emerald-400'>Yash Singh</span>
+                  <time
+                    dateTime={new Date(data.date).toISOString().replace(/T.*$/, '')}
+                    className='text-gray-500'
+                  >
+                    {data.date}
+                  </time>
+                </div>
+              </div>
+              <img
+                src={data.image}
+                className='w-full lg:w-3/4 xl:w-1/2 rounded-md'
+                alt={data.title}
+              />
+            </div>
             <article className={`${postStyles['markdown-body']} ${postStyles['blog-post-body']}`}>
               <MDXRemote {...content} components={components} />
             </article>

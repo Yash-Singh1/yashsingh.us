@@ -89,7 +89,8 @@ ol {
 ul,
 ol {
   li {
-    font-size: 1.25rem;
+    @apply text-lg md:text-xl;
+
     &::before {
       content: none !important;
     }
@@ -153,4 +154,12 @@ div[data-rehype-pretty-code-title] {
 
 .atropos-inner {
   overflow: visible !important;
+}
+
+@media (max-width: 640px) {
+  .atropos-rotate,
+  .atropos-inner,
+  .atropos-scale {
+    transform: none !important;
+  }
 }

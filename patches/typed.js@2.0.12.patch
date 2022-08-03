@@ -1,0 +1,176 @@
+diff --git a/index.d.ts b/index.d.ts
+index 7930effce379a6e921161b8e2d1546b6327acbc2..2083fce0087c2e1d9bb1e433e050b94a5a2e5d3a 100644
+--- a/index.d.ts
++++ b/index.d.ts
+@@ -88,7 +88,7 @@ declare module 'typed.js' {
+     /**
+      * Before each string is typed
+      */
+-    preStringTyped?(arrayPos: number, self: Typed): void;
++    preStringTyped?(this: Typed, arrayPos: number, self: Typed): void | string;
+     /**
+      * After each string is typed
+      */
+@@ -130,5 +130,10 @@ declare module 'typed.js' {
+     start(): void;
+     destroy(): void;
+     reset(restart?: boolean): void;
++    begin(): void;
++    strings: string[];
++    arrayPos: number;
++    loop: boolean;
++    loopCount: number;
+   }
+ }
+diff --git a/lib/typed.js b/lib/typed.js
+index 0992dc561ca488be518be39dd3a75db3eb2d435a..6e7ee59b825b045e789207d88c214fbf388ab5bc 100644
+--- a/lib/typed.js
++++ b/lib/typed.js
+@@ -176,7 +176,6 @@ return /******/ (function(modules) { // webpackBootstrap
+ 	
+ 	    /**
+ 	     * Begins the typing animation
+-	     * @private
+ 	     */
+ 	  }, {
+ 	    key: 'begin',
+@@ -203,7 +202,6 @@ return /******/ (function(modules) { // webpackBootstrap
+ 	     * Called for each character typed
+ 	     * @param {string} curString the current string in the strings array
+ 	     * @param {number} curStrPos the current position in the curString
+-	     * @private
+ 	     */
+ 	  }, {
+ 	    key: 'typewrite',
+@@ -288,7 +286,6 @@ return /******/ (function(modules) { // webpackBootstrap
+ 	     * Continue to the next string & begin typing
+ 	     * @param {string} curString the current string in the strings array
+ 	     * @param {number} curStrPos the current position in the curString
+-	     * @private
+ 	     */
+ 	  }, {
+ 	    key: 'keepTyping',
+@@ -296,7 +293,10 @@ return /******/ (function(modules) { // webpackBootstrap
+ 	      // call before functions if applicable
+ 	      if (curStrPos === 0) {
+ 	        this.toggleBlinking(false);
+-	        this.options.preStringTyped(this.arrayPos, this);
++	        var suggestion = this.options.preStringTyped.apply(this, [this.arrayPos, this]);
++					if (suggestion) {
++						curString = suggestion;
++					}
+ 	      }
+ 	      // start typing each new char into existing string
+ 	      // curString: arg, this.el.html: original text inside element
+@@ -311,7 +311,6 @@ return /******/ (function(modules) { // webpackBootstrap
+ 	     * We're done typing the current string
+ 	     * @param {string} curString the current string in the strings array
+ 	     * @param {number} curStrPos the current position in the curString
+-	     * @private
+ 	     */
+ 	  }, {
+ 	    key: 'doneTyping',
+@@ -339,7 +338,6 @@ return /******/ (function(modules) { // webpackBootstrap
+ 	     * Backspaces 1 character at a time
+ 	     * @param {string} curString the current string in the strings array
+ 	     * @param {number} curStrPos the current position in the curString
+-	     * @private
+ 	     */
+ 	  }, {
+ 	    key: 'backspace',
+@@ -399,7 +397,6 @@ return /******/ (function(modules) { // webpackBootstrap
+ 	
+ 	    /**
+ 	     * Full animation is complete
+-	     * @private
+ 	     */
+ 	  }, {
+ 	    key: 'complete',
+@@ -417,7 +414,6 @@ return /******/ (function(modules) { // webpackBootstrap
+ 	     * @param {string} curString the current string in the strings array
+ 	     * @param {number} curStrPos the current position in the curString
+ 	     * @param {boolean} isTyping
+-	     * @private
+ 	     */
+ 	  }, {
+ 	    key: 'setPauseStatus',
+@@ -430,7 +426,6 @@ return /******/ (function(modules) { // webpackBootstrap
+ 	    /**
+ 	     * Toggle the blinking cursor
+ 	     * @param {boolean} isBlinking
+-	     * @private
+ 	     */
+ 	  }, {
+ 	    key: 'toggleBlinking',
+@@ -450,7 +445,6 @@ return /******/ (function(modules) { // webpackBootstrap
+ 	    /**
+ 	     * Speed in MS to type
+ 	     * @param {number} speed
+-	     * @private
+ 	     */
+ 	  }, {
+ 	    key: 'humanizer',
+@@ -460,7 +454,6 @@ return /******/ (function(modules) { // webpackBootstrap
+ 	
+ 	    /**
+ 	     * Shuffle the sequence of the strings array
+-	     * @private
+ 	     */
+ 	  }, {
+ 	    key: 'shuffleStringsIfNeeded',
+@@ -473,7 +466,6 @@ return /******/ (function(modules) { // webpackBootstrap
+ 	
+ 	    /**
+ 	     * Adds a CSS class to fade out current string
+-	     * @private
+ 	     */
+ 	  }, {
+ 	    key: 'initFadeOut',
+@@ -500,7 +492,6 @@ return /******/ (function(modules) { // webpackBootstrap
+ 	     * Replaces current text in the HTML element
+ 	     * depending on element type
+ 	     * @param {string} str
+-	     * @private
+ 	     */
+ 	  }, {
+ 	    key: 'replaceText',
+@@ -521,7 +512,6 @@ return /******/ (function(modules) { // webpackBootstrap
+ 	    /**
+ 	     * If using input elements, bind focus in order to
+ 	     * start and stop the animation
+-	     * @private
+ 	     */
+ 	  }, {
+ 	    key: 'bindFocusEvents',
+@@ -542,7 +532,6 @@ return /******/ (function(modules) { // webpackBootstrap
+ 	
+ 	    /**
+ 	     * On init, insert the cursor element
+-	     * @private
+ 	     */
+ 	  }, {
+ 	    key: 'insertCursor',
+@@ -602,7 +591,6 @@ return /******/ (function(modules) { // webpackBootstrap
+ 	     * @param {Typed} self instance of Typed
+ 	     * @param {object} options options object
+ 	     * @param {string} elementId HTML element ID _OR_ instance of HTML element
+-	     * @private
+ 	     */
+ 	
+ 	    value: function load(self, options, elementId) {
+@@ -983,7 +971,6 @@ return /******/ (function(modules) { // webpackBootstrap
+ 	     * @param {number} curStrPos Position in current string
+ 	     * @param {Typed} self instance of Typed
+ 	     * @returns {number} a new string position
+-	     * @private
+ 	     */
+ 	
+ 	    value: function typeHtmlChars(curString, curStrPos, self) {
+@@ -1013,7 +1000,6 @@ return /******/ (function(modules) { // webpackBootstrap
+ 	     * @param {number} curStrPos Position in current string
+ 	     * @param {Typed} self instance of Typed
+ 	     * @returns {number} a new string position
+-	     * @private
+ 	     */
+ 	  }, {
+ 	    key: 'backSpaceHtmlChars',

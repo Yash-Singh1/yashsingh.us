@@ -9,13 +9,13 @@
 }
 
 .projects-container {
-  @apply flex items-stretch flex-row flex-wrap gap-5 mt-5 lg:w-3/4 w-full;
+  @apply flex items-stretch flex-row flex-wrap gap-5 mt-5 xl:w-3/4 w-full;
 }
 
 .projects-container > * {
-  min-width: 300px;
+  min-width: 250px;
   flex-basis: calc(50% - 1.25rem);
-  @apply flex-grow;
+  @apply flex-shrink flex-grow-0 sm:flex-grow;
 }
 
 .skills-list > p {
@@ -56,15 +56,6 @@
   transform: translate3d(-120%, 0, 0);
 }
 
-.section {
-  @apply flex flex-col justify-center;
-  padding: inherit;
-}
-
-.cool-bg .header {
-  padding: inherit;
-}
-
 .no-select {
   @include mixins.no-select;
 }
@@ -80,6 +71,7 @@
 .contact {
   display: inline-block;
   position: relative;
+  margin-top: 1rem;
 }
 
 .contact::after {
@@ -89,9 +81,4 @@
   right: 100%;
   top: 0;
   margin-right: 0.5rem;
-}
-
-.repo-card-scale {
-  transform: scale3d(100% 100% 500%);
-  @apply rounded-lg;
 }

@@ -24,6 +24,7 @@ module.exports = {
       'error',
       {
         varsIgnorePattern: '^_',
+        argsIgnorePattern: '^_|this',
       },
     ],
     'no-empty': ['error', { allowEmptyCatch: true }],

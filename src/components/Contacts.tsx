@@ -14,7 +14,7 @@ interface ContactProps {
 const Contacts = function Contacts({ contacts, className }: ContactProps) {
   return (
     <div
-      className={`mt-5 text-gray-400 text-2xl font-mono overflow-hidden w-full flex flex-row flex-wrap gap-x-8 ${
+      className={`mt-1 text-gray-400 text-xl lg:text-2xl font-mono overflow-hidden w-full flex flex-row flex-wrap gap-x-8 ${
         className || ''
       }`}
     >

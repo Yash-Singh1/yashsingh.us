@@ -5,7 +5,7 @@ import { useEffect, useRef } from 'react';
 import { TypedOptions } from 'typed.js';
 
 function Typer(config: TypedOptions) {
-  const el = useRef<HTMLSpanElement>(null);
+  const el = useRef<HTMLSpanElement | null>(null);
 
   useEffect(() => {
     const typed = new Typed(el.current!, config);

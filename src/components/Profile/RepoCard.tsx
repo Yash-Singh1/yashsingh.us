@@ -5,7 +5,6 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faStar, faCodeBranch } from '@fortawesome/free-solid-svg-icons';
 import 'atropos/css';
 import Atropos from 'atropos/react';
-import profileStyles from '../../styles/profile.module.scss';
 
 config.autoAddCss = false;
 
@@ -23,55 +22,59 @@ function RepoCard({ repo }: RepoCardProps) {
       shadowScale={1}
       stretchX={3}
       stretchY={3}
-      scaleClassName={profileStyles['repo-card-scale']}
-      innerClassName='rounded-lg'
+      rotateTouch={false}
+      scaleClassName='rounded-lg'
+      innerClassName='rounded-lg w-max'
       className='rounded-lg'
       rotateClassName='rounded-lg'
+      alwaysActive={false}
     >
       <div
-        className='w-full h-full absolute bg-transparent border-2 border-black/80 rounded-lg'
+        className='w-full h-full absolute border-2 border-black/80 rounded-lg'
         data-atropos-offset='-1'
       ></div>
       <div
-        className='w-full h-full absolute bg-transparent border-2 border-black/80 rounded-lg'
+        className='w-full h-full absolute border-2 border-black/80 rounded-lg'
         data-atropos-offset='-0.5'
       ></div>
       <div
-        className='w-full h-full absolute bg-transparent border-2 border-black/80 rounded-lg'
+        className='w-full h-full absolute border-2 border-black/80 rounded-lg'
         data-atropos-offset='0'
       ></div>
       <div
-        className='w-full h-full absolute bg-transparent border-2 border-black/80 rounded-lg'
+        className='w-full h-full absolute border-2 border-black/80 rounded-lg'
         data-atropos-offset='0.5'
       ></div>
       <a
         href={repo.repository.url}
         target='_blank'
-        className='p-5 pb-10 block relative bg-[#343a40]/75 rounded-lg shadow-xl active:duration-75 cursor-pointer hover:shadow-2xl hover:transition-all transition-all border-2 border-gray-800'
+        className='p-5 active:border-gray-600 active:transition-all sm:active:border-gray-800 h-full pb-5 lg:pb-10 flex flex-col relative bg-[#343a40]/75 rounded-lg border-2 border-gray-800'
         rel='noreferrer'
         data-atropos-offset='1'
       >
-        <h3 className='mb-2'>{repo.repository.name}</h3>
-        <p className='max-w-full par font-thin text-xl h-14'>{repo.repository.description}</p>
+        <h3 className='mb-2 text-base sm:text-lg md:text-xl lg:text-2xl'>{repo.repository.name}</h3>
+        <p className='line-clamp-1 max-w-[25ch] sm:max-w-none sm:line-clamp-2 par font-thin text-base sm:text-lg lg:text-xl sm:h-14'>
+          {repo.repository.description}
+        </p>
         <br />
-        <div className='absolute bottom-5'>
+        <div className='absolute bottom-3 lg:bottom-5 text-base sm:text-lg lg:text-xl'>
           <span
-            className={`w-4 h-4 inline-block mr-1 align-[-5%] rounded-full`}
+            className={`w-3 h-3 sm:w-4 sm:h-4 inline-block mr-1 align-[-5%] rounded-full`}
             style={{ backgroundColor: repo.repository.primaryLanguage.color }}
           ></span>
           <span>{repo.repository.primaryLanguage.name}</span>
         </div>
-        <div className='absolute bottom-5 right-5 flex flex-nowrap gap-4'>
+        <div className='absolute bottom-3 lg:bottom-5 right-3 lg:right-5 flex flex-nowrap gap-3 sm:gap-4'>
           {repo.repository.stargazerCount > 1 ? (
             <div className='inline-block'>
-              <FontAwesomeIcon icon={faStar} className='mr-1' />
-              <span className='par text-2xl'>{repo.repository.stargazerCount}</span>
+              <FontAwesomeIcon icon={faStar} className='mr-1 w-4 md:w-5' />
+              <span className='par text-xl sm:text-2xl'>{repo.repository.stargazerCount}</span>
             </div>
           ) : null}
           {repo.repository.forkCount > 0 ? (
             <div className='inline-block'>
-              <FontAwesomeIcon icon={faCodeBranch} className='mr-1' />
-              <span className='par text-2xl'>{repo.repository.forkCount}</span>
+              <FontAwesomeIcon icon={faCodeBranch} className='mr-1 w-3 md:w-5' />
+              <span className='par text-xl sm:text-2xl'>{repo.repository.forkCount}</span>
             </div>
           ) : null}
         </div>

@@ -6,19 +6,13 @@
   }
 }
 
-@media (max-width: 767px) {
-  .markdown-body {
-    @apply p-4;
-  }
-}
-
 .markdown-body {
   min-width: 200px;
   max-width: 100%;
   --color-accent-fg: #4cacfc;
   --color-fg-default: #ddd;
   color: var(--color-fg-default);
-  @apply box-border m-auto p-11 bg-transparent;
+  @apply box-border m-auto md:p-11 bg-transparent;
 
   pre {
     background-color: #2d333b !important;
@@ -83,7 +77,8 @@
   }
 }
 
-.breadcrumb {
-  padding-left: 2.75rem !important;
-  font-size: 1.25rem !important;
+@media (min-width: 768px) {
+  .breadcrumb {
+    padding-left: 2.75rem !important;
+  }
 }

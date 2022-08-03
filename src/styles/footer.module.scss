@@ -1,11 +1,14 @@
 @use 'mixins';
 
 .footer {
-  width: 100%;
   background-color: rgba(0, 0, 0, 0.2);
-  display: flex;
-  justify-content: space-around;
-  align-items: center;
+
+  .footer-container {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    box-sizing: border-box
+  }
 
   .dot {
     @include mixins.no-select;
