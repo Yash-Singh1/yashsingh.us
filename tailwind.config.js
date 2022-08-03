@@ -1,5 +1,9 @@
 module.exports = {
   content: ['./src/**/*.{ts,tsx,js,jsx}', './{src,content}/**/*.mdx'],
+  safelist: [
+    ...['5', '4', '3', '2', '', ''].map((level) => `lg:text-${level}xl`),
+    ...['3xl', '2xl', 'xl', 'lg', 'lg', 'lg'].map((level) => `text-${level}`),
+  ],
   theme: {
     extend: {},
     screens: {

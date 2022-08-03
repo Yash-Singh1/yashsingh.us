@@ -12,7 +12,8 @@ function getInnerText(children: ReactNode): string {
 
 type HTMLHeadings = 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6';
 
-const lowerLevels = [null, '3xl', '2xl', 'xl', 'lg', 'lg', 'lg'];
+export const higherLevels = [null, '5xl', '4xl', '3xl', '2xl', 'xl', 'xl'];
+export const lowerLevels = [null, '3xl', '2xl', 'xl', 'lg', 'lg', 'lg'];
 
 function HeadingFactory(level: number) {
   return function Heading({ children = null }: { children?: ReactNode } | undefined = {}) {
@@ -22,9 +23,7 @@ function HeadingFactory(level: number) {
       <Text
         {...{ [levelHeading]: true }}
         id={level <= 3 ? innerText : ''}
-        className={`section-heading lg:text-${
-          level === 5 || level === 6 ? '' : 6 - level
-        }xl text-${lowerLevels[level]}`}
+        className={`section-heading lg:text-${higherLevels[level]} text-${lowerLevels[level]}`}
       >
         <a href={level <= 3 ? `#${innerText}` : ''}>{children}</a>
       </Text>
