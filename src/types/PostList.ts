@@ -6,8 +6,9 @@ export interface Post {
   author: string;
   date: string;
   link?: string;
+  keywords?: string[];
 }
 
-export type PostList = Post[];
+type PostList = Post[];
 
 export default PostList;

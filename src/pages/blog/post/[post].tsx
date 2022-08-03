@@ -52,13 +52,13 @@ const Post: NextPage<{ data: PostType; content: MDXRemoteSerializeResult }> = fu
                 <Image
                   src={pfp}
                   alt='profile picture'
-                  className='w-8 sm:w-12 rounded-full'
+                  className='w-8 sm:w-12 rounded-full self-center'
                   width={80}
                   height={80}
                   loading='lazy'
                   placeholder='blur'
                 />
-                <div className='flex flex-col justify-center gap-0 ml-2 text-base leading-4 sm:text-lg sm:leading-5'>
+                <div className='flex flex-col justify-center gap-0 self-center ml-2 text-base leading-4 sm:text-lg sm:leading-5'>
                   <span className='text-emerald-400'>Yash Singh</span>
                   <time
                     dateTime={new Date(data.date).toISOString().replace(/T.*$/, '')}

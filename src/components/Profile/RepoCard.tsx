@@ -4,7 +4,7 @@ import '@fortawesome/fontawesome-svg-core/styles.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faStar, faCodeBranch } from '@fortawesome/free-solid-svg-icons';
 import 'atropos/css';
-import Atropos from 'atropos/react';
+import { Atropos } from 'atropos/react';
 
 config.autoAddCss = false;
 

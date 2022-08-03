@@ -1,6 +1,6 @@
 import type { ReactNode } from 'react';
 
-export function Code(props: { children?: ReactNode; classname?: string; [key: PropertyKey]: any }) {
+function Code(props: { children?: ReactNode; classname?: string; [key: PropertyKey]: any }) {
   return (
     <code
       {...props}

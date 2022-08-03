@@ -1,6 +1,6 @@
 import Home from './Home';
 
-export interface SkillsGrouped {
+interface SkillsGrouped {
   [key: string]: Home['skills'];
 }
 

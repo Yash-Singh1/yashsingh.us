@@ -1,4 +1,4 @@
-export interface Home {
+interface Home {
   description: string;
   projects: string[];
   skills: {

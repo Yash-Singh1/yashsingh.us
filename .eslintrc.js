@@ -6,6 +6,9 @@ module.exports = {
     'eslint:recommended',
     'plugin:unicorn/recommended',
     'plugin:eslint-comments/recommended',
+    'plugin:import/recommended',
+    'plugin:import/typescript',
+    'plugin:jsx-a11y/recommended',
     'next/core-web-vitals',
     'prettier',
   ],
@@ -28,6 +31,10 @@ module.exports = {
       },
     ],
     'no-empty': ['error', { allowEmptyCatch: true }],
+    'react-hooks/exhaustive-deps': 'off',
+    'import/no-unresolved': 'off',
+    'jsx-a11y/anchor-is-valid': 'off',
+    'jsx-a11y/anchor-has-content': 'off',
     '@next/next/no-img-element': 'off', // TODO: Enable when AVIF file format has better compatibility
   },
   globals: {

@@ -1,4 +1,4 @@
-export function stripExtension(fileName: string): string {
+function stripExtension(fileName: string): string {
   return fileName.replace(/^(.*?)\..*?$/, '$1');
 }
 

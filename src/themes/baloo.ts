@@ -1,6 +1,6 @@
 import { Themes } from '@geist-ui/core';
 
-export const balooTheme = Themes.createFromDark({
+const balooTheme = Themes.createFromDark({
   type: 'baloo',
   font: {
     sans: "'Baloo Bhai 2', cursive",

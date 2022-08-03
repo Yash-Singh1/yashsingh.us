@@ -15,7 +15,8 @@ function Section({ title, children, handleHashChange }: SectionProps) {
       className={`${profileStyles.aos} flex flex-col justify-center py-12 lg:py-16 xl:py-24 px-0 sm:px-6 md:px-12 lg:px-24 pr-0 sm:pr-0 min-h-screen`}
       id={hash}
     >
-      <span
+      <a
+        href={`#${hash}`}
         className={profileStyles['subheading']}
         onClick={() => {
           location.hash = `#${hash}`;
@@ -25,7 +26,7 @@ function Section({ title, children, handleHashChange }: SectionProps) {
         }}
       >
         {title}
-      </span>
+      </a>
       {children}
     </div>
   );

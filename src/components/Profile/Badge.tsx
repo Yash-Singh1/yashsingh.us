@@ -44,9 +44,9 @@ function Badge({ icon, text, link, circlize = false }: BadgeProps) {
           profileStyles['no-select']
         } h-8 w-8 lg:h-[2.8125rem] lg:w-[2.8125rem] ${
           circlize ? 'rounded-full' : 'rounded-l-md'
-        } group-hover:bg-[#242526]/100`}
+        } group-hover:bg-[#242526]/100 self-center`}
       />
-      <Paragraph className='text-sm md:text-lg lg:text-xl mt-0 bg-[#343a40]/75 group-hover:bg-[#343a40]/90 group-hover:transition-all rounded-r-md flex justify-start pl-2 items-center w-full md:w-full'>
+      <Paragraph className='text-sm md:text-lg lg:text-xl mt-0 bg-[#343a40]/75 group-hover:bg-[#343a40]/90 group-hover:transition-all rounded-r-md self-center h-full flex justify-start pl-2 items-center w-full md:w-full'>
         {text || 'N/A'}
       </Paragraph>
     </motion.a>

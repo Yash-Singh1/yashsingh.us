@@ -10,7 +10,7 @@ interface ContactProps {
   logo?: ReactNode | boolean;
 }
 
-export function Contact({ internal = false, href, name, logo: Logo = false }: ContactProps) {
+function Contact({ internal = false, href, name, logo: Logo = false }: ContactProps) {
   const controls = useAnimation();
 
   return (

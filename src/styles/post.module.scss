@@ -82,3 +82,7 @@
     padding-left: 2.75rem !important;
   }
 }
+
+.breadcrumb {
+  @apply sm:flex-nowrap flex-wrap;
+}
