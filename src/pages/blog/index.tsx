@@ -10,20 +10,19 @@ import matter from 'gray-matter';
 import * as fs from 'node:fs';
 import * as path from 'node:path';
 import stripExtension from '../../helpers/stripExtension';
-import { Fragment, useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { config } from '@fortawesome/fontawesome-svg-core';
 import '@fortawesome/fontawesome-svg-core/styles.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faMagnifyingGlass, faAngleDown } from '@fortawesome/free-solid-svg-icons';
 import { useRouter } from 'next/router';
-import { Menu, Switch, Transition } from '@headlessui/react';
+import { Popover, Switch, Transition } from '@headlessui/react';
 import localizedKeywords from '../../data/localizedKeywords';
 
 config.autoAddCss = false;
 
 const Blog: NextPage<{ data: PostList }> = function Blog(props) {
   const router = useRouter();
-  console.log('top', router.query);
 
   const [posts, setPosts] = useState<PostList>(props.data);
   const [search, setSearch] = useState<string>('');
@@ -31,7 +30,6 @@ const Blog: NextPage<{ data: PostList }> = function Blog(props) {
 
   useEffect(() => {
     const params = new URLSearchParams(location.search);
-    console.log('set', router.query);
     if (params.get('search')) {
       setSearch(params.get('search')!);
     }
@@ -83,7 +81,7 @@ const Blog: NextPage<{ data: PostList }> = function Blog(props) {
             className={`flex flex-col flex-wrap flex-grow-0 flex-shrink-0 justify-center items-start mb-6 md:mb-10`}
           />
           <div className='flex flex-wrap sm:flex-nowrap gap-y-2 flex-row mb-2 text-lg'>
-            <div className='grid grid-cols-[max-content_1fr] bg-slate-600/75 py-1 px-2 rounded-md'>
+            <div className='grid grid-cols-[max-content_1fr] w-full sm:w-max bg-slate-600/75 py-1 px-2 rounded-md'>
               <FontAwesomeIcon
                 icon={faMagnifyingGlass}
                 className='mr-2 w-4 md:w-5 pointer-events-none self-center text-gray-300'
@@ -98,19 +96,19 @@ const Blog: NextPage<{ data: PostList }> = function Blog(props) {
                 }}
               />
             </div>
-            <Menu
+            <Popover
               as='div'
               className='relative inline-block text-left w-full sm:w-max sm:ml-3 z-20 rounded-md'
             >
               <div>
-                <Menu.Button className='inline-flex w-full sm:justify-center items-center rounded-md bg-slate-400/40 px-4 py-2 text-sm font-medium text-white hover:bg-opacity-30 focus:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-opacity-75'>
+                <Popover.Button className='inline-flex w-full sm:justify-center items-center rounded-md bg-slate-400/40 px-4 py-2 text-sm font-medium text-white hover:bg-opacity-30 focus:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-opacity-75'>
                   Keywords
                   <FontAwesomeIcon
                     className='sm:ml-2 -mr-1 h-5 w-5 text-violet-200 hover:text-violet-100'
                     icon={faAngleDown}
                     aria-hidden='true'
                   />
-                </Menu.Button>
+                </Popover.Button>
               </div>
               <Transition
                 enter='transition ease-out duration-100'
@@ -120,27 +118,35 @@ const Blog: NextPage<{ data: PostList }> = function Blog(props) {
                 leaveFrom='transform opacity-100 scale-100'
                 leaveTo='transform opacity-0 scale-95'
               >
-                <Menu.Items className='absolute left-0 sm:right-0 mt-1 z-20 w-44 sm:w-56 origin-top-right divide-y divide-gray-100 divide-dotted rounded-md shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none'>
+                <Popover.Panel className='absolute left-0 sm:right-0 mt-1 z-20 w-44 sm:w-56 origin-top-right divide-y divide-gray-100 divide-dotted rounded-md shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none'>
                   {(Object.keys(localizedKeywords) as (keyof typeof localizedKeywords)[]).map(
                     (keyword) => {
                       const enabled = keywords.includes(keyword);
+
+                      function toggle() {
+                        if (enabled) {
+                          setKeywords(keywords.filter((k) => k !== keyword));
+                        } else {
+                          setKeywords([...keywords, keyword]);
+                        }
+                      }
+
                       return (
-                        <Menu.Item
-                          as={'div'}
-                          className='cursor-pointer p-2 z-20 relative bg-slate-600 text-white first:rounded-t-md last:rounded-b-md text-base'
+                        <button
+                          onClick={toggle}
+                          onKeyPress={(event) => {
+                            if (event.code === 'Space') {
+                              toggle();
+                            }
+                          }}
+                          className='block w-full text-left cursor-pointer p-2 z-20 relative bg-slate-600 text-white first:rounded-t-md last:rounded-b-md text-base'
                           key={keyword}
                         >
                           <Switch
                             checked={enabled}
-                            onChange={() => {
-                              if (enabled) {
-                                setKeywords(keywords.filter((k) => k !== keyword));
-                              } else {
-                                setKeywords([...keywords, keyword]);
-                              }
-                            }}
+                            onChange={() => {}}
                             className={`${
-                              enabled ? 'bg-teal-900' : 'bg-gray-500'
+                              enabled ? 'bg-teal-900' : 'bg-slate-500'
                             } relative inline-flex h-[1.5rem] mr-2 align-bottom w-8 shrink-0 cursor-pointer rounded-full border-2 border-transparent transition-colors duration-200 ease-in-out focus:outline-none focus-visible:ring-2  focus-visible:ring-white focus-visible:ring-opacity-75`}
                           >
                             <span
@@ -151,13 +157,13 @@ const Blog: NextPage<{ data: PostList }> = function Blog(props) {
                             />
                           </Switch>
                           {localizedKeywords[keyword]}
-                        </Menu.Item>
+                        </button>
                       );
                     }
                   )}
-                </Menu.Items>
+                </Popover.Panel>
               </Transition>
-            </Menu>
+            </Popover>
           </div>
           <div
             className={`w-full flex flex-wrap flex-grow-0 flex-shrink-0 ${
