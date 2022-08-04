@@ -33,8 +33,8 @@ const Blog: NextPage<{ data: PostList }> = function Blog(props) {
     if (params.get('search')) {
       setSearch(params.get('search')!);
     }
-    if (params.get('keywords')) {
-      setKeywords(params.get('keywords')!.split(','));
+    if (params.get('keywords') !== null) {
+      setKeywords(params.get('keywords') ? params.get('keywords')!.split(',') : []);
     }
   }, []);
 
