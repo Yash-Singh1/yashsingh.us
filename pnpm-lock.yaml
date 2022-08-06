@@ -35,7 +35,7 @@ specifiers:
   eslint-plugin-import: ^2.26.0
   eslint-plugin-jsx-a11y: ^6.6.1
   eslint-plugin-unicorn: ^43.0.2
-  framer-motion: ^6.5.1
+  framer-motion: ^7.0.0
   github-markdown-css: ^5.1.0
   gray-matter: ^4.0.3
   next: ^12.2.3
@@ -76,7 +76,7 @@ dependencies:
   '@octokit/graphql': 5.0.0
   aos: 2.3.4
   atropos: 1.0.2
-  framer-motion: 6.5.1_biqbaboplfbrettd7655fr4n2y
+  framer-motion: 7.0.0_biqbaboplfbrettd7655fr4n2y
   github-markdown-css: 5.1.0
   next: 12.2.3_pmtxwaud2i7t46nnb7sfofmose
   next-mdx-remote: 4.1.0_biqbaboplfbrettd7655fr4n2y
@@ -1644,8 +1644,8 @@ packages:
       tslib: 2.4.0
     dev: false
 
-  /@motionone/dom/10.12.0:
-    resolution: {integrity: sha512-UdPTtLMAktHiqV0atOczNYyDd/d8Cf5fFsd1tua03PqTwwCe/6lwhLSQ8a7TbnQ5SN0gm44N1slBfj+ORIhrqw==}
+  /@motionone/dom/10.13.1:
+    resolution: {integrity: sha512-zjfX+AGMIt/fIqd/SL1Lj93S6AiJsEA3oc5M9VkUr+Gz+juRmYN1vfvZd6MvEkSqEjwPQgcjN7rGZHrDB9APfQ==}
     dependencies:
       '@motionone/animation': 10.13.1
       '@motionone/generators': 10.13.1
@@ -3706,19 +3706,19 @@ packages:
     resolution: {integrity: sha512-MhLuK+2gUcnZe8ZHlaaINnQLl0xRIGRfcGk2yl8xoQAfHrSsL3rYu6FCmBdkdbhc9EPlwyGHewaRsvwRMJtAlA==}
     dev: true
 
-  /framer-motion/6.5.1_biqbaboplfbrettd7655fr4n2y:
-    resolution: {integrity: sha512-o1BGqqposwi7cgDrtg0dNONhkmPsUFDaLcKXigzuTFC5x58mE8iyTazxSudFzmT6MEyJKfjjU8ItoMe3W+3fiw==}
+  /framer-motion/7.0.0_biqbaboplfbrettd7655fr4n2y:
+    resolution: {integrity: sha512-mOUKle6LouYVP4KLz+cMiNI6fL3qP9hQY4PBaN3E1FyPhcvuAgvs/JPgYktvK5zdRbIRU0gpBsr0CW5hP2KzKA==}
     peerDependencies:
-      react: '>=16.8 || ^17.0.0 || ^18.0.0'
-      react-dom: '>=16.8 || ^17.0.0 || ^18.0.0'
+      react: ^18.0.0
+      react-dom: ^18.0.0
     dependencies:
-      '@motionone/dom': 10.12.0
+      '@motionone/dom': 10.13.1
       framesync: 6.0.1
       hey-listen: 1.0.8
       popmotion: 11.0.3
       react: 18.2.0
       react-dom: 18.2.0_react@18.2.0
-      style-value-types: 5.0.0
+      style-value-types: 5.1.0
       tslib: 2.4.0
     optionalDependencies:
       '@emotion/is-prop-valid': 0.8.8
@@ -5820,6 +5820,13 @@ packages:
 
   /style-value-types/5.0.0:
     resolution: {integrity: sha512-08yq36Ikn4kx4YU6RD7jWEv27v4V+PUsOGa4n/as8Et3CuODMJQ00ENeAVXAeydX4Z2j1XHZF1K2sX4mGl18fA==}
+    dependencies:
+      hey-listen: 1.0.8
+      tslib: 2.4.0
+    dev: false
+
+  /style-value-types/5.1.0:
+    resolution: {integrity: sha512-DRIfBtjxQ4ztBZpexkFcI+UR7pODC5qLMf2Syt+bH98PAHHRH2tQnzxBuDQlqcAoYar6GzWnj8iAfqfwnEzCiQ==}
     dependencies:
       hey-listen: 1.0.8
       tslib: 2.4.0
