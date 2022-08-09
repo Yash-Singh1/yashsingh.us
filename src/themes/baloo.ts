@@ -8,6 +8,7 @@ const balooTheme = Themes.createFromDark({
   },
   palette: {
     foreground: '#ddd',
+    secondary: '#ddd',
   },
 });
 
