@@ -23,12 +23,6 @@
     },
     {
       "status": "proficient",
-      "name": "Node.js",
-      "icon": "/img/uploads/7a55574100a6d18b70ae7178d765c48b59568c90-32x32.svg",
-      "link": "https://nodejs.org/en/"
-    },
-    {
-      "status": "proficient",
       "name": "Next.js",
       "icon": "/img/uploads/nextjs-icon-light.svg",
       "link": "https://nextjs.org/"
@@ -50,18 +44,6 @@
       "name": "React",
       "icon": "/img/uploads/react.svg",
       "link": "https://reactjs.org/"
-    },
-    {
-      "status": "proficient",
-      "name": "Git",
-      "icon": "/img/uploads/git.svg",
-      "link": "https://git-scm.com/"
-    },
-    {
-      "status": "good",
-      "name": "C++",
-      "icon": "/img/uploads/ISO_C++_Logo.svg",
-      "link": "https://cplusplus.com/"
     },
     {
       "status": "good",
@@ -114,9 +96,57 @@
     },
     {
       "status": "learning",
-      "name": "Unity",
-      "icon": "/img/uploads/unity.svg",
-      "link": "https://unity.com/"
+      "name": "Photon",
+      "icon": "/img/uploads/photon.svg",
+      "link": "https://www.photonengine.com/"
+    },
+    {
+      "status": "good",
+      "name": "Redis",
+      "icon": "/img/uploads/redis.svg",
+      "link": "https://redis.com/"
+    },
+    {
+      "status": "learning",
+      "name": "Prisma",
+      "icon": "/img/uploads/prisma.svg",
+      "link": "https://www.prisma.io/"
+    },
+    {
+      "status": "learning",
+      "name": "Graphql",
+      "icon": "/img/uploads/graphql.svg",
+      "link": "https://graphql.org/"
+    },
+    {
+      "status": "learning",
+      "name": "Nexus",
+      "icon": "/img/uploads/nexus.svg",
+      "link": "https://nexusjs.org/"
+    },
+    {
+      "status": "learning",
+      "name": "Firebase",
+      "icon": "/img/uploads/firebase.svg",
+      "link": "https://firebase.google.com/"
+    },
+    {
+      "status": "learning",
+      "name": "Docker",
+      "icon": "/img/uploads/docker.svg",
+      "link": "https://www.docker.com/"
+    },
+    {
+      "status": "proficient",
+      "name": "Git",
+      "icon": "/img/uploads/git.svg",
+      "link": "https://git-scm.com/"
+    },
+    {
+      "status": "good",
+      "name": "C++",
+      "icon": "/img/uploads/ISO_C++_Logo.svg",
+      "link": "https://cplusplus.com/"
     }
   ]
 }

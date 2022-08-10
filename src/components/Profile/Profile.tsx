@@ -12,9 +12,9 @@ import AOS from 'aos';
 import GitHub from '../SimpleIconLogos/GitHub';
 import Mail from '../SimpleIconLogos/Mail';
 import type RepoInfo from '../../types/RepoInfo';
-import BadgeSection from './BadgeSection';
 import type SkillsGrouped from '../../types/skillsGrouped';
 import Home from '../../types/Home';
+import BadgesSection from './BadgesSection';
 
 interface ProfileProps {
   data: Home;
@@ -105,11 +105,7 @@ function Profile({ data, repoInfo, skillsGrouped }: ProfileProps) {
           </Paragraph>
         </div>
       </Section>
-      <Section title='Skills' handleHashChange={handleHashChange}>
-        <BadgeSection description='I am proficient in' badges={skillsGrouped['proficient']} />
-        <BadgeSection description='I am good at' badges={skillsGrouped['good']} />
-        <BadgeSection description='I am learning' badges={skillsGrouped['learning']} />
-      </Section>
+      <BadgesSection handleHashChange={handleHashChange} skillsGrouped={skillsGrouped} />
       <Section title='More' handleHashChange={handleHashChange}>
         <Paragraph className='max-w-prose'>
           I maintain a blog site with multiple posts on different topics related to programming at{' '}
