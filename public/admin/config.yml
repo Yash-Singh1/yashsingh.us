@@ -14,6 +14,7 @@ backend:
 publish_mode: editorial_workflow
 
 media_folder: public/img/uploads
+public_folder: /img/uploads
 collections:
   - name: 'home'
     label: 'Home'
