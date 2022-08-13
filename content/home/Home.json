@@ -147,6 +147,13 @@
       "name": "C++",
       "icon": "/img/uploads/ISO_C++_Logo.svg",
       "link": "https://cplusplus.com/"
+    },
+    {
+      "circlize": false,
+      "name": "Unity",
+      "status": "good",
+      "link": "https://unity.com/",
+      "icon": "/public/img/uploads/unity.svg"
     }
   ]
 }
