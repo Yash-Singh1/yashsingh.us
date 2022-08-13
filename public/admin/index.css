@@ -1,5 +1,6 @@
 img {
   width: 2rem;
+  margin-bottom: -5px;
 }
 
 div[class*='css'] {

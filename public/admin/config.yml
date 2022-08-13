@@ -34,19 +34,19 @@ collections:
             name: skills
             widget: list
             fields:
+              - label: Icon
+                name: icon
+                widget: image
               - label: Name
                 name: name
+                widget: string
+              - label: Link
+                name: link
                 widget: string
               - label: Status
                 name: status
                 widget: string
                 hint: proficient
-              - label: Icon
-                name: icon
-                widget: image
-              - label: Link
-                name: link
-                widget: string
               - label: Circlize
                 name: circlize
                 widget: boolean
