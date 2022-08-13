@@ -27,9 +27,12 @@ jobs:
         run: pnpm install
       - name: Format Code
         run: pnpm run lint:fix
-      - run: |
+      - name: Push Changes
+        run: |
           git config --global user.name github-actions[bot]
           git config --global user.email github-actions[bot]@users.noreply.github.com
-          git add .
-          git commit -m "chore: code-style"
-          git push
+          git add -A
+          if ! git diff-index --quiet HEAD; then
+            git commit -m "chore: code-style"
+            git push
+          fi
