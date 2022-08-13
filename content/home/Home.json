@@ -153,7 +153,7 @@
       "name": "Unity",
       "status": "good",
       "link": "https://unity.com/",
-      "icon": "/public/img/uploads/unity.svg"
+      "icon": "/img/uploads/unity.svg"
     },
     {
       "circlize": false,
