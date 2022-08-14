@@ -1,11 +1,13 @@
 # https://github.com/dependabot/dependabot-core/issues/1736
 name: Netlify CMS Format
-on: pull_request_target
+on:
+  pull_request_target:
+    types: [assigned, opened, synchronize, reopened, labeled, edited]
 permissions: read-all
 jobs:
   format-code:
     runs-on: ubuntu-latest
-    if: ${{ contains(github.event.pull_request.labels.*.name, 'netlify-cms/draft') }}
+    if: ${{ contains(github.event.pull_request.labels.*.name, 'netlify-cms/draft') || contains(github.event.pull_request.labels.*.name, 'netlify-cms/pending_review') || contains(github.event.pull_request.labels.*.name, 'netlify-cms/pending_publish') }}
     permissions:
       pull-requests: write
       contents: write
