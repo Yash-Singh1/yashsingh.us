@@ -6,6 +6,7 @@ export default function Document() {
       <Head>
         <meta name='author' content='Yash Singh' />
         <meta httpEquiv='content-language' content='en' />
+        <link rel='alternative' type='application/rss+xml' href='/feed.xml' />
       </Head>
       <body>
         <Main />
