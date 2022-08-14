@@ -90,12 +90,6 @@
     },
     {
       "status": "learning",
-      "name": "Docker",
-      "icon": "/img/uploads/docker.svg",
-      "link": "https://www.docker.com/"
-    },
-    {
-      "status": "learning",
       "name": "Photon",
       "icon": "/img/uploads/photon.svg",
       "link": "https://www.photonengine.com/"
@@ -113,13 +107,13 @@
       "link": "https://www.prisma.io/"
     },
     {
-      "status": "learning",
+      "status": "good",
       "name": "Graphql",
       "icon": "/img/uploads/graphql.svg",
       "link": "https://graphql.org/"
     },
     {
-      "status": "learning",
+      "status": "good",
       "name": "Nexus",
       "icon": "/img/uploads/nexus.svg",
       "link": "https://nexusjs.org/"
@@ -131,7 +125,7 @@
       "link": "https://firebase.google.com/"
     },
     {
-      "status": "learning",
+      "status": "good",
       "name": "Docker",
       "icon": "/img/uploads/docker.svg",
       "link": "https://www.docker.com/"
