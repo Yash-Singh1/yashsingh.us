@@ -2,10 +2,10 @@ name: Build pull requests or commits
 on:
   push:
     branches:
-      - '*'
+      - main
   pull_request:
     branches:
-      - '*'
+      - main
     types:
       - opened
       - synchronize
