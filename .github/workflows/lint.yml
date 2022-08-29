@@ -2,13 +2,10 @@ name: Lint pull requests or commits
 on:
   push:
     branches:
-      - main
-      - development
+      - '*'
   pull_request:
     branches:
-      - main
-      - development
-      - *
+      - '*'
     types:
       - opened
       - synchronize
