@@ -1,0 +1,140 @@
+---
+title: 'USACO Counting Liars'
+subtitle: 'Analysis, statement, solution, and implementation of the USACO US Open 2022 Bronze Problem 2, Counting Liars'
+image: '/img/kids-programming.png'
+author: 'Yash Singh'
+date: '2022/08/31'
+---
+
+# USACO Counting Liars
+
+In this blog post I'll go over the [USACO Counting Liars Bronze US Open 2022 Problem 2](http://usaco.org/index.php?page=viewproblem2&cpid=1228) using other resources and solutions.
+
+## Statement
+
+According to the problem statement, we are given a set of one dimensional vectors and are told to
+find the minimum number of vectors that have to be dropped such that all the remaining vectors have
+some common point that sits on each vector. For example, if we are given the following input:
+
+```text
+2
+G 3
+L 1
+```
+
+Then we have to drop at least one of the two vectors because the two of them face opposite directions
+and don't intersect.
+
+## Solution
+
+The solution would be to take in the input and put them in two seperate arrays, one for the
+greater than inputs and another for the less than inputs and sort the arrays. Whenever we choose
+any greater than input and the less than input immediately after it, we can count the number of
+liars by adding the index of the less than input to the size of the greater than array minus the
+index of the greater than input minus one. This works because the index of the less than input
+is equal to the number of less than inputs before the greater than input:
+
+```text
+<--|--|--|--|--|--|--|--|--|-->
+   0  1  2  3  4  5  6  7  8
+      <  >     <  >     >
+```
+
+As shown in the number line above, the index of the less than input at 4 is 1 and the number of less than inputs before the greater than input (2 in our case) is 1.
+
+The number of greater than inputs that do not match the vector is equivalent to the number of greater
+than inputs in total minus the index of the greater than input we are on (0 in our case) minus 1. Over
+here, we have 3 greater than inputs, so we get $3-0-1=2$. This works because we are basically just looking
+for then number of elements after the index of the greater than input.
+
+We can use this method of calculating the number of liars and iterate over each greater than input
+and apply it. This method takes $O(nlogn)$ time if we run binary search on the less than inputs each
+time we iterate over a greater than input, but we can also take $O(n^2)$ time because it is underneath
+the time limit.
+
+## Implementation
+
+Let's go through an implementation in C++:
+
+```cpp
+#include <bits/stdc++.h>
+
+using namespace std;
+
+int main() {
+    ios_base::sync_with_stdio(false);
+    cin.tie(nullptr);
+    int n;
+    cin >> n;
+    ++n;
+    long long min{-1};
+    vector<int> g;
+    vector<int> l;
+
+    // Place input in greater than/less than vectors respective to the input type
+    while (--n) {
+        char x;
+        cin >> x;
+        int y;
+        cin >> y;
+        if (x == 'G') {
+            g.push_back(y);
+        } else {
+            l.push_back(y);
+        }
+    }
+
+    // Sort vectors
+    sort(g.begin(), g.end());
+    sort(l.begin(), l.end());
+    long long ng{g.size()};
+    long long nl{l.size()};
+
+    // Iterate over each greater than input
+    for (int i{0}; i < ng; ++i) {
+        long long loc{-1};
+
+        // Find the next greater (less than input)
+        // We can use upper bound binary search here too
+        for (int j{0}; j < nl; ++j) {
+            if (l[j] >= g[i]) {
+                loc = j;
+                break;
+            }
+        }
+
+        // If there is no next less than input
+        if (loc == -1) {
+            // Choose between having all the less than inputs as liars
+            if (min == -1 || min > nl) {
+                min = nl;
+            }
+            // OR the greater than inputs as liars because there
+            // are edge cases where the less than inputs are all behind
+            // the greater than inputs but are large in quantity
+            if (min > ng) {
+                min = ng;
+            }
+        } else {
+            // If the calculated number of liars is smaller than the
+            // so far recorded minimum
+            if (min == -1 || min > (ng - i) - 1 + loc) {
+                min = (ng - i) - 1 + loc;
+            }
+        }
+    }
+    // If we have no minimum (no greater than inputs)
+    // then the answer is 0
+    if (min == -1) {
+        cout << 0;
+    } else {
+        cout << min;
+    }
+}
+```
+
+## Lessons Learnt
+
+A lesson learned through this problem is to divide the input into seperate categories if applicable.
+Also, it helps to write down the constraints of the problem statement again if you are missing a few
+edge cases in the judging result. The answer may lie in some point forgotten to cover in the statement.
