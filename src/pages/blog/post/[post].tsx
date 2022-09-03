@@ -17,6 +17,7 @@ import stripExtension from '../../../helpers/stripExtension';
 import pfp from '../../../assets/pfp.png';
 import Image from 'next/future/image';
 import plugins from '../../../components/Post/plugins';
+import 'katex/dist/katex.min.css';
 
 const Post: NextPage<{ data: PostType; content: MDXRemoteSerializeResult }> = function ({
   data,

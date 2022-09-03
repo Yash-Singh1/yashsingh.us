@@ -1,9 +1,4 @@
 import nextMDX from '@next/mdx';
-// import remarkGfm from 'remark-gfm';
-// import remarkFrontmatter from 'remark-frontmatter';
-// import rehypePrettyCode from 'rehype-pretty-code';
-// import rehypeKatex from 'rehype-katex';
-// import remarkMath from 'remark-math';
 import esbuild from 'esbuild';
 import { mkdirSync } from 'node:fs';
 
