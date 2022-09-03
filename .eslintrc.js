@@ -22,6 +22,7 @@ module.exports = {
     'unicorn/no-null': 'off',
     'unicorn/no-array-callback-reference': 'off',
     'unicorn/no-new-array': 'off',
+    'unicorn/no-process-exit': 'off',
     'eslint-comments/no-unused-disable': 'error',
     'no-unused-vars': [
       'error',

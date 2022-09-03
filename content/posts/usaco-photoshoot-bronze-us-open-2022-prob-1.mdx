@@ -18,7 +18,7 @@ According to the problem statement, the input is a string that consists of two c
 
 First of all, we can group the cows into pairs because reversals might change a GH to an HG but the two cows will still be in a pair. Next, let's represent all GH's as a 1 and all HG's as a 0. Also represent all GGs and HHs as _s. For example, the following input: `GG|HG|GH` will become `_01`. We want to maximize the amount of `HG` or `0`s. Whenever we reverse any prefix, we are flipping the `1`s to `0`s and `0`s to `1`s and reversing the order. For example, an operation on a prefix of 5 to the following:
 
-```
+```text
 101001_1
 110101_1
 ```
@@ -69,21 +69,28 @@ int main() {
     cin >> x >> y;
     // Prevent _s
     if (x != y) {
+      // If the pair is GH (incorrect)
       if (x == 'G') {
+        // If the last pair wasn't GH then we have to flip (otherwise we can group)
         if (last != 1) {
           ++ans;
         }
+        // Set last to GH
         last = 1;
       }
+      // Otherwise if the pair is HG (correct)
       else { // x == 'H'
+        // If the last pair wasn't HG
         if (last != 0) {
           ++ans;
         }
+        // Set last to HG
         last = 0;
       }
     }
   }
   // Handle edge case where last one is already right
+  // We don't need to flip the last one another time
   if (last == 0) {
     --ans;
   }
