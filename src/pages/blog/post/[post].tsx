@@ -26,7 +26,7 @@ const Post: NextPage<{ data: PostType; content: MDXRemoteSerializeResult }> = fu
   return (
     <>
       <Head>
-        <title>{`${data.title} | Yash Singh's Blog`}</title>
+        <title>{`${data.title} | Yash Singh's Blog - yashsingh.us`}</title>
       </Head>
 
       <main className={`box-content ${coolBgStyles['cool-bg']} p-0`}>

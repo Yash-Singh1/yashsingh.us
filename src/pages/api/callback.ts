@@ -5,6 +5,7 @@ import { scopes } from '../../lib/scopes';
 
 function renderBody(status: string, content: any) {
   return `
+    <title>Authentication - yashsingh.us</title>
     <script>
       const receiveMessage = (message) => {
         window.opener.postMessage(

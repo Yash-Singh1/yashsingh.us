@@ -21,7 +21,7 @@ const Home: NextPage<{
   return (
     <>
       <Head>
-        <title>Saiansh (Yash) Singh</title>
+        <title>Saiansh (Yash) Singh - yashsingh.us</title>
         <meta
           name='description'
           content="Hey There! It's Saiansh (Yash) Singh. I am a middle school programmer working on many different cool, stuff. This is my personal website + blog."

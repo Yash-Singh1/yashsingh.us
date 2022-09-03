@@ -69,6 +69,7 @@ const Blog: NextPage<{ data: PostList }> = function Blog(props) {
     <>
       <Head>
         <title>{"Saiansh (Yash) Singh's Blog"}</title>
+        <meta name='description' content="Yash Singh's Blog - yashsingh.us" />
       </Head>
 
       <main className={`box-content p-0`}>
