@@ -8,9 +8,6 @@ import { serialize } from 'next-mdx-remote/serialize';
 import { MDXRemote, MDXRemoteSerializeResult } from 'next-mdx-remote';
 import * as fs from 'node:fs';
 import balooTheme from '../../../themes/baloo';
-import remarkGfm from 'remark-gfm';
-import remarkFrontmatter from 'remark-frontmatter';
-import rehypePrettyCode from 'rehype-pretty-code';
 import Router from 'next/router';
 import components from '../../../components/Post/Markdown_Components';
 import path from 'node:path';
@@ -19,6 +16,8 @@ import { Post as PostType } from '../../../types/PostList';
 import stripExtension from '../../../helpers/stripExtension';
 import pfp from '../../../assets/pfp.png';
 import Image from 'next/future/image';
+import plugins from '../../../components/Post/plugins';
+import 'katex/dist/katex.min.css';
 
 const Post: NextPage<{ data: PostType; content: MDXRemoteSerializeResult }> = function ({
   data,
@@ -114,10 +113,7 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
     fs.readFileSync(path.join(__dirname, dir, `content/posts/${params!.post}.mdx`), 'utf8')
   );
   const mdxSource = await serialize(content, {
-    mdxOptions: {
-      remarkPlugins: [remarkGfm, remarkFrontmatter],
-      rehypePlugins: [[rehypePrettyCode, { theme: 'one-dark-pro' }]],
-    },
+    mdxOptions: plugins,
   });
 
   return {

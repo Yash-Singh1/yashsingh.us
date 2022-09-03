@@ -1,15 +1,6 @@
 import nextMDX from '@next/mdx';
-import remarkGfm from 'remark-gfm';
-import remarkFrontmatter from 'remark-frontmatter';
-import rehypePrettyCode from 'rehype-pretty-code';
-
-const withMDX = nextMDX({
-  extension: /\.mdx?$/,
-  options: {
-    remarkPlugins: [remarkGfm, remarkFrontmatter],
-    rehypePlugins: [[rehypePrettyCode, { theme: 'one-dark-pro' }]],
-  },
-});
+import esbuild from 'esbuild';
+import { mkdirSync } from 'node:fs';
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
@@ -35,4 +26,24 @@ const nextConfig = {
   },
 };
 
-export default withMDX(nextConfig);
+async function config() {
+  try {
+    mkdirSync('node_modules/.custom');
+  } catch {}
+
+  await esbuild.build({
+    entryPoints: ['./src/components/Post/plugins.ts'],
+    outfile: 'node_modules/.custom/post-plugins.mjs',
+    write: true,
+    target: 'es2022',
+  });
+
+  const withMDX = nextMDX({
+    extension: /\.mdx?$/,
+    options: await import('./node_modules/.custom/post-plugins.mjs').default,
+  });
+
+  return withMDX(nextConfig);
+}
+
+export default config;
