@@ -1,6 +1,7 @@
 import Code from './Code';
 import HeadingFactory from './HeadingFactory';
 import Paragraph from './Paragraph';
+import Mermaid from './Mermaid';
 
 const components = {
   h1: HeadingFactory(1),
@@ -11,6 +12,7 @@ const components = {
   h6: HeadingFactory(6),
   code: Code,
   p: Paragraph,
+  Mermaid,
 };
 
 export default components;
