@@ -1,0 +1,126 @@
+---
+title: 'USACO Sleeping in Class'
+subtitle: 'Analysis, statement, solution, and implementation of the USACO February 2022 Bronze Problem 1, Sleeping in Class.'
+image: '/img/kids-programming.png'
+author: 'Yash Singh'
+date: '2022/09/07'
+---
+
+# USACO Sleeping in Class
+
+In this blog post I'll go over the USACO Sleeping in Class Bronze February 2022 Problem 1 using other resources and solutions.
+
+## Statement
+
+We are given an array of integers and have to make all the integers in the array the same in a series of operations. Each operation involves combining two adjacent integers so that a new integer takes their space with their sum. You have to find the minimum number of operations it takes to do so.
+
+## Solution
+
+There are two key observations to make here. 1. Each operation subtracts the total number of elements by one. We operate on two elements and end up with one less. 2. The smaller the number we are adding up to, the less the number of operations.
+
+Another way to think of the elements being added is dividing the array into segments. For example, if we have `[1,2,3,1,1,1]`, we can divide the array into `[1,2] [3] [1,1,1]`. Since we have three segments, that will turn into one integer each in the end, we can get the number of operations with $n - s$ where $n$ is the number of elements and $s$ is the number of segments. This is because we lose one integer in each operation, and the number of integers we want in the end is $s$, so the number of integers we lose are the remaining, $n - s$.
+
+So we have to divide an array of $n$ number of integers into segments with the amount $1..n$. For each segment count, we can have a counter that iterates through each array and makes sure that we reach $\frac{total\_sum}s$ (target sum for each segment) each time. We can iterate from $n$ to $1$ for $s$ (larger number better because $n - s$ smaller which means less operations) and if the $total\_sum$ is divisible by $s$ we can do our counter algorithm.
+
+The time complexity for this would be $O(n\times\text{\# of factors of total\_sum})$. We know that the total sum is $\le10^6$, so we can write up a quick program that will  tell the max number of factors given an input:
+
+```cpp
+#include <bits/stdc++.h>
+
+using namespace std;
+
+int main() {
+  ios_base::sync_with_stdio(false);
+  cin.tie(nullptr);
+  
+  long long n;
+  cin >> n;
+
+  long long total[n + 5];
+  for (long long i{0}; i <= n; ++i) {
+    total[i] = 0;
+  }
+
+  // Iterate over multiples of each number from 1 -> n / 2
+  for (long long i{1}; i <= n / 2; ++i) {
+    for (long long j{i}; j <= n; j += i) {
+      ++total[j];
+    }
+  }
+
+  // Find the max
+  long long mx{-1};
+  for (long long i{0}; i <= n; ++i) {
+    mx = max(mx, total[i]);
+  }
+  cout << mx;
+  return 0;
+}
+```
+
+If we try out $1000000$ on this, we should get a number around $240$. That is around $2.4\times10^6$ operations which is well underneath the time limit of $2\times10^7$ (max $10$ test cases) for C++.
+
+
+## Implementation
+
+Let's go through an implementation in C++:
+
+```cpp
+#include <bits/stdc++.h>
+
+using namespace std;
+
+int main() {
+  ios_base::sync_with_stdio(false);
+  cin.tie(nullptr);
+  int t;
+  cin >> t;
+  // For each test case
+  while (t--) {
+    int n;
+    cin >> n;
+    int a[n];
+    // sum
+    int sm{0};
+    // read in sum and array
+    for (int i{0}; i < n; ++i) {
+      cin >> a[i];
+      sm += a[i];
+    }
+    // Iterate from n -> 1
+    for (int i{n}; i > 0; --i) {
+      // If dividing into i segments is feasible
+      if (sm % i == 0) {
+        // current sum
+        int cur = 0;
+        // target sum
+        int tar = sm / i;
+        bool g{1};
+        for (int j{0}; j < n; ++j) {
+          cur += a[j];
+          // can't fit target sum in a segment here
+          if (cur > tar) {
+            g = 0;
+            break;
+          }
+          // start a new segment
+          if (cur == tar) {
+            cur = 0;
+          }
+        }
+        // n - i operations taken
+        if (g) {
+          cout << n - i << endl;
+          break;
+        }
+      }
+    }
+  }
+
+  return 0;
+}
+```
+
+## Lessons Learnt
+
+A lesson learned in this problem is to make sure you test solutions time complexity properly. In this example we wrote a mini program to give us the maximum number of divisors. Another lesson to take from this problem is to again, divide the input into categories. Dividing up your input is often the key solution to many problems. If you are stuck, look for a way you can categorize or divide up your input so it can be easier to understand.
