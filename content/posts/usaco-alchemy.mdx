@@ -24,16 +24,9 @@ Let's visualize the recipe structure as a graph for the following recipes.
 4 = 1
 ```
 
-<Mermaid
-  chart={`
-flowchart
-5 --> 3
-5 --> 4
-3 --> 1
-3 --> 2
-4 --> 1
-`}
-/>
+<Mermaid manual={true}>
+  ![](https://mermaid.ink/svg/eyJjb2RlIjoiZmxvd2NoYXJ0XG41LS0+M1xuNS0tPjRcbjMtLT4xXG4zLS0+MlxuNC0tPjFcbiIsIm1lcm1haWQiOnsidGhlbWUiOiJkYXJrIn19)
+</Mermaid>
 
 We cannot iterate bottom-up in this graph because we will not know where to start from, so we will have to start from the top. We have to do a depth-first search of this graph because each node depends on its children (if they exist).
 
