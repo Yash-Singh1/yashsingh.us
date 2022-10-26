@@ -21,7 +21,7 @@
     "@headlessui/react": "^1.6.6",
     "@mdx-js/loader": "^2.1.2",
     "@mdx-js/react": "^2.1.2",
-    "@next/mdx": "^12.2.4",
+    "@next/mdx": "^13.0.0",
     "@octokit/graphql": "^5.0.0",
     "aos": "^2.3.4",
     "atropos": "^1.0.2",
