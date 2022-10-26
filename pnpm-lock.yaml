@@ -15,7 +15,7 @@ specifiers:
   '@headlessui/react': ^1.6.6
   '@mdx-js/loader': ^2.1.2
   '@mdx-js/react': ^2.1.2
-  '@next/mdx': ^12.2.4
+  '@next/mdx': ^13.0.0
   '@octokit/graphql': ^5.0.0
   '@tailwindcss/line-clamp': ^0.4.0
   '@types/aos': ^3.0.4
@@ -77,7 +77,7 @@ dependencies:
   '@headlessui/react': 1.6.6_biqbaboplfbrettd7655fr4n2y
   '@mdx-js/loader': 2.1.2
   '@mdx-js/react': 2.1.2_react@18.2.0
-  '@next/mdx': 12.2.4_todqhrvd7cvbb36hzi2r6xttgq
+  '@next/mdx': 13.0.0_todqhrvd7cvbb36hzi2r6xttgq
   '@octokit/graphql': 5.0.0
   aos: 2.3.4
   atropos: 1.0.2
@@ -577,8 +577,8 @@ packages:
       glob: 7.1.7
     dev: true
 
-  /@next/mdx/12.2.4_todqhrvd7cvbb36hzi2r6xttgq:
-    resolution: {integrity: sha512-3Bj8gS6T0ZeAzoZQ66oNIXpgWeaYyiHB/mb8pJwDkgZiCUpaacxkfZ5HFqMdndAMJSCkKWcjhWaoGo7pUP88pg==}
+  /@next/mdx/13.0.0_todqhrvd7cvbb36hzi2r6xttgq:
+    resolution: {integrity: sha512-2p5g2KmWEgytkaECcV7yWuDaliDO70tM8Yphdrq0123T8n1kcPaPxyswYTmzxnsn7kDN3YYW6lLHJcWHxabUFQ==}
     peerDependencies:
       '@mdx-js/loader': '>=0.15.0'
       '@mdx-js/react': '*'
