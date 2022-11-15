@@ -52,7 +52,7 @@ specifiers:
   react: 18.2.0
   react-dom: 18.2.0
   rehype-katex: ^6.0.2
-  rehype-pretty-code: ^0.4.0
+  rehype-pretty-code: ^0.5.0
   remark-frontmatter: ^4.0.1
   remark-gfm: ^3.0.1
   remark-math: ^5.1.1
@@ -122,7 +122,7 @@ devDependencies:
   postcss-scss: 4.0.4_postcss@8.4.16
   prettier: 2.7.1
   rehype-katex: 6.0.2
-  rehype-pretty-code: 0.4.0_shiki@0.11.0
+  rehype-pretty-code: 0.5.0_shiki@0.11.0
   remark-frontmatter: 4.0.1
   remark-gfm: 3.0.1
   remark-math: 5.1.1
@@ -4624,8 +4624,8 @@ packages:
       unified: 10.1.2
     dev: true
 
-  /rehype-pretty-code/0.4.0_shiki@0.11.0:
-    resolution: {integrity: sha512-Bp91nfo4blpgCXlvGP1hsG+kRFfjqBVU09o1RFcnNA62u+iIzJiJRGzpfBj4FaItq7CEQL5ASGB7vLxN5xCvyA==}
+  /rehype-pretty-code/0.5.0_shiki@0.11.0:
+    resolution: {integrity: sha512-R7tmHL0u312VZh1Pg7QQBjf6SJPblEixH9NidiitQo0VU3f0oxhtWSmFJdHqHhyAPB8NI+Bx1UKJgyReBVfG7A==}
     engines: {node: ^12.16.0 || >=13.2.0}
     peerDependencies:
       shiki: '*'
