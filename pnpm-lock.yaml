@@ -22,7 +22,7 @@ specifiers:
   '@types/mdx': ^2.0.2
   '@types/node': ^18.6.4
   '@types/react': ^18.0.16
-  '@types/simple-oauth2': ^4.1.1
+  '@types/simple-oauth2': ^5.0.0
   aos: ^2.3.4
   atropos: ^1.0.2
   autoprefixer: ^10.4.8
@@ -103,7 +103,7 @@ devDependencies:
   '@types/mdx': 2.0.2
   '@types/node': 18.6.4
   '@types/react': 18.0.16
-  '@types/simple-oauth2': 4.1.1
+  '@types/simple-oauth2': 5.0.0
   autoprefixer: 10.4.8_postcss@8.4.16
   esbuild: 0.15.0
   esbuild-runner: 2.2.1_esbuild@0.15.0
@@ -884,8 +884,8 @@ packages:
   /@types/scheduler/0.16.2:
     resolution: {integrity: sha512-hppQEBDmlwhFAXKJX2KnWLYu5yMfi91yazPb2l+lbJiwW+wdo1gNeRA+3RgNSO39WYX2euey41KEwnqesU2Jew==}
 
-  /@types/simple-oauth2/4.1.1:
-    resolution: {integrity: sha512-8jqhfUFb0FoCl2Od4czprB7ubM8/Fuo3tg+vQZ00zYtPcNLogGyDgm2DVfVvD3NYXK7AscKOXSaW33NHUWpNBg==}
+  /@types/simple-oauth2/5.0.0:
+    resolution: {integrity: sha512-rKipAaYvy2znetfn9AGC8GTfPJIwibSGCSzK75dibX0SPNdpfPjDQ4KarZq/k7ISF76MNZnaOtuFOpdKrNQyiA==}
     dev: true
 
   /@types/unist/2.0.6:
