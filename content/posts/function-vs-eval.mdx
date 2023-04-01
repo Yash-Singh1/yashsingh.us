@@ -1,0 +1,30 @@
+---
+title: 'Function vs eval'
+subtitle: 'Difference between new Function and eval in JavaScript'
+image: '/img/function-vs-eval.png'
+author: 'Yash Singh'
+date: '2023/03/31'
+keywords: [javascript]
+---
+
+# Function vs eval
+
+While working with `eval` to do some hacky workarounds in build configuration, I was curious about the difference between `eval` and `Function`. Here is what I found.
+
+## Difference
+
+Quoting from [`tc39/proposal-hashbang`](https://github.com/tc39/proposal-hashbang#does-the-hashbang-syntax-work-within-eval--function):
+
+> Hashbang comments are only avilable at the start of a [`Script`](https://tc39.es/ecma262/#prod-Script) or [`Module`](https://tc39.es/ecma262/#prod-Module) parsing goal. Since `eval` uses `Script` it does support Hashbang comments. Since `Function` uses [`FunctionBody`](https://tc39.es/ecma262/#prod-FunctionBody), it does not.
+
+`eval` would execute the JavaScript code in the context of a module/script, while `Function` would execute it in the context of a function.
+
+This means that `Function` would disallow hashbang comments, but allow the use of `await` (unless using top-level await, then available in `Script` also), and `return`.
+
+For making use of generators and async functions, there are seperate constructors for them:
+
+- `GeneratorFunction` for generators
+- `AsyncFunction` for async functions
+- `AsyncGeneratorFunction` for both
+
+According to MDN, the `Function` constructor also contains less security risks compared to `eval`.
