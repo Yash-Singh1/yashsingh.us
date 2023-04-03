@@ -1,0 +1,54 @@
+---
+title: 'Intro to Emmet Abbreviations'
+subtitle: 'Emmet Abbreviations is a powerful tool that can help you in writing HTML and JSX that is built into most popular editors'
+image: '/img/emmet-abbreviations.png'
+author: 'Yash Singh'
+date: '2023/04/02'
+---
+
+# Intro to Emmet Abbreviations
+
+Emmet Abbreviations is a powerful tool that can help you in writing HTML and JSX that is built into most popular editors. They are a special expression syntax that is simple to CSS selectors. Emmet Abbreviations allow web developers to program more productively.
+
+## Introduction
+
+The two commands that are built into Visual Studio Code for Emmet Abbreviations are:
+
+```text
+Emmet: Wrap with Abbreviation
+Emmet: Expand Abbreviation
+```
+
+An Emmet Abbreviation is basically the reverse of a CSS selector. Here is an example from the official documentation:
+
+> Here’s an example: this abbreviation
+> ```css
+> #page>div.logo+ul#navigation>li*5>a{Item $}
+> ```
+> ...can be transformed into
+> ```html
+> <div id="page">
+>     <div class="logo"></div>
+>     <ul id="navigation">
+>         <li><a href="">Item 1</a></li>
+>         <li><a href="">Item 2</a></li>
+>         <li><a href="">Item 3</a></li>
+>         <li><a href="">Item 4</a></li>
+>         <li><a href="">Item 5</a></li>
+>     </ul>
+> </div>
+> ```
+>
+> _Source: [Emmet Documentation](https://docs.emmet.io/abbreviations/)_
+
+In the example, the abbreviation makes use of the `+` operator to define a new sibling element. The `*` operator is used to define a number of elements. The `{}` (curly braces) wrap the content of a tag. The `$` operator is used to identify the occurrence of that piece of content.
+
+## Usage on VS Code
+
+To use the `Emmet: Wrap with Abbreviation` command, you can select the text you want to wrap with an abbreviation and run the VSCode command from the Command Palette. You can also define a custom keyboard shortcut for this if you would like.
+
+To use the `Emmet: Expand Abbrevation` command, write out your abbreviation in an HTML or JSX file and select the option in the completion menu. If you are using an unsupported language, you can instead run the command from the Command Palette.
+
+## Conclusion
+
+Emmet Abbrevations allow you to quickly manipulate and scaffold your HTML and JSX code and should be a part of your web development workflow.
