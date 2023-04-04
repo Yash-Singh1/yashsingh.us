@@ -147,8 +147,8 @@ devDependencies:
     specifier: ^2.2.1
     version: 2.2.1
   next-sitemap:
-    specifier: ^3.1.16
-    version: 3.1.16(next@12.2.4)
+    specifier: ^4.0.6
+    version: 4.0.6(next@12.2.4)
   postcss:
     specifier: ^8.4.16
     version: 8.4.16
@@ -336,8 +336,8 @@ packages:
     hasBin: true
     dev: false
 
-  /@corex/deepmerge@4.0.29:
-    resolution: {integrity: sha512-q/yVUnqckA8Do+EvAfpy7RLdumnBy9ZsducMUtZTvpdbJC7azEf1hGtnYYxm0QfphYxjwggv6XtH64prvS1W+A==}
+  /@corex/deepmerge@4.0.37:
+    resolution: {integrity: sha512-PX90bEnrLdxd5e6rSFWsghExMuSw0Uov3fWJuuaoFuUQIS/446diu/4seExK5b+43L+SOBbd2uBGwYUkG1JfCw==}
     dev: true
 
   /@emotion/is-prop-valid@0.8.8:
@@ -2165,7 +2165,7 @@ packages:
     dependencies:
       acorn-node: 1.8.2
       defined: 1.0.0
-      minimist: 1.2.6
+      minimist: 1.2.8
     dev: true
 
   /didyoumean@1.2.2:
@@ -4094,6 +4094,10 @@ packages:
     resolution: {integrity: sha512-Jsjnk4bw3YJqYzbdyBiNsPWHPfO++UGG749Cxs6peCu5Xg4nrena6OVxOYxrQTqww0Jmwt+Ref8rggumkTLz9Q==}
     dev: true
 
+  /minimist@1.2.8:
+    resolution: {integrity: sha512-2yyAR8qBkN3YuheJanUpWC5U3bb5osDywNB8RzDVlDwDHbocAJveqqj1u8+SVD7jkWT4yvsHCpWqqWqAxb0zCA==}
+    dev: true
+
   /moment-mini@2.24.0:
     resolution: {integrity: sha512-9ARkWHBs+6YJIvrIp0Ik5tyTTtP9PoV0Ssu2Ocq5y9v8+NOOpWiRshAp8c4rZVWTOe+157on/5G+zj5pwIQFEQ==}
     dev: false
@@ -4143,16 +4147,16 @@ packages:
       - supports-color
     dev: false
 
-  /next-sitemap@3.1.16(next@12.2.4):
-    resolution: {integrity: sha512-kczTKLB1ifqi44mMImv/sLRsqxy/O4DXJ4mx/1l23vyx6QFWqeuHxS0duEL/EsChcVJUMWV4FNg2pIiX31xxmg==}
+  /next-sitemap@4.0.6(next@12.2.4):
+    resolution: {integrity: sha512-pZ9tynYe6mRR189qZqcOlWVgM1Gxo07BJQW0AjerKmLwQOt+6FQMdaDgifgCt6jDT3Y3EG/+NUDDZRcd0gbPkA==}
     engines: {node: '>=14.18'}
     hasBin: true
     peerDependencies:
       '@next/env': '*'
       next: '*'
     dependencies:
-      '@corex/deepmerge': 4.0.29
-      minimist: 1.2.6
+      '@corex/deepmerge': 4.0.37
+      minimist: 1.2.8
       next: 12.2.4(react-dom@18.2.0)(react@18.2.0)(sass@1.54.3)
     dev: true
 
