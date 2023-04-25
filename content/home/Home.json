@@ -95,13 +95,13 @@
       "link": "https://www.photonengine.com/"
     },
     {
-      "status": "good",
+      "status": "proficient",
       "name": "Redis",
       "icon": "/img/uploads/redis.svg",
       "link": "https://redis.com/"
     },
     {
-      "status": "learning",
+      "status": "proficient",
       "name": "Prisma",
       "icon": "/img/uploads/prisma.svg",
       "link": "https://www.prisma.io/"
