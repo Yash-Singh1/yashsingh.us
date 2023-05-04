@@ -20,30 +20,30 @@ function Contact({ internal = false, href, name, logo: Logo = false }: ContactPr
           {Logo}
         </a>
       )}
-      <Link href={href} {...(internal ? {} : { target: '_blank', rel: 'noreferrer' })}>
-        <a
-          onMouseEnter={() =>
-            controls.start({
-              scaleX: 1,
-            })
-          }
-          onMouseLeave={() =>
-            controls.start({
-              scaleX: 2,
-            })
-          }
-          className='inline-flex flex-col'
-        >
-          {name}
-          <motion.span
-            initial={{
-              scaleX: 2,
-              translateX: '50%',
-            }}
-            animate={controls}
-            className='h-[2px] bg-slate-500 w-1/2'
-          ></motion.span>
-        </a>
+      <Link
+        onMouseEnter={() =>
+          controls.start({
+            scaleX: 1,
+          })
+        }
+        onMouseLeave={() =>
+          controls.start({
+            scaleX: 2,
+          })
+        }
+        href={href}
+        className='inline-flex flex-col'
+        {...(internal ? {} : { target: '_blank', rel: 'noreferrer' })}
+      >
+        {name}
+        <motion.span
+          initial={{
+            scaleX: 2,
+            translateX: '50%',
+          }}
+          animate={controls}
+          className='h-[2px] bg-slate-500 w-1/2'
+        ></motion.span>
       </Link>
     </p>
   );

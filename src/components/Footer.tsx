@@ -1,6 +1,6 @@
 import Link from 'next/link';
 import footerStyles from '../styles/footer.module.scss';
-import Image from 'next/future/image';
+import Image from 'next/image';
 import pfp from '../assets/pfp.png';
 
 export default function Footer() {
@@ -17,13 +17,9 @@ export default function Footer() {
           placeholder='blur'
         />
         <div className='links lg:text-2xl md:text-xl text-lg flex justify-center gap-2'>
-          <Link href='/'>
-            <a>Home</a>
-          </Link>
+          <Link href='/'>Home</Link>
           <span className='dot'> · </span>
-          <Link href='/blog'>
-            <a>Blog</a>
-          </Link>
+          <Link href='/blog'>Blog</Link>
         </div>
         <div className='copyright lg:text-xl md:text-lg text-base'>Ⓒ 2022 Yash Singh</div>
       </div>

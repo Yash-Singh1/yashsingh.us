@@ -178,6 +178,7 @@ const Blog: NextPage<{ data: PostList }> = function Blog(props) {
                     href={edge.link || `/blog/post/${edge.filename}`}
                     key={edge.filename}
                     passHref
+                    legacyBehavior
                   >
                     <motion.a
                       whileHover={{ scale: 1.03, type: 'tween' }}

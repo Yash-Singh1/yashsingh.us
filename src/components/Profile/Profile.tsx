@@ -109,8 +109,8 @@ function Profile({ data, repoInfo, skillsGrouped }: ProfileProps) {
       <Section title='More' handleHashChange={handleHashChange}>
         <Paragraph className='max-w-prose'>
           I maintain a blog site with multiple posts on different topics related to programming at{' '}
-          <Link href='/blog/'>
-            <a className='text-blue-500'>https://www.yashsingh.us/blog/</a>
+          <Link href='/blog/' className='text-blue-500'>
+            https://www.yashsingh.us/blog/
           </Link>
           .
         </Paragraph>

@@ -15,7 +15,7 @@ import matter from 'gray-matter';
 import { Post as PostType } from '../../../types/PostList';
 import stripExtension from '../../../helpers/stripExtension';
 import pfp from '../../../assets/pfp.png';
-import Image from 'next/future/image';
+import Image from 'next/image';
 import plugins from '../../../components/Post/plugins';
 import 'katex/dist/katex.min.css';
 

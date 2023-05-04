@@ -1,6 +1,6 @@
 import { NextApiHandler, NextApiRequest, NextApiResponse } from 'next';
 import { AuthorizationCode } from 'simple-oauth2';
-import { config } from '../../lib/config';
+import { getConfig } from '../../lib/config';
 import { scopes } from '../../lib/scopes';
 
 function renderBody(status: string, content: any) {
@@ -20,6 +20,10 @@ function renderBody(status: string, content: any) {
   `;
 }
 
+export const config = {
+  runtime: 'edge',
+};
+
 const handler: NextApiHandler = async (req: NextApiRequest, res: NextApiResponse) => {
   const { host } = req.headers;
   const url = new URL(`https://${host}/${req.url}`);
@@ -37,7 +41,7 @@ const handler: NextApiHandler = async (req: NextApiRequest, res: NextApiResponse
     return;
   }
 
-  const client = new AuthorizationCode(config(provider as 'github'));
+  const client = new AuthorizationCode(getConfig(provider as 'github'));
 
   const tokenParams = {
     code,

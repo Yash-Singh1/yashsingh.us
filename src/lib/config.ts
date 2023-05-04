@@ -1,4 +1,4 @@
-export const config = (provider: keyof typeof client & keyof typeof auth) => ({
+export const getConfig = (provider: keyof typeof client & keyof typeof auth) => ({
   client: {
     id: client[provider].id,
     secret: client[provider].secret,

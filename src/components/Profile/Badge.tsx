@@ -1,4 +1,4 @@
-import Image from 'next/future/image';
+import Image from 'next/image';
 import Paragraph from '../Paragraph';
 import profileStyles from '../../styles/profile.module.scss';
 import { motion } from 'framer-motion';

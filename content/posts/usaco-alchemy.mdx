@@ -25,23 +25,29 @@ Let's visualize the recipe structure as a graph for the following recipes.
 4 = 1
 ```
 
-<Mermaid manual={true}>
-  ![](https://mermaid.ink/svg/eyJjb2RlIjoiZmxvd2NoYXJ0XG41LS0+M1xuNS0tPjRcbjMtLT4xXG4zLS0+MlxuNC0tPjFcbiIsIm1lcm1haWQiOnsidGhlbWUiOiJkYXJrIn19)
-</Mermaid>
+<Mermaid
+  manual={true}
+  alt=''
+  diagram='eyJjb2RlIjoiZmxvd2NoYXJ0XG41LS0+M1xuNS0tPjRcbjMtLT4xXG4zLS0+MlxuNC0tPjFcbiIsIm1lcm1haWQiOnsidGhlbWUiOiJkYXJrIn19'
+/>
 
 We cannot iterate bottom-up in this graph because we will not know where to start from, so we will have to start from the top. We have to do a depth-first search of this graph because each node depends on its children (if they exist).
 
 Let's go through an example depth-first search for crafting 5. We start at 5, and move on to 4.
 
-<Mermaid manual={true}>
-  ![](https://mermaid.ink/svg/eyJjb2RlIjoiZ3JhcGhcbjVbNSAmIzgzMDRdIC0tPiAzXG41IC0tPiA0WzQgJiM4MzA0XVxuM1szICYjODMwNF0gLS0+IDFcbjMgLS0+IDJbMiAmc3VwM11cbjQgLS0+IDFbMSAmc3VwM11cbnN0eWxlIDQgZmlsbDpyZWQsY29sb3I6d2hpdGU7XG4iLCJtZXJtYWlkIjp7ICJ0aGVtZSI6ICJkYXJrIn0sInVwZGF0ZUVkaXRvciI6dHJ1ZSwiYXV0b1N5bmMiOnRydWUsInVwZGF0ZURpYWdyYW0iOnRydWV9)
-</Mermaid>
+<Mermaid
+  manual={true}
+  alt=''
+  diagram='eyJjb2RlIjoiZ3JhcGhcbjVbNSAmIzgzMDRdIC0tPiAzXG41IC0tPiA0WzQgJiM4MzA0XVxuM1szICYjODMwNF0gLS0+IDFcbjMgLS0+IDJbMiAmc3VwM11cbjQgLS0+IDFbMSAmc3VwM11cbnN0eWxlIDQgZmlsbDpyZWQsY29sb3I6d2hpdGU7XG4iLCJtZXJtYWlkIjp7ICJ0aGVtZSI6ICJkYXJrIn0sInVwZGF0ZUVkaXRvciI6dHJ1ZSwiYXV0b1N5bmMiOnRydWUsInVwZGF0ZURpYWdyYW0iOnRydWV9'
+/>
 
 Next, we move to 1 and convert all of the 1 nodes into 4 nodes. Now, we have zero nodes with ID 1.
 
-<Mermaid manual={true}>
-  ![](https://mermaid.ink/svg/eyJjb2RlIjoiZ3JhcGhcbjVbNSAmIzgzMDRdIC0tPiAzXG41IC0tPiA0WzQgJnN1cDNdXG4zWzMgJiM4MzA0XSAtLT4gMVxuMyAtLT4gMlsyICZzdXAzXVxuNCAtLT4gMVsxICYjODMwNF1cbnN0eWxlIDEgZmlsbDpyZWQsY29sb3I6d2hpdGU7XG4iLCJtZXJtYWlkIjp7ICJ0aGVtZSI6ICJkYXJrIn0sInVwZGF0ZUVkaXRvciI6dHJ1ZSwiYXV0b1N5bmMiOnRydWUsInVwZGF0ZURpYWdyYW0iOnRydWV9)
-</Mermaid>
+<Mermaid
+  manual={true}
+  alt=''
+  diagram='eyJjb2RlIjoiZ3JhcGhcbjVbNSAmIzgzMDRdIC0tPiAzXG41IC0tPiA0WzQgJnN1cDNdXG4zWzMgJiM4MzA0XSAtLT4gMVxuMyAtLT4gMlsyICZzdXAzXVxuNCAtLT4gMVsxICYjODMwNF1cbnN0eWxlIDEgZmlsbDpyZWQsY29sb3I6d2hpdGU7XG4iLCJtZXJtYWlkIjp7ICJ0aGVtZSI6ICJkYXJrIn0sInVwZGF0ZUVkaXRvciI6dHJ1ZSwiYXV0b1N5bmMiOnRydWUsInVwZGF0ZURpYWdyYW0iOnRydWV9'
+/>
 
 Now we move up and back to 3. However, 3 cannot be crafted because to make one metal 3 you need one metal 1 and one metal 2, however we used up all of our metal 1's to craft metal 4's. Handling all the dependency logic can become pretty complicated and we can end up in tons of edge cases.
 

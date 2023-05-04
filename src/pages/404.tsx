@@ -21,8 +21,8 @@ const NotFound: NextPage = function NotFound() {
           {notFounds[router.asPath || ''] || (
             <>
               404 | We couldn&apos;t find that page, maybe try the{' '}
-              <Link href='/' prefetch={false}>
-                <a className={styles.link}>homepage</a>
+              <Link className={styles.link} href='/' prefetch={false}>
+                homepage
               </Link>
               ?
             </>

@@ -7,18 +7,8 @@ const nextConfig = {
   reactStrictMode: true,
   pageExtensions: ['ts', 'tsx', 'js', 'jsx', 'md', 'mdx'],
   images: {
-    domains: ['avatars.githubusercontent.com'],
-  },
-  experimental: {
-    images: {
-      allowFutureImage: true,
-    },
-    swcMinifyDebugOptions: {
-      compress: {
-        defaults: true,
-        side_effects: false,
-      },
-    },
+    domains: ['avatars.githubusercontent.com', 'mermaid.ink'],
+    dangerouslyAllowSVG: true,
   },
   swcMinify: true,
   compiler: {
