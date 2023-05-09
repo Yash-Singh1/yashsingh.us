@@ -21,7 +21,7 @@ function getPostData(id: string) {
 export async function generateStaticParams() {
   return fs
     .readdirSync(path.join(getRootDir(), 'content/posts/'))
-    .map((contentFilename) => stripExtension(contentFilename));
+    .map((contentFilename) => ({ post: stripExtension(contentFilename) }));
 }
 
 interface PostProps {

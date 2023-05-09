@@ -2,7 +2,7 @@ import { AuthorizationCode } from 'simple-oauth2';
 import { getConfig } from '../../../lib/config';
 import { scopes } from '../../../lib/scopes';
 
-export const runtime = 'edge';
+export const runtime = 'nodejs';
 
 export async function GET(req: Request) {
   const proto = req.headers.get('x-forwarded-proto');
