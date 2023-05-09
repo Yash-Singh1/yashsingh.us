@@ -23,6 +23,7 @@ module.exports = {
     'unicorn/no-array-callback-reference': 'off',
     'unicorn/no-new-array': 'off',
     'unicorn/no-process-exit': 'off',
+    'unicorn/numeric-separators-style': ['error', { onlyIfContainsSeparator: true }],
     'eslint-comments/no-unused-disable': 'error',
     'no-unused-vars': [
       'error',

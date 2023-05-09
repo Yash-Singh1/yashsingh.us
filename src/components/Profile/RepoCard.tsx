@@ -1,3 +1,5 @@
+'use client';
+
 import type RepoInfo from '../../types/RepoInfo';
 import { config } from '@fortawesome/fontawesome-svg-core';
 import '@fortawesome/fontawesome-svg-core/styles.css';

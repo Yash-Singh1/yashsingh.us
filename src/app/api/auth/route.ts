@@ -1,15 +1,12 @@
 import { AuthorizationCode } from 'simple-oauth2';
-import { getConfig } from '../../lib/config';
-import { scopes } from '../../lib/scopes';
-import type { NextApiHandler, NextApiRequest } from 'next';
+import { getConfig } from '../../../lib/config';
+import { scopes } from '../../../lib/scopes';
 
-export const config = {
-  runtime: 'edge',
-};
+export const runtime = 'edge';
 
-const handler: NextApiHandler = async (req: NextApiRequest) => {
-  const proto = req.headers['x-forwarded-proto'];
-  const { host } = req.headers;
+export async function GET(req: Request) {
+  const proto = req.headers.get('x-forwarded-proto');
+  const host = req.headers.get('host');
   const url = new URL(`${proto}://${host}/${req.url}`);
   const urlParams = url.searchParams;
   const provider = urlParams.get('provider');
@@ -29,6 +26,6 @@ const handler: NextApiHandler = async (req: NextApiRequest) => {
   });
 
   return Response.redirect(authorizationUri, 301);
-};
+}
 
-export default handler;
+export const POST = GET;

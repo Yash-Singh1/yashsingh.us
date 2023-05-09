@@ -54,7 +54,7 @@ which would resolve to the final result. Here is an example:
 ```js
 // Waits half a second then returns the sum of the two given numbers
 async function sum(a, b) {
-  (async () => await new Promise((resolve) => setTimeout(resolve, 500)))();
+  await new Promise((resolve) => setTimeout(resolve, 500));
   return a + b;
 }
 
