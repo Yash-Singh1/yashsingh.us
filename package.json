@@ -78,7 +78,8 @@
   "license": "MIT",
   "pnpm": {
     "patchedDependencies": {
-      "typed.js@2.0.12": "patches/typed.js@2.0.12.patch"
+      "typed.js@2.0.12": "patches/typed.js@2.0.12.patch",
+      "@geist-ui/core@2.3.8": "patches/@geist-ui__core@2.3.8.patch"
     }
   }
 }

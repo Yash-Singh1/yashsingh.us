@@ -1,6 +1,9 @@
 lockfileVersion: '6.0'
 
 patchedDependencies:
+  '@geist-ui/core@2.3.8':
+    hash: dqozh5c7fp7ce4b2tojurdkrbq
+    path: patches/@geist-ui__core@2.3.8.patch
   typed.js@2.0.12:
     hash: 2glqbee4otxxaymsnnhj6dibli
     path: patches/typed.js@2.0.12.patch
@@ -23,7 +26,7 @@ dependencies:
     version: 0.2.0(@fortawesome/fontawesome-svg-core@6.4.0)(react@18.2.0)
   '@geist-ui/core':
     specifier: ^2.3.8
-    version: 2.3.8(react-dom@18.2.0)(react@18.2.0)
+    version: 2.3.8(patch_hash=dqozh5c7fp7ce4b2tojurdkrbq)(react-dom@18.2.0)(react@18.2.0)
   '@headlessui/react':
     specifier: ^1.7.14
     version: 1.7.14(react-dom@18.2.0)(react@18.2.0)
@@ -615,7 +618,7 @@ packages:
       react: 18.2.0
     dev: false
 
-  /@geist-ui/core@2.3.8(react-dom@18.2.0)(react@18.2.0):
+  /@geist-ui/core@2.3.8(patch_hash=dqozh5c7fp7ce4b2tojurdkrbq)(react-dom@18.2.0)(react@18.2.0):
     resolution: {integrity: sha512-OKwGgTA4+fBM41eQbqDoUj4XBycZbYH7Ynrn6LPO5yKX7zeWPu/R7HN3vB4/oHt34VTDQI5sDNb1SirHvNyB5w==}
     peerDependencies:
       react: '>=16.9.0'
@@ -625,6 +628,7 @@ packages:
       react: 18.2.0
       react-dom: 18.2.0(react@18.2.0)
     dev: false
+    patched: true
 
   /@hapi/boom@10.0.1:
     resolution: {integrity: sha512-ERcCZaEjdH3OgSJlyjVk8pHIFeus91CjKP3v+MpgBNp5IvGzP2l/bRiD78nqYcKPaZdbKkK5vDBVPd2ohHBlsA==}
