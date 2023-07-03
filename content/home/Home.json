@@ -191,6 +191,18 @@
       "status": "good",
       "icon": "/img/uploads/autohotkey.svg",
       "link": "https://www.autohotkey.com/"
+    },
+    {
+      "name": "Shell Script",
+      "status": "proficient",
+      "icon": "/img/uploads/shell.svg",
+      "link": "https://www.zsh.org/"
+    },
+    {
+      "name": "T3 Stack",
+      "status": "proficient",
+      "icon": "/img/uploads/t3.svg",
+      "link": "https://create.t3.gg/"
     }
   ]
 }
