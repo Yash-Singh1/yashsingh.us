@@ -25,7 +25,17 @@ interface ProfileProps {
 function Profile({ data, repoInfo, skillsGrouped }: ProfileProps) {
   return (
     <Container className={`${coolBgStyles['cool-bg']} ${profileStyles['cool-bg']}`}>
-      <Header title='Saiansh (Yash) Singh' intro="It's" large className={coolBgStyles['header']}>
+      <Header
+        title={
+          <>
+            <span className='hidden sm:inline'>Saiansh (</span>Yash
+            <span className='hidden sm:inline'>)</span> Singh
+          </>
+        }
+        intro="It's"
+        large
+        className={coolBgStyles['header']}
+      >
         <Paragraph className='max-w-prose text-base'>{data ? data.description : ''}</Paragraph>
         <br />
         <LearnMore />
@@ -82,7 +92,7 @@ function Profile({ data, repoInfo, skillsGrouped }: ProfileProps) {
         <Paragraph className='max-w-prose'>
           I maintain a blog site with multiple posts on different topics related to programming at{' '}
           <Link href='/blog/' className='text-blue-500'>
-            https://www.yashsingh.us/blog/
+            yashsingh.us/blog
           </Link>
           .
         </Paragraph>

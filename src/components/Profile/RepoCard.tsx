@@ -61,7 +61,7 @@ function RepoCard({ repo }: RepoCardProps) {
         <br />
         <div className='absolute bottom-3 lg:bottom-5 text-base sm:text-lg lg:text-xl'>
           <span
-            className={`w-3 h-3 sm:w-4 sm:h-4 inline-block mr-1 align-[-5%] rounded-full`}
+            className={`w-3 h-3 sm:w-4 sm:h-4 inline-block mr-1 align-[-2.5%] rounded-full`}
             style={{ backgroundColor: repo.repository.primaryLanguage.color }}
           ></span>
           <span>{repo.repository.primaryLanguage.name}</span>
@@ -70,13 +70,13 @@ function RepoCard({ repo }: RepoCardProps) {
           {repo.repository.stargazerCount > 1 ? (
             <div className='inline-block'>
               <FontAwesomeIcon icon={faStar} className='mr-1 w-4 md:w-5' />
-              <span className='par text-xl sm:text-2xl'>{repo.repository.stargazerCount}</span>
+              <span className='par text-xl sm:text-2xl leading-[0px]'>{repo.repository.stargazerCount}</span>
             </div>
           ) : null}
           {repo.repository.forkCount > 0 ? (
-            <div className='inline-block'>
+            <div className='hidden mid:inline-block'>
               <FontAwesomeIcon icon={faCodeBranch} className='mr-1 w-3 md:w-5' />
-              <span className='par text-xl sm:text-2xl'>{repo.repository.forkCount}</span>
+              <span className='par text-xl sm:text-2xl leading-[0px]'>{repo.repository.forkCount}</span>
             </div>
           ) : null}
         </div>

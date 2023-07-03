@@ -56,12 +56,18 @@ export default async function Home() {
           headers: {
             authorization: `bearer ${process.env.GH_TOKEN}`,
           },
+          request: {
+            fetch,
+          },
         }
       );
       repoInfo[project!] = repo;
     }
   } catch (error) {
-    console.error(error);
+    console[process.env.NODE_ENV === 'development' ? 'warn' : 'error'](
+      'GitHub GraphQL Error',
+      error
+    );
   }
 
   const skillsGrouped: SkillsGrouped = {};

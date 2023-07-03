@@ -75,8 +75,7 @@ body {
 .logo-small {
   display: inline-block;
   margin-right: 10px;
-  height: 2rem;
-  width: 2rem;
+  @apply w-6 h-6 sm:w-8 sm:h-8;
 }
 
 ul {

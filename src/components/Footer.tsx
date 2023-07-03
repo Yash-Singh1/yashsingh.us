@@ -5,23 +5,28 @@ import pfp from '../assets/pfp.png';
 
 export default function Footer() {
   return (
-    <footer className={footerStyles['footer']}>
+    <footer id='footer' className={footerStyles['footer']}>
       <div className={footerStyles['footer-container']}>
-        <Image
-          src={pfp}
-          alt='profile picture'
-          className='w-12 sm:w-16'
-          width={80}
-          height={80}
-          loading='lazy'
-          placeholder='blur'
-        />
-        <div className='links lg:text-2xl md:text-xl text-lg flex justify-center gap-2'>
-          <Link href='/'>Home</Link>
-          <span className='dot'> · </span>
-          <Link href='/blog'>Blog</Link>
+        <div className='flex justify-center items-center'>
+          <Image
+            src={pfp}
+            alt='profile picture'
+            className='w-12 sm:w-16'
+            width={80}
+            height={80}
+            loading='lazy'
+            placeholder='blur'
+          />
         </div>
-        <div className='copyright lg:text-xl md:text-lg text-base'>Ⓒ 2022 Yash Singh</div>
+        <div className='flex flex-wrap flex-row items-center justify-end pr-4 mid:pr-0 mid:justify-around pb-2 mid:pb-0'>
+          <div className='links lg:text-2xl md:text-xl text-lg flex justify-center gap-2'>
+            <Link href='/'>Home</Link>
+            <span className='dot'> · </span>
+            <Link href='/blog'>Blog</Link>
+          </div>
+
+          <div className='lg:text-xl md:text-lg text-base'>Ⓒ 2023 Yash Singh</div>
+        </div>
       </div>
     </footer>
   );

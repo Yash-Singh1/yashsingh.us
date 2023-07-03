@@ -4,9 +4,8 @@
   background-color: rgba(0, 0, 0, 0.2);
 
   .footer-container {
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
+    display: grid;
+    grid-template-columns: 1fr 2fr;
     box-sizing: border-box;
   }
 

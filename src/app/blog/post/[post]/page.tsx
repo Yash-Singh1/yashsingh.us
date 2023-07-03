@@ -5,6 +5,8 @@ import stripExtension from '../../../../helpers/stripExtension';
 import plugins from '../../../../components/Post/plugins';
 import { serialize } from 'next-mdx-remote/serialize';
 import PostContent from './post';
+import type { Metadata } from 'next';
+import { redirect } from 'next/navigation';
 
 function getRootDir() {
   let dir = '../../../../';
@@ -30,14 +32,27 @@ interface PostProps {
   };
 }
 
-export async function generateMetadata({ params }: PostProps) {
+export async function generateMetadata({ params }: PostProps): Promise<Metadata> {
+  const { data } = getPostData(params.post);
+
   return {
-    title: `${getPostData(params.post).data.title} | Yash Singh's Blog - yashsingh.us`,
+    title: `${data.title} | Yash Singh's Blog - yashsingh.us`,
+    description: data.subtitle,
+    authors: { name: 'Yash Singh' },
+    colorScheme: 'dark',
+    openGraph: {
+      images: data.image,
+    },
   };
 }
 
 export default async function Post({ params }: PostProps) {
   const { content, data } = getPostData(params.post);
+
+  if (data.link) {
+    redirect(data.link);
+  }
+
   const mdxSource = await serialize(content, {
     mdxOptions: plugins,
   });

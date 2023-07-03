@@ -13,7 +13,7 @@ function BadgeSection({ badges, description }: BadgeSectionProps) {
     <>
       <Paragraph>{description}</Paragraph>
       <div
-        className={`flex flex-wrap gap-2 lg:gap-3 gap-x-3 lg:gap-x-5 mt-2 ${profileStyles['perspective-1000']}`}
+        className={`flex flex-wrap gap-2 lg:gap-3 gap-x-3 lg:gap-x-5 mt-2 ${profileStyles['perspective-1000']} min-w-[350px]`}
       >
         {badges
           ? badges.map((skill) => {

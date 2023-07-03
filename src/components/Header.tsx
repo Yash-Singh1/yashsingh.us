@@ -4,7 +4,7 @@ import Typer from './Typer';
 import type { ReactNode } from 'react';
 
 interface HeaderProps {
-  title: string;
+  title: string | ReactNode;
   intro: string;
   children?: ReactNode;
   large?: boolean;
@@ -13,18 +13,18 @@ interface HeaderProps {
 
 function Header({ title, intro, children = null, large = false, className = '' }: HeaderProps) {
   return (
-    <div className={`${large ? 'min-h-screen' : ''} header ${className}`}>
+    <div className={`${large ? 'min-h-screen' : ''} header ${className} sm:overflow-x-hidden`}>
       <h1 className='font-semibold sm:text-xl text-lg font-mono text-violet-700'>
         Hey there 😃! {intro}
       </h1>
-      <h1 className='font-bold md:text-6xl sm:text-5xl text-3xl text-gray-200 mt-5'>{title}</h1>
-      <h1 className='font-semibold md:text-2xl sm:text-xl text-lg font-mono text-violet-700 mt-5'>
+      <h1 className='font-bold xl:text-6xl lg:text-5xl md:text-4xl sm:w-screen text-3xl text-gray-200 mt-5'>{title}</h1>
+      <h1 className='font-semibold md:text-2xl sm:text-xl sm:w-screen text-lg font-mono text-violet-700 mt-5'>
         Working on{' '}
         <Typer
           preStringTyped={function () {
             while (
-              (this.strings[this.arrayPos].length > 12 && window.innerWidth < 480) ||
-              (this.strings[this.arrayPos].length > 9 && window.innerWidth < 320)
+              (this.strings[this.arrayPos].length > 12 && window.innerWidth <= 480) ||
+              (this.strings[this.arrayPos].length > 9 && window.innerWidth <= 320)
             ) {
               if (this.arrayPos === this.strings.length - 1) {
                 if (this.loop) {
@@ -34,7 +34,7 @@ function Header({ title, intro, children = null, large = false, className = '' }
                 this.arrayPos++;
               }
             }
-            if (window.innerWidth < 320) {
+            if (window.innerWidth <= 320) {
               return this.strings[this.arrayPos].replace('...', '');
             }
             return this.strings[this.arrayPos];

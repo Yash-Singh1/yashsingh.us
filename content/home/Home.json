@@ -1,5 +1,5 @@
 {
-  "description": "I am a high school freshman who likes programming in his free time. One of my other hobbies is basketball.",
+  "description": "I am a rising high school sophomore who likes programming in his free time. One of my other hobbies is basketball.",
   "projects": [
     "epack",
     "eslint-plugin-userscripts",
@@ -12,13 +12,13 @@
     {
       "status": "proficient",
       "name": "JavaScript",
-      "icon": "/img/uploads/335b60970f507ce70d6e3bac36ca488a46653394-32x32 (1).svg",
+      "icon": "/img/uploads/js.svg",
       "link": "https://developer.mozilla.org/en-US/docs/Web/JavaScript"
     },
     {
       "status": "proficient",
       "name": "TypeScript",
-      "icon": "/img/uploads/7f2043586b0797d4e7229d6cf75314b3f2ad2e56-32x32.svg",
+      "icon": "/img/uploads/ts.svg",
       "link": "https://www.typescriptlang.org/"
     },
     {
@@ -41,6 +41,42 @@
     },
     {
       "status": "proficient",
+      "name": "tRPC",
+      "icon": "/img/uploads/trpc.svg",
+      "link": "https://trpc.io/"
+    },
+    {
+      "status": "proficient",
+      "name": "Clerk",
+      "icon": "/img/uploads/clerk.svg",
+      "link": "https://clerk.com/"
+    },
+    {
+      "status": "proficient",
+      "name": "LLMs",
+      "icon": "/img/uploads/openai.svg",
+      "link": "https://langchain.com/"
+    },
+    {
+      "status": "proficient",
+      "name": "Vite",
+      "icon": "/img/uploads/vite.svg",
+      "link": "https://vitejs.org/"
+    },
+    {
+      "status": "learning",
+      "name": "Java",
+      "icon": "/img/uploads/java.svg",
+      "link": "https://java.com/"
+    },
+    {
+      "status": "proficient",
+      "name": "jQuery",
+      "icon": "/img/uploads/jquery.svg",
+      "link": "https://jquery.com/"
+    },
+    {
+      "status": "proficient",
       "name": "React",
       "icon": "/img/uploads/react.svg",
       "link": "https://reactjs.org/"
@@ -48,7 +84,7 @@
     {
       "status": "good",
       "name": "Python",
-      "icon": "/img/uploads/1024px-Python-logo-notext.svg.png",
+      "icon": "/img/uploads/python.png",
       "link": "https://www.python.org/"
     },
     {

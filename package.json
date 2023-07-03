@@ -49,6 +49,7 @@
     "@types/react": "^18.2.6",
     "@types/simple-oauth2": "^4.1.1",
     "autoprefixer": "^10.4.8",
+    "encoding": "^0.1.13",
     "esbuild": "^0.17.15",
     "esbuild-runner": "^2.2.1",
     "eslint": "~8.25.0",
