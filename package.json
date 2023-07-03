@@ -2,6 +2,10 @@
   "name": "yashsingh.us",
   "version": "0.1.0",
   "private": true,
+  "engines": {
+    "node": ">=18",
+    "pnpm": ">=8"
+  },
   "scripts": {
     "dev": "next dev",
     "build": "pnpm run generate-feed && next build && next-sitemap",

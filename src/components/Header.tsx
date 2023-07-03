@@ -17,7 +17,9 @@ function Header({ title, intro, children = null, large = false, className = '' }
       <h1 className='font-semibold sm:text-xl text-lg font-mono text-violet-700'>
         Hey there 😃! {intro}
       </h1>
-      <h1 className='font-bold xl:text-6xl lg:text-5xl md:text-4xl sm:w-screen text-3xl text-gray-200 mt-5'>{title}</h1>
+      <h1 className='font-bold xl:text-6xl lg:text-5xl md:text-4xl sm:w-screen text-3xl text-gray-200 mt-5'>
+        {title}
+      </h1>
       <h1 className='font-semibold md:text-2xl sm:text-xl sm:w-screen text-lg font-mono text-violet-700 mt-5'>
         Working on{' '}
         <Typer

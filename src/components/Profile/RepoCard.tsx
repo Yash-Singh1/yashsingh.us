@@ -70,13 +70,17 @@ function RepoCard({ repo }: RepoCardProps) {
           {repo.repository.stargazerCount > 1 ? (
             <div className='inline-block'>
               <FontAwesomeIcon icon={faStar} className='mr-1 w-4 md:w-5' />
-              <span className='par text-xl sm:text-2xl leading-[0px]'>{repo.repository.stargazerCount}</span>
+              <span className='par text-xl sm:text-2xl leading-[0px]'>
+                {repo.repository.stargazerCount}
+              </span>
             </div>
           ) : null}
           {repo.repository.forkCount > 0 ? (
             <div className='hidden mid:inline-block'>
               <FontAwesomeIcon icon={faCodeBranch} className='mr-1 w-3 md:w-5' />
-              <span className='par text-xl sm:text-2xl leading-[0px]'>{repo.repository.forkCount}</span>
+              <span className='par text-xl sm:text-2xl leading-[0px]'>
+                {repo.repository.forkCount}
+              </span>
             </div>
           ) : null}
         </div>
