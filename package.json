@@ -33,7 +33,7 @@
     "katex": "^0.16.7",
     "mdx-mermaid": "^1.3.2",
     "mermaid": "10.1.0",
-    "next": "^13.4.1",
+    "next": "^13.4.19",
     "next-mdx-remote": "^4.4.1",
     "react": "18.2.0",
     "react-dom": "18.2.0",
