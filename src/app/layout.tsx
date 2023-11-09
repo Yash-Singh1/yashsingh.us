@@ -20,6 +20,7 @@ export const metadata: Metadata = {
       'application/rss+xml': '/feed.xml',
     },
   },
+  metadataBase: new URL('https://yashsingh.us/'),
 };
 
 export default function RootLayout({

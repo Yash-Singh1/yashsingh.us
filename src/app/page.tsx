@@ -7,7 +7,9 @@ import type SkillsGrouped from '../types/skillsGrouped';
 import { default as HomeType } from '../types/Home';
 
 async function getCMSContent() {
-  const { default: data } = (await import('../../content/home/Home.json')) as { default: HomeType };
+  // Use import() to prevent dependency on execution context
+  const data = (await import('../../content/home/Home.json')) as HomeType;
+
   return data;
 }
 
@@ -71,6 +73,7 @@ export default async function Home() {
   }
 
   const skillsGrouped: SkillsGrouped = {};
+
   for (const skill of data!.skills) {
     if (!skillsGrouped[skill!.status!]) {
       skillsGrouped[skill!.status!] = [];

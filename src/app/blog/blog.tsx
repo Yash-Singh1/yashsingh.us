@@ -46,10 +46,7 @@ const BlogContent: FC<{ data: PostList }> = function BlogContent(props) {
     router.push(
       `${pathname}${Object.keys(endQuery).length > 0 ? '?' : ''}${Object.entries(endQuery)
         .map((queryPart) => queryPart.join('='))
-        .join('&')}`,
-      {
-        forceOptimisticNavigation: true,
-      }
+        .join('&')}`
     );
     setPosts(
       props.data.filter((post) => {

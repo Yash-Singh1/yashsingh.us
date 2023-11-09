@@ -39,7 +39,6 @@ export async function generateMetadata({ params }: PostProps): Promise<Metadata>
     title: `${data.title} | Yash Singh's Blog - yashsingh.us`,
     description: data.subtitle,
     authors: { name: 'Yash Singh' },
-    colorScheme: 'dark',
     openGraph: {
       images: data.image,
     },
