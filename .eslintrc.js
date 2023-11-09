@@ -38,6 +38,7 @@ module.exports = {
     'jsx-a11y/anchor-is-valid': 'off',
     'jsx-a11y/anchor-has-content': 'off',
     '@next/next/no-img-element': 'off', // TODO: Enable when AVIF file format has better compatibility
+    'import/no-named-as-default': 'off',
   },
   globals: {
     JSX: 'readonly',

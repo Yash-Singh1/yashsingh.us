@@ -1,9 +1,8 @@
 import { type Metadata } from 'next';
 import type React from 'react';
 import Footer from '../components/Footer';
-import js from '../helpers/passthrough';
-import Script from 'next/script';
 import { AOSProvider } from '../components/AOSProvider';
+import { PostHogProvider } from '../components/PostHogProvider';
 import '../styles/global.scss';
 import '../styles/loader.scss';
 import '@fontsource/baloo-bhai-2/600.css';
@@ -36,25 +35,8 @@ export default function RootLayout({
         {children}
         <Footer />
       </body>
-      <Script
-        src='https://www.googletagmanager.com/gtag/js?id=G-T7G01BVK0J'
-        strategy='lazyOnload'
-      />
-      <Script
-        id='gtag-script'
-        strategy='worker'
-        dangerouslySetInnerHTML={{
-          __html: js`
-        if (navigator.onLine) {
-          window.dataLayer = window.dataLayer || [];
-          function gtag(){dataLayer.push(arguments);}
-          gtag('js', new Date());
-  
-          gtag('config', 'G-T7G01BVK0J');
-        }`,
-        }}
-      />
       <AOSProvider />
+      <PostHogProvider />
     </html>
   );
 }
