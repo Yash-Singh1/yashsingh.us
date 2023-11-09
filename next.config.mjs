@@ -7,7 +7,10 @@ const nextConfig = {
   reactStrictMode: true,
   pageExtensions: ['ts', 'tsx', 'js', 'jsx', 'md', 'mdx'],
   images: {
-    domains: ['avatars.githubusercontent.com', 'mermaid.ink'],
+    remotePatterns: [
+      { hostname: '**.avatars.githubusercontent.com' },
+      { hostname: '**.mermaid.ink' },
+    ],
     dangerouslyAllowSVG: true,
   },
   swcMinify: true,
