@@ -23,7 +23,8 @@ is parsed using [Jison](https://github.com/zaach/jison).
 Interpolation is a feature added in 6.0.0 that allows you to specify how curves
 should be made inside flowcharts. The syntax is like:
 
-```text
+```mermaid /graph/#abcdefghijklmnopqrstuvwxyz
+graph TD
 linkStyle default|[...num] interpolate curveStyle [styles]
 ```
 
@@ -33,7 +34,7 @@ After that, comes the curve style and following that comes CSS styles.
 
 The following would add the d3 curveMonotoneX on all arrows that are curving.
 
-```text
+```mermaid
 graph TD
     B["peace"]
     B-->C[fa:fa-ban forbidden]

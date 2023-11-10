@@ -48,13 +48,13 @@ Next, we move to 1 and convert all of the 1 nodes into 4 nodes. Now, we have zer
 
 Now we move up and back to 3. However, 3 cannot be crafted because to make one metal 3 you need one metal 1 and one metal 2, however we used up all of our metal 1's to craft metal 4's. Handling all the dependency logic can become pretty complicated and we can end up in tons of edge cases.
 
-If we look at the maximum units of metal the cow has for each metal type it's $10^4$. What if we did a depth-first search (which takes $O(N^2)$ which is $10^4$ operations) for each unit of metal we want to decrement? That will take us only $10^4\times10^4=10^8$ operations. That will be underneath the $2\times10^8$ operations limit that USACO gives us for C++. We can recursively go down the graph and increment the metal count by 1 if the ingredients are avaliable.
+If we look at the maximum units of metal the cow has for each metal type it's $10^4$. What if we did a depth-first search (which takes $\mathcal{O}(N^2)$ which is $10^4$ operations) for each unit of metal we want to decrement? That will take us only $10^4\times10^4=10^8$ operations. That will be underneath the $2\times10^8$ operations limit that USACO gives us for C++. We can recursively go down the graph and increment the metal count by 1 if the ingredients are avaliable.
 
 ## Implementation
 
 Let's go through an implementation in C++:
 
-```cpp
+```cpp showLineNumbers
 #include <bits/stdc++.h>
 
 using namespace std;

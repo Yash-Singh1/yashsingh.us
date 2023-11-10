@@ -23,9 +23,9 @@ Another way to think of the elements being added is dividing the array into segm
 
 So we have to divide an array of $n$ number of integers into segments with the amount $1..n$. For each segment count, we can have a counter that iterates through each array and makes sure that we reach $\frac{total\_sum}s$ (target sum for each segment) each time. We can iterate from $n$ to $1$ for $s$ (larger number better because $n - s$ smaller which means less operations) and if the $total\_sum$ is divisible by $s$ we can do our counter algorithm.
 
-The time complexity for this would be $O(n\times\text{\# of factors of total\_sum})$. We know that the total sum is $\le10^6$, so we can write up a quick program that will tell the max number of factors given an input:
+The time complexity for this would be $\mathcal{O}(n\times\text{\# of factors of total\_sum})$. We know that the total sum is $\le10^6$, so we can write up a quick program that will tell the max number of factors given an input:
 
-```cpp
+```cpp showLineNumbers
 #include <bits/stdc++.h>
 
 using namespace std;
@@ -65,7 +65,7 @@ If we try out $1000000$ on this, we should get a number around $240$. That is ar
 
 Let's go through an implementation in C++:
 
-```cpp
+```cpp showLineNumbers
 #include <bits/stdc++.h>
 
 using namespace std;

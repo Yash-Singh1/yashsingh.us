@@ -38,14 +38,16 @@ them after the test.
 To remove and readd `.keep` files there is usually some system or way to define
 hooks inside a test. In QUnit (the testing framework I was using), it is:
 
-```js
+```js showLineNumbers
 QUnit.module('test group', {
   before() {
     // Stuff before this test group runs
   },
+
   after() {
     // Stuff after this test group runs
   },
+
   // ...
 });
 ```

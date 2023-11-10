@@ -9,22 +9,22 @@ keywords: [javascript]
 
 # Function vs eval
 
-While working with `eval` to do some hacky workarounds in build configuration, I was curious about the difference between `eval` and `Function`. Here is what I found.
+While working with `eval{:.variable.other.constant}` to do some hacky workarounds in build configuration, I was curious about the difference between `eval{:.variable.other.constant}` and `Function{:.variable.other.constant}`. Here is what I found.
 
 ## Difference
 
 Quoting from [`tc39/proposal-hashbang`](https://github.com/tc39/proposal-hashbang#does-the-hashbang-syntax-work-within-eval--function):
 
-> Hashbang comments are only avilable at the start of a [`Script`](https://tc39.es/ecma262/#prod-Script) or [`Module`](https://tc39.es/ecma262/#prod-Module) parsing goal. Since `eval` uses `Script` it does support Hashbang comments. Since `Function` uses [`FunctionBody`](https://tc39.es/ecma262/#prod-FunctionBody), it does not.
+> Hashbang comments are only avilable at the start of a [`Script`](https://tc39.es/ecma262/#prod-Script) or [`Module`](https://tc39.es/ecma262/#prod-Module) parsing goal. Since `eval{:.variable.other.constant}` uses `Script` it does support Hashbang comments. Since `Function{:.variable.other.constant}` uses [`FunctionBody`](https://tc39.es/ecma262/#prod-FunctionBody), it does not.
 
-`eval` would execute the JavaScript code in the context of a module/script, while `Function` would execute it in the context of a function.
+`eval{:.variable.other.constant}` would execute the JavaScript code in the context of a module/script, while `Function{:.variable.other.constant}` would execute it in the context of a function.
 
-This means that `Function` would disallow hashbang comments, but allow the use of `await` (unless using top-level await, then available in `Script` also), and `return`.
+This means that `Function{:.variable.other.constant}` would disallow hashbang comments, but allow the use of `await{:js}` (unless using top-level await, then available in `Script` also), and `return{:js}`.
 
 For making use of generators and async functions, there are seperate constructors for them:
 
-- `GeneratorFunction` for generators
-- `AsyncFunction` for async functions
-- `AsyncGeneratorFunction` for both
+- `GeneratorFunction{:.variable.other.constant}` for generators
+- `AsyncFunction{:.variable.other.constant}` for async functions
+- `AsyncGeneratorFunction{:.variable.other.constant}` for both
 
-According to MDN, the `Function` constructor also contains less security risks compared to `eval`.
+According to MDN, the `Function{:.variable.other.constant}` constructor also contains less security risks compared to `eval{:.variable.other.constant}`.

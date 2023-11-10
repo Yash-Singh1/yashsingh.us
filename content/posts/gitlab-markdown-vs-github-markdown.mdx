@@ -39,7 +39,7 @@ to render diagrams”. Here is some examples for each:
 The following is a `gitGraph` that was written in Mermaid.js. To preview it,
 go to the Mermaid Live Editor ([mermaid.live](https://mermaid.live/)).
 
-```text
+```mermaid
 gitGraph:
  commit
  commit
@@ -117,9 +117,10 @@ language: yaml
 
 This is only supported in GitLab Flavored Markdown
 
-```markdown
+```toml {1,6}
 +++
 title = "About Front Matter"
+
 [example]
 language = "toml"
 +++
@@ -130,7 +131,7 @@ language = "toml"
 This is only supported in GitLab Flavored Markdown
 
 {/* prettier-ignore */}
-```markdown
+```json {1,8}
 ;;;
 {
    "title": "About Front Matter"
@@ -144,9 +145,9 @@ This is only supported in GitLab Flavored Markdown
 ### Other
 
 Other languages are also supported by adding a specifier to the delimiters.
-This is only supported in GitLab Flavored Markdown. Here is an example with `PHP`:
+This is only supported in GitLab Flavored Markdown. Here is an example with `php`:
 
-```php {2,5}
+```php {1,6}
 ---php
 $title = "About Front Matter";
 $example = array(
@@ -187,12 +188,15 @@ GitLab Flavored Markdown can render math and so can Github Flavored Markdown (si
 in `LaTeX`. Inline math can be rendered with `$` (dollar signs). Here is an
 example using inline math:
 
-```markdown
+```latex
 $a^2+b^2=c^2$
 ```
 
-This should render the Pythagorean theorem. For multiline math, just add `math`
-as the syntax highlighting specified in a multiline code block.
+This should render the Pythagorean theorem.
+
+$a^2+b^2=c^2$
+
+For multiline math, just add `math` as the syntax highlighting specified in a multiline code block.
 
 ## References
 
