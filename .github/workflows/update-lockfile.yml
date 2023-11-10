@@ -13,7 +13,7 @@ jobs:
       - uses: pnpm/action-setup@v2.4.0
         with:
           version: 8
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
         with:
           ref: ${{ github.event.pull_request.head.ref }}
       - run: pnpm i --lockfile-only
