@@ -30,15 +30,14 @@ Above was just a breakdown table, this is a more detailed explanation of each fe
 
 ## Diagrams/Flowcharts
 
-GitLab Flavored Markdown supports `Mermaid`/`PlantUML`. GitHub Flavored Markdown added
-for this too in March 17, 2022. Both `Mermaid` and `PlantUML` are “Markdownish ways
-to render diagrams”. Since Github Flavored Markdown doesn’t support either, I can’t
-demonstrate each. Here is some raw text that displays some examples for each:
+GitLab Flavored Markdown supports Mermaid.js and PlantUML. GitHub Flavored Markdown added
+for this too in March 17, 2022. Both Mermaid.js and PlantUML are “Markdownish ways
+to render diagrams”. Here is some examples for each:
 
 ### Mermaid
 
-The following is a `gitGraph` that was written in `MermaidJS`. To preview it,
-go to the Mermaid Live Editor.
+The following is a `gitGraph` that was written in Mermaid.js. To preview it,
+go to the Mermaid Live Editor ([mermaid.live](https://mermaid.live/)).
 
 ```text
 gitGraph:
@@ -147,7 +146,7 @@ This is only supported in GitLab Flavored Markdown
 Other languages are also supported by adding a specifier to the delimiters.
 This is only supported in GitLab Flavored Markdown. Here is an example with `PHP`:
 
-```markdown
+```php {2,5}
 ---php
 $title = "About Front Matter";
 $example = array(
