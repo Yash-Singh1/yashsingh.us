@@ -41,8 +41,8 @@ dependencies:
     specifier: ^2.3.0
     version: 2.3.0(react@18.2.0)
   '@next/mdx':
-    specifier: ^13.3.2
-    version: 13.3.2(@mdx-js/loader@2.3.0)(@mdx-js/react@2.3.0)
+    specifier: ^14.0.2
+    version: 14.0.2(@mdx-js/loader@2.3.0)(@mdx-js/react@2.3.0)
   '@octokit/graphql':
     specifier: ^5.0.5
     version: 5.0.5(encoding@0.1.13)
@@ -860,8 +860,8 @@ packages:
       glob: 7.1.7
     dev: true
 
-  /@next/mdx@13.3.2(@mdx-js/loader@2.3.0)(@mdx-js/react@2.3.0):
-    resolution: {integrity: sha512-llJe1mudOsid1GHokLGl8SOWyHsblXaqxZoOl2CYDavVJeZptQax4IB+usP9tGO4MlKF1PXMrCQcUuxbz4kbRw==}
+  /@next/mdx@14.0.2(@mdx-js/loader@2.3.0)(@mdx-js/react@2.3.0):
+    resolution: {integrity: sha512-MFjfSeGDmjwLLRHojlyaDIs2dQz5kFBQh/jcTIb57VIlbOvRjJsgnwLTH3DzUT25dUaX0QaR6t+ITNcdyfwozQ==}
     peerDependencies:
       '@mdx-js/loader': '>=0.15.0'
       '@mdx-js/react': '>=0.15.0'
