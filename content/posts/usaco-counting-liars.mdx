@@ -49,15 +49,15 @@ here, we have 3 greater than inputs, so we get $3-0-1=2$. This works because we 
 for then number of elements after the index of the greater than input.
 
 We can use this method of calculating the number of liars and iterate over each greater than input
-and apply it. This method takes $O(nlogn)$ time if we run binary search on the less than inputs each
-time we iterate over a greater than input, but we can also take $O(n^2)$ time because it is underneath
+and apply it. This method takes $\mathcal{O}(nlogn)$ time if we run binary search on the less than inputs each
+time we iterate over a greater than input, but we can also take $\mathcal{O}(n^2)$ time because it is underneath
 the time limit.
 
 ## Implementation
 
 Let's go through an implementation in C++:
 
-```cpp
+```cpp showLineNumbers
 #include <bits/stdc++.h>
 
 using namespace std;

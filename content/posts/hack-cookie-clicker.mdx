@@ -55,9 +55,10 @@ three of the pieces of code combined could make a winning game.
 
 Straight up, here is the code:
 
-```js
+```js showLineNumbers
 Game.cookies = Infinity;
 Game.lumps = Infinity;
+
 function doEverything() {
   Game.ObjectsById.forEach((obj) => {
     obj.buy(10000);
@@ -68,6 +69,7 @@ function doEverything() {
   Game.ObjectsById[0].levelUp();
   setTimeout(() => doEverything(), 1000);
 }
+
 doEverything();
 ```
 

@@ -1,6 +1,6 @@
 ---
 title: 'Getting Started with Heroku'
-subtitle: 'A simple guide to starting up with heroku'
+subtitle: 'A simple guide to starting up with Heroku'
 image: '/img/github-and-heroku.png'
 author: 'Yash Singh'
 date: '2021/06/01'
@@ -17,7 +17,7 @@ This post will cover how to setup a simple Node.js server and deploy it to Herok
 
 ## Prerequisites
 
-Here are some recommended prerequisites before you get started with Heroku:
+Here are some recommended prerequisite skills before you get started with Heroku:
 
 - Ability to push a git repository to GitHub
 - Signed up for Heroku and GitHub
@@ -45,32 +45,31 @@ npm install express
 
 Create a new file called `index.js`:
 
-```js
-// 1
+```js showLineNumbers
 const express = require('express');
 const app = express();
 
-// 2
 app.get('/', (req, res) => {
   res.send('Hello world');
 });
 
-// 3
 const port = process.env.PORT || 1455;
 
-// 4
 app.listen(port, () => {
   console.log('Listening on :' + port);
 });
 ```
 
-1. Over here, we are importing `express` and creating a new application.
-2. This creates a new router that listens for requests on the `/` path. When a
-   request is recieved, it returns `"Hello world"{:js}`
-3. In Heroku, the `PORT{:js}` enviorment variable is set to the port that has to be
-   listened to. Over here, we are listening to `1455{:js}` if there is no `PORT{:js}` (development)
-4. This makes the application actually listen for any requests and logs the port
-   listened to
+- #1. Over here, we are importing `express` and creating a new application.
+
+- #4. This creates a new router that listens for requests on the `/` path. When a
+  request is recieved, it returns `"Hello world"{:js}`
+
+- #8. In Heroku, the `PORT{:js}` enviorment variable is set to the port that has to be
+  listened to. Over here, we are listening to `1455{:js}` if there is no `PORT{:js}` (development)
+
+- #10. This makes the application actually listen for any requests and logs the port
+  listened to
 
 Now let's test out our application:
 
