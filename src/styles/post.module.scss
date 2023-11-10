@@ -86,7 +86,7 @@
     width: 3rem;
   }
 
-  span[data-chars-id="abcdefghijklmnopqrstuvwxyz"] {
+  span[data-chars-id="hide-line"] {
     display: none;
 
     & ~ span {
