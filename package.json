@@ -49,7 +49,7 @@
   "devDependencies": {
     "@tailwindcss/line-clamp": "^0.4.0",
     "@types/aos": "^3.0.4",
-    "@types/mdx": "^2.0.2",
+    "@types/mdx": "^2.0.10",
     "@types/node": "^18.6.4",
     "@types/react": "^18.2.6",
     "@types/simple-oauth2": "^4.1.1",
