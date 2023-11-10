@@ -39,7 +39,7 @@
     "react": "18.2.0",
     "react-dom": "18.2.0",
     "sass": "^1.62.1",
-    "sharp": "^0.32.1",
+    "sharp": "^0.32.6",
     "shiki": "^0.14.5",
     "simple-oauth2": "^5.0.0",
     "styled-components": "^5.3.10",
