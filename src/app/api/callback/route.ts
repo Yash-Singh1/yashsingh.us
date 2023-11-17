@@ -58,10 +58,16 @@ const handler = async (req: Request) => {
 
     return new Response(responseBody, {
       status: 200,
+      headers: {
+        'Content-Type': 'text/html',
+      },
     });
   } catch (error) {
     return new Response(renderBody('error', error), {
       status: 200,
+      headers: {
+        'Content-Type': 'text/html',
+      },
     });
   }
 };

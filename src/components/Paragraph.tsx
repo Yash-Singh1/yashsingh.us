@@ -6,7 +6,7 @@ function Paragraph({
   className = '',
   ...props
 }: {
-  children: ReactNode;
+  children?: ReactNode;
   className?: string;
 }) {
   return (
