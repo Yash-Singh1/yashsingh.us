@@ -62,7 +62,7 @@
     "eslint-config-prettier": "^8.5.0",
     "eslint-plugin-eslint-comments": "^3.2.0",
     "eslint-plugin-import": "^2.26.0",
-    "eslint-plugin-jsx-a11y": "^6.6.1",
+    "eslint-plugin-jsx-a11y": "^6.8.0",
     "eslint-plugin-unicorn": "^44.0.2",
     "gray-matter": "^4.0.3",
     "next-compose-plugins": "^2.2.1",
