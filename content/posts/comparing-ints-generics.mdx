@@ -1,0 +1,157 @@
+---
+title: 'Comparing Integers w/ Typescript Generics'
+subtitle: 'Solving Extreme-rated problem on Type Challenge'
+image: '/img/compare-ts.png'
+author: 'Yash Singh'
+date: '2023/12/03'
+keywords: [typescript, javascript]
+---
+
+# Comparing Integers w/ Typescript Generics
+
+Hi there, today I will be going over the solution to the Extreme-rated problem on Type Challenge called [`Integers Comparator`](https://typehero.dev/challenge/integers-comparator).
+
+## Problem Statement
+
+The problem statement is pretty simple, we are given two integers and we have to compare them and return the result as an enum option:
+
+```ts
+enum Comparison {
+  Greater,
+  Equal,
+  Lower,
+}
+
+type Comparator<A extends number, B extends number> = Comparison;
+
+type Ex1 = Comparator<5, 5>; // expected to be 'Equal'
+type Ex2 = Comparator<5, 6>; // expected to be 'Lower'
+type Ex3 = Comparator<6, 5>; // expected to be 'Greater'
+```
+
+The test cases require us to handle negative numbers and large numbers that can reach around $2^53$. This means we can't use the traditional method of comparing integers with creating an array and comparing their lengths. Instead, we can:
+
+1. Handle negative numbers
+2. Compare lengths of numbers
+3. Compare each digit of the equal-length numbers
+
+## 1 - Handling Negative Numbers
+
+The first thing we need to do is handle negative numbers. I'm sure there are better ways to do this but I decided to stringify the number and search for a negative sign at the beginning:
+
+```ts
+type Comparator<A extends number, B extends number> = `${A}` extends `${B}`
+  ? // Both numbers are equal
+    Comparison.Equal
+  : `${A}` extends `-${infer Num1}`
+  ? // A is negative
+    `${B}` extends `-${infer Num2}`
+    ? // Since A and B are negative, we can negate both sides and thus have to switch both sides
+      _CompareStrings<Num2, Num1>
+    : // A is negative and B is positive, so A < B
+      Comparison.Lower
+  : `${B}` extends `-${infer _}`
+  ? // B is negative
+    Comparison.Greater
+  : // Both numbers are positive
+    _CompareStrings<`${A}`, `${B}`>;
+```
+
+The ternary syntax is a bit confusing, but once you wrap your head around it makes sense. Basically, this piece of code runs the following:
+
+1. Check if both numbers are equal and return if so
+2. If A is negative and B is negative, then negate both sides and switch them (since -5 < -4 is true then 5 > 4 is true) and compare as strings
+3. If A is negative and B is positive, then A < B
+4. If B is negative and A is positive, then A > B
+5. If both numbers are positive, then compare them as strings
+
+Whenever we want to reference the stringified version of a number, we simply put it through a template literal with `${A}`. We leave off the task of comparing the numbers as strings to a helper generic called `_CompareStrings`.
+
+## 2 - Comparing Lengths
+
+This is where the fun begins. Over here, we have to compare two positive numbers given as a string. Since we will be comparing the digits of these numbers, we will have to make sure that both strings are of equal length. There are two ways to ensure this:
+
+- Pad shorter string with 0s
+- Return result if lengths are not equal
+
+In this example, I will be going over the second method, but you can try the first method if you want to challenge yourself.
+
+When you are comparing the length of two strings, the thing to note is that TypeScript doesn't respect the length of constant string literal types. Because of this, we will have to convert our string to a tuple of characters and then get the length of that. To do this, we will create two helper generics, `CreateStrArr` which will convert a string to a tuple, and `LengthOfString` which will return the length of the tuple evaluated from `CreateStrArr`:
+
+```ts
+type CreateStrArr<S extends string> = S extends `${infer First}${infer Rest}`
+  ? [First, ...CreateStrArr<Rest>]
+  : [];
+type LengthOfString<S extends string> = CreateStrArr<S>['length'];
+```
+
+The `CreateStrArr` generic takes advantage of the fact that TypeScript is lazy-first when it is inferring template literal types. This means that we can get the first character by inferring it at the beginning of the string and TypeScript will automatically push the rest in the other inference. This generic is recursive, meaning it takes the first character of the current string and then adds it to the beginning of the tuple for the rest of the string.
+
+The `LengthOfString` generic on the other hand is much more simple. It evaluates the tuple using `CreateStrArr` and returns the length of said tuple.
+
+Now that our utilities for comparing the length of the two strings are ready, we can use them in `_CompareStrings`:
+
+```ts
+type _CompareStrings<A extends string, B extends string> = A extends B
+  ? // Both strings are equal
+    Comparison.Equal
+  : CreateStrArr<A> extends [...CreateStrArr<B>, ...infer _]
+  ? // A is longer
+    Comparison.Greater
+  : CreateStrArr<B> extends [...CreateStrArr<A>, ...infer _]
+  ? // B is longer
+    Comparison.Lower
+  : unknown /* Handle digit comparison here */;
+```
+
+In the above expression, we make use of a pretty neat technique in TypeScript generics that allows us to check if a tuple is a subset of another tuple. In the expression `CreateStrArr<A> extends [...CreateStrArr<B>, ...(infer _)]{:ts}`, we check to see if the tuple formed by the string `A` is an extension of the tuple formed by the string `B` by spreading it alongside an inferred type. Again, the ternaries are a little complicated, but once you wrap your head around it, this expression is simply checking if any of the strings are larger and returning the comparison result. However, I left out the digit comparison with an `unknown{:ts}` because that is what we will handle next.
+
+## 3 - Comparing Digits
+
+The next and final part of our solution would be to compare the digits of the two strings. So far we have handled negative numbers and made sure that both numbers have the same number of digits. Next, we will check all the digits in order to find out which one is greater. To achieve this, we will have a helper generic called `CompareDigit` which will take in two digits and return the comparison result:
+
+```ts
+type Digits = '0123456789';
+/* prettier-ignore */
+type CompareDigit<S1 extends string, S2 extends string> =
+  S1 extends S2
+    // Both digits are equal
+    ? Comparison.Equal
+    // Check the offset of the digits in the Digits string (longer offset means greater digit)
+    : Digits extends `${infer First}${S1}${infer _}`
+      ? Digits extends `${infer First2}${S2}${infer _}`
+        // Compare the offset of the digits (if S1 has longer offset, it is greater)
+        ? CreateStrArr<First> extends [...CreateStrArr<First2>, ...(infer _)]
+          ? Comparison.Greater
+          : Comparison.Lower
+        : never
+      : never;
+```
+
+For the `CompareDigit` generic, we first check if both digits are equal. If they are we return `Comparison.Equal`. Otherwise, we extract the "offset" of the digit from the `Digits` string. This is basically the entire string up till the first encounter of that digit in `Digits`. A longer offset means we have a larger digit, for example, the offset of 3 would be `012` while the offset of 7 would be `0123456`. We can now compare the length of the offsets by using the trick that we used earlier in the `_CompareStrings` generic.
+
+Now that we finally have our `CompareDigit` generic, we can use it in the `_CompareStrings` generic:
+
+```ts
+/* prettier-ignore */
+type _CompareStrings<A extends string, B extends string> =
+  A extends B
+    ? Comparison.Equal
+    : CreateStrArr<A> extends [...CreateStrArr<B>, ...(infer _)]
+      ? Comparison.Greater
+      : CreateStrArr<B> extends [...CreateStrArr<A>, ...(infer _)]
+        ? Comparison.Lower
+        : A extends `${infer FirstD}${infer Rest}`
+          ? B extends `${infer FirstD2}${infer Rest2}`
+            ? CompareDigit<FirstD, FirstD2> extends Comparison.Equal
+              ? _CompareStrings<Rest, Rest2>
+              : CompareDigit<FirstD, FirstD2>
+            : never
+          : never;
+```
+
+Most of the code for `_CompareStrings` should look familiar, except now when we have two strings of equal length, we compare the first digit of the two strings. If they are equal, then we would recurse and compare the rest of the string, otherwise we would return the result of the current digit comparison.
+
+## Conclusion
+
+And that's it for this challenge! I personally really enjoyed solving this problem because it involved a lot of complex concepts such as template literal types, tuple length comparison, and much more. I hope you enjoyed this challenge as much as I did and learned something new!
