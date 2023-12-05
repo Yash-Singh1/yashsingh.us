@@ -19,6 +19,7 @@ export async function generateMetadata(): Promise<Metadata> {
     title: 'Saiansh (Yash) Singh - yashsingh.us',
     description: data.description,
     openGraph: {
+      title: 'Saiansh (Yash) Singh - yashsingh.us',
       type: 'website',
     },
   };

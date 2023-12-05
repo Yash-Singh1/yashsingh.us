@@ -36,10 +36,11 @@ export async function generateMetadata({ params }: PostProps): Promise<Metadata>
   const { data } = getPostData(params.post);
 
   return {
-    title: `${data.title} | Yash Singh's Blog - yashsingh.us`,
+    title: `${data.title}`,
     description: data.subtitle,
     authors: { name: 'Yash Singh' },
     openGraph: {
+      title: `${data.title}`,
       images: data.image,
     },
   };
