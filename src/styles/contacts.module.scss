@@ -3,6 +3,11 @@
 .markdown-body {
   @apply text-white pl-5 pt-6;
 
+  h2 {
+    --tw-prose-links: #3291ff;
+    margin-bottom: 1.25rem;
+  }
+
   h2:not(:nth-child(1)) {
     @apply mt-5;
   }

@@ -1,12 +1,12 @@
 {
   "description": "I am a rising high school sophomore who likes programming in his free time. One of my other hobbies is basketball.",
   "projects": [
-    "epack",
+    "stylex-vscode",
     "eslint-plugin-userscripts",
-    "ball-royale",
-    "randomgen-parser",
-    "dotfiles",
-    "competitive-programming"
+    "schoolconnect",
+    "epack",
+    "competitive-programming",
+    "yashsingh.us"
   ],
   "skills": [
     {

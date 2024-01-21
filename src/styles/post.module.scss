@@ -9,9 +9,7 @@
 .markdown-body {
   min-width: 200px;
   max-width: 100%;
-  --color-accent-fg: #4cacfc;
-  --color-fg-default: #ddd;
-  color: var(--color-fg-default);
+
   @apply box-border m-auto md:p-11 bg-transparent;
 
   pre {
@@ -93,6 +91,10 @@
       display: none;
     }
   }
+
+  code[data-line-numbers] [data-line]::before {
+    @apply hidden md:inline-block;
+  }
 }
 
 .blog-post-body.markdown-body {
@@ -128,5 +130,17 @@
 }
 
 .breadcrumb {
-  @apply sm:flex-nowrap flex-wrap;
+  @apply sm:flex-nowrap flex-wrap text-[#666] box-border flex items-center text-base w-auto h-auto p-0 m-0 gap-2;
+
+  & > * {
+    @apply inline-flex items-center;
+  }
+
+  & > *:nth-child(even) {
+    @apply text-lg;
+  }
+
+  & > *:last-child {
+    color: #999;
+  }
 }

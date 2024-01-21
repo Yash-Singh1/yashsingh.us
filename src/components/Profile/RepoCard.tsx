@@ -1,14 +1,9 @@
 'use client';
 
 import type RepoInfo from '../../types/RepoInfo';
-import { config } from '@fortawesome/fontawesome-svg-core';
-import '@fortawesome/fontawesome-svg-core/styles.css';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faStar, faCodeBranch } from '@fortawesome/free-solid-svg-icons';
 import 'atropos/css';
 import { Atropos } from 'atropos/react';
-
-config.autoAddCss = false;
+import { GitFork, Star } from 'lucide-react';
 
 interface RepoCardProps {
   repo: RepoInfo;
@@ -27,7 +22,7 @@ function RepoCard({ repo }: RepoCardProps) {
       rotateTouch={false}
       scaleClassName='rounded-lg'
       innerClassName='rounded-lg w-max'
-      className='rounded-lg'
+      className='rounded-lg cursor-pointer'
       rotateClassName='rounded-lg'
       alwaysActive={false}
     >
@@ -69,7 +64,7 @@ function RepoCard({ repo }: RepoCardProps) {
         <div className='absolute bottom-3 lg:bottom-5 right-3 lg:right-5 flex flex-nowrap gap-3 sm:gap-4'>
           {repo.repository.stargazerCount > 1 ? (
             <div className='inline-block'>
-              <FontAwesomeIcon icon={faStar} className='mr-1 w-4 md:w-5' />
+              <Star className='mr-1 w-4 inline-block fill-current align-text-top md:w-5' />
               <span className='par text-xl sm:text-2xl leading-[0px]'>
                 {repo.repository.stargazerCount}
               </span>
@@ -77,7 +72,7 @@ function RepoCard({ repo }: RepoCardProps) {
           ) : null}
           {repo.repository.forkCount > 0 ? (
             <div className='hidden mid:inline-block'>
-              <FontAwesomeIcon icon={faCodeBranch} className='mr-1 w-3 md:w-5' />
+              <GitFork className='mr-1 w-3 md:w-5 inline-block stroke-[2px]' />
               <span className='par text-xl sm:text-2xl leading-[0px]'>
                 {repo.repository.forkCount}
               </span>

@@ -1,6 +1,7 @@
 @use 'colors';
 @use 'mixins';
 @use '../../node_modules/aos/dist/aos.css';
+@use './shadcn.css';
 
 @tailwind base;
 @tailwind components;
@@ -47,7 +48,7 @@ text {
   text-decoration: none;
 }
 
-body {
+html body {
   background-color: colors.$background !important;
   margin: 0;
 }

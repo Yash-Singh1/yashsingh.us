@@ -1,5 +1,5 @@
 import type { ReactNode } from 'react';
-import { overrideTailwindClasses } from 'tailwind-override';
+import { cn } from '@/lib/utils';
 
 function Paragraph({
   children,
@@ -10,10 +10,7 @@ function Paragraph({
   className?: string;
 }) {
   return (
-    <p
-      className={overrideTailwindClasses(`text-gray-400 text-lg md:text-xl mt-5 par ${className}`)}
-      {...props}
-    >
+    <p className={cn('text-[#D1D1D1] text-lg md:text-xl mt-5 par', className)} {...props}>
       {children}
     </p>
   );
