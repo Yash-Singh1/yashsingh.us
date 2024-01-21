@@ -20,7 +20,7 @@
     "@headlessui/react": "^1.7.14",
     "@mdx-js/loader": "^2.3.0",
     "@mdx-js/react": "^2.3.0",
-    "@next/mdx": "^13.3.2",
+    "@next/mdx": "^14.1.0",
     "@octokit/graphql": "^5.0.5",
     "@radix-ui/react-avatar": "^1.0.4",
     "@radix-ui/react-dialog": "^1.0.5",

@@ -26,8 +26,8 @@ dependencies:
     specifier: ^2.3.0
     version: 2.3.0(react@18.2.0)
   '@next/mdx':
-    specifier: ^13.3.2
-    version: 13.3.2(@mdx-js/loader@2.3.0)(@mdx-js/react@2.3.0)
+    specifier: ^14.1.0
+    version: 14.1.0(@mdx-js/loader@2.3.0)(@mdx-js/react@2.3.0)
   '@octokit/graphql':
     specifier: ^5.0.5
     version: 5.0.5(encoding@0.1.13)
@@ -106,9 +106,6 @@ dependencies:
   tailwind-merge:
     specifier: ^2.2.0
     version: 2.2.0
-  tailwind-override:
-    specifier: ^0.6.1
-    version: 0.6.1
   tailwindcss-animate:
     specifier: ^1.0.7
     version: 1.0.7(tailwindcss@3.4.1)
@@ -847,8 +844,8 @@ packages:
       glob: 7.1.7
     dev: true
 
-  /@next/mdx@13.3.2(@mdx-js/loader@2.3.0)(@mdx-js/react@2.3.0):
-    resolution: {integrity: sha512-llJe1mudOsid1GHokLGl8SOWyHsblXaqxZoOl2CYDavVJeZptQax4IB+usP9tGO4MlKF1PXMrCQcUuxbz4kbRw==}
+  /@next/mdx@14.1.0(@mdx-js/loader@2.3.0)(@mdx-js/react@2.3.0):
+    resolution: {integrity: sha512-YLYsViq91+H8+3oCtK1iuMWdeN14K70Hy6/tYScY+nfo5bQ84A/A+vA6UdNC9MkbWQ/373hQubx2p4JvUjlb2Q==}
     peerDependencies:
       '@mdx-js/loader': '>=0.15.0'
       '@mdx-js/react': '>=0.15.0'
@@ -6790,10 +6787,6 @@ packages:
     resolution: {integrity: sha512-SqqhhaL0T06SW59+JVNfAqKdqLs0497esifRrZ7jOaefP3o64fdFNDMrAQWZFMxTLJPiHVjRLUywT8uFz1xNWQ==}
     dependencies:
       '@babel/runtime': 7.23.8
-    dev: false
-
-  /tailwind-override@0.6.1:
-    resolution: {integrity: sha512-FOxLFcXTe9eqC85SNCREyWw/CG8hyNSBJNrp+rjMDV7m63UoJzpkNJtXNrA0y3tE9m0d3ccNj8HBVQG/hfmNxA==}
     dev: false
 
   /tailwindcss-animate@1.0.7(tailwindcss@3.4.1):
