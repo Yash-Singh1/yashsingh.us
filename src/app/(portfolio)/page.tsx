@@ -62,14 +62,14 @@ export default async function Home() {
           request: {
             fetch,
           },
-        }
+        },
       );
       repoInfo[project!] = repo;
     }
   } catch (error) {
     console[process.env.NODE_ENV === 'development' ? 'warn' : 'error'](
       'GitHub GraphQL Error',
-      error
+      error,
     );
   }
 

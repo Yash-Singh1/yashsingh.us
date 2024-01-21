@@ -29,7 +29,9 @@
     &:hover {
       background-position: 0 100%;
       @apply text-slate-700;
-      transition: background-position 0.25s cubic-bezier(0, 1, 0, 1), color 0.25s;
+      transition:
+        background-position 0.25s cubic-bezier(0, 1, 0, 1),
+        color 0.25s;
     }
   }
 

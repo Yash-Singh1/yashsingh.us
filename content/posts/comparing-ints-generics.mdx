@@ -44,17 +44,17 @@ type Comparator<A extends number, B extends number> = `${A}` extends `${B}`
   ? // Both numbers are equal
     Comparison.Equal
   : `${A}` extends `-${infer Num1}`
-  ? // A is negative
-    `${B}` extends `-${infer Num2}`
-    ? // Since A and B are negative, we can negate both sides and thus have to switch both sides
-      _CompareStrings<Num2, Num1>
-    : // A is negative and B is positive, so A < B
-      Comparison.Lower
-  : `${B}` extends `-${infer _}`
-  ? // B is negative
-    Comparison.Greater
-  : // Both numbers are positive
-    _CompareStrings<`${A}`, `${B}`>;
+    ? // A is negative
+      `${B}` extends `-${infer Num2}`
+      ? // Since A and B are negative, we can negate both sides and thus have to switch both sides
+        _CompareStrings<Num2, Num1>
+      : // A is negative and B is positive, so A < B
+        Comparison.Lower
+    : `${B}` extends `-${infer _}`
+      ? // B is negative
+        Comparison.Greater
+      : // Both numbers are positive
+        _CompareStrings<`${A}`, `${B}`>;
 ```
 
 The ternary syntax is a bit confusing, but once you wrap your head around it makes sense. Basically, this piece of code runs the following:
@@ -96,12 +96,12 @@ type _CompareStrings<A extends string, B extends string> = A extends B
   ? // Both strings are equal
     Comparison.Equal
   : CreateStrArr<A> extends [...CreateStrArr<B>, ...infer _]
-  ? // A is longer
-    Comparison.Greater
-  : CreateStrArr<B> extends [...CreateStrArr<A>, ...infer _]
-  ? // B is longer
-    Comparison.Lower
-  : unknown /* Handle digit comparison here */;
+    ? // A is longer
+      Comparison.Greater
+    : CreateStrArr<B> extends [...CreateStrArr<A>, ...infer _]
+      ? // B is longer
+        Comparison.Lower
+      : unknown /* Handle digit comparison here */;
 ```
 
 In the above expression, we make use of a pretty neat technique in TypeScript generics that allows us to check if a tuple is a subset of another tuple. In the expression `CreateStrArr<A> extends [...CreateStrArr<B>, ...(infer _)]{:ts}`, we check to see if the tuple formed by the string `A` is an extension of the tuple formed by the string `B` by spreading it alongside an inferred type. Again, the ternaries are a little complicated, but once you wrap your head around it, this expression is simply checking if any of the strings are larger and returning the comparison result. However, I left out the digit comparison with an `unknown{:ts}` because that is what we will handle next.
