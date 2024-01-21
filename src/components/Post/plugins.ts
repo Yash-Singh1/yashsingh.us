@@ -3,13 +3,20 @@ import remarkFrontmatter from 'remark-frontmatter';
 import rehypePrettyCode from 'rehype-pretty-code';
 import rehypeKatex from 'rehype-katex';
 import remarkMath from 'remark-math';
+import type { MDXRemote } from 'next-mdx-remote/rsc';
 
-const plugins: {
-  remarkPlugins: import('unified').PluggableList;
-  rehypePlugins: import('unified').PluggableList;
-} = {
+type PluginOptions = NonNullable<
+  NonNullable<Parameters<typeof MDXRemote>[0]['options']>['mdxOptions']
+>;
+
+const plugins: PluginOptions = {
   remarkPlugins: [remarkGfm, remarkFrontmatter, remarkMath],
-  rehypePlugins: [[rehypePrettyCode, { theme: 'one-dark-pro' }], rehypeKatex],
+  rehypePlugins: [
+    [rehypePrettyCode, { theme: 'one-dark-pro' }] as NonNullable<
+      PluginOptions['rehypePlugins']
+    >[number],
+    rehypeKatex as NonNullable<PluginOptions['rehypePlugins']>[number],
+  ],
 };
 
 export default plugins;

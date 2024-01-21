@@ -17,7 +17,7 @@ export const lowerLevels = [null, '3xl', '2xl', 'xl', 'lg', 'lg', 'lg'];
 function HeadingFactory(level: number) {
   return function Heading({ children = null }: { children?: React.ReactNode } | undefined = {}) {
     // TODO: Handle duplicates with slugging libraries
-    const innerText = getInnerText(children).toLowerCase().replace(/\W+/g, '-');
+    const innerText = getInnerText(children).toLowerCase().replaceAll(/\W+/g, '-');
     const levelHeading: HTMLHeadings = `h${level}` as HTMLHeadings;
 
     return React.createElement(

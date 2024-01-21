@@ -51,9 +51,5 @@ export default async function Post({ params }: PostProps) {
     redirect(data.link);
   }
 
-  // const mdxSource = await serialize(content, {
-  //   mdxOptions: plugins,
-  // });
-
   return <PostContent source={content} data={data} />;
 }
