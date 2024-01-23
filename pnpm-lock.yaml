@@ -14,8 +14,8 @@ dependencies:
     specifier: ^0.7.1
     version: 0.7.1
   '@fontsource/baloo-bhai-2':
-    specifier: ^4.5.12
-    version: 4.5.12
+    specifier: ^5.0.18
+    version: 5.0.18
   '@headlessui/react':
     specifier: ^1.7.14
     version: 1.7.14(react-dom@18.2.0)(react@18.2.0)
@@ -629,8 +629,8 @@ packages:
     engines: {node: ^12.22.0 || ^14.17.0 || >=16.0.0}
     dev: true
 
-  /@fontsource/baloo-bhai-2@4.5.12:
-    resolution: {integrity: sha512-+qMX8wRSexZYDjnXjPLfhmZRcNNXpBrVp0uZpk+RDBD3NyN12B5mmztbDtpB9oB0bfNxvreL49j5XqulGOwvQQ==}
+  /@fontsource/baloo-bhai-2@5.0.18:
+    resolution: {integrity: sha512-WpSLejEO0BPjFlZYndTdj2QP3qTq5a1iMfDaHYuWPnY07DksF0JxZ0cYXmadlW6f7S6yxPDcmzxX3/L9JJFFbw==}
     dev: false
 
   /@hapi/boom@10.0.1:
