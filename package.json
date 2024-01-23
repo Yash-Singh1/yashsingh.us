@@ -16,7 +16,7 @@
   },
   "dependencies": {
     "@auth/core": "^0.7.1",
-    "@fontsource/baloo-bhai-2": "^4.5.12",
+    "@fontsource/baloo-bhai-2": "^5.0.18",
     "@headlessui/react": "^1.7.14",
     "@mdx-js/loader": "^3.0.0",
     "@mdx-js/react": "^3.0.0",
