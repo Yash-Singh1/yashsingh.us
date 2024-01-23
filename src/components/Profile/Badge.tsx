@@ -17,19 +17,19 @@ function Badge({ icon, text, link, circlize = false }: BadgeProps) {
     <motion.a
       initial={{ translateY: 0 }}
       whileHover={{
-        translateY: -2,
         scale: 1.1,
         transition: {
           duration: 0.1,
           delay: 0,
-          ease: 'easeInOut',
+          ease: 'linear',
         },
       }}
       whileTap={{
         scale: 1,
         transition: {
           duration: 0.1,
-          ease: 'easeInOut',
+          delay: 0,
+          ease: 'linear',
         },
       }}
       href={link || '/404'}
