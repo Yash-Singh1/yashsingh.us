@@ -1,7 +1,7 @@
 import Home from './Home';
 
-interface SkillsGrouped {
-  [key: string]: Home['skills'];
-}
+type SkillsGrouped = {
+  [_ in Home['skills'][number]['status']]: Home['skills'];
+};
 
 export default SkillsGrouped;

@@ -73,12 +73,13 @@ export default async function Home() {
     );
   }
 
-  const skillsGrouped: SkillsGrouped = {};
+  const skillsGrouped: SkillsGrouped = {
+    proficient: [],
+    good: [],
+    learning: [],
+  };
 
   for (const skill of data!.skills) {
-    if (!skillsGrouped[skill!.status!]) {
-      skillsGrouped[skill!.status!] = [];
-    }
     skillsGrouped[skill!.status!]!.push(skill!);
   }
 

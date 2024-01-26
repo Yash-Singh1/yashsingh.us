@@ -12,7 +12,8 @@
     "start": "next start",
     "lint": "next lint && prettier --check .",
     "lint:fix": "next lint --fix && prettier --write .",
-    "generate-feed": "node -r esbuild-runner/register src/lib/generateFeed.ts"
+    "generate-feed": "node -r esbuild-runner/register src/lib/generateFeed.ts",
+    "type-check": "tsc --noEmit"
   },
   "dependencies": {
     "@auth/core": "^0.7.1",

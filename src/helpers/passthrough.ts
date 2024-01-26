@@ -13,3 +13,14 @@ function passthrough(strings: TemplateStringsArray, ...keys: string[]): string {
 }
 
 export default passthrough;
+
+// Hacky template tag literal to help leverage Tailwind Intellisense in template literals
+// @see https://github.com/tailwindlabs/tailwindcss-intellisense/blob/1f1b4436e6e9d953073e154e17d0527372677e15/packages/tailwindcss-language-service/src/util/find.ts#L160
+
+const PREFIX = '(className=" ';
+const SUFFIX = ' "';
+
+export function tailwind(...args: Parameters<typeof passthrough>) {
+  const result = passthrough(...args);
+  return result.slice(PREFIX.length, result.length - SUFFIX.length);
+}

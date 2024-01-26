@@ -54,8 +54,8 @@
     {
       "status": "proficient",
       "name": "LLMs",
-      "icon": "/img/uploads/openai.svg",
-      "link": "https://langchain.com/"
+      "icon": "🦜",
+      "link": "https://www.langchain.com/"
     },
     {
       "status": "proficient",
@@ -64,7 +64,7 @@
       "link": "https://vitejs.dev/"
     },
     {
-      "status": "learning",
+      "status": "good",
       "name": "Java",
       "icon": "/img/uploads/java.svg",
       "link": "https://java.com/"
@@ -82,7 +82,7 @@
       "link": "https://reactjs.org/"
     },
     {
-      "status": "good",
+      "status": "proficient",
       "name": "Python",
       "icon": "/img/uploads/python.png",
       "link": "https://www.python.org/"
@@ -110,12 +110,6 @@
       "name": "Tailwind CSS",
       "icon": "/img/uploads/tailwindcss.svg",
       "link": "https://tailwindcss.com/"
-    },
-    {
-      "status": "good",
-      "name": "CoffeeScript",
-      "icon": "/img/uploads/coffeescript.svg",
-      "link": "https://coffeescript.org/"
     },
     {
       "status": "learning",
@@ -203,6 +197,12 @@
       "status": "proficient",
       "icon": "/img/uploads/t3.svg",
       "link": "https://create.t3.gg/"
+    },
+    {
+      "name": "Rust",
+      "status": "learning",
+      "icon": "/img/uploads/rust-logo.svg",
+      "link": "https://www.rust-lang.org/"
     }
   ]
 }
