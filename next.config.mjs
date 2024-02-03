@@ -14,6 +14,9 @@ const nextConfig = {
   compiler: {
     styledComponents: false,
   },
+  experimental: {
+    mdxRs: true,
+  },
 };
 
 async function config() {

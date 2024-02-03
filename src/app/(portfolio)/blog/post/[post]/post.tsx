@@ -1,5 +1,3 @@
-// 'use client';
-
 import 'katex/dist/katex.min.css';
 import postStyles from '../../../../../styles/post.module.scss';
 import coolBgStyles from '../../../../../styles/cool-bg.module.scss';
@@ -13,7 +11,6 @@ import plugins from '../../../../../components/Post/plugins';
 import Link from 'next/link';
 
 export default function PostContent({ data, source }: { data: any; source: string }) {
-  // const router = useRouter();
   return (
     <main className={`box-content ${coolBgStyles['cool-bg']} p-0`}>
       <Container>

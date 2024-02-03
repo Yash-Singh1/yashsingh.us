@@ -6,6 +6,6 @@ export const metadata = {
   title: '404 - Not Found',
 };
 
-export default async function TechCovid() {
+export default function TechCovid() {
   notFound();
 }

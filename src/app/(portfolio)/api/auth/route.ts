@@ -4,7 +4,7 @@ import { scopes } from '../../../../lib/scopes';
 
 export const runtime = 'nodejs';
 
-export async function GET(req: Request) {
+export function GET(req: Request) {
   const proto = req.headers.get('x-forwarded-proto');
   const host = req.headers.get('host');
   const url = new URL(`${proto}://${host}/${req.url}`);

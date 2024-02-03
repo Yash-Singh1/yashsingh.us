@@ -1,8 +1,6 @@
-'use client';
-
 import type RepoInfo from '../../types/RepoInfo';
 import 'atropos/css';
-import { Atropos } from 'atropos/react';
+import { Atropos } from '@/components/Atropos';
 import { GitFork, Star } from 'lucide-react';
 
 interface RepoCardProps {

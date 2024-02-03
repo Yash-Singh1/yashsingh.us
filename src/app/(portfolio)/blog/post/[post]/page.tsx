@@ -44,7 +44,7 @@ export async function generateMetadata({ params }: PostProps): Promise<Metadata>
   };
 }
 
-export default async function Post({ params }: PostProps) {
+export default function Post({ params }: PostProps) {
   const { content, data } = getPostData(params.post);
 
   if (data.link) {
