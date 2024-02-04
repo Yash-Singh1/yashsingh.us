@@ -1,6 +1,6 @@
 import { AuthorizationCode } from 'simple-oauth2';
-import { getConfig } from '../../../../lib/config';
-import { scopes } from '../../../../lib/scopes';
+import { getConfig } from '../../../lib/config';
+import { scopes } from '../../../lib/scopes';
 
 function renderBody(status: string, content: any) {
   return `

@@ -1,7 +1,8 @@
 import { PostHogScript } from '@/components/PostHogScript';
+import { type Metadata } from 'next';
 import { type ReactNode } from 'react';
 
-export const metadata = {
+export const metadata: Metadata = {
   title: '',
   description: '',
 };

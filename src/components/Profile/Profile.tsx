@@ -24,7 +24,9 @@ interface ProfileProps {
 
 function Profile({ data, repoInfo, skillsGrouped }: ProfileProps) {
   return (
-    <Container className={`${coolBgStyles['cool-bg']} ${profileStyles['cool-bg']}`}>
+    <Container
+      className={`${coolBgStyles['cool-bg']} pt-0 xs:pt-0 sm:pt-0 md:pt-0 lg:pt-0 xl:pt-0`}
+    >
       <Header
         title={
           <>
@@ -34,7 +36,7 @@ function Profile({ data, repoInfo, skillsGrouped }: ProfileProps) {
         }
         intro="It's"
         large
-        className={coolBgStyles['header']}
+        className={`${coolBgStyles['header']} snap-start pt-12`}
       >
         <Paragraph className='max-w-prose text-base'>{data ? data.description : ''}</Paragraph>
         <br />

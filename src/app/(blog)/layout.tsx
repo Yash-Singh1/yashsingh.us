@@ -1,5 +1,6 @@
 import { type Metadata } from 'next';
 import type React from 'react';
+import Footer from '../../components/Footer';
 import { AOSProvider } from '../../components/AOSProvider';
 import '@fontsource/baloo-bhai-2/600.css';
 import '@fontsource/baloo-bhai-2/700.css';
@@ -34,6 +35,7 @@ export default function RootLayout({
       <meta name='darkreader-lock' />
       <body>
         {children}
+        <Footer />
       </body>
       <AOSProvider />
       <PostHogScript />

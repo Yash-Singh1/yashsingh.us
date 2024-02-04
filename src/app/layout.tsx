@@ -1,10 +1,11 @@
 import { type Metadata } from 'next';
 import type React from 'react';
-import { AOSProvider } from '../../components/AOSProvider';
+import Footer from '../components/Footer';
+import { AOSProvider } from '../components/AOSProvider';
 import '@fontsource/baloo-bhai-2/600.css';
 import '@fontsource/baloo-bhai-2/700.css';
-import '../../styles/global.scss';
-import '../../styles/loader.scss';
+import '../styles/global.scss';
+import '../styles/loader.scss';
 import { PostHogScript } from '@/components/PostHogScript';
 
 export const metadata: Metadata = {
@@ -34,6 +35,7 @@ export default function RootLayout({
       <meta name='darkreader-lock' />
       <body>
         {children}
+        <Footer />
       </body>
       <AOSProvider />
       <PostHogScript />

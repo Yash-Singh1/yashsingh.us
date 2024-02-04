@@ -5,6 +5,7 @@ import { graphql } from '@octokit/graphql';
 import type RepoInfo from '../../types/RepoInfo';
 import type SkillsGrouped from '../../types/skillsGrouped';
 import { default as HomeType } from '../../types/Home';
+import Footer from '@/components/Footer';
 
 async function getCMSContent() {
   // Use import() to prevent dependency on execution context
@@ -84,8 +85,9 @@ export default async function Home() {
   }
 
   return (
-    <main>
+    <main className='snap-mandatory snap-y overscroll-y-contain overflow-y-scroll max-h-screen scroll-smooth'>
       <Profile data={data} repoInfo={repoInfo} skillsGrouped={skillsGrouped} />
+      <Footer className='snap-end' />
     </main>
   );
 }

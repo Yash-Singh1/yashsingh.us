@@ -50,10 +50,10 @@
   }
 }
 
-[data-aos='slide-right'].aos {
-  -webkit-transform: translate3d(-120%, 0, 0);
-  -ms-transform: translate3d(-120%, 0, 0);
-  transform: translate3d(-120%, 0, 0);
+[data-aos='fade-up'].aos {
+  -webkit-transform: translate3d(0, 5%, 0);
+  -ms-transform: translate3d(0, 5%, 0);
+  transform: translate3d(0, 5%, 0);
 }
 
 .no-select {

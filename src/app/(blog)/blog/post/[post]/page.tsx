@@ -4,7 +4,7 @@ import matter from 'gray-matter';
 import stripExtension from '../../../../../helpers/stripExtension';
 import PostContent from './post';
 import type { Metadata } from 'next';
-import { redirect } from 'next/navigation';
+import { notFound, redirect } from 'next/navigation';
 
 function getRootDir() {
   let dir = '../../../../';
@@ -15,12 +15,17 @@ function getRootDir() {
 }
 
 function getPostData(id: string) {
-  return matter(fs.readFileSync(path.join(getRootDir(), `content/posts/${id}.mdx`), 'utf8'));
+  try {
+    return matter(fs.readFileSync(path.join(getRootDir(), `content/posts/${id}.mdx`), 'utf8'));
+  } catch {
+    notFound();
+  }
 }
 
 export async function generateStaticParams() {
   return fs
     .readdirSync(path.join(getRootDir(), 'content/posts/'))
+    .filter((contentFilename) => contentFilename.endsWith('.mdx'))
     .map((contentFilename) => ({ post: stripExtension(contentFilename) }));
 }
 

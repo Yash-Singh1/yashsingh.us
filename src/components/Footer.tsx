@@ -2,10 +2,11 @@ import Link from 'next/link';
 import footerStyles from '../styles/footer.module.scss';
 import Image from 'next/image';
 import pfp from '../assets/pfp.png';
+import { cn } from '@/lib/utils';
 
-export default function Footer() {
+export default function Footer({ className }: { className?: string }) {
   return (
-    <footer id='footer' className={footerStyles['footer']}>
+    <footer id='footer' className={cn(footerStyles['footer'], className)}>
       <div className={footerStyles['footer-container']}>
         <div className='flex justify-center items-center'>
           <Image
