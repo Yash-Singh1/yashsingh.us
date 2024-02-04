@@ -32,9 +32,7 @@ export default function RootLayout({
   return (
     <html lang='en' data-theme='dark' className='dark'>
       <meta name='darkreader-lock' />
-      <body>
-        {children}
-      </body>
+      <body>{children}</body>
       <AOSProvider />
       <PostHogScript />
     </html>
