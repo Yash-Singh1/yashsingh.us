@@ -1,7 +1,6 @@
-import coolBgStyles from '../styles/cool-bg.module.scss';
-import Paragraph from '../components/Paragraph';
-import styles from '../styles/not-found.module.scss';
-import Footer from '@/components/Footer';
+import coolBgStyles from '../../styles/cool-bg.module.scss';
+import Paragraph from '../../components/Paragraph';
+import styles from '../../styles/not-found.module.scss';
 
 export const metadata = {
   title: '404 - Not Found',
@@ -9,7 +8,6 @@ export const metadata = {
 
 export default function NotFound() {
   return (
-    <>
     <main className={`${styles['not-found-container']} ${coolBgStyles['cool-bg']}`}>
       <div className={styles['not-found-content']}>
         <h1 className='text-6xl md:text-7xl lg:text-9xl text-center'>😯</h1>
@@ -22,7 +20,5 @@ export default function NotFound() {
         </Paragraph>
       </div>
     </main>
-    <Footer />
-    </>
   );
 }
