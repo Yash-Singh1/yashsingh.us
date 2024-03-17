@@ -80,8 +80,8 @@ dependencies:
     specifier: ^4.4.1
     version: 4.4.1(react-dom@18.2.0)(react@18.3.0-canary-4b2a1115a-20240202)
   posthog-js:
-    specifier: ^1.88.3
-    version: 1.88.3
+    specifier: ^1.116.0
+    version: 1.116.0
   react:
     specifier: 18.3.0-canary-4b2a1115a-20240202
     version: 18.3.0-canary-4b2a1115a-20240202
@@ -6203,10 +6203,11 @@ packages:
       picocolors: 1.0.0
       source-map-js: 1.0.2
 
-  /posthog-js@1.88.3:
-    resolution: {integrity: sha512-6BLFTSWK8GrWfl5j9Ib+2w8YZKZfz2GqLMS7q4I93hbkknEMH5f1KaKDqPsGmGOM3SLQV0Cwd6nuCdFdqANS1w==}
+  /posthog-js@1.116.0:
+    resolution: {integrity: sha512-mSXEnB8W/hgiT8HE8Y0bWlLIM9JSI1e4TlosJL9H4/H/ekDJqL+Yi8JQNWhIefTgUBCU/ZuXmHzs2mO0rbVxhQ==}
     dependencies:
       fflate: 0.4.8
+      preact: 10.19.6
     dev: false
 
   /preact-render-to-string@5.2.3(preact@10.11.3):
@@ -6220,6 +6221,10 @@ packages:
 
   /preact@10.11.3:
     resolution: {integrity: sha512-eY93IVpod/zG3uMF22Unl8h9KkrcKIRs2EGar8hwLZZDU1lkjph303V9HZBwufh2s736U6VXuhD109LYqPoffg==}
+    dev: false
+
+  /preact@10.19.6:
+    resolution: {integrity: sha512-gympg+T2Z1fG1unB8NH29yHJwnEaCH37Z32diPDku316OTnRPeMbiRV9kTrfZpocXjdfnWuFUl/Mj4BHaf6gnw==}
     dev: false
 
   /prebuild-install@7.1.1:
