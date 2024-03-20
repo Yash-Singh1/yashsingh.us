@@ -71,7 +71,7 @@
     "eslint-plugin-unicorn": "^50.0.1",
     "gray-matter": "^4.0.3",
     "next-sitemap": "^4.2.3",
-    "postcss": "^8.4.16",
+    "postcss": "^8.4.37",
     "postcss-import": "^15.0.0",
     "postcss-scss": "^4.0.4",
     "prettier": "^3.2.4",
