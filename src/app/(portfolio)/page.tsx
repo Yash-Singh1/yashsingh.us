@@ -85,7 +85,7 @@ export default async function Home() {
   }
 
   return (
-    <main className='snap-mandatory snap-y overscroll-y-contain overflow-y-scroll max-h-screen scroll-smooth'>
+    <main className='overscroll-y-contain overflow-y-scroll max-h-screen scroll-smooth'>
       <Profile data={data} repoInfo={repoInfo} skillsGrouped={skillsGrouped} />
       <Footer className='snap-end' />
     </main>
