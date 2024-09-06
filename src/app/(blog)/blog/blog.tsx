@@ -10,7 +10,7 @@ import { type FC, useEffect, useState } from 'react';
 import { usePathname, useRouter } from 'next/navigation';
 import { Popover, Switch, Transition } from '@headlessui/react';
 import localizedKeywords from '../../../data/localizedKeywords';
-import { ChevronDown, Search } from 'lucide-react';
+import { ChevronDown, PencilLine, Search } from 'lucide-react';
 
 const BlogContent: FC<{ data: PostList }> = function BlogContent(props) {
   const router = useRouter();
@@ -171,6 +171,12 @@ const BlogContent: FC<{ data: PostList }> = function BlogContent(props) {
                   >
                     <h1 className='text-amber-200 uppercase font-mono font-bold md:text-2xl sm:text-xl text-lg group-hover:text-amber-100 transition mr-2 line-clamp-2'>
                       {edge.title!}
+                      {edge.draft && process.env.NODE_ENV === 'development' && (
+                        <span className='text-black bg-amber-200 font-mono normal-case font-bold text-base mx-4 px-1 inline-flex flex-row items-center justify-center gap-x-1 rounded-sm align-middle'>
+                          <PencilLine color='black' className='inline-block' />
+                          Draft
+                        </span>
+                      )}
                     </h1>
                     <p className='par text-gray-400 group-hover:text-gray-300 transition line-clamp-2'>
                       {edge.subtitle!}

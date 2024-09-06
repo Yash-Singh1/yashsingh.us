@@ -6,6 +6,7 @@ import '@fontsource/baloo-bhai-2/700.css';
 import '../../styles/global.scss';
 import '../../styles/loader.scss';
 import { PostHogScript } from '@/components/PostHogScript';
+import { font } from '@/lib/font';
 
 export const metadata: Metadata = {
   authors: [
@@ -30,7 +31,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang='en' data-theme='dark' className='dark'>
+    <html lang='en' data-theme='dark' className={`dark ${font.variable}`}>
       <meta name='darkreader-lock' />
       <body>{children}</body>
       <AOSProvider />

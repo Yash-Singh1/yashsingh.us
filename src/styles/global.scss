@@ -41,7 +41,7 @@ div#__next {
 .par,
 .markdown-body,
 text {
-  font-family: 'Baloo Bhai 2', cursive !important;
+  font-family: var(--font-baloo-bhai), cursive !important;
 }
 
 .markdown-body a:hover {

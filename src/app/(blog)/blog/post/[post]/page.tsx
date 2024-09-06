@@ -44,7 +44,7 @@ export async function generateMetadata({ params }: PostProps): Promise<Metadata>
     authors: { name: 'Yash Singh' },
     openGraph: {
       title: `${data.title}`,
-      images: data.image,
+      images: data.image || undefined,
     },
   };
 }

@@ -1,0 +1,26 @@
+---
+title: 'Building an LSP for StyleX'
+subtitle: 'How I built an LSP for StyleX'
+author: 'Yash Singh'
+date: '2024/04/03'
+keywords: [javascript]
+draft: true
+---
+
+# Building an LSP for StyleX
+
+I few months back I built a VSCode Extension for [StyleX](https://github.com/facebook/stylex). Building this extension was a fun exprience and I learned about many different things such as Language Servers, Unicode, and SWC, so I decided to write a blog post about it.
+
+## What is StyleX?
+
+Before I get into the VSCode extension and how I built it, let's first understand what StyleX is. StyleX is a minimalist atomic CSS-in-JS style system that runs a compiler step to pre-compile your styles into a CSS and unique class names. You can read more about it on their [website](https://stylexjs.com/).
+
+## How does the VSCode Extension work?
+
+For this VSCode Extension, I decided to use a [Language Server Protocol](https://microsoft.github.io/language-server-protocol/) model. The Language Server Protocol is a standardized way for a server to communicate language features to a client. In this case, the client is a VSCode Extension, and the server is a Node.js server that serves the features. The main reason for offloading the language feature work onto a separate server is:
+
+1. The server is no longer limited to the environment of the client.
+1. LSP is a standardized spec, meaning that it is now easy to port the LSP to other editors and clients.
+1. Using a server allows you to offload the work of parsing and analyzing the code to a separate process for efficiency.
+
+

@@ -7,6 +7,7 @@ export interface Post {
   date: string;
   link?: string;
   keywords?: string[];
+  draft?: boolean;
 }
 
 type PostList = Post[];

@@ -45,7 +45,13 @@ export default function PostContent({ data, source }: { data: any; source: strin
               </time>
             </div>
           </div>
-          <img src={data.image} className='w-full lg:w-3/4 xl:w-1/2 rounded-md' alt={data.title} />
+          {data.image ? (
+            <img
+              src={data.image}
+              className='w-full lg:w-3/4 xl:w-1/2 rounded-md'
+              alt={data.title}
+            />
+          ) : null}
         </div>
         <article
           className={`${postStyles['markdown-body']} ${postStyles['blog-post-body']} par prose dark:prose-invert`}
