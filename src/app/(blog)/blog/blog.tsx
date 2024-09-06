@@ -156,35 +156,37 @@ const BlogContent: FC<{ data: PostList }> = function BlogContent(props) {
           }`}
         >
           {posts && posts.length > 0 ? (
-            posts.map((edge) => {
-              return (
-                <Link
-                  href={edge.link || `/blog/post/${edge.filename}`}
-                  key={edge.filename}
-                  passHref
-                  legacyBehavior
-                >
-                  <motion.a
-                    whileHover={{ scale: 1.03, type: 'tween' }}
-                    whileTap={{ scale: 1, type: 'tween' }}
-                    className='p-4 border-[3px] border-gray-300/60 active:border-gray-300/60 hover:border-gray-200/80 rounded-md m-3 mx-0 bg-black/20 group shadow-md basis-full cursor-pointer hover:ring-4 hover:bg-black/30 hover:ring-blue-900 hover:shadow-xl hover:transition-all transition-all active:shadow-md active:ring-0 active:transition-none relative z-10'
+            posts
+              .filter((post) => process.env.NODE_ENV === 'development' || !post.draft)
+              .map((edge) => {
+                return (
+                  <Link
+                    href={edge.link || `/blog/post/${edge.filename}`}
+                    key={edge.filename}
+                    passHref
+                    legacyBehavior
                   >
-                    <h1 className='text-amber-200 uppercase font-mono font-bold md:text-2xl sm:text-xl text-lg group-hover:text-amber-100 transition mr-2 line-clamp-2'>
-                      {edge.title!}
-                      {edge.draft && process.env.NODE_ENV === 'development' && (
-                        <span className='text-black bg-amber-200 font-mono normal-case font-bold text-base mx-4 px-1 inline-flex flex-row items-center justify-center gap-x-1 rounded-sm align-middle'>
-                          <PencilLine color='black' className='inline-block' />
-                          Draft
-                        </span>
-                      )}
-                    </h1>
-                    <p className='par text-gray-400 group-hover:text-gray-300 transition line-clamp-2'>
-                      {edge.subtitle!}
-                    </p>
-                  </motion.a>
-                </Link>
-              );
-            })
+                    <motion.a
+                      whileHover={{ scale: 1.03, type: 'tween' }}
+                      whileTap={{ scale: 1, type: 'tween' }}
+                      className='p-4 border-[3px] border-gray-300/60 active:border-gray-300/60 hover:border-gray-200/80 rounded-md m-3 mx-0 bg-black/20 group shadow-md basis-full cursor-pointer hover:ring-4 hover:bg-black/30 hover:ring-blue-900 hover:shadow-xl hover:transition-all transition-all active:shadow-md active:ring-0 active:transition-none relative z-10'
+                    >
+                      <h1 className='text-amber-200 uppercase font-mono font-bold md:text-2xl sm:text-xl text-lg group-hover:text-amber-100 transition mr-2 line-clamp-2'>
+                        {edge.title!}
+                        {edge.draft && (
+                          <span className='text-black bg-amber-200 font-mono normal-case font-bold text-base mx-4 px-1 inline-flex flex-row items-center justify-center gap-x-1 rounded-sm align-middle'>
+                            <PencilLine color='black' className='inline-block' />
+                            Draft
+                          </span>
+                        )}
+                      </h1>
+                      <p className='par text-gray-400 group-hover:text-gray-300 transition line-clamp-2'>
+                        {edge.subtitle!}
+                      </p>
+                    </motion.a>
+                  </Link>
+                );
+              })
           ) : (
             <span className='text-gray-400 par text-xl mt-1'>
               No posts found matching that query

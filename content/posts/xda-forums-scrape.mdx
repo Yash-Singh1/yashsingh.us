@@ -1,0 +1,68 @@
+---
+title: 'Scraping XDA Forums'
+subtitle: 'How I scraped the entirety of XDA Forums'
+author: 'Yash Singh'
+date: '2024/09/05'
+image: ''
+draft: true
+---
+
+# Scraping XDA Forums
+
+A while back I was looking for a solution to a problem I was having with installing a specific Magisk Module to my Android phone. I'm pretty n00b at Android rooting and I was having a hard time looking for solutions on XDA Forums, which is when I had the idea of building a RAG chatbot for XDA Forums. This meant I would have to obtain all of hte posts on the forum. Overall, this was a fun experience and I got to scrape about 6M pages and 68M posts off the forum and found a security vulnerability in the API. In this post, I will go over how I did it and what I learned in the process.
+
+### Stage 1: Basic HTML Scrape with SQLite
+
+I couldn't find any docs on an API for the forum, so I decided to go with parsing the raw HTML. I used sqlite since I heard it's pretty easy to use from within Bun.js. I obtained the links to the threads I would have to scrape through the `/sitemap.xml` file that is used by web crawlers for SEO. Xenforo, the forum software used by XDA, does remove some of the threads from the sitemap, but this wasn't a problem since a majority of the threads were indexed.
+
+My initial implementation was pretty simple.
+
+- Fetch in loop with exponential backoff (to avoid rate limiting)
+- Extract data using `jsdom`
+- Insert data into SQLite
+- Repeat for next thread
+
+I'll be honest, `bun:sqlite`'s DX was really impressive, I loved how I could type a tuple for the inputs and have that appear in the arguments when executing the query:
+
+```ts
+const threadTagsInsertQuery = db.query<any, [thread_id: number, tag_id: number]>(
+  `INSERT INTO threadtags (thread_id, tag_id) VALUES (?, ?)`,
+);
+
+threadTagsInsertQuery.run(id, tagId);
+```
+
+I had an issue though, SQLite wasn't able to handle the large amount of data I would through at it. I was running multiple workers that would run through different slots of the sitemap entries, and a lot of the transactions were clashing with each other. I tried using WAL Mode and other hacks, but at the end of the day SQLite is optimized for read-and-writes not for a write-heavy workload.
+
+### Stage 2: Switch to Redis
+
+In my case I really didn't need a relational database to index the content for me, so I decided to go with a simple KV, Redis. Redis turned out to be much faster, but Redis still has a problem, it stores the entire KV in memory since it's trying to optimize for reads. This caused OOM errors a lot of the time as my dataset got big really fast. In my case I didn't want to conduct any read operations at my KV, I just wanted to throw data at it and have it be read-optimized at a later point in time.
+
+I also switched from `jsdom` to `linkedom` because `jsdom` apparently does some form of emulating the browser environment to get really good accuracy, which meant it consumes a large amount of memory an processing time. Linkedom wasn't [great](https://github.com/WebReflection/linkedom/issues/281) at supporting edge cases, but I was able to get it working with some workarounds. There were many inconsistencies for the selector paths I would have to use for querying the DOM, so I had a failure snapshot folder which would throw in all my errors mid-process and skip those threads. This let me iteratively add support for threads which I didn't support as of yet, such as article threads.
+
+At the halfway point, when I completed scraping the first pages for all threads (subsequent pages would be scraped next), I ran into two problems:
+
+1. I was IP Banned from XDA Forums and XDA Developers.
+2. I accidentally overwrote the page data:
+
+```diff
+-export async function insertPage(page: Page) {
++// i put the pageNumber as the key
++// :( 😭 😭 😭
++export async function insertPage(page: Page, threadId: number) {
+   await redis.hset(
+     "my_hash",
+-    `thread:page:${page.pageNumber}`,
++    `thread:page:${threadId}:${page.pageNumber}`,
+     JSON.stringify(page)
+   );
+ }
+```
+
+For a few weeks it seemed as if all was lost, I tried to see if I could use redundant data from other keys to recover the page keys, but that wasn't a possibility, until I found out that XDA Forums has an Android app.
+
+### Stage 3: Android App API and finding security vulns
+
+I initially found out about the Android App API through [`@theimpulson`](https://github.com/theimpulson)'s community Android App, [ReLab](https://github.com/theimpulson/ReLabs) (now archived unfortunately).
+
+It seems as if the Android App uses OAuth endpoints implemented in a Xenforo extension, to authenticate users with a token they can use. Interestingly, the API doesn't authenticate users to ensure that they have a token, meaning I can make API requests without one. The Android API wasn't part of the IP ban either, making me believe
