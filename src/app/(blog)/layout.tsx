@@ -1,7 +1,6 @@
 import { type Metadata } from 'next';
 import type React from 'react';
 import Footer from '../../components/Footer';
-import { AOSProvider } from '../../components/AOSProvider';
 import '../../styles/global.scss';
 import { PostHogScript } from '@/components/PostHogScript';
 import { font } from '@/lib/font';
@@ -35,7 +34,6 @@ export default function RootLayout({
         {children}
         <Footer />
       </body>
-      <AOSProvider />
       <PostHogScript />
     </html>
   );
