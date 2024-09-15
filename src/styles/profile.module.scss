@@ -18,38 +18,6 @@
   @apply flex-shrink flex-grow-0 sm:flex-grow;
 }
 
-.skills-list > p {
-  @apply mt-5 mb-2 text-amber-200;
-}
-
-.skills-list > div:not(.show-more-container):not(.show-less-container) {
-  @apply relative pt-1 mr-2;
-}
-
-.skills-list > div:not(.show-more-container):not(.show-less-container) > div {
-  @apply overflow-hidden h-2 mb-4 flex rounded-full bg-gray-300;
-}
-
-.progress-bar {
-  @apply shadow-none flex flex-col justify-center bg-violet-400 rounded-full;
-}
-
-.container-profile {
-  width: calc(100% - 48px) !important;
-}
-
-@media (min-width: 768px) {
-  .container-profile {
-    width: calc(100% - 96px) !important;
-  }
-}
-
-@media (min-width: 1024px) {
-  .container-profile {
-    width: calc(100% - 192px) !important;
-  }
-}
-
 [data-aos='fade-up'].aos {
   -webkit-transform: translate3d(0, 5%, 0);
   -ms-transform: translate3d(0, 5%, 0);

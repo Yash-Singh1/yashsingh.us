@@ -1,11 +1,3 @@
 @use 'mixins';
 
-.markdown-body {
-  @apply text-white pl-5 pt-6;
-}
-
-.markdown-body img {
-  margin-top: 10px;
-}
-
 @include mixins.cool-bg-light;

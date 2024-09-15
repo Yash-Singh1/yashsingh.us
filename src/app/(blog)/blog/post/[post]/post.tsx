@@ -54,7 +54,7 @@ export default function PostContent({ data, source }: { data: any; source: strin
           ) : null}
         </div>
         <article
-          className={`${postStyles['markdown-body']} ${postStyles['blog-post-body']} par prose dark:prose-invert max-w-none`}
+          className={`${postStyles['markdown-body']} par prose dark:prose-invert max-w-none`}
         >
           <MDXRemote
             options={{

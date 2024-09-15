@@ -3,7 +3,6 @@ import type React from 'react';
 import Footer from '../../components/Footer';
 import { AOSProvider } from '../../components/AOSProvider';
 import '../../styles/global.scss';
-import '../../styles/loader.scss';
 import { PostHogScript } from '@/components/PostHogScript';
 import { font } from '@/lib/font';
 

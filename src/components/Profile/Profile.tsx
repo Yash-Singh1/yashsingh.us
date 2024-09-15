@@ -100,7 +100,6 @@ function Profile({ data, repoInfo, skillsGrouped }: ProfileProps) {
         </Paragraph>
         <Contacts
           contacts={[
-            { name: 'Contacts', href: '/contacts', internal: true },
             {
               name: 'Email',
               href: 'mailto:me@yashsingh.us',

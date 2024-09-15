@@ -97,10 +97,6 @@
   }
 }
 
-.blog-post-body.markdown-body {
-  @apply pt-3;
-}
-
 @for $headingLevel from 1 through 6 {
   .markdown-body h#{$headingLevel} {
     a:hover {

@@ -4,7 +4,6 @@ import { AOSProvider } from '../../components/AOSProvider';
 import '@fontsource/baloo-bhai-2/600.css';
 import '@fontsource/baloo-bhai-2/700.css';
 import '../../styles/global.scss';
-import '../../styles/loader.scss';
 import { PostHogScript } from '@/components/PostHogScript';
 import { font } from '@/lib/font';
 
