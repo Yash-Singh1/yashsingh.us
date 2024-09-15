@@ -20,7 +20,9 @@ My initial implementation was pretty simple.
 - Fetch in loop with exponential backoff (to avoid rate limiting)
 - Extract data using `jsdom`
 - Insert data into SQLite
-- Repeat for next thread
+- Repeat for next thread after 1 second wait period
+
+All of this ran in 10 processes each with 10 concurrent tasks at a time.
 
 I'll be honest, `bun:sqlite`'s DX was really impressive, I loved how I could type a tuple for the inputs and have that appear in the arguments when executing the query:
 
@@ -65,4 +67,14 @@ For a few weeks it seemed as if all was lost, I tried to see if I could use redu
 
 I initially found out about the Android App API through [`@theimpulson`](https://github.com/theimpulson)'s community Android App, [ReLab](https://github.com/theimpulson/ReLabs) (now archived unfortunately).
 
-It seems as if the Android App uses OAuth endpoints implemented in a Xenforo extension, to authenticate users with a token they can use. Interestingly, the API doesn't authenticate users to ensure that they have a token, meaning I can make API requests without one. The Android API wasn't part of the IP ban either, making me believe
+It seems as if the Android App uses OAuth endpoints implemented in a Xenforo extension, to authenticate users with a token they can use.
+
+Interestingly, the API doesn't authenticate users to ensure that they have a token, meaning I can make API requests without one. The Android API wasn't part of the IP ban either, so I could use this to refetch the data for the scrape.
+
+I rewrote my initial scraping script to instead use the Android API and began fetching threads. In the middle, I ran into a few bugs with the Android API processing certain posts and returning an empty string. Switching over to the Web API fixed these problems.
+
+### Stage 4: Redis to RocksDB
+
+As the script was running in the background, I searched for a solution to Redis' memory problem. According to one old article I found, Redis does have a Redis on Flash module, but it is underneath a proprietrary license. KeysDB did have a KeysDB on Flash option, but KeysDB was discontinued a few years ago so I didn't want to go with that. Initially, I began writing my own KV by appending keys and values to two separate binary files and sorting the keys manually. While, I was looking for solutions to problems I was running into with my KV, I ran into RocksDB, which solved the exact issue I had.
+
+RocksDB's official bindings are in C++ and the only NAPI bindings used version 6.4, which didn't have the BlobDB feature that I wanted, separating the keys and the values. RocksDB without BlobDB was good enough for me, though, so I stuck with that.
