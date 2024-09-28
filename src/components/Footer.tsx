@@ -1,14 +1,11 @@
-// TODO: Bring in mixins.no-select to tailwind along with animation in footer.module.scss
-
 import Link from 'next/link';
-import footerStyles from '../styles/footer.module.scss';
 import Image from 'next/image';
 import pfp from '../assets/pfp.png';
 import { cn } from '@/lib/utils';
 
 export default function Footer({ className }: { className?: string }) {
   return (
-    <footer id='footer' className={cn('bg-black/20 text-gray-100', footerStyles['footer'], className)}>
+    <footer id='footer' className={cn('bg-black/20 text-gray-100', className)}>
       <div className='grid grid-cols-[1fr_2fr] box-border'>
         <div className='flex justify-center items-center'>
           <Image
@@ -23,11 +20,11 @@ export default function Footer({ className }: { className?: string }) {
         </div>
         <div className='flex flex-wrap flex-row items-center justify-end pr-4 mid:pr-0 mid:justify-around pb-2 mid:pb-0'>
           <div className='links lg:text-2xl md:text-xl text-lg flex justify-center gap-2'>
-            <Link className='p-1' href='/'>
+            <Link className='footer-link' href='/'>
               Home
             </Link>
             <span className='select-none'> · </span>
-            <Link className='p-1' href='/blog'>
+            <Link className='footer-link' href='/blog'>
               Blog
             </Link>
           </div>
