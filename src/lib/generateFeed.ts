@@ -44,7 +44,8 @@ let posts = fs
   })
   .sort((a, b) => {
     return new Date(b.date).getTime() - new Date(a.date).getTime();
-  });
+  })
+  .filter((post) => !post.draft);
 
 const feed = `<rss version="2.0">
 <channel>
