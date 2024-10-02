@@ -48,7 +48,7 @@ export default function PostContent({ data, source }: { data: any; source: strin
           {data.image ? (
             <img
               src={data.image}
-              className='w-full lg:w-3/4 xl:w-1/2 rounded-md'
+              className='w-[75ch] rounded-md'
               alt={data.title}
             />
           ) : null}
