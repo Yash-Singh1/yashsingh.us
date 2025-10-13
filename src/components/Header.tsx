@@ -9,11 +9,13 @@ interface HeaderProps {
   className?: string;
 }
 
+const smileyFaces = ['😀', '😃', '😄', '🙂', '😎', '🤠'];
+
 function Header({ title, intro, children = null, large = false, className = '' }: HeaderProps) {
   return (
-    <div className={`${large ? 'min-h-screen' : ''} header ${className} sm:overflow-x-hidden`}>
+    <div className={`${large ? '' : ''} header ${className} sm:overflow-x-hidden`}>
       <h1 className='font-semibold sm:text-xl text-lg font-mono text-amber-200'>
-        Hey there 😃! {intro}
+        Hey there {smileyFaces[Math.floor(Math.random() * smileyFaces.length)]}! {intro}
       </h1>
       <h1 className='font-bold xl:text-6xl lg:text-5xl md:text-4xl sm:w-screen text-3xl text-[#F6F6F6] mt-5'>
         {title}

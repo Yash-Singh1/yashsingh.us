@@ -29,7 +29,7 @@ export default function Footer({ className }: { className?: string }) {
             </Link>
           </div>
 
-          <div className='lg:text-xl md:text-lg text-base'>Ⓒ 2023 Yash Singh</div>
+          <div className='lg:text-xl md:text-lg text-base'>Ⓒ 2025 Yash Singh</div>
         </div>
       </div>
     </footer>

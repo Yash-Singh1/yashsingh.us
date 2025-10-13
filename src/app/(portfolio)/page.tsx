@@ -15,10 +15,10 @@ async function getCMSContent() {
 }
 
 export async function generateMetadata(): Promise<Metadata> {
-  const data = await getCMSContent();
   return {
     title: 'Yash Singh - yashsingh.us',
-    description: data.description,
+    description:
+      'I am a high schooler who enjoys programming in his free time. One of my other hobbies is basketball. Intern @ t3.chat',
     openGraph: {
       title: 'Yash Singh - yashsingh.us',
       type: 'website',

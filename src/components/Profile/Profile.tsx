@@ -14,7 +14,7 @@ import type SkillsGrouped from '../../types/skillsGrouped';
 import Home from '../../types/Home';
 import BadgesSection from './BadgesSection';
 import HandleHash from './HandleHash';
-import LearnMore from './LearnMore';
+import LearnMore, { BlogBtn } from './LearnMore';
 
 interface ProfileProps {
   data: Home;
@@ -28,19 +28,23 @@ function Profile({ data, repoInfo, skillsGrouped }: ProfileProps) {
       className={`${coolBgStyles['cool-bg']} pt-0 xs:pt-0 sm:pt-0 md:pt-0 lg:pt-0 xl:pt-0`}
     >
       <Header
-        title={
-          <>
-            <span className='hidden sm:inline'>Saiansh (</span>Yash
-            <span className='hidden sm:inline'>)</span> Singh
-          </>
-        }
+        title='Yash Singh'
         intro="It's"
         large
         className={`${coolBgStyles['header']} snap-start pt-12`}
       >
-        <Paragraph className='max-w-prose text-base'>{data ? data.description : ''}</Paragraph>
+        <Paragraph className='max-w-prose text-base'>
+          I am a high schooler who enjoys programming in his free time. One of my other hobbies is
+          basketball. Intern @{' '}
+          <a href='https://t3.chat/' className='text-blue-400 cursor-pointer'>
+            t3.chat
+          </a>
+        </Paragraph>
         <br />
-        <LearnMore />
+        <div className='flex flex-row gap-x-4'>
+          <LearnMore />
+          <BlogBtn />
+        </div>
       </Header>
       <Section title='Projects'>
         <div className={`text-gray-400 text-xl mt-5`}>

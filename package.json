@@ -3,8 +3,8 @@
   "version": "0.1.0",
   "private": true,
   "engines": {
-    "node": "20",
-    "pnpm": ">=8"
+    "node": "22",
+    "pnpm": "10.18.1"
   },
   "scripts": {
     "dev": "next dev --turbo",
@@ -84,6 +84,10 @@
   "pnpm": {
     "patchedDependencies": {
       "typed.js@2.0.12": "patches/typed.js@2.0.12.patch"
-    }
+    },
+    "onlyBuiltDependencies": [
+      "esbuild",
+      "sharp"
+    ]
   }
 }

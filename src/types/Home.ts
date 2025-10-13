@@ -1,5 +1,4 @@
 interface Home {
-  description: string;
   projects: string[];
   skills: {
     status: 'proficient' | 'good' | 'learning';

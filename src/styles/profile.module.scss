@@ -9,7 +9,7 @@
 }
 
 .projects-container {
-  @apply flex items-stretch justify-center flex-row flex-wrap gap-5 mt-5 xl:w-3/4 w-full;
+  @apply flex items-stretch justify-start flex-row flex-wrap gap-5 mt-5 xl:w-3/4 w-full;
 }
 
 .projects-container > * {
