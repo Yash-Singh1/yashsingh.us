@@ -3,8 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "engines": {
-    "node": "22",
-    "pnpm": "10.18.1"
+    "node": "20"
   },
   "scripts": {
     "dev": "next dev --turbo",
