@@ -3,8 +3,10 @@
   "version": "0.1.0",
   "private": true,
   "engines": {
-    "node": "20"
+    "node": "22",
+    "pnpm": "^10.18.1"
   },
+  "packageManager": "pnpm@10.18.1",
   "scripts": {
     "dev": "next dev --turbo",
     "build": "pnpm run generate-feed && next build && next-sitemap",

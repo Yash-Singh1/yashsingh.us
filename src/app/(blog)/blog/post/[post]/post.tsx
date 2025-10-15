@@ -46,11 +46,7 @@ export default function PostContent({ data, source }: { data: any; source: strin
             </div>
           </div>
           {data.image ? (
-            <img
-              src={data.image}
-              className='w-[75ch] rounded-md'
-              alt={data.title}
-            />
+            <img src={data.image} className='w-[75ch] rounded-md' alt={data.title} />
           ) : null}
         </div>
         <article
