@@ -43,3 +43,6 @@ yarn-error.log*
 
 # PartyTown
 public/~partytown
+
+# Prebuilt game assets
+public/wipeoutxl/

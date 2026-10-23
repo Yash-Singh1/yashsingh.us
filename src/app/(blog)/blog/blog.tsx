@@ -167,8 +167,8 @@ const BlogContent: FC<{ data: PostList }> = function BlogContent(props) {
                     legacyBehavior
                   >
                     <motion.a
-                      whileHover={{ scale: 1.03, type: 'tween' }}
-                      whileTap={{ scale: 1, type: 'tween' }}
+                      whileHover={{ scale: 1.03, transition: { type: 'tween' } }}
+                      whileTap={{ scale: 1, transition: { type: 'tween' } }}
                       className='p-4 border-[3px] border-gray-300/60 active:border-gray-300/60 hover:border-gray-200/80 rounded-md m-3 mx-0 bg-black/20 group shadow-md basis-full cursor-pointer hover:ring-4 hover:bg-black/30 hover:ring-blue-900 hover:shadow-xl hover:transition-all transition-all active:shadow-md active:ring-0 active:transition-none relative z-10'
                     >
                       <h1 className='text-amber-200 uppercase font-mono font-bold md:text-2xl sm:text-xl text-lg group-hover:text-amber-100 transition mr-2 line-clamp-2'>

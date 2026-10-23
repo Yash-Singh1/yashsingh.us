@@ -10,7 +10,6 @@ const nextConfig = {
     remotePatterns: [{ hostname: 'avatars.githubusercontent.com' }, { hostname: 'mermaid.ink' }],
     dangerouslyAllowSVG: true,
   },
-  swcMinify: true,
   compiler: {
     styledComponents: false,
   },

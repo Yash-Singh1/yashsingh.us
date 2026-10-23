@@ -30,13 +30,14 @@ export async function generateStaticParams() {
 }
 
 interface PostProps {
-  params: {
+  params: Promise<{
     post: string;
-  };
+  }>;
 }
 
 export async function generateMetadata({ params }: PostProps): Promise<Metadata> {
-  const { data } = getPostData(params.post);
+  const { post } = await params;
+  const { data } = getPostData(post);
 
   return {
     title: `${data.title}`,
@@ -49,8 +50,9 @@ export async function generateMetadata({ params }: PostProps): Promise<Metadata>
   };
 }
 
-export default function Post({ params }: PostProps) {
-  const { content, data } = getPostData(params.post);
+export default async function Post({ params }: PostProps) {
+  const { post } = await params;
+  const { content, data } = getPostData(post);
 
   if (data.link) {
     redirect(data.link);
