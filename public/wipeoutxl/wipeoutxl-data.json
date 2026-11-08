@@ -1,1 +1,345 @@
-{ "disc": "disc/Wipeout XL (USA).cue" }
+{
+  "disc": "disc/Wipeout XL (USA).cue",
+  "version": "0.0.9",
+  "commit": "c34020f2b14d1caab3f78c99c2b345e605246768",
+  "runtimeRevision": "6f45569509cf43e549d644cbad17f5234f0bdf4b5e18cf94199e2d61e1f98f1f",
+  "dataTrack": {
+    "name": "Wipeout XL (USA) (Track 01).bin",
+    "size": 86045568,
+    "sha256": "965a6fab54f6a97d4580725a68df898e4b195cb62373fb95d5b51113393fbc06",
+    "chunks": [
+      {
+        "url": "chunks/965a6fab54f6a97d4580725a68df898e4b195cb62373fb95d5b51113393fbc06/0000.bin",
+        "size": 1048576
+      },
+      {
+        "url": "chunks/965a6fab54f6a97d4580725a68df898e4b195cb62373fb95d5b51113393fbc06/0001.bin",
+        "size": 1048576
+      },
+      {
+        "url": "chunks/965a6fab54f6a97d4580725a68df898e4b195cb62373fb95d5b51113393fbc06/0002.bin",
+        "size": 1048576
+      },
+      {
+        "url": "chunks/965a6fab54f6a97d4580725a68df898e4b195cb62373fb95d5b51113393fbc06/0003.bin",
+        "size": 1048576
+      },
+      {
+        "url": "chunks/965a6fab54f6a97d4580725a68df898e4b195cb62373fb95d5b51113393fbc06/0004.bin",
+        "size": 1048576
+      },
+      {
+        "url": "chunks/965a6fab54f6a97d4580725a68df898e4b195cb62373fb95d5b51113393fbc06/0005.bin",
+        "size": 1048576
+      },
+      {
+        "url": "chunks/965a6fab54f6a97d4580725a68df898e4b195cb62373fb95d5b51113393fbc06/0006.bin",
+        "size": 1048576
+      },
+      {
+        "url": "chunks/965a6fab54f6a97d4580725a68df898e4b195cb62373fb95d5b51113393fbc06/0007.bin",
+        "size": 1048576
+      },
+      {
+        "url": "chunks/965a6fab54f6a97d4580725a68df898e4b195cb62373fb95d5b51113393fbc06/0008.bin",
+        "size": 1048576
+      },
+      {
+        "url": "chunks/965a6fab54f6a97d4580725a68df898e4b195cb62373fb95d5b51113393fbc06/0009.bin",
+        "size": 1048576
+      },
+      {
+        "url": "chunks/965a6fab54f6a97d4580725a68df898e4b195cb62373fb95d5b51113393fbc06/0010.bin",
+        "size": 1048576
+      },
+      {
+        "url": "chunks/965a6fab54f6a97d4580725a68df898e4b195cb62373fb95d5b51113393fbc06/0011.bin",
+        "size": 1048576
+      },
+      {
+        "url": "chunks/965a6fab54f6a97d4580725a68df898e4b195cb62373fb95d5b51113393fbc06/0012.bin",
+        "size": 1048576
+      },
+      {
+        "url": "chunks/965a6fab54f6a97d4580725a68df898e4b195cb62373fb95d5b51113393fbc06/0013.bin",
+        "size": 1048576
+      },
+      {
+        "url": "chunks/965a6fab54f6a97d4580725a68df898e4b195cb62373fb95d5b51113393fbc06/0014.bin",
+        "size": 1048576
+      },
+      {
+        "url": "chunks/965a6fab54f6a97d4580725a68df898e4b195cb62373fb95d5b51113393fbc06/0015.bin",
+        "size": 1048576
+      },
+      {
+        "url": "chunks/965a6fab54f6a97d4580725a68df898e4b195cb62373fb95d5b51113393fbc06/0016.bin",
+        "size": 1048576
+      },
+      {
+        "url": "chunks/965a6fab54f6a97d4580725a68df898e4b195cb62373fb95d5b51113393fbc06/0017.bin",
+        "size": 1048576
+      },
+      {
+        "url": "chunks/965a6fab54f6a97d4580725a68df898e4b195cb62373fb95d5b51113393fbc06/0018.bin",
+        "size": 1048576
+      },
+      {
+        "url": "chunks/965a6fab54f6a97d4580725a68df898e4b195cb62373fb95d5b51113393fbc06/0019.bin",
+        "size": 1048576
+      },
+      {
+        "url": "chunks/965a6fab54f6a97d4580725a68df898e4b195cb62373fb95d5b51113393fbc06/0020.bin",
+        "size": 1048576
+      },
+      {
+        "url": "chunks/965a6fab54f6a97d4580725a68df898e4b195cb62373fb95d5b51113393fbc06/0021.bin",
+        "size": 1048576
+      },
+      {
+        "url": "chunks/965a6fab54f6a97d4580725a68df898e4b195cb62373fb95d5b51113393fbc06/0022.bin",
+        "size": 1048576
+      },
+      {
+        "url": "chunks/965a6fab54f6a97d4580725a68df898e4b195cb62373fb95d5b51113393fbc06/0023.bin",
+        "size": 1048576
+      },
+      {
+        "url": "chunks/965a6fab54f6a97d4580725a68df898e4b195cb62373fb95d5b51113393fbc06/0024.bin",
+        "size": 1048576
+      },
+      {
+        "url": "chunks/965a6fab54f6a97d4580725a68df898e4b195cb62373fb95d5b51113393fbc06/0025.bin",
+        "size": 1048576
+      },
+      {
+        "url": "chunks/965a6fab54f6a97d4580725a68df898e4b195cb62373fb95d5b51113393fbc06/0026.bin",
+        "size": 1048576
+      },
+      {
+        "url": "chunks/965a6fab54f6a97d4580725a68df898e4b195cb62373fb95d5b51113393fbc06/0027.bin",
+        "size": 1048576
+      },
+      {
+        "url": "chunks/965a6fab54f6a97d4580725a68df898e4b195cb62373fb95d5b51113393fbc06/0028.bin",
+        "size": 1048576
+      },
+      {
+        "url": "chunks/965a6fab54f6a97d4580725a68df898e4b195cb62373fb95d5b51113393fbc06/0029.bin",
+        "size": 1048576
+      },
+      {
+        "url": "chunks/965a6fab54f6a97d4580725a68df898e4b195cb62373fb95d5b51113393fbc06/0030.bin",
+        "size": 1048576
+      },
+      {
+        "url": "chunks/965a6fab54f6a97d4580725a68df898e4b195cb62373fb95d5b51113393fbc06/0031.bin",
+        "size": 1048576
+      },
+      {
+        "url": "chunks/965a6fab54f6a97d4580725a68df898e4b195cb62373fb95d5b51113393fbc06/0032.bin",
+        "size": 1048576
+      },
+      {
+        "url": "chunks/965a6fab54f6a97d4580725a68df898e4b195cb62373fb95d5b51113393fbc06/0033.bin",
+        "size": 1048576
+      },
+      {
+        "url": "chunks/965a6fab54f6a97d4580725a68df898e4b195cb62373fb95d5b51113393fbc06/0034.bin",
+        "size": 1048576
+      },
+      {
+        "url": "chunks/965a6fab54f6a97d4580725a68df898e4b195cb62373fb95d5b51113393fbc06/0035.bin",
+        "size": 1048576
+      },
+      {
+        "url": "chunks/965a6fab54f6a97d4580725a68df898e4b195cb62373fb95d5b51113393fbc06/0036.bin",
+        "size": 1048576
+      },
+      {
+        "url": "chunks/965a6fab54f6a97d4580725a68df898e4b195cb62373fb95d5b51113393fbc06/0037.bin",
+        "size": 1048576
+      },
+      {
+        "url": "chunks/965a6fab54f6a97d4580725a68df898e4b195cb62373fb95d5b51113393fbc06/0038.bin",
+        "size": 1048576
+      },
+      {
+        "url": "chunks/965a6fab54f6a97d4580725a68df898e4b195cb62373fb95d5b51113393fbc06/0039.bin",
+        "size": 1048576
+      },
+      {
+        "url": "chunks/965a6fab54f6a97d4580725a68df898e4b195cb62373fb95d5b51113393fbc06/0040.bin",
+        "size": 1048576
+      },
+      {
+        "url": "chunks/965a6fab54f6a97d4580725a68df898e4b195cb62373fb95d5b51113393fbc06/0041.bin",
+        "size": 1048576
+      },
+      {
+        "url": "chunks/965a6fab54f6a97d4580725a68df898e4b195cb62373fb95d5b51113393fbc06/0042.bin",
+        "size": 1048576
+      },
+      {
+        "url": "chunks/965a6fab54f6a97d4580725a68df898e4b195cb62373fb95d5b51113393fbc06/0043.bin",
+        "size": 1048576
+      },
+      {
+        "url": "chunks/965a6fab54f6a97d4580725a68df898e4b195cb62373fb95d5b51113393fbc06/0044.bin",
+        "size": 1048576
+      },
+      {
+        "url": "chunks/965a6fab54f6a97d4580725a68df898e4b195cb62373fb95d5b51113393fbc06/0045.bin",
+        "size": 1048576
+      },
+      {
+        "url": "chunks/965a6fab54f6a97d4580725a68df898e4b195cb62373fb95d5b51113393fbc06/0046.bin",
+        "size": 1048576
+      },
+      {
+        "url": "chunks/965a6fab54f6a97d4580725a68df898e4b195cb62373fb95d5b51113393fbc06/0047.bin",
+        "size": 1048576
+      },
+      {
+        "url": "chunks/965a6fab54f6a97d4580725a68df898e4b195cb62373fb95d5b51113393fbc06/0048.bin",
+        "size": 1048576
+      },
+      {
+        "url": "chunks/965a6fab54f6a97d4580725a68df898e4b195cb62373fb95d5b51113393fbc06/0049.bin",
+        "size": 1048576
+      },
+      {
+        "url": "chunks/965a6fab54f6a97d4580725a68df898e4b195cb62373fb95d5b51113393fbc06/0050.bin",
+        "size": 1048576
+      },
+      {
+        "url": "chunks/965a6fab54f6a97d4580725a68df898e4b195cb62373fb95d5b51113393fbc06/0051.bin",
+        "size": 1048576
+      },
+      {
+        "url": "chunks/965a6fab54f6a97d4580725a68df898e4b195cb62373fb95d5b51113393fbc06/0052.bin",
+        "size": 1048576
+      },
+      {
+        "url": "chunks/965a6fab54f6a97d4580725a68df898e4b195cb62373fb95d5b51113393fbc06/0053.bin",
+        "size": 1048576
+      },
+      {
+        "url": "chunks/965a6fab54f6a97d4580725a68df898e4b195cb62373fb95d5b51113393fbc06/0054.bin",
+        "size": 1048576
+      },
+      {
+        "url": "chunks/965a6fab54f6a97d4580725a68df898e4b195cb62373fb95d5b51113393fbc06/0055.bin",
+        "size": 1048576
+      },
+      {
+        "url": "chunks/965a6fab54f6a97d4580725a68df898e4b195cb62373fb95d5b51113393fbc06/0056.bin",
+        "size": 1048576
+      },
+      {
+        "url": "chunks/965a6fab54f6a97d4580725a68df898e4b195cb62373fb95d5b51113393fbc06/0057.bin",
+        "size": 1048576
+      },
+      {
+        "url": "chunks/965a6fab54f6a97d4580725a68df898e4b195cb62373fb95d5b51113393fbc06/0058.bin",
+        "size": 1048576
+      },
+      {
+        "url": "chunks/965a6fab54f6a97d4580725a68df898e4b195cb62373fb95d5b51113393fbc06/0059.bin",
+        "size": 1048576
+      },
+      {
+        "url": "chunks/965a6fab54f6a97d4580725a68df898e4b195cb62373fb95d5b51113393fbc06/0060.bin",
+        "size": 1048576
+      },
+      {
+        "url": "chunks/965a6fab54f6a97d4580725a68df898e4b195cb62373fb95d5b51113393fbc06/0061.bin",
+        "size": 1048576
+      },
+      {
+        "url": "chunks/965a6fab54f6a97d4580725a68df898e4b195cb62373fb95d5b51113393fbc06/0062.bin",
+        "size": 1048576
+      },
+      {
+        "url": "chunks/965a6fab54f6a97d4580725a68df898e4b195cb62373fb95d5b51113393fbc06/0063.bin",
+        "size": 1048576
+      },
+      {
+        "url": "chunks/965a6fab54f6a97d4580725a68df898e4b195cb62373fb95d5b51113393fbc06/0064.bin",
+        "size": 1048576
+      },
+      {
+        "url": "chunks/965a6fab54f6a97d4580725a68df898e4b195cb62373fb95d5b51113393fbc06/0065.bin",
+        "size": 1048576
+      },
+      {
+        "url": "chunks/965a6fab54f6a97d4580725a68df898e4b195cb62373fb95d5b51113393fbc06/0066.bin",
+        "size": 1048576
+      },
+      {
+        "url": "chunks/965a6fab54f6a97d4580725a68df898e4b195cb62373fb95d5b51113393fbc06/0067.bin",
+        "size": 1048576
+      },
+      {
+        "url": "chunks/965a6fab54f6a97d4580725a68df898e4b195cb62373fb95d5b51113393fbc06/0068.bin",
+        "size": 1048576
+      },
+      {
+        "url": "chunks/965a6fab54f6a97d4580725a68df898e4b195cb62373fb95d5b51113393fbc06/0069.bin",
+        "size": 1048576
+      },
+      {
+        "url": "chunks/965a6fab54f6a97d4580725a68df898e4b195cb62373fb95d5b51113393fbc06/0070.bin",
+        "size": 1048576
+      },
+      {
+        "url": "chunks/965a6fab54f6a97d4580725a68df898e4b195cb62373fb95d5b51113393fbc06/0071.bin",
+        "size": 1048576
+      },
+      {
+        "url": "chunks/965a6fab54f6a97d4580725a68df898e4b195cb62373fb95d5b51113393fbc06/0072.bin",
+        "size": 1048576
+      },
+      {
+        "url": "chunks/965a6fab54f6a97d4580725a68df898e4b195cb62373fb95d5b51113393fbc06/0073.bin",
+        "size": 1048576
+      },
+      {
+        "url": "chunks/965a6fab54f6a97d4580725a68df898e4b195cb62373fb95d5b51113393fbc06/0074.bin",
+        "size": 1048576
+      },
+      {
+        "url": "chunks/965a6fab54f6a97d4580725a68df898e4b195cb62373fb95d5b51113393fbc06/0075.bin",
+        "size": 1048576
+      },
+      {
+        "url": "chunks/965a6fab54f6a97d4580725a68df898e4b195cb62373fb95d5b51113393fbc06/0076.bin",
+        "size": 1048576
+      },
+      {
+        "url": "chunks/965a6fab54f6a97d4580725a68df898e4b195cb62373fb95d5b51113393fbc06/0077.bin",
+        "size": 1048576
+      },
+      {
+        "url": "chunks/965a6fab54f6a97d4580725a68df898e4b195cb62373fb95d5b51113393fbc06/0078.bin",
+        "size": 1048576
+      },
+      {
+        "url": "chunks/965a6fab54f6a97d4580725a68df898e4b195cb62373fb95d5b51113393fbc06/0079.bin",
+        "size": 1048576
+      },
+      {
+        "url": "chunks/965a6fab54f6a97d4580725a68df898e4b195cb62373fb95d5b51113393fbc06/0080.bin",
+        "size": 1048576
+      },
+      {
+        "url": "chunks/965a6fab54f6a97d4580725a68df898e4b195cb62373fb95d5b51113393fbc06/0081.bin",
+        "size": 1048576
+      },
+      {
+        "url": "chunks/965a6fab54f6a97d4580725a68df898e4b195cb62373fb95d5b51113393fbc06/0082.bin",
+        "size": 62336
+      }
+    ]
+  }
+}

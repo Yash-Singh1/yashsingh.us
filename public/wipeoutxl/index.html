@@ -1,1 +1,193 @@
-<!doctypehtml><html lang=en><head><meta charset=utf-8><meta content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no,viewport-fit=cover"name=viewport><title>Wipeout XL</title><style>body,html{margin:0;height:100%;background:#000;color:#ddd;overflow:hidden;font:15px/1.45 system-ui,-apple-system,"Segoe UI",sans-serif}#canvas{display:block;outline:0;touch-action:none;-webkit-user-select:none;user-select:none;-webkit-touch-callout:none}#start{position:fixed;inset:0;display:flex;align-items:center;justify-content:center;background:radial-gradient(circle at 50% 35%,#1b2340,#000 70%)}#panel{width:min(560px,90vw);padding:28px 32px;border:1px solid #3a4670;border-radius:10px;background:rgba(10,14,30,.92);box-shadow:0 10px 40px #000}h1{margin:0 0 6px;font-size:26px;letter-spacing:.08em;color:#fff}p{margin:8px 0}.muted{color:#8d97b5;font-size:13px}#drop{margin:16px 0 10px;padding:22px;border:2px dashed #46558a;border-radius:8px;text-align:center;cursor:pointer}#drop.over{border-color:#9fb4ff;background:rgba(80,100,180,.15)}button{font:inherit;padding:6px 14px;border-radius:6px;border:1px solid #5a6aa8;background:#26305a;color:#fff;cursor:pointer}#progress{height:6px;margin-top:12px;border-radius:3px;background:#1d2440;overflow:hidden;visibility:hidden}#bar{height:100%;width:0;background:#7f9bff}#status{min-height:1.45em}#status.error,.error{color:#ff8f8f}</style></head><body><canvas id=canvas oncontextmenu=event.preventDefault() tabindex=-1></canvas><div id=start><div id=panel><h1>WIPEOUT XL</h1><p id=intro>The PlayStation game, running in your browser.</p><div id=chooser hidden><p>This site has no copy of the disc: choose your own, the <b>.cue</b> file and all of its <b>.bin</b> tracks (Wipeout XL, USA).</p><div id=drop>Drop the files here, or <button id=choose type=button>choose them</button> <input accept=.cue,.bin hidden id=files multiple type=file></div></div><p id=status></p><div id=progress><div id=bar></div></div><p id=note class=muted>Settings and memory cards are kept in this browser. Keyboard or gamepad; ~ opens the debug console.</p></div></div><script>"use strict";var statusLine=document.getElementById("status"),drop=document.getElementById("drop"),input=document.getElementById("files"),canvas=document.getElementById("canvas");function showError(e){var t=document.createElement("div");t.id="start",t.innerHTML='<div id="panel"><h1>WIPEOUT XL</h1><p class="error"></p></div>',t.querySelector("p").textContent=e,document.body.appendChild(t)}function say(e,t){statusLine.textContent=e,statusLine.className=t?"error":""}var Module={canvas:canvas,discFiles:{},output:[],print:function(e){console.log(e),Module.keep(e)},printErr:function(e){console.warn(e),Module.keep(e)},keep:function(e){Module.output.push(e),Module.output.length>200&&Module.output.shift()},onExit:function(e){e&&showError("The game stopped: "+Module.output.slice(-3).join(" "))},onAbort:function(e){showError("The game stopped: "+e)},setStatus:function(e){e&&say(e)},onRuntimeInitialized:async function(){runtimeReady=!0,say("Looking for the disc...");var e=new URLSearchParams(location.search).get("disc")||await hostedDisc();e?startUrl(e):(document.getElementById("chooser").hidden=!1,document.getElementById("note").textContent="Your disc stays on this computer: it is read into this page's memory and nothing is uploaded. Settings and memory cards are kept in this browser. Keyboard or gamepad; ~ opens the debug console.",say("Ready for your disc."))}},runtimeReady=!1;addEventListener("error",(function(e){Module.keep("error: "+e.message)})),addEventListener("unhandledrejection",(function(e){Module.keep("error: "+(e.reason&&e.reason.stack||e.reason))}));var started=!1;async function hostedDisc(){try{var e=await fetch("wipeoutxl-data.json",{cache:"no-cache"});if(e.ok){var t=await e.json();if(t.disc)return t.disc}}catch(e){}var n="disc/"+encodeURIComponent("Wipeout XL (USA).cue");try{if((await fetch(n,{method:"HEAD",cache:"no-cache"})).ok)return n}catch(e){}return null}var discCache=null;async function openDiscCache(){if(!discCache&&self.caches){try{discCache=await caches.open("wipeoutxl-disc")}catch(e){discCache=null}navigator.storage&&navigator.storage.persist&&navigator.storage.persist().catch((function(){}))}return discCache}function cueFiles(e){for(var t,n=[],a=/^\s*FILE\s+"([^"]+)"/gim;t=a.exec(e);)n.push(t[1].split(/[\\/]/).pop());return n}function fileTrack(e){return{name:e.name,size:async function(){return e.size},pieces:async function*(){for(var t=0;t<e.size;t+=16<<20)yield new Uint8Array(await e.slice(t,Math.min(t+(16<<20),e.size)).arrayBuffer())}}}function urlTrack(e){var t,n={name:decodeURIComponent(e.split("/").pop()),url:e,cached:!1,size:async function(){var a=await openDiscCache();if(t=a&&await a.match(e).catch((function(){return null})),n.cached=!!t,t||(t=await fetch(e)),!t.ok)throw new Error(e+": "+t.status);var o=Number(t.headers.get("Content-Length"));if(o&&!t.headers.get("Content-Encoding"))return o;say((n.cached?"Reading":"Downloading")+" the disc: "+n.name);var r=await t.blob();return t=new Response(r),r.size},pieces:async function*(){for(var e=t.body.getReader();;){var n=await e.read();if(n.done)return;yield n.value}}};return n}async function start(e,t,n){if(!started)if(runtimeReady){var a=cueFiles(t);if(a.length){var o=a.filter((function(e){return!n(e)}));if(o.length)say("Missing: "+o.join(", "),!0);else{started=!0,document.getElementById("progress").style.visibility="visible";try{for(var r=a.map(n),i=[],s=0,c=0,d=0;d<r.length;d++)i[d]=await r[d].size(),s+=i[d];for(d=0;d<r.length;d++){var u=Module._malloc(i[d]),l=0;if(!u)throw new Error("not enough memory for "+r[d].name);for await(var h of r[d].pieces()){if(l+h.length>i[d])throw new Error(r[d].name+" is longer than it said");Module.HEAPU8.set(h,u+l),l+=h.length,c+=h.length,document.getElementById("bar").style.width=(100*c/s).toFixed(1)+"%",say((r[d].url&&!r[d].cached?"Downloading":"Reading")+" the disc: "+Math.round(c/1048576)+" of "+Math.round(s/1048576)+" MB")}Module.discFiles[r[d].name]={data:u,size:l}}var f=await openDiscCache();for(d=0;f&&d<r.length;d++)if(r[d].url&&!r[d].cached){say("Keeping the disc in this browser for next time: "+r[d].name);var p=Module.discFiles[r[d].name];try{await f.put(r[d].url,new Response(Module.HEAPU8.slice(p.data,p.data+p.size),{headers:{"Content-Length":String(p.size)}}))}catch(e){console.warn("the disc is not kept: "+e);break}}}catch(e){return say("The disc could not be read: "+e.message,!0),void(started=!1)}FS.mkdir("/disc"),FS.writeFile("/disc/"+e,t),FS.mkdir("/libsdl"),FS.mount(IDBFS,{},"/libsdl"),FS.syncfs(!0,(function(t){t&&console.warn("saved data: "+t);var n=function(){FS.syncfs(!1,(function(e){e&&console.warn("saving: "+e)}))};setInterval(n,3e3),addEventListener("pagehide",n),document.addEventListener("visibilitychange",(function(){document.hidden&&n()})),document.getElementById("start").remove(),canvas.focus(),Module.callMain(["--disc","/disc/"+e])}))}}else say(e+" names no tracks.",!0)}else say("Still loading the game, a moment...",!0)}async function startFiles(e){var t=Array.from(e),n={},a=t.find((function(e){return/\.cue$/i.test(e.name)}));a?(t.forEach((function(e){n[e.name]=e})),start(a.name,await a.text(),(function(e){return n[e]&&fileTrack(n[e])}))):say("Choose the .cue file together with its .bin tracks.",!0)}async function startUrl(e){try{var t=await fetch(e);if(!t.ok)throw new Error(t.status);var n=new URL(e,location.href);start(decodeURIComponent(n.pathname.split("/").pop()),await t.text(),(function(e){return urlTrack(new URL(encodeURIComponent(e),n).href)}))}catch(t){say("No disc at "+e+" ("+t.message+")",!0)}}document.getElementById("choose").onclick=function(e){e.stopPropagation(),input.click()},drop.onclick=function(){input.click()},input.onchange=function(){startFiles(input.files)},drop.ondragover=function(e){e.preventDefault(),drop.classList.add("over")},drop.ondragleave=function(){drop.classList.remove("over")},drop.ondrop=function(e){e.preventDefault(),drop.classList.remove("over"),startFiles(e.dataTransfer.files)},addEventListener("dragover",(function(e){e.preventDefault()})),addEventListener("drop",(function(e){e.preventDefault()})),say("Loading the game...")</script><script async src=wipeoutxl.js></script></body></html>
+<!doctypehtml><html lang=en><head><meta charset=utf-8><meta content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no,viewport-fit=cover"name=viewport><meta content=yes name=apple-mobile-web-app-capable><meta content="Wipeout XL"name=apple-mobile-web-app-title><meta content=black-translucent name=apple-mobile-web-app-status-bar-style><meta content=#000000 name=theme-color><title>Wipeout XL</title><style>body,html{margin:0;height:100%;background:#000;color:#ddd;overflow:hidden;font:15px/1.45 system-ui,-apple-system,"Segoe UI",sans-serif}*,::after,::before{-webkit-user-select:none;user-select:none;-webkit-touch-callout:none}[contenteditable=true],input,textarea{-webkit-user-select:text;user-select:text}#canvas{display:block;outline:0;position:fixed;top:0;left:0;width:100vw;height:100vh;height:100dvh;touch-action:none;-webkit-user-select:none;user-select:none;-webkit-touch-callout:none}#start{position:fixed;inset:0;display:flex;align-items:center;justify-content:center;background:radial-gradient(circle at 50% 35%,#1b2340,#000 70%)}#panel{box-sizing:border-box;width:min(560px,90vw);padding:28px 32px;border:1px solid #3a4670;border-radius:10px;background:rgba(10,14,30,.92);box-shadow:0 10px 40px #000}h1{margin:0 0 6px;font-size:26px;letter-spacing:.08em;color:#fff}p{margin:8px 0}.muted{color:#8d97b5;font-size:13px}#drop{margin:16px 0 10px;padding:22px;border:2px dashed #46558a;border-radius:8px;text-align:center;cursor:pointer}#drop.over{border-color:#9fb4ff;background:rgba(80,100,180,.15)}button{font:inherit;padding:6px 14px;border-radius:6px;border:1px solid #5a6aa8;background:#26305a;color:#fff;cursor:pointer}#progress{height:6px;margin-top:12px;border-radius:3px;background:#1d2440;overflow:hidden;visibility:hidden}#bar{height:100%;width:0;background:#7f9bff}#status{min-height:1.45em}#status.error,.error{color:#ff8f8f}#game-fullscreen{position:fixed;z-index:3;top:max(6px,env(safe-area-inset-top));right:max(6px,env(safe-area-inset-right));box-sizing:border-box;width:44px;height:44px;padding:11px;border-radius:50%;color:#fffa;background:#0003;border-color:#fff5}#game-fullscreen svg{display:block;width:100%;height:100%}#game-fullscreen:active{background:#fff4}#fullscreen-help{position:fixed;z-index:4;inset:0;background:#000b;padding:max(20px,env(safe-area-inset-top)) max(20px,env(safe-area-inset-right)) max(20px,env(safe-area-inset-bottom)) max(20px,env(safe-area-inset-left));display:flex;align-items:center;justify-content:center}#fullscreen-help[hidden],#game-fullscreen[hidden]{display:none}#fullscreen-help>div{max-width:380px;padding:20px;background:#141a2b;border:1px solid #5a6aa8;border-radius:10px}#fullscreen-help h2{margin:0 0 10px;font-size:20px}#enable-audio{position:fixed;z-index:3;top:max(6px,env(safe-area-inset-top));left:50%;transform:translateX(-50%);min-height:36px;font-size:12px;background:#111e}#enable-audio[hidden],#play-muted[hidden],#play[hidden]{display:none}#audio-status{color:#ffbd7f}@media (hover:hover) and (pointer:fine){#game-fullscreen{display:none}}</style></head><body><canvas id=canvas oncontextmenu=event.preventDefault() tabindex=-1></canvas><div id=start><div id=panel><h1>WIPEOUT XL</h1><p id=intro>The PlayStation game, running in your browser.</p><div id=chooser hidden><p>This site has no copy of the disc: choose your own, the <b>.cue</b> file and all of its <b>.bin</b> tracks (Wipeout XL, USA).</p><div id=drop>Drop the files here, or <button id=choose type=button>choose them</button> <input accept=.cue,.bin hidden id=files multiple type=file></div></div><p id=status></p><button id=play type=button hidden>Play with sound</button> <button id=play-muted type=button hidden>Play without sound</button><p id=audio-status role=status></p><div id=progress><div id=bar></div></div><p id=note class=muted>Settings and memory cards are kept in this browser. Keyboard or gamepad; ~ opens the debug console.</p></div></div><script>"use strict";var statusLine=document.getElementById("status"),drop=document.getElementById("drop"),input=document.getElementById("files"),canvas=document.getElementById("canvas");function showError(e){var t=document.createElement("div");t.id="start",t.innerHTML='<div id="panel"><h1>WIPEOUT XL</h1><p class="error"></p></div>',t.querySelector("p").textContent=e,document.body.appendChild(t)}function say(e,t){statusLine.textContent=e,statusLine.className=t?"error":""}var Module={canvas:canvas,discFiles:{},output:[],print:function(e){console.log(e),Module.keep(e)},printErr:function(e){console.warn(e),Module.keep(e)},keep:function(e){Module.output.push(e),Module.output.length>200&&Module.output.shift()},onExit:function(e){e&&showError("The game stopped: "+Module.output.slice(-3).join(" "))},onAbort:function(e){showError("The game stopped: "+e)},setStatus:function(e){e&&say(e)},onRuntimeInitialized:async function(){runtimeReady=!0,say("Looking for the disc...");var e=new URLSearchParams(location.search).get("disc")||await hostedDisc();e?startUrl(e):(document.getElementById("chooser").hidden=!1,document.getElementById("note").textContent="Your disc stays on this computer: it is read into this page's memory and nothing is uploaded. Settings and memory cards are kept in this browser. Keyboard or gamepad; ~ opens the debug console.",say("Ready for your disc."))}},runtimeReady=!1;addEventListener("error",(function(e){Module.keep("error: "+e.message)})),addEventListener("unhandledrejection",(function(e){Module.keep("error: "+(e.reason&&e.reason.stack||e.reason))}));var started=!1;async function hostedDisc(){try{var e=await fetch("wipeoutxl-data.json",{cache:"no-cache"});if(e.ok){var t=await e.json();if(t.disc)return t.disc}}catch(e){}var a="disc/"+encodeURIComponent("Wipeout XL (USA).cue");try{if((await fetch(a,{method:"HEAD",cache:"no-cache"})).ok)return a}catch(e){}return null}var discCache=null;async function openDiscCache(){if(!discCache&&self.caches){try{discCache=await caches.open("wipeoutxl-disc")}catch(e){discCache=null}navigator.storage&&navigator.storage.persist&&navigator.storage.persist().catch((function(){}))}return discCache}function cueFiles(e){for(var t,a=[],n=/^\s*FILE\s+"([^"]+)"/gim;t=n.exec(e);)a.push(t[1].split(/[\\/]/).pop());return a}function audioOnlyFiles(e){var t={},a=null;return e.split(/\r?\n/).forEach((function(e){var n=/^\s*FILE\s+"([^"]+)"/i.exec(e);n&&((a=n[1].split(/[\\/]/).pop())in t||(t[a]=!0));var r=/^\s*TRACK\s+\d+\s+(\S+)/i.exec(e);r&&a&&"AUDIO"!==r[1].toUpperCase()&&(t[a]=!1)})),t}var discChunkSize=1<<20;function copyDiscBytes(e,t,a,n){if(t<0||a<0||t+a>e.size)return!1;if(e.stream)return e.stream.copy(t,a,n);for(var r=0;r<a;){var o=t+r,i=e.chunks[Math.floor(o/discChunkSize)],s=o%discChunkSize,c=Math.min(a-r,i.length-s);n.set(i.subarray(s,s+c),r),r+=c}return!0}function fileTrack(e){return{name:e.name,size:async function(){return e.size},pieces:async function*(){for(var t=0;t<e.size;t+=16<<20)yield new Uint8Array(await e.slice(t,Math.min(t+(16<<20),e.size)).arrayBuffer())}}}function urlTrack(e){var t,a={name:decodeURIComponent(e.split("/").pop()),url:e,cached:!1,size:async function(){var n=await openDiscCache();if(t=n&&await n.match(e).catch((function(){return null})),a.cached=!!t,t||(t=await fetch(e)),!t.ok)throw new Error(e+": "+t.status);var r=Number(t.headers.get("Content-Length"));if(r&&!t.headers.get("Content-Encoding"))return r;say((a.cached?"Reading":"Downloading")+" the disc: "+a.name);var o=await t.blob();return t=new Response(o),o.size},pieces:async function*(){for(var e=t.body.getReader();;){var a=await e.read();if(a.done)return;yield a.value}}};return a}async function start(e,t,a){if(!started)if(runtimeReady){var n=cueFiles(t);if(n.length){var r=n.filter((function(e){return!a(e)}));if(r.length)say("Missing: "+r.join(", "),!0);else{started=!0,document.getElementById("progress").style.visibility="visible";var o=[];try{for(var i=n.map(a),s=[],c=0,d=0,u=audioOnlyFiles(t),l=0;l<i.length;l++)s[l]=await i[l].size(),c+=u[i[l].name]&&i[l].stream?Math.min(65536,s[l]):s[l];for(l=0;l<i.length;l++){var h=!!u[i[l].name],f={size:s[l]},m=0;if(o.push(f),h&&i[l].stream){f.stream=i[l].stream;var p=await f.stream.header();if(82!==p[0]||73!==p[1]||70!==p[2]||70!==p[3]){if(f.data=Module._malloc(p.length),!f.data)throw new Error("not enough memory for track header");Module.HEAPU8.set(p,f.data),f.external=Module.discExternal.length,Module.discExternal.push(f),Module.discFiles[i[l].name]=f,d+=p.length,document.getElementById("bar").style.width=(100*d/c).toFixed(1)+"%",say("Preparing music...");continue}f.stream.close(),delete f.stream,c+=f.size-p.length}if(h)f.chunks=[];else if(f.data=Module._malloc(s[l]),!f.data)throw new Error("not enough memory for "+i[l].name);for await(var g of i[l].pieces()){if(m+g.length>s[l])throw new Error(i[l].name+" is longer than it said");if(h)for(var y=0;y<g.length;){var v=Math.floor(m/discChunkSize),w=m%discChunkSize;f.chunks[v]||(f.chunks[v]=new Uint8Array(Math.min(discChunkSize,f.size-v*discChunkSize)));var M=Math.min(g.length-y,f.chunks[v].length-w);f.chunks[v].set(g.subarray(y,y+M),w),y+=M,m+=M}else Module.HEAPU8.set(g,f.data+m),m+=g.length;d+=g.length,document.getElementById("bar").style.width=(100*d/c).toFixed(1)+"%",say((i[l].url&&!i[l].cached?"Downloading":"Reading")+" the disc: "+Math.round(d/1048576)+" of "+Math.round(c/1048576)+" MB")}if(m!==f.size)throw new Error(i[l].name+" is shorter than it said");if(h){if(f.data=Module._malloc(Math.min(f.size,65536)),!f.data)throw new Error("not enough memory for track header");if(copyDiscBytes(f,0,Math.min(f.size,65536),Module.HEAPU8.subarray(f.data)),82===Module.HEAPU8[f.data]&&73===Module.HEAPU8[f.data+1]&&70===Module.HEAPU8[f.data+2]&&70===Module.HEAPU8[f.data+3]){if(Module._free(f.data),f.data=Module._malloc(f.size),!f.data)throw new Error("not enough memory for WAV track");copyDiscBytes(f,0,f.size,Module.HEAPU8.subarray(f.data)),delete f.chunks}else f.external=Module.discExternal.length,Module.discExternal.push(f)}Module.discFiles[i[l].name]=f}var E=i.some((function(e){return e.url&&!e.cached}))?await openDiscCache():null;for(l=0;E&&l<i.length;l++)if(i[l].url&&!i[l].cached){say("Keeping the disc in this browser for next time: "+i[l].name);f=Module.discFiles[i[l].name];try{await E.put(i[l].url,new Response(f.chunks?new Blob(f.chunks):Module.HEAPU8.slice(f.data,f.data+f.size),{headers:{"Content-Length":String(f.size)}}))}catch(e){console.warn("the disc is not kept: "+e);break}}}catch(e){return o.forEach((function(e){e.data&&Module._free(e.data),e.stream&&e.stream.close()})),Module.discFiles={},Module.discExternal=[null],say("The disc could not be read: "+e.message,!0),void(started=!1)}FS.mkdir("/disc"),FS.writeFile("/disc/"+e,t),FS.mkdir("/libsdl"),FS.mount(IDBFS,{},"/libsdl"),say("Loading saved data..."),Module.gameSaves=Module.createGameSaves(FS,IDBFS,window),await Module.gameSaves.restore()||(console.warn("saved data: "+Module.gameSaves.snapshot().error),document.getElementById("note").textContent="Saved data is unavailable. Changes will not be saved this session.");var k=function(){Module.gameSaves.watch(),document.getElementById("start").remove(),canvas.focus(),Module.callMain(["--disc","/disc/"+e])};say("Ready to play."),Module.gameAudio?Module.gameAudio.ready(k,"undefined"!=typeof ENV&&"WIPEOUT_MUTE"in ENV):k()}}else say(e+" names no tracks.",!0)}else say("Still loading the game, a moment...",!0)}async function startFiles(e){var t=Array.from(e),a={},n=t.find((function(e){return/\.cue$/i.test(e.name)}));n?(t.forEach((function(e){a[e.name]=e})),start(n.name,await n.text(),(function(e){return a[e]&&fileTrack(a[e])}))):say("Choose the .cue file together with its .bin tracks.",!0)}async function startUrl(e){try{var t=await fetch(e);if(!t.ok)throw new Error(t.status);var a=new URL(e,location.href);start(decodeURIComponent(a.pathname.split("/").pop()),await t.text(),(function(e){return urlTrack(new URL(encodeURIComponent(e),a).href)}))}catch(t){say("No disc at "+e+" ("+t.message+")",!0)}}Module.discExternal=[null],document.getElementById("choose").onclick=function(e){e.stopPropagation(),input.click()},drop.onclick=function(){input.click()},input.onchange=function(){startFiles(input.files)},drop.ondragover=function(e){e.preventDefault(),drop.classList.add("over")},drop.ondragleave=function(){drop.classList.remove("over")},drop.ondrop=function(e){e.preventDefault(),drop.classList.remove("over"),startFiles(e.dataTransfer.files)},addEventListener("dragover",(function(e){e.preventDefault()})),addEventListener("drop",(function(e){e.preventDefault()})),say("Loading the game...")</script><script>
+// Bounded streaming for the LAN test pages. Fingerprinted chunk URLs use
+// the browser's HTTP cache, which also works on an HTTP LAN origin without Cache API.
+// Share one cache across all music tracks. Fetch at most two chunks at a time
+// and retain at most six 1 MiB chunks, including on a seek or track change.
+function createPhoneMusicCache() {
+  var entries = new Map(), pending = new Set(), limit = 6, parallel = 2;
+  var fetches = 0, failures = 0, lastFetchMs = 0;
+  function touch(key, entry) { entries.delete(key); entries.set(key, entry); }
+  function remove(key, entry) {
+    entries.delete(key);
+    if (entry.controller) entry.controller.abort();
+  }
+  async function load(chunk, protectedKeys, speculative) {
+    var key = chunk.url, existing = entries.get(key);
+    if (existing && existing.error && Date.now() >= existing.retryAfter) {
+      remove(key, existing); existing = null;
+    }
+    if (existing) { touch(key, existing); return existing.promise; }
+    while (pending.size >= parallel) {
+      if (speculative) return null;
+      await Promise.race(Array.from(pending));
+      existing = entries.get(key);
+      if (existing) { touch(key, existing); return existing.promise; }
+    }
+    if (entries.size >= limit) {
+      var oldest = Array.from(entries).find(function (pair) { return !protectedKeys.has(pair[0]); });
+      if (!oldest) return { error: new Error('Music read exceeds the buffer limit') };
+      remove(oldest[0], oldest[1]);
+    }
+    var entry = { controller: new AbortController() };
+    var started = Date.now(); fetches++;
+    entries.set(key, entry);
+    var timeout = setTimeout(function () { entry.controller.abort(); }, 15000);
+    entry.promise = Promise.resolve().then(function () {
+      return fetch(key, { cache: 'force-cache', signal: entry.controller.signal });
+    })
+      .then(async function (response) {
+        if (!response.ok) throw new Error(key + ': ' + response.status);
+        var bytes = new Uint8Array(await response.arrayBuffer());
+        if (bytes.length !== chunk.size) throw new Error('Incomplete music chunk');
+        if (entries.get(key) === entry) entry.bytes = bytes;
+        return { bytes: bytes };
+      }).catch(function (error) {
+        failures++;
+        if (entries.get(key) === entry) {
+          entry.error = error; entry.retryAfter = Date.now() + 1000;
+        }
+        return { error: error };
+      }).finally(function () {
+        lastFetchMs = Date.now() - started;
+        clearTimeout(timeout); pending.delete(entry.promise);
+      });
+    pending.add(entry.promise);
+    return entry.promise;
+  }
+  return {
+    load: load,
+    peek: function (chunk) {
+      var entry = entries.get(chunk.url);
+      if (!entry || !entry.bytes) return null;
+      touch(chunk.url, entry);
+      return entry.bytes;
+    },
+    release: function (chunks) {
+      chunks.forEach(function (chunk) {
+        var entry = entries.get(chunk.url);
+        if (entry) remove(chunk.url, entry);
+      });
+    },
+    stats: function () {
+      var bytes = 0;
+      entries.forEach(function (entry) { if (entry.bytes) bytes += entry.bytes.length; });
+      return { bytes: bytes, entries: entries.size, pending: pending.size, limit: limit, parallel: parallel,
+        fetches: fetches, failures: failures, lastFetchMs: lastFetchMs };
+    }
+  };
+}
+var phoneMusicCache;
+function phoneMusicStream(manifest) {
+  var cache = phoneMusicCache || (phoneMusicCache = createPhoneMusicCache());
+  var chunkSize = 1 << 20, closed = false, reportedError;
+  function range(offset, count) {
+    if (closed || offset < 0 || count <= 0 || offset + count > manifest.size) return null;
+    var first = Math.floor(offset / chunkSize), last = Math.floor((offset + count - 1) / chunkSize);
+    if (last - first >= 6) return null;
+    return { first: first, last: last, keys: new Set(manifest.chunks.slice(first, last + 1).map(function (c) { return c.url; })) };
+  }
+  async function ensure(offset, count) {
+    var part = range(offset, count);
+    if (!part) return false;
+    for (var i = part.first; i <= part.last; i++) {
+      var result = await cache.load(manifest.chunks[i], part.keys, false);
+      if (closed) return false;
+      if (result.error) {
+        if (reportedError === result.error) return false;
+        reportedError = result.error;
+        throw result.error;
+      }
+    }
+    return true;
+  }
+  function copy(offset, count, destination, ahead) {
+    var part = range(offset, count);
+    if (!part) return false;
+    var chunks = [];
+    for (var i = part.first; i <= part.last; i++) {
+      var bytes = cache.peek(manifest.chunks[i]);
+      if (!bytes) return false;
+      chunks.push(bytes);
+    }
+    for (var done = 0; done < count;) {
+      var at = offset + done, index = Math.floor(at / chunkSize), begin = at % chunkSize;
+      var bytes = chunks[index - part.first], take = Math.min(count - done, bytes.length - begin);
+      destination.set(bytes.subarray(begin, begin + take), done);
+      done += take;
+    }
+    if (ahead !== false) {
+      // Almost twelve seconds of original PCM ahead of the mixer. Playback
+      // waits at a cold sector without advancing past its original samples.
+      for (i = part.last + 1; i <= part.last + 2 && i < manifest.chunks.length; i++)
+        cache.load(manifest.chunks[i], part.keys, true);
+    }
+    return true;
+  }
+  return {
+    ensure: ensure, copy: copy,
+    header: async function () {
+      var header = new Uint8Array(Math.min(65536, manifest.size));
+      if (!await ensure(0, header.length) || !copy(0, header.length, header, false))
+        throw new Error('Could not read music header');
+      return header;
+    },
+    close: function () { closed = true; cache.release(manifest.chunks); }
+  };
+}
+function phoneTrackChunks(manifest) {
+  return {
+    name: manifest.name,
+    stream: manifest.stream ? phoneMusicStream(manifest) : null,
+    size: async function () { return manifest.size; },
+    pieces: async function* () {
+      var controller = new AbortController();
+      var parallel = Math.min(4, manifest.chunks.length), jobs = [];
+      function read(index) {
+        var chunk = manifest.chunks[index];
+        return fetch(chunk.url, { cache: 'force-cache', signal: controller.signal })
+          .then(async function (response) {
+            if (!response.ok) throw new Error(chunk.url + ': ' + response.status);
+            var bytes = new Uint8Array(await response.arrayBuffer());
+            if (bytes.length !== chunk.size) throw new Error('Incomplete disc chunk ' + index);
+            return { bytes: bytes };
+          }).catch(function (error) { return { error: error }; });
+      }
+      try {
+        for (var i = 0; i < parallel; i++) jobs[i] = read(i);
+        for (i = 0; i < manifest.chunks.length; i++) {
+          var result = await jobs[i % parallel];
+          if (result.error) throw result.error;
+          jobs[i % parallel] = i + parallel < manifest.chunks.length ? read(i + parallel) : null;
+          yield result.bytes;
+        }
+      } finally {
+        controller.abort();
+      }
+    }
+  };
+}
+
+// Use cacheable data chunks for this hosted disc; custom discs keep the normal loader.
+var packagedDataTrack = null, packagedTrackUrl = null;
+var originalHostedDisc = hostedDisc, originalUrlTrack = urlTrack;
+hostedDisc = async function () {
+  try {
+    var response = await fetch('wipeoutxl-data.json', {cache:'no-cache'});
+    if (response.ok) {
+      var data = await response.json();
+      if (data.disc && data.dataTrack) {
+        packagedDataTrack = data.dataTrack;
+        packagedTrackUrl = new URL(encodeURIComponent(data.dataTrack.name), new URL(data.disc, location.href)).href;
+        return data.disc;
+      }
+    }
+  } catch (error) { console.warn('hosted disc manifest: ' + error); }
+  return originalHostedDisc();
+};
+urlTrack = function (url) {
+  return packagedDataTrack && new URL(url, location.href).href === packagedTrackUrl
+    ? phoneTrackChunks(packagedDataTrack) : originalUrlTrack(url);
+};
+Module.locateFile = function (name) { return new URL(name, location.href).href + '?rev=6f45569509cf43e549d644cbad17f5234f0bdf4b5e18cf94199e2d61e1f98f1f'; };
+
+</script><script async src="wipeoutxl.js?rev=6f45569509cf43e549d644cbad17f5234f0bdf4b5e18cf94199e2d61e1f98f1f"></script></body></html>
